@@ -10,8 +10,8 @@ export const heroVideos: string[] = []
 export const hero = {
   eyebrow: { en: "Product Design & Strategy", es: "Diseño de Producto y Estrategia" },
   title: {
-    en: "I shape digital products and the strategy behind them, through research, product design, design systems and data.",
-    es: "Doy forma a productos digitales y a la estrategia que los sostiene, con investigación, diseño de producto, sistemas de diseño y datos.",
+    en: "I design honest digital products and services through research, strategy, design and AI-built prototypes.",
+    es: "Diseño productos y servicios digitales honestos a través de la investigación, la estrategia, el diseño y prototipos construidos con IA.",
   },
 } satisfies Record<string, Localized>
 
