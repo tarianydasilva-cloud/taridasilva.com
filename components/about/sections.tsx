@@ -8,18 +8,21 @@ import { ServiceIcon } from "./service-icon"
 
 const label = "font-mono text-xs uppercase tracking-wider"
 
-function Section({ id, title, children }: { id: SectionId; title: string; children: ReactNode }) {
+// A section without a title is labelled by its small section name instead.
+function Section({ id, title, children }: { id: SectionId; title?: string; children: ReactNode }) {
   const { t } = useLanguage()
 
   return (
-    <section id={id} aria-labelledby={`${id}-title`} className="scroll-mt-24">
-      <p className={cn(label, "flex items-center gap-3 text-muted-foreground")}>
+    <section id={id} aria-labelledby={`${id}-${title ? "title" : "label"}`} className="scroll-mt-24">
+      <p id={`${id}-label`} className={cn(label, "flex items-center gap-3 text-muted-foreground")}>
         <span aria-hidden="true" className="size-2 rounded-full bg-accent" />
         {t.about.sections[id]}
       </p>
-      <h2 id={`${id}-title`} className="reveal mt-6 text-3xl leading-[1.05] tracking-tight text-balance md:text-5xl">
-        {title}
-      </h2>
+      {title && (
+        <h2 id={`${id}-title`} className="reveal mt-6 text-3xl leading-[1.05] tracking-tight text-balance md:text-5xl">
+          {title}
+        </h2>
+      )}
       {children}
     </section>
   )
@@ -27,21 +30,12 @@ function Section({ id, title, children }: { id: SectionId; title: string; childr
 
 function Origins() {
   const { locale } = useLanguage()
-  // Emphasise the repeated "Born…" so the cadence reads at a glance.
-  const parts = origins.body[locale].split(/(Born|Nació)/)
 
   return (
-    <Section id="origins" title={origins.title[locale]}>
-      <p className="reveal mt-10 text-xl leading-snug tracking-tight text-muted-foreground text-pretty md:text-2xl">
-        {parts.map((part, index) =>
-          index % 2 === 1 ? (
-            <span key={index} className="text-foreground">
-              {part}
-            </span>
-          ) : (
-            part
-          ),
-        )}
+    <Section id="origins">
+      <p className="reveal mt-8 text-xl leading-snug tracking-tight text-pretty md:text-2xl">{origins.body[locale]}</p>
+      <p className="reveal mt-6 text-xl leading-snug tracking-tight text-muted-foreground md:text-2xl">
+        {origins.aside[locale]}
       </p>
     </Section>
   )

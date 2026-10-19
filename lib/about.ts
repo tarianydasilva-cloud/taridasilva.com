@@ -26,10 +26,13 @@ export const sectionIds = [
 export type SectionId = (typeof sectionIds)[number]
 
 export const origins = {
-  title: { en: "Born against the established.", es: "Nació contra lo establecido." },
   body: {
-    en: "Born in [year], in [city]. Born against the established: the default answer, the copied template, the safe deck. Born to never be one more: one more designer, one more feature, one more product nobody asked for. Born to commit to the client, and to stay committed until the product works for the people who use it.",
-    es: "Nació en [año], en [ciudad]. Nació contra lo establecido: la respuesta por defecto, la plantilla copiada, la presentación segura. Nació para no sumar una más: una pantalla más, una funcionalidad más, un producto más que nadie pidió. Nació para comprometerse con el cliente, y mantener ese compromiso hasta que el producto funcione para quien lo usa.",
+    en: "I was born in 2001 in the Peruvian Andes and grew up between countries, languages and ways of noticing the world. Living between places taught me to question why things are done the way they are, and I never stopped asking. Curiosity and rebellion still drive my work, all assumptions are challenged. I take ownership with care, rigour and a real commitment to the people I work with. Results are simple, useful, thorough to the last detail, grounded in evidence so the complex feels obvious.",
+    es: "Nací en 2001 en los Andes peruanos y crecí entre países, idiomas y formas de mirar el mundo. Vivir entre lugares me enseñó a cuestionar por qué las cosas se hacen como se hacen, y nunca dejé de preguntar. La curiosidad y la rebeldía siguen impulsando mi trabajo: cuestiono cada suposición. Asumo la responsabilidad con cuidado, rigor y un compromiso real con las personas con las que trabajo. Los resultados son simples, útiles, cuidados hasta el último detalle y basados en evidencias, para que lo complejo parezca obvio.",
+  },
+  aside: {
+    en: "And yes, my parents did kind of make up my name.",
+    es: "Y sí, mis padres más o menos se inventaron mi nombre.",
   },
 } satisfies Record<string, Localized>
 
