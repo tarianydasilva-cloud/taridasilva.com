@@ -8,20 +8,37 @@ import { ServiceIcon } from "./service-icon"
 
 const label = "font-mono text-xs uppercase tracking-wider"
 
-// A section without a title is labelled by its small section name instead.
-function Section({ id, title, children }: { id: SectionId; title?: string; children: ReactNode }) {
+// Sections show a dot label and a headline unless they are left out; an unlabelled section is named for screen readers only.
+function Section({
+  id,
+  title,
+  bare,
+  className,
+  children,
+}: {
+  id: SectionId
+  title?: string
+  bare?: boolean
+  className?: string
+  children: ReactNode
+}) {
   const { t } = useLanguage()
 
   return (
-    <section id={id} aria-labelledby={`${id}-${title ? "title" : "label"}`} className="scroll-mt-24">
-      <p id={`${id}-label`} className={cn(label, "flex items-center gap-3 text-muted-foreground")}>
-        <span aria-hidden="true" className="size-2 rounded-full bg-accent" />
-        {t.about.sections[id]}
-      </p>
+    <section
+      id={id}
+      aria-label={bare ? t.about.sections[id] : undefined}
+      aria-labelledby={bare ? undefined : `${id}-label`}
+      className={cn("scroll-mt-24", className)}
+    >
+      {!bare && (
+        <p id={`${id}-label`} className={cn(label, "flex items-center gap-3 text-muted-foreground")}>
+          <span aria-hidden="true" className="size-2 rounded-full bg-accent" />
+          {t.about.sections[id]}
+        </p>
+      )}
       {title && (
-        <h2 id={`${id}-title`} className="reveal mt-6 text-3xl leading-[1.05] tracking-tight text-balance md:text-5xl">
-          {title}
-        </h2>
+        <h2 className="reveal mt-6 text-3xl leading-[1.05] tracking-tight text-balance md:text-5xl">{title}</h2>
       )}
       {children}
     </section>
@@ -29,11 +46,11 @@ function Section({ id, title, children }: { id: SectionId; title?: string; child
 }
 
 function Origins() {
-  const { locale, t } = useLanguage()
+  const { locale } = useLanguage()
 
-  // No visible label; the text scales with the column so it stays within eight lines (Spanish runs longer).
+  // The text scales with the column so it stays within eight lines (Spanish runs longer).
   return (
-    <section id="origins" aria-label={t.about.sections.origins} className="@container scroll-mt-24">
+    <Section id="origins" bare className="@container">
       <p
         className={cn(
           "reveal leading-snug tracking-tight text-pretty",
@@ -42,7 +59,7 @@ function Origins() {
       >
         {origins.body[locale]} <span className="text-muted-foreground">{origins.aside[locale]}</span>
       </p>
-    </section>
+    </Section>
   )
 }
 
@@ -50,8 +67,8 @@ function Services() {
   const { locale, t } = useLanguage()
 
   return (
-    <Section id="services" title={t.about.servicesTitle}>
-      <ul className="mt-10 flex flex-col gap-2">
+    <Section id="services" bare>
+      <ul className="flex flex-col gap-2">
         {services.map((service) => (
           <li key={service.icon}>
             {/* Each service is a card; an open card turns black. */}

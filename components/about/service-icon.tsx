@@ -7,7 +7,19 @@ const paths: Record<ServiceIconName, React.ReactNode> = {
       <path d="M11 18h2" />
     </>
   ),
-  branding: <path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4" />,
+  strategy: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M15.5 8.5l-2 5-5 2 2-5z" />
+    </>
+  ),
+  service: (
+    <>
+      <circle cx="5" cy="17" r="2" />
+      <circle cx="19" cy="7" r="2" />
+      <path d="M7 17h4a3 3 0 0 0 3-3v-4a3 3 0 0 1 3-3" />
+    </>
+  ),
   systems: (
     <>
       <rect x="4" y="4" width="7" height="7" rx="1" />
@@ -16,6 +28,7 @@ const paths: Record<ServiceIconName, React.ReactNode> = {
       <circle cx="16.5" cy="16.5" r="3.5" />
     </>
   ),
+  prototyping: <path d="M13 3L5 13h6l-1 8 8-10h-6z" />,
   ops: (
     <>
       <path d="M4 7h10M18 7h2M4 17h4M12 17h8" />
@@ -23,21 +36,6 @@ const paths: Record<ServiceIconName, React.ReactNode> = {
       <circle cx="10" cy="17" r="2" />
     </>
   ),
-  management: (
-    <>
-      <path d="M4 6h9M4 12h16M4 18h6" />
-      <circle cx="16" cy="6" r="1.5" />
-      <circle cx="13" cy="18" r="1.5" />
-    </>
-  ),
-  venture: (
-    <>
-      <circle cx="12" cy="12" r="9" />
-      <path d="M9 15l6-6M10 9h5v5" />
-    </>
-  ),
-  motion: <path d="M3 12c3-6 6-6 9 0s6 6 9 0" />,
-  analytics: <path d="M5 20v-8M12 20V5M19 20v-9M3 20h18" />,
 }
 
 export function ServiceIcon({ name }: { name: ServiceIconName }) {

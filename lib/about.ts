@@ -36,15 +36,7 @@ export const origins = {
   },
 } satisfies Record<string, Localized>
 
-export type ServiceIcon =
-  | "product"
-  | "branding"
-  | "systems"
-  | "ops"
-  | "management"
-  | "venture"
-  | "motion"
-  | "analytics"
+export type ServiceIcon = "product" | "strategy" | "service" | "systems" | "prototyping" | "ops"
 
 export const services: { icon: ServiceIcon; title: Localized; body: Localized }[] = [
   {
@@ -56,11 +48,19 @@ export const services: { icon: ServiceIcon; title: Localized; body: Localized }[
     },
   },
   {
-    icon: "branding",
-    title: { en: "Branding", es: "Branding" },
+    icon: "strategy",
+    title: { en: "Strategy", es: "Estrategia" },
     body: {
-      en: "Brand strategy and identity built for digital products: positioning, naming support, visual language and voice. Brands designed to live inside interfaces and to scale across every touchpoint without losing what makes them recognisable.",
-      es: "Estrategia e identidad de marca pensadas para productos digitales: posicionamiento, apoyo en naming, lenguaje visual y tono. Marcas diseñadas para vivir dentro de las interfaces y escalar a todos los puntos de contacto sin perder lo que las hace reconocibles.",
+      en: "Turning ambiguity into a clear direction: user and market insight, positioning, opportunity framing and roadmaps that connect what people need with what the business has to achieve. The result is a plan teams can act on, with the bets, trade-offs and success metrics made explicit.",
+      es: "Convertir la ambigüedad en una dirección clara: insights de usuarios y de mercado, posicionamiento, definición de oportunidades y roadmaps que conectan lo que las personas necesitan con lo que el negocio tiene que lograr. El resultado es un plan sobre el que los equipos pueden actuar, con las apuestas, las renuncias y las métricas de éxito explícitas.",
+    },
+  },
+  {
+    icon: "service",
+    title: { en: "Service Design", es: "Diseño de servicios" },
+    body: {
+      en: "Designing the whole service, front stage and back stage: journeys, blueprints, touchpoints and the operations behind them. Finding the moments where people get stuck and fixing them at the root, so every channel works as one experience.",
+      es: "Diseñar el servicio completo, lo que se ve y lo que no: recorridos, blueprints, puntos de contacto y las operaciones que los sostienen. Encontrar los momentos en los que las personas se atascan y resolverlos de raíz, para que todos los canales funcionen como una sola experiencia.",
     },
   },
   {
@@ -72,43 +72,19 @@ export const services: { icon: ServiceIcon; title: Localized; body: Localized }[
     },
   },
   {
+    icon: "prototyping",
+    title: { en: "Rapid Prototyping", es: "Prototipado rápido" },
+    body: {
+      en: "Interactive, AI-built prototypes in days rather than weeks, to test ideas with real users before they become expensive. Real enough to feel like the product, fast enough to throw away, and the quickest way to replace opinion with evidence.",
+      es: "Prototipos interactivos construidos con IA en días y no en semanas, para probar ideas con usuarios reales antes de que salgan caras. Lo bastante reales como para sentirse como el producto, lo bastante rápidos como para descartarlos, y la forma más rápida de cambiar opiniones por evidencias.",
+    },
+  },
+  {
     icon: "ops",
     title: { en: "Design Ops", es: "Design Ops" },
     body: {
       en: "The operating model behind good design at scale: rituals, tooling, critique, hiring and career frameworks. Less time lost to process, more time spent on the work, and a design team the rest of the company can plan around.",
       es: "El modelo operativo detrás del buen diseño a escala: rituales, herramientas, crítica, contratación y planes de carrera. Menos tiempo perdido en procesos, más tiempo dedicado al trabajo y un equipo de diseño con el que el resto de la empresa puede planificar.",
-    },
-  },
-  {
-    icon: "management",
-    title: { en: "Product Management", es: "Product Management" },
-    body: {
-      en: "Vision, roadmap and prioritisation grounded in evidence. Turning strategy into outcomes the team can measure, writing the problem before the solution, and making the trade-offs explicit so everyone knows what is being built and why.",
-      es: "Visión, roadmap y priorización basados en evidencias. Convertir la estrategia en resultados que el equipo pueda medir, escribir el problema antes que la solución y hacer explícitas las renuncias para que todos sepan qué se construye y por qué.",
-    },
-  },
-  {
-    icon: "venture",
-    title: { en: "Venture Building", es: "Venture Building" },
-    body: {
-      en: "Taking new ventures from idea to first traction: opportunity framing, business model, MVP definition and launch. Small bets, tested quickly with real users, so investment follows evidence rather than opinion.",
-      es: "Llevar nuevas iniciativas de la idea a la primera tracción: definición de la oportunidad, modelo de negocio, MVP y lanzamiento. Apuestas pequeñas, probadas rápido con usuarios reales, para que la inversión siga a la evidencia y no a la opinión.",
-    },
-  },
-  {
-    icon: "motion",
-    title: { en: "Motion Design", es: "Motion Design" },
-    body: {
-      en: "Motion as part of the interface, not decoration: transitions, micro-interactions and product storytelling that explain how things work. Specified precisely enough to be built, and restrained enough to never get in the way.",
-      es: "El movimiento como parte de la interfaz, no como decoración: transiciones, microinteracciones y narrativa de producto que explican cómo funcionan las cosas. Especificado con la precisión necesaria para construirlo y con la contención suficiente para no estorbar nunca.",
-    },
-  },
-  {
-    icon: "analytics",
-    title: { en: "CRO & Analytics", es: "CRO y analítica" },
-    body: {
-      en: "Measurement plans, funnels, experiments and A/B tests that show what is actually working. Conversion work driven by data and qualitative insight, with every change tied to a metric and every result fed back into the roadmap.",
-      es: "Planes de medición, embudos, experimentos y tests A/B que muestran lo que de verdad funciona. Optimización de la conversión guiada por datos e insights cualitativos, con cada cambio ligado a una métrica y cada resultado de vuelta en el roadmap.",
     },
   },
 ]
