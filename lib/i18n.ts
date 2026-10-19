@@ -26,7 +26,6 @@ export const dictionary = {
       },
       servicesLabel: "Services",
       valuesTitle: "Four values, no exceptions.",
-      clientsTitle: "Industries, not niches.",
     },
     letsTalk: {
       title: "Let's talk",
@@ -76,7 +75,6 @@ export const dictionary = {
       },
       servicesLabel: "Servicios",
       valuesTitle: "Cuatro valores, sin excepciones.",
-      clientsTitle: "Sectores, no nichos.",
     },
     letsTalk: {
       title: "Hablemos",

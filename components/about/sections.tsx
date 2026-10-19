@@ -20,7 +20,7 @@ function Section({
   title?: string
   bare?: boolean
   className?: string
-  children: ReactNode
+  children?: ReactNode
 }) {
   const { t } = useLanguage()
 
@@ -38,7 +38,9 @@ function Section({
         </p>
       )}
       {title && (
-        <h2 className="reveal mt-6 text-3xl leading-[1.05] tracking-tight text-balance md:text-5xl">{title}</h2>
+        <h2 className={cn("reveal text-3xl leading-[1.05] tracking-tight text-balance md:text-5xl", !bare && "mt-6")}>
+          {title}
+        </h2>
       )}
       {children}
     </section>
@@ -102,30 +104,9 @@ function Services() {
 }
 
 function Clients() {
-  const { locale, t } = useLanguage()
+  const { locale } = useLanguage()
 
-  return (
-    <Section id="clients" title={t.about.clientsTitle}>
-      <p className="reveal mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground text-pretty">
-        {clients.claim[locale]}
-      </p>
-      <ul className="mt-10 grid grid-cols-3 gap-2 md:grid-cols-4">
-        {clients.logos.map((client) => (
-          <li key={client.name} className="grid aspect-[3/2] place-items-center rounded-2xl bg-muted p-4">
-            {client.logo ? (
-              <img
-                src={client.logo}
-                alt={client.name}
-                className="max-h-8 w-auto opacity-60 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
-              />
-            ) : (
-              <span className={cn(label, "text-center text-[10px] text-muted-foreground")}>{client.name}</span>
-            )}
-          </li>
-        ))}
-      </ul>
-    </Section>
-  )
+  return <Section id="clients" title={clients.title[locale]} bare />
 }
 
 function Values() {

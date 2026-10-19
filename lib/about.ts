@@ -90,16 +90,11 @@ export const services: { icon: ServiceIcon; title: Localized; body: Localized }[
 ]
 
 export const clients = {
-  claim: {
-    en: "Trusted by teams across [N] industries: fintech, healthcare, mobility, retail, education and the public sector.",
-    es: "Equipos de [N] sectores confían en mi trabajo: fintech, salud, movilidad, retail, educación y sector público.",
+  title: {
+    en: "I've worked for industries such as Banking, Insurance, Automotive & Mobility, Manufacturing, Construction & Services and Public Sector.",
+    es: "He trabajado para sectores como Banca, Seguros, Automoción y Movilidad, Industria, Construcción y Servicios, y Sector Público.",
   },
-  // Add a logo path (monochrome SVG or PNG in /public/clients/) to replace each placeholder.
-  logos: Array.from({ length: 12 }, (_, i) => ({
-    name: `[Client ${String(i + 1).padStart(2, "0")}]`,
-    logo: undefined as string | undefined,
-  })),
-}
+} satisfies Record<string, Localized>
 
 export const values: { title: Localized; body: Localized }[] = [
   {
