@@ -1,99 +1,59 @@
 "use client"
 
 import type { ReactNode } from "react"
-import { clients, methodology, origins, services, values, type SectionId } from "@/lib/about"
+import { approach, industries, principles, services, story, type SectionId } from "@/lib/about"
 import { cn } from "@/lib/utils"
 import { useLanguage } from "../language-provider"
-import { ServiceIcon } from "./service-icon"
 
-const label = "font-mono text-xs uppercase tracking-wider"
-
-// Sections show a dot label and a headline unless they are left out; an unlabelled section is named for screen readers only.
-function Section({
-  id,
-  title,
-  bare,
-  className,
-  children,
-}: {
-  id: SectionId
-  title?: string
-  bare?: boolean
-  className?: string
-  children?: ReactNode
-}) {
+// Sections carry no visible label; the index names them, and screen readers get the same name.
+function Section({ id, className, children }: { id: SectionId; className?: string; children: ReactNode }) {
   const { t } = useLanguage()
 
   return (
-    <section
-      id={id}
-      aria-label={bare ? t.about.sections[id] : undefined}
-      aria-labelledby={bare ? undefined : `${id}-label`}
-      className={cn("scroll-mt-24", className)}
-    >
-      {!bare && (
-        <p id={`${id}-label`} className={cn(label, "flex items-center gap-3 text-muted-foreground")}>
-          <span aria-hidden="true" className="size-2 rounded-full bg-accent" />
-          {t.about.sections[id]}
-        </p>
-      )}
-      {title && (
-        <h2
-          className={cn(
-            "reveal text-balance",
-            bare ? "text-statement" : "mt-6 text-3xl leading-[1.05] tracking-tight md:text-5xl",
-          )}
-        >
-          {title}
-        </h2>
-      )}
+    <section id={id} aria-label={t.about.sections[id]} className={cn("scroll-mt-28", className)}>
       {children}
     </section>
   )
 }
 
-function Origins() {
+function Story() {
   const { locale } = useLanguage()
 
   return (
-    <Section id="origins" bare>
+    <Section id="story">
       <p className="text-lead reveal text-pretty">
-        {origins.body[locale]} <span className="text-muted-foreground">{origins.aside[locale]}</span>
+        {story.body[locale]} <span className="text-muted-foreground">{story.aside[locale]}</span>
       </p>
     </Section>
   )
 }
 
 function Services() {
-  const { locale, t } = useLanguage()
+  const { locale } = useLanguage()
 
   return (
-    <Section id="services" bare>
+    <Section id="services">
       <ul className="flex flex-col gap-2">
         {services.map((service) => (
-          <li key={service.icon}>
-            {/* Each service is a card; an open card turns black. */}
-            <details className="accordion group rounded-2xl bg-muted transition-colors duration-300 hover:bg-border/70 open:bg-foreground open:text-background open:hover:bg-foreground">
-              <summary className="flex cursor-pointer list-none items-center gap-4 px-5 py-4 [&::-webkit-details-marker]:hidden">
-                <span className="grid size-11 shrink-0 place-items-center rounded-full bg-background transition-colors group-open:bg-background/10">
-                  <ServiceIcon name={service.icon} />
-                </span>
-                <span className="min-w-0">
-                  <span className={cn(label, "block text-muted-foreground group-open:text-background/60")}>
-                    {t.about.servicesLabel}
-                  </span>
-                  <span className="mt-1 block text-xl tracking-tight md:text-2xl">{service.title[locale]}</span>
-                </span>
-                <span
+          <li key={service.title.en}>
+            <details className="accordion group rounded-lg bg-muted">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 px-5 py-4 md:px-6 md:py-5 [&::-webkit-details-marker]:hidden">
+                <span className="font-serif text-2xl leading-tight md:text-3xl">{service.title[locale]}</span>
+                {/* A plus that turns into a cross when the card is open. */}
+                <svg
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
                   aria-hidden="true"
-                  className="ml-auto grid size-10 shrink-0 place-items-center rounded-full bg-background text-foreground transition-[rotate,background-color,color] duration-300 group-hover:bg-accent group-hover:text-accent-foreground group-open:rotate-180 group-open:bg-background group-open:text-foreground"
+                  className="size-5 shrink-0 text-accent transition-transform duration-300 group-open:rotate-45"
                 >
-                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-4">
-                    <path d="M8 3.5v9M4 8.5l4 4 4-4" />
-                  </svg>
-                </span>
+                  <path d="M8 2.5v11M2.5 8h11" />
+                </svg>
               </summary>
-              <p className="px-5 pb-6 leading-relaxed text-background/70 text-pretty md:pl-20">{service.body[locale]}</p>
+              <p className="max-w-2xl px-5 pb-6 leading-relaxed text-muted-foreground text-pretty md:px-6">
+                {service.body[locale]}
+              </p>
             </details>
           </li>
         ))}
@@ -102,22 +62,26 @@ function Services() {
   )
 }
 
-function Clients() {
-  const { locale } = useLanguage()
-
-  return <Section id="clients" title={clients.title[locale]} bare />
-}
-
-function Values() {
+function Industries() {
   const { locale } = useLanguage()
 
   return (
-    <Section id="values" bare>
-      <ul className="grid gap-3 sm:grid-cols-2">
-        {values.map((value) => (
-          <li key={value.title.en} className="reveal flex flex-col gap-10 rounded-2xl bg-muted p-6">
-            <h3 className="text-2xl tracking-tight md:text-3xl">{value.title[locale]}</h3>
-            <p className="leading-relaxed text-muted-foreground">{value.body[locale]}</p>
+    <Section id="industries">
+      <h2 className="text-statement reveal text-balance">{industries.title[locale]}</h2>
+    </Section>
+  )
+}
+
+function Principles() {
+  const { locale } = useLanguage()
+
+  return (
+    <Section id="principles">
+      <ul className="grid gap-2 sm:grid-cols-2">
+        {principles.map((principle) => (
+          <li key={principle.title.en} className="reveal flex flex-col gap-8 rounded-lg bg-muted p-6">
+            <h3 className="font-serif text-2xl leading-tight md:text-3xl">{principle.title[locale]}</h3>
+            <p className="leading-relaxed text-muted-foreground">{principle.body[locale]}</p>
           </li>
         ))}
       </ul>
@@ -125,29 +89,18 @@ function Values() {
   )
 }
 
-function Methodology() {
+function Approach() {
   const { locale } = useLanguage()
 
   return (
-    <Section id="methodology" title={methodology.title[locale]}>
-      <p className="reveal mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground text-pretty">
-        {methodology.intro[locale]}
-      </p>
-      <ol className="mt-10 grid gap-3 md:grid-cols-3">
-        {methodology.steps.map((step, index) => (
-          <li key={step.title.en} className="reveal flex flex-col gap-8 rounded-2xl border border-border p-5">
-            <span className={cn(label, "flex items-center justify-between text-muted-foreground")}>
-              {String(index + 1).padStart(2, "0")}
-              {index < methodology.steps.length - 1 && (
-                <span aria-hidden="true" className="text-accent">
-                  →
-                </span>
-              )}
-            </span>
-            <span>
-              <span className="block text-xl tracking-tight">{step.title[locale]}</span>
-              <span className="mt-2 block text-sm leading-relaxed text-muted-foreground">{step.body[locale]}</span>
-            </span>
+    <Section id="approach">
+      <h2 className="text-statement reveal text-balance">{approach.title[locale]}</h2>
+      <ol className="mt-10 grid gap-x-8 gap-y-8 border-t border-foreground pt-6 md:grid-cols-3">
+        {approach.steps.map((step, index) => (
+          <li key={step.title.en} className="reveal flex flex-col gap-2">
+            <span className="font-mono text-xs text-accent">{String(index + 1).padStart(2, "0")}</span>
+            <span className="text-lg font-medium tracking-tight">{step.title[locale]}</span>
+            <span className="text-sm leading-relaxed text-muted-foreground">{step.body[locale]}</span>
           </li>
         ))}
       </ol>
@@ -155,16 +108,14 @@ function Methodology() {
   )
 }
 
-
-
 export function AboutSections() {
   return (
-    <div className="@container flex flex-col gap-28 pb-32 pt-20 md:gap-40 md:pb-48 md:pt-28">
-      <Origins />
+    <div className="@container flex flex-col gap-24 pt-20 md:gap-32 md:pt-28">
+      <Story />
       <Services />
-      <Clients />
-      <Values />
-      <Methodology />
+      <Industries />
+      <Principles />
+      <Approach />
     </div>
   )
 }

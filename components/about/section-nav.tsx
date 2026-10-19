@@ -6,8 +6,8 @@ import { cn } from "@/lib/utils"
 import { useLanguage } from "../language-provider"
 
 // A section becomes current once its top passes this line (px from the top of the viewport).
-// It sits below where a clicked section lands (scroll-mt-24) and above where the next one starts.
-const ACTIVE_LINE = 160
+// It sits below where a clicked section lands (scroll-mt-28) and above where the next one starts.
+const ACTIVE_LINE = 180
 
 function currentSection(): SectionId {
   const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2
@@ -20,8 +20,8 @@ function currentSection(): SectionId {
   return current
 }
 
-// The About page's in-page steps: a vertical list under the name card on large screens,
-// and a sticky horizontal bar inside the page below that.
+// The About page's index: a vertical list in the left margin on large screens,
+// and a sticky horizontal bar under the header below that.
 export function SectionNav({ vertical, className }: { vertical?: boolean; className?: string }) {
   const { t } = useLanguage()
   const [active, setActive] = useState<SectionId>(sectionIds[0])
@@ -68,16 +68,15 @@ export function SectionNav({ vertical, className }: { vertical?: boolean; classN
     <nav
       aria-label={t.about.sectionNav}
       data-section-nav
-      className={cn(!vertical && "sticky top-4 z-20 mt-16", className)}
+      className={cn(
+        !vertical && "sticky top-16 z-30 -mx-4 mt-12 border-b border-border bg-background/90 px-4 backdrop-blur-md md:-mx-8 md:px-8",
+        className,
+      )}
     >
+      {vertical && <p className="mb-4 text-sm text-muted-foreground">{t.about.onThisPage}</p>}
       <ul
         ref={listRef}
-        className={cn(
-          "relative flex gap-1 p-1.5",
-          vertical
-            ? "flex-col rounded-2xl bg-muted"
-            : "overflow-x-auto rounded-full bg-muted/80 ring-1 ring-black/5 backdrop-blur-xl [scrollbar-width:none]",
-        )}
+        className={cn("relative flex", vertical ? "flex-col" : "gap-5 overflow-x-auto [scrollbar-width:none]")}
       >
         {sectionIds.map((id) => (
           <li key={id} className="shrink-0">
@@ -86,8 +85,10 @@ export function SectionNav({ vertical, className }: { vertical?: boolean; classN
               onClick={() => select(id)}
               aria-current={active === id ? "location" : undefined}
               className={cn(
-                "block text-sm text-foreground/70 transition-colors hover:text-foreground aria-[current=location]:bg-foreground aria-[current=location]:text-background",
-                vertical ? "rounded-xl px-4 py-2.5 lg:px-3.5 lg:py-2" : "rounded-full px-3 py-2",
+                "block text-sm text-muted-foreground transition-colors hover:text-foreground aria-[current=location]:text-foreground",
+                vertical
+                  ? "border-l-2 border-border py-1.5 pl-4 aria-[current=location]:border-accent"
+                  : "border-b-2 border-transparent py-3 aria-[current=location]:border-accent",
               )}
             >
               {t.about.sections[id]}

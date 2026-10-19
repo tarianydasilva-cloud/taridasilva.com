@@ -8,14 +8,9 @@ export function PageIntro({ page }: { page: keyof Dictionary["pages"] }) {
   const content = t.pages[page]
 
   return (
-    <section className="pb-32 md:pb-48">
-      <h1 className="max-w-5xl text-4xl leading-[1.05] tracking-tight text-balance md:text-6xl xl:text-7xl">
-        {content.title}
-      </h1>
-      <p className="mt-16 flex items-center gap-3 text-sm text-muted-foreground md:mt-24">
-        <span aria-hidden="true" className="size-2 rounded-full bg-accent" />
-        {content.eyebrow}
-      </p>
+    <section className="pb-16 md:pb-24">
+      <p className="text-sm text-accent">{content.eyebrow}</p>
+      <h1 className="mt-4 max-w-4xl font-serif text-4xl leading-[1.1] text-balance md:text-6xl">{content.title}</h1>
     </section>
   )
 }

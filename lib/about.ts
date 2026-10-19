@@ -15,17 +15,11 @@ export const hero = {
   },
 } satisfies Record<string, Localized>
 
-export const sectionIds = [
-  "origins",
-  "services",
-  "clients",
-  "values",
-  "methodology",
-] as const
+export const sectionIds = ["story", "services", "industries", "principles", "approach"] as const
 
 export type SectionId = (typeof sectionIds)[number]
 
-export const origins = {
+export const story = {
   body: {
     en: "I was born in 2001 in the Peruvian Andes and grew up between countries, languages and ways of noticing the world. Living between places taught me to question why things are done the way they are, and I never stopped asking. Curiosity and rebellion still drive my work, all assumptions are challenged. I take ownership with care, rigour and a real commitment to the people I work with. Results are simple, useful, thorough to the last detail, grounded in evidence so the complex feels obvious.",
     es: "Nací en 2001 en los Andes peruanos y crecí entre países, idiomas y formas de mirar el mundo. Vivir entre lugares me enseñó a cuestionar por qué las cosas se hacen como se hacen, y nunca dejé de preguntar. La curiosidad y la rebeldía siguen impulsando mi trabajo: cuestiono cada suposición. Asumo la responsabilidad con cuidado, rigor y un compromiso real con las personas con las que trabajo. Los resultados son simples, útiles, cuidados hasta el último detalle y basados en evidencias, para que lo complejo parezca obvio.",
@@ -36,11 +30,8 @@ export const origins = {
   },
 } satisfies Record<string, Localized>
 
-export type ServiceIcon = "product" | "strategy" | "service" | "systems" | "prototyping" | "ops"
-
-export const services: { icon: ServiceIcon; title: Localized; body: Localized }[] = [
+export const services: { title: Localized; body: Localized }[] = [
   {
-    icon: "product",
     title: { en: "Product Design", es: "Diseño de producto" },
     body: {
       en: "End-to-end design of digital products, from discovery and research to flows, interfaces and validated prototypes. Every screen answers a business goal and a user need, and ships with the specs, states and edge cases engineering needs to build it right the first time.",
@@ -48,7 +39,6 @@ export const services: { icon: ServiceIcon; title: Localized; body: Localized }[
     },
   },
   {
-    icon: "strategy",
     title: { en: "Strategy", es: "Estrategia" },
     body: {
       en: "Turning ambiguity into a clear direction: user and market insight, positioning, opportunity framing and roadmaps that connect what people need with what the business has to achieve. The result is a plan teams can act on, with the bets, trade-offs and success metrics made explicit.",
@@ -56,7 +46,6 @@ export const services: { icon: ServiceIcon; title: Localized; body: Localized }[
     },
   },
   {
-    icon: "service",
     title: { en: "Service Design", es: "Diseño de servicios" },
     body: {
       en: "Designing the whole service, front stage and back stage: journeys, blueprints, touchpoints and the operations behind them. Finding the moments where people get stuck and fixing them at the root, so every channel works as one experience.",
@@ -64,7 +53,6 @@ export const services: { icon: ServiceIcon; title: Localized; body: Localized }[
     },
   },
   {
-    icon: "systems",
     title: { en: "Design Systems", es: "Sistemas de diseño" },
     body: {
       en: "Tokens, components, patterns and documentation that let many teams ship one coherent product. Designed together with engineering, versioned like code and governed so the system keeps up with the product instead of slowing it down.",
@@ -72,7 +60,6 @@ export const services: { icon: ServiceIcon; title: Localized; body: Localized }[
     },
   },
   {
-    icon: "prototyping",
     title: { en: "Rapid Prototyping", es: "Prototipado rápido" },
     body: {
       en: "Interactive, AI-built prototypes in days rather than weeks, to test ideas with real users before they become expensive. Real enough to feel like the product, fast enough to throw away, and the quickest way to replace opinion with evidence.",
@@ -80,7 +67,6 @@ export const services: { icon: ServiceIcon; title: Localized; body: Localized }[
     },
   },
   {
-    icon: "ops",
     title: { en: "Design Ops", es: "Design Ops" },
     body: {
       en: "The operating model behind good design at scale: rituals, tooling, critique, hiring and career frameworks. Less time lost to process, more time spent on the work, and a design team the rest of the company can plan around.",
@@ -89,14 +75,14 @@ export const services: { icon: ServiceIcon; title: Localized; body: Localized }[
   },
 ]
 
-export const clients = {
+export const industries = {
   title: {
     en: "I've worked for industries such as Banking, Insurance, Automotive & Mobility, Manufacturing, Construction & Services and Public Sector.",
     es: "He trabajado para sectores como Banca, Seguros, Automoción y Movilidad, Industria, Construcción y Servicios, y Sector Público.",
   },
 } satisfies Record<string, Localized>
 
-export const values: { title: Localized; body: Localized }[] = [
+export const principles: { title: Localized; body: Localized }[] = [
   {
     title: { en: "Judgment", es: "Criterio" },
     body: {
@@ -127,32 +113,28 @@ export const values: { title: Localized; body: Localized }[] = [
   },
 ]
 
-export const methodology = {
-  title: { en: "Lean, by default.", es: "Lean, por defecto." },
-  intro: {
-    en: "Short loops beat long plans. Every project runs on the same three steps, as many times as it takes.",
-    es: "Los ciclos cortos ganan a los planes largos. Cada proyecto sigue los mismos tres pasos, tantas veces como haga falta.",
-  },
+export const approach = {
+  title: { en: "From question to evidence.", es: "De la pregunta a la evidencia." },
   steps: [
     {
-      title: { en: "Create fast", es: "Crear rápido" },
+      title: { en: "Question the brief", es: "Cuestionar el brief" },
       body: {
-        en: "Prototype the riskiest idea first, in days rather than months.",
-        es: "Prototipar primero la idea más arriesgada, en días y no en meses.",
+        en: "Start from the problem, not the request: research, data and the people it affects.",
+        es: "Empezar por el problema, no por el encargo: investigación, datos y las personas a las que afecta.",
       },
     },
     {
-      title: { en: "Measure smart", es: "Medir con cabeza" },
+      title: { en: "Prototype early", es: "Prototipar pronto" },
       body: {
-        en: "Test with real users and the few metrics that decide the outcome.",
-        es: "Probar con usuarios reales y con las pocas métricas que deciden el resultado.",
+        en: "AI-built prototypes in days, so ideas get tested instead of debated.",
+        es: "Prototipos construidos con IA en días, para que las ideas se prueben en lugar de debatirse.",
       },
     },
     {
-      title: { en: "Learn & iterate", es: "Aprender e iterar" },
+      title: { en: "Prove and refine", es: "Demostrar y afinar" },
       body: {
-        en: "Keep what works, cut what doesn't, and run the loop again.",
-        es: "Quedarse con lo que funciona, eliminar lo que no y repetir el ciclo.",
+        en: "Measure against the goal, keep what works and document why.",
+        es: "Medir contra el objetivo, quedarse con lo que funciona y documentar por qué.",
       },
     },
   ],

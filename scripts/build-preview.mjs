@@ -72,8 +72,10 @@ for (const src of images.keys()) {
 let css = ""
 for (const href of stylesheets) {
   let sheet = await (await get(href)).text()
-  for (const url of new Set([...sheet.matchAll(/url\((\/_next\/[^)]+)\)/g)].map((m) => m[1]))) {
-    sheet = sheet.replaceAll(`url(${url})`, `url(${await dataUri(url)})`)
+  // Font and image URLs may be absolute (/_next/…) or relative to the stylesheet (../media/…).
+  for (const url of new Set([...sheet.matchAll(/url\(((?:\/_next\/|\.\.?\/)[^)]+)\)/g)].map((m) => m[1]))) {
+    const path = new URL(url, base + href).pathname
+    sheet = sheet.replaceAll(`url(${url})`, `url(${await dataUri(path)})`)
   }
   css += sheet
 }
@@ -109,7 +111,7 @@ function render(scroll) {
 
 // Mirrors the site's section nav (components/about/section-nav.tsx): a clicked step is current
 // while the page scrolls to it; otherwise the last section whose top passed the active line is.
-const ACTIVE_LINE = 160;
+const ACTIVE_LINE = 180;
 let navLinks = [];
 let navScrollingTo = false;
 let navTimer;

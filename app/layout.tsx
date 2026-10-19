@@ -6,9 +6,10 @@ import { GeistMono } from "geist/font/mono"
 import { LanguageProvider } from "@/components/language-provider"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
-import { ContactCard, NameCard } from "@/components/site-aside"
-import { LetsTalkModal } from "@/components/lets-talk"
 import { defaultLocale, dictionary, isLocale, LOCALE_COOKIE } from "@/lib/i18n"
+import { container } from "@/lib/site"
+import { cn } from "@/lib/utils"
+import "@fontsource-variable/newsreader/opsz.css"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -40,18 +41,11 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           >
             {dictionary[locale].skip}
           </a>
-          <div className="mx-auto grid w-full max-w-screen-2xl flex-1 grid-cols-1 content-start gap-y-10 px-4 pb-28 pt-4 md:px-8 md:pt-8 lg:grid-cols-[17rem_minmax(0,42rem)_17rem] lg:grid-rows-[1fr_auto] lg:content-stretch lg:justify-center lg:gap-x-16 lg:gap-y-0 lg:px-[18px] lg:pt-6">
-            <NameCard />
-            <main id="main" className="min-w-0 lg:col-start-2 lg:row-start-1">
-              {children}
-            </main>
-            <ContactCard />
-            <div className="min-w-0 lg:col-start-2 lg:row-start-2">
-              <SiteFooter />
-            </div>
-          </div>
           <SiteHeader />
-          <LetsTalkModal />
+          <main id="main" className={cn(container, "flex-1 pt-10 md:pt-16")}>
+            {children}
+          </main>
+          <SiteFooter />
         </LanguageProvider>
       </body>
     </html>

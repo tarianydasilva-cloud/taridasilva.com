@@ -1,12 +1,13 @@
 @import "tailwindcss";
 
+/* Ink on paper white, with cochineal carmine (the Andean textile dye) as the single accent. */
 :root {
   --background: #ffffff;
-  --foreground: #0a0a0a;
-  --muted: #f4f4f4;
-  --muted-foreground: #6b6b6b;
-  --border: #e6e6e6;
-  --accent: #ff2700;
+  --foreground: #16151a;
+  --muted: #f3f2f0;
+  --muted-foreground: #66636b;
+  --border: #e4e2df;
+  --accent: #a3123a;
   --accent-foreground: #ffffff;
 }
 
@@ -20,6 +21,7 @@
   --color-accent-foreground: var(--accent-foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: "Newsreader Variable", Georgia, "Times New Roman", serif;
 }
 
 @layer base {
@@ -48,19 +50,21 @@
 
 /*
  * About page type scale. Both sizes follow the width of the nearest @container (the content column):
- * - statement: headline-like sentences of up to ~135 characters, kept within three lines.
+ * - statement: serif, headline-like sentences of up to ~135 characters, kept within three lines.
  * - lead: running intro text, kept within eight lines for ~650 characters.
  */
 @utility text-statement {
-  font-size: clamp(1.125rem, 4.2cqi, 3rem);
-  line-height: 1.12;
-  letter-spacing: -0.025em;
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 4.6cqi, 3.25rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
 }
 
 @utility text-lead {
-  font-size: clamp(1rem, 3cqi, 1.5rem);
-  line-height: 1.375;
-  letter-spacing: -0.025em;
+  font-size: clamp(1rem, 2.75cqi, 1.375rem);
+  line-height: 1.4;
+  letter-spacing: -0.015em;
 }
 
 /* Lets accordions animate to and from `height: auto`. */
@@ -83,10 +87,10 @@
 /* Stand-in for the About hero video until real clips are added. */
 .hero-placeholder {
   background:
-    radial-gradient(55% 45% at 20% 30%, #3d3d3d, transparent),
-    radial-gradient(45% 55% at 80% 65%, #2b2b2b, transparent),
-    var(--foreground);
-  background-size: 170% 170%;
+    radial-gradient(50% 60% at 15% 85%, color-mix(in oklab, var(--accent) 22%, transparent), transparent),
+    radial-gradient(45% 50% at 85% 20%, color-mix(in oklab, var(--foreground) 10%, transparent), transparent),
+    var(--muted);
+  background-size: 160% 160%;
 }
 
 @keyframes reveal {
@@ -114,25 +118,5 @@
 
   .hero-placeholder {
     animation: drift 18s ease-in-out infinite alternate;
-  }
-
-  .lets-talk {
-    transition:
-      opacity 0.25s,
-      translate 0.25s,
-      display 0.25s allow-discrete,
-      overlay 0.25s allow-discrete;
-  }
-
-  .lets-talk:not(:popover-open) {
-    opacity: 0;
-    translate: 0 1rem;
-  }
-
-  @starting-style {
-    .lets-talk:popover-open {
-      opacity: 0;
-      translate: 0 1rem;
-    }
   }
 }
