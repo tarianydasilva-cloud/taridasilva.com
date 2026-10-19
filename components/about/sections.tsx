@@ -29,15 +29,20 @@ function Section({ id, title, children }: { id: SectionId; title?: string; child
 }
 
 function Origins() {
-  const { locale } = useLanguage()
+  const { locale, t } = useLanguage()
 
+  // No visible label; the text scales with the column so it stays within eight lines (Spanish runs longer).
   return (
-    <Section id="origins">
-      <p className="reveal mt-8 text-xl leading-snug tracking-tight text-pretty md:text-2xl">{origins.body[locale]}</p>
-      <p className="reveal mt-6 text-xl leading-snug tracking-tight text-muted-foreground md:text-2xl">
-        {origins.aside[locale]}
+    <section id="origins" aria-label={t.about.sections.origins} className="@container scroll-mt-24">
+      <p
+        className={cn(
+          "reveal leading-snug tracking-tight text-pretty",
+          locale === "es" ? "text-[clamp(1rem,3cqi,1.5rem)]" : "text-[clamp(1rem,3.2cqi,1.5rem)]",
+        )}
+      >
+        {origins.body[locale]} <span className="text-muted-foreground">{origins.aside[locale]}</span>
       </p>
-    </Section>
+    </section>
   )
 }
 
