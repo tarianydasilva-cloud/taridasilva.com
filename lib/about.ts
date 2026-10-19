@@ -98,35 +98,34 @@ export const clients = {
 
 export const values: { title: Localized; body: Localized }[] = [
   {
-    title: { en: "Rigor", es: "Rigor" },
+    title: { en: "Judgment", es: "Criterio" },
     body: {
-      en: "Decisions backed by research and data. If it can be measured, it gets measured.",
-      es: "Decisiones respaldadas por investigación y datos. Si se puede medir, se mide.",
+      en: "Knowing what matters, what to cut and when good enough isn't. Decisions made on evidence and explained in plain words.",
+      es: "Saber qué importa, qué recortar y cuándo lo suficiente no basta. Decisiones basadas en evidencias y explicadas con claridad.",
     },
   },
   {
-    title: { en: "Rebellion", es: "Rebeldía" },
+    title: { en: "Curiosity", es: "Curiosidad" },
     body: {
-      en: "Questioning the brief, the benchmark and the way it has always been done, politely and on purpose.",
-      es: "Cuestionar el brief, el benchmark y lo de siempre, con educación y a propósito.",
+      en: "Asking why until the real problem shows up. Every assumption is a question worth testing.",
+      es: "Preguntar por qué hasta que aparece el problema real. Cada suposición es una pregunta que vale la pena poner a prueba.",
     },
   },
   {
-    title: { en: "Honesty", es: "Honestidad" },
+    title: { en: "Excellence", es: "Excelencia" },
     body: {
-      en: "Saying what the work needs, not what is comfortable to hear. Bad news early, always.",
-      es: "Decir lo que el trabajo necesita, no lo que es cómodo escuchar. Las malas noticias, pronto y siempre.",
+      en: "Thorough to the last detail, because the details are what people actually use.",
+      es: "Cuidado hasta el último detalle, porque los detalles son lo que las personas usan de verdad.",
     },
   },
   {
-    title: { en: "Essentiality", es: "Esencialidad" },
+    title: { en: "Commitment", es: "Compromiso" },
     body: {
-      en: "Removing until only what matters is left. Simple is the hardest thing to design.",
-      es: "Quitar hasta que solo quede lo importante. Lo simple es lo más difícil de diseñar.",
+      en: "Owning the outcome, not just the deliverable, and staying until it works for the people who use it.",
+      es: "Hacerme cargo del resultado, no solo del entregable, y quedarme hasta que funcione para quien lo usa.",
     },
   },
 ]
-
 
 export const methodology = {
   title: { en: "Lean, by default.", es: "Lean, por defecto." },

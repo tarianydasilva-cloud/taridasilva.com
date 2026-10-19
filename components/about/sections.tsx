@@ -109,11 +109,11 @@ function Clients() {
 }
 
 function Values() {
-  const { locale, t } = useLanguage()
+  const { locale } = useLanguage()
 
   return (
-    <Section id="values" title={t.about.valuesTitle}>
-      <ul className="mt-10 grid gap-3 sm:grid-cols-2">
+    <Section id="values" bare>
+      <ul className="grid gap-3 sm:grid-cols-2">
         {values.map((value) => (
           <li key={value.title.en} className="reveal flex flex-col gap-10 rounded-2xl bg-muted p-6">
             <h3 className="text-2xl tracking-tight md:text-3xl">{value.title[locale]}</h3>
@@ -124,7 +124,6 @@ function Values() {
     </Section>
   )
 }
-
 
 function Methodology() {
   const { locale } = useLanguage()

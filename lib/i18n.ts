@@ -25,7 +25,6 @@ export const dictionary = {
         methodology: "Methodology",
       },
       servicesLabel: "Services",
-      valuesTitle: "Four values, no exceptions.",
     },
     letsTalk: {
       title: "Let's talk",
@@ -74,7 +73,6 @@ export const dictionary = {
         methodology: "Metodología",
       },
       servicesLabel: "Servicios",
-      valuesTitle: "Cuatro valores, sin excepciones.",
     },
     letsTalk: {
       title: "Hablemos",
