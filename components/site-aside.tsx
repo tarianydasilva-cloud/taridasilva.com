@@ -3,8 +3,10 @@
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { useLanguage } from "./language-provider"
+import { LetsTalkTrigger } from "./lets-talk"
 
-const stickySide = "lg:sticky lg:top-6 lg:row-span-2 lg:row-start-1 lg:self-start"
+// z-10 keeps the cards above full-bleed sections such as the About hero.
+const stickySide = "relative z-10 lg:sticky lg:top-6 lg:row-span-2 lg:row-start-1 lg:self-start"
 const cardBox = "flex rounded-2xl px-6 py-5 lg:px-5 lg:py-3.5"
 
 export function NameCard() {
@@ -13,7 +15,7 @@ export function NameCard() {
   return (
     <aside aria-label="Tari da Silva" className={cn(stickySide, "lg:col-start-1")}>
       <Link
-        href="/"
+        href="/about"
         className={cn(cardBox, "flex-col justify-center bg-muted transition-colors hover:bg-border/70")}
       >
         <p className="text-lg leading-snug tracking-tight">Tari da Silva</p>
@@ -28,11 +30,10 @@ export function ContactCard() {
 
   return (
     <aside aria-label={t.aside.contact} className={cn(stickySide, "lg:col-start-3")}>
-      <Link
-        href="/contact"
+      <LetsTalkTrigger
         className={cn(
           cardBox,
-          "group items-center justify-between gap-4 bg-gradient-to-br from-foreground to-[#2a2a2a] text-background",
+          "group w-full items-center justify-between gap-4 bg-gradient-to-br from-foreground to-[#2a2a2a] text-left text-background",
         )}
       >
         <span>
@@ -53,7 +54,7 @@ export function ContactCard() {
             <path d="M4.5 11.5l7-7M5.5 4.5h6v6" />
           </svg>
         </span>
-      </Link>
+      </LetsTalkTrigger>
     </aside>
   )
 }

@@ -1,8 +1,16 @@
 import type { Metadata } from "next"
-import { PageIntro } from "@/components/page-intro"
+import { AboutHero } from "@/components/about/hero"
+import { AboutSections } from "@/components/about/sections"
+import { SectionNav } from "@/components/about/section-nav"
 
 export const metadata: Metadata = { title: "About" }
 
 export default function AboutPage() {
-  return <PageIntro page="about" />
+  return (
+    <>
+      <AboutHero />
+      <SectionNav />
+      <AboutSections />
+    </>
+  )
 }

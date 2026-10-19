@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { useLanguage } from "./language-provider"
 import { LanguageToggle } from "./language-toggle"
+import { LetsTalkTrigger } from "./lets-talk"
 
 const navItems = [
   { href: "/work", key: "work" },
@@ -18,7 +19,6 @@ function isActive(pathname: string, href: string) {
 export function SiteHeader() {
   const pathname = usePathname()
   const { t } = useLanguage()
-  const contactActive = isActive(pathname, "/contact")
 
   return (
     <header className="pointer-events-none fixed inset-x-0 bottom-4 z-50 flex justify-center px-3 md:bottom-6">
@@ -58,16 +58,9 @@ export function SiteHeader() {
               <LanguageToggle />
             </li>
             <li>
-              <Link
-                href="/contact"
-                aria-current={contactActive ? "page" : undefined}
-                className={cn(
-                  "block rounded-full bg-accent px-4 py-2.5 text-sm text-accent-foreground transition-colors hover:bg-foreground md:px-6",
-                  contactActive && "bg-foreground",
-                )}
-              >
+              <LetsTalkTrigger className="block rounded-full bg-accent px-4 py-2.5 text-sm text-accent-foreground transition-colors hover:bg-foreground md:px-6">
                 {t.nav.contact}
-              </Link>
+              </LetsTalkTrigger>
             </li>
           </ul>
         </nav>

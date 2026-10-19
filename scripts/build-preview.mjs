@@ -89,18 +89,54 @@ let locale = "en";
 try { locale = localStorage.getItem("locale") || "en"; } catch {}
 let current = "home";
 
+// Every view repeats the same ids, so only the visible view keeps its real ids.
+// That way in-page anchors and popover targets resolve inside the page on screen.
+views.forEach((view, i) => view.querySelectorAll("[id]").forEach((el) => {
+  el.dataset.pvId = el.id;
+  el.id = el.id + "--pv" + i;
+}));
+let observer;
+
 function render(scroll) {
   for (const view of views) view.hidden = view.dataset.key !== current || view.dataset.locale !== locale;
   const active = views.find((v) => !v.hidden);
+  views.forEach((view, i) => view.querySelectorAll("[data-pv-id]").forEach((el) => {
+    el.id = view === active ? el.dataset.pvId : el.dataset.pvId + "--pv" + i;
+  }));
   document.documentElement.lang = locale;
   if (active) document.title = active.dataset.title;
   if (scroll) window.scrollTo(0, 0);
+  trackSections(active);
+}
+
+// Mirrors the site's sticky section nav: marks the section crossing the upper third of the screen.
+function trackSections(active) {
+  observer?.disconnect();
+  const links = [...(active?.querySelectorAll("[data-section-nav] a[href^='#']") ?? [])];
+  if (!links.length) return;
+  const mark = (id) => links.forEach((link) => {
+    if (link.getAttribute("href") === "#" + id) link.setAttribute("aria-current", "location");
+    else link.removeAttribute("aria-current");
+  });
+  observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) if (entry.isIntersecting) mark(entry.target.id);
+  }, { rootMargin: "-30% 0px -60% 0px" });
+  links.forEach((link) => {
+    const section = document.getElementById(link.getAttribute("href").slice(1));
+    if (section) observer.observe(section);
+  });
 }
 
 function route() {
   const hash = location.hash.slice(1);
+  const active = views.find((v) => !v.hidden);
   if (hash === "top") { window.scrollTo({ top: 0, behavior: "smooth" }); history.replaceState(null, "", "#" + current); return; }
   if (hash === "main") { history.replaceState(null, "", "#" + current); return; }
+  // An in-page anchor of the current view: let the browser scroll to it and keep the route.
+  if (hash && !keys.has(hash) && active?.querySelector("#" + CSS.escape(hash))) {
+    history.replaceState(null, "", "#" + current);
+    return;
+  }
   current = keys.has(hash) ? hash : "home";
   render(true);
 }

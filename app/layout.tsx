@@ -7,15 +7,16 @@ import { LanguageProvider } from "@/components/language-provider"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { ContactCard, NameCard } from "@/components/site-aside"
+import { LetsTalkModal } from "@/components/lets-talk"
 import { defaultLocale, dictionary, isLocale, LOCALE_COOKIE } from "@/lib/i18n"
 import "./globals.css"
 
 export const metadata: Metadata = {
   title: {
-    default: "Tari da Silva — Strategic Product Designer",
+    default: "Tari da Silva — Product design & strategy",
     template: "%s — Tari da Silva",
   },
-  description: "Portfolio of Tari da Silva, a strategic product designer shaping products, systems and strategy.",
+  description: "Portfolio of Tari da Silva, working across product design and strategy.",
   metadataBase: new URL("https://taridasilva.com"),
 }
 
@@ -31,7 +32,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 
   return (
     <html lang={locale} id="top" className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body className="flex min-h-dvh flex-col">
+      <body className="flex min-h-dvh flex-col overflow-x-clip">
         <LanguageProvider initialLocale={locale}>
           <a
             href="#main"
@@ -50,6 +51,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
             </div>
           </div>
           <SiteHeader />
+          <LetsTalkModal />
         </LanguageProvider>
       </body>
     </html>
