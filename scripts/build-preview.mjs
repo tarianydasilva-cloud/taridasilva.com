@@ -95,8 +95,6 @@ views.forEach((view, i) => view.querySelectorAll("[id]").forEach((el) => {
   el.dataset.pvId = el.id;
   el.id = el.id + "--pv" + i;
 }));
-let observer;
-
 function render(scroll) {
   for (const view of views) view.hidden = view.dataset.key !== current || view.dataset.locale !== locale;
   const active = views.find((v) => !v.hidden);
@@ -109,23 +107,50 @@ function render(scroll) {
   trackSections(active);
 }
 
-// Mirrors the site's sticky section nav: marks the section crossing the upper third of the screen.
-function trackSections(active) {
-  observer?.disconnect();
-  const links = [...(active?.querySelectorAll("[data-section-nav] a[href^='#']") ?? [])];
-  if (!links.length) return;
-  const mark = (id) => links.forEach((link) => {
+// Mirrors the site's section nav (components/about/section-nav.tsx): a clicked step is current
+// while the page scrolls to it; otherwise the last section whose top passed the active line is.
+const ACTIVE_LINE = 160;
+let navLinks = [];
+let navScrollingTo = false;
+let navTimer;
+
+function markNav(id) {
+  navLinks.forEach((link) => {
     if (link.getAttribute("href") === "#" + id) link.setAttribute("aria-current", "location");
     else link.removeAttribute("aria-current");
   });
-  observer = new IntersectionObserver((entries) => {
-    for (const entry of entries) if (entry.isIntersecting) mark(entry.target.id);
-  }, { rootMargin: "-30% 0px -60% 0px" });
-  links.forEach((link) => {
-    const section = document.getElementById(link.getAttribute("href").slice(1));
-    if (section) observer.observe(section);
-  });
 }
+
+function updateNav() {
+  if (navScrollingTo || !navLinks.length) return;
+  const ids = [...new Set(navLinks.map((link) => link.getAttribute("href").slice(1)))];
+  let current = ids[0];
+  if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) current = ids[ids.length - 1];
+  else for (const id of ids) {
+    const section = document.getElementById(id);
+    if (section && section.getBoundingClientRect().top <= ACTIVE_LINE) current = id;
+  }
+  markNav(current);
+}
+
+function trackSections(active) {
+  navLinks = [...(active?.querySelectorAll("[data-section-nav] a[href^='#']") ?? [])];
+  navScrollingTo = false;
+  updateNav();
+}
+
+document.addEventListener("click", (event) => {
+  const link = event.target.closest("[data-section-nav] a[href^='#']");
+  if (!link) return;
+  markNav(link.getAttribute("href").slice(1));
+  navScrollingTo = true;
+  const release = () => { navScrollingTo = false; clearTimeout(navTimer); };
+  addEventListener("scrollend", release, { once: true });
+  clearTimeout(navTimer);
+  navTimer = setTimeout(release, 1200);
+});
+addEventListener("scroll", updateNav, { passive: true });
+addEventListener("resize", updateNav);
 
 function route() {
   const hash = location.hash.slice(1);

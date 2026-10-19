@@ -5,27 +5,56 @@ import { sectionIds, type SectionId } from "@/lib/about"
 import { cn } from "@/lib/utils"
 import { useLanguage } from "../language-provider"
 
+// A section becomes current once its top passes this line (px from the top of the viewport).
+// It sits below where a clicked section lands (scroll-mt-24) and above where the next one starts.
+const ACTIVE_LINE = 160
+
+function currentSection(): SectionId {
+  const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2
+  if (atBottom) return sectionIds[sectionIds.length - 1]
+  let current: SectionId = sectionIds[0]
+  for (const id of sectionIds) {
+    const section = document.getElementById(id)
+    if (section && section.getBoundingClientRect().top <= ACTIVE_LINE) current = id
+  }
+  return current
+}
+
 // The About page's in-page steps: a vertical list under the name card on large screens,
 // and a sticky horizontal bar inside the page below that.
 export function SectionNav({ vertical, className }: { vertical?: boolean; className?: string }) {
   const { t } = useLanguage()
   const [active, setActive] = useState<SectionId>(sectionIds[0])
   const listRef = useRef<HTMLUListElement>(null)
+  // While a click scrolls the page to its section, the clicked step stays current.
+  const scrollingToRef = useRef(false)
+  const releaseTimerRef = useRef<number>(undefined)
 
-  // The section crossing the upper third of the viewport is the current step.
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) if (entry.isIntersecting) setActive(entry.target.id as SectionId)
-      },
-      { rootMargin: "-30% 0px -60% 0px" },
-    )
-    for (const id of sectionIds) {
-      const section = document.getElementById(id)
-      if (section) observer.observe(section)
+    const update = () => {
+      if (!scrollingToRef.current) setActive(currentSection())
     }
-    return () => observer.disconnect()
+    update()
+    window.addEventListener("scroll", update, { passive: true })
+    window.addEventListener("resize", update)
+    return () => {
+      window.removeEventListener("scroll", update)
+      window.removeEventListener("resize", update)
+      window.clearTimeout(releaseTimerRef.current)
+    }
   }, [])
+
+  function select(id: SectionId) {
+    setActive(id)
+    scrollingToRef.current = true
+    const release = () => {
+      scrollingToRef.current = false
+      window.clearTimeout(releaseTimerRef.current)
+    }
+    window.addEventListener("scrollend", release, { once: true })
+    window.clearTimeout(releaseTimerRef.current)
+    releaseTimerRef.current = window.setTimeout(release, 1200)
+  }
 
   // Keep the current step visible when the horizontal bar scrolls sideways on small screens.
   useEffect(() => {
@@ -54,6 +83,7 @@ export function SectionNav({ vertical, className }: { vertical?: boolean; classN
           <li key={id} className="shrink-0">
             <a
               href={`#${id}`}
+              onClick={() => select(id)}
               aria-current={active === id ? "location" : undefined}
               className={cn(
                 "block text-sm text-foreground/70 transition-colors hover:text-foreground aria-[current=location]:bg-foreground aria-[current=location]:text-background",
