@@ -34,7 +34,7 @@ export function AboutHero() {
   return (
     <section>
       <HeroVideo />
-      <p className="mt-10 flex items-center gap-3 text-sm text-muted-foreground md:mt-12">
+      <p className="mt-16 flex items-center gap-3 text-sm text-muted-foreground md:mt-24">
         <span aria-hidden="true" className="size-2 rounded-full bg-accent" />
         {hero.eyebrow[locale]}
       </p>

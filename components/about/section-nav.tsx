@@ -50,17 +50,16 @@ export function SectionNav({ vertical, className }: { vertical?: boolean; classN
             : "overflow-x-auto rounded-full bg-muted/80 ring-1 ring-black/5 backdrop-blur-xl [scrollbar-width:none]",
         )}
       >
-        {sectionIds.map((id, index) => (
+        {sectionIds.map((id) => (
           <li key={id} className="shrink-0">
             <a
               href={`#${id}`}
               aria-current={active === id ? "location" : undefined}
               className={cn(
-                "flex items-center gap-3 text-sm text-foreground/70 transition-colors hover:text-foreground aria-[current=location]:bg-foreground aria-[current=location]:text-background",
+                "block text-sm text-foreground/70 transition-colors hover:text-foreground aria-[current=location]:bg-foreground aria-[current=location]:text-background",
                 vertical ? "rounded-xl px-4 py-2.5 lg:px-3.5 lg:py-2" : "rounded-full px-3 py-2",
               )}
             >
-              <span className="font-mono text-[10px] opacity-60">{String(index + 1).padStart(2, "0")}</span>
               {t.about.sections[id]}
             </a>
           </li>

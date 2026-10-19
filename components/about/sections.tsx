@@ -12,11 +12,7 @@ function Section({ id, title, children }: { id: SectionId; title: string; childr
   const { t } = useLanguage()
 
   return (
-    <section
-      id={id}
-      aria-labelledby={`${id}-title`}
-      className="scroll-mt-24 border-t border-border pt-10 md:pt-14"
-    >
+    <section id={id} aria-labelledby={`${id}-title`} className="scroll-mt-24">
       <p className={cn(label, "flex items-center gap-3 text-muted-foreground")}>
         <span aria-hidden="true" className="size-2 rounded-full bg-accent" />
         {t.about.sections[id]}
@@ -56,28 +52,31 @@ function Services() {
 
   return (
     <Section id="services" title={t.about.servicesTitle}>
-      <ul className="mt-10 divide-y divide-border border-y border-border">
+      <ul className="mt-10 flex flex-col gap-2">
         {services.map((service) => (
           <li key={service.icon}>
-            <details className="accordion group">
-              <summary className="flex cursor-pointer list-none items-center gap-4 py-5 [&::-webkit-details-marker]:hidden">
-                <span className="grid size-11 shrink-0 place-items-center rounded-full bg-muted transition-colors group-open:bg-foreground group-open:text-background">
+            {/* Each service is a card; an open card turns black. */}
+            <details className="accordion group rounded-2xl bg-muted transition-colors duration-300 hover:bg-border/70 open:bg-foreground open:text-background open:hover:bg-foreground">
+              <summary className="flex cursor-pointer list-none items-center gap-4 px-5 py-4 [&::-webkit-details-marker]:hidden">
+                <span className="grid size-11 shrink-0 place-items-center rounded-full bg-background transition-colors group-open:bg-background/10">
                   <ServiceIcon name={service.icon} />
                 </span>
                 <span className="min-w-0">
-                  <span className={cn(label, "block text-muted-foreground")}>{t.about.servicesLabel}</span>
+                  <span className={cn(label, "block text-muted-foreground group-open:text-background/60")}>
+                    {t.about.servicesLabel}
+                  </span>
                   <span className="mt-1 block text-xl tracking-tight md:text-2xl">{service.title[locale]}</span>
                 </span>
                 <span
                   aria-hidden="true"
-                  className="ml-auto grid size-10 shrink-0 place-items-center rounded-full border border-border transition-[rotate,background-color,color] duration-300 group-hover:border-accent group-open:rotate-180 group-open:border-foreground group-open:bg-foreground group-open:text-background"
+                  className="ml-auto grid size-10 shrink-0 place-items-center rounded-full bg-background text-foreground transition-[rotate,background-color,color] duration-300 group-hover:bg-accent group-hover:text-accent-foreground group-open:rotate-180 group-open:bg-background group-open:text-foreground"
                 >
                   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-4">
                     <path d="M8 3.5v9M4 8.5l4 4 4-4" />
                   </svg>
                 </span>
               </summary>
-              <p className="pb-6 leading-relaxed text-muted-foreground text-pretty md:pl-15">{service.body[locale]}</p>
+              <p className="px-5 pb-6 leading-relaxed text-background/70 text-pretty md:pl-20">{service.body[locale]}</p>
             </details>
           </li>
         ))}
@@ -94,9 +93,9 @@ function Clients() {
       <p className="reveal mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground text-pretty">
         {clients.claim[locale]}
       </p>
-      <ul className="mt-10 grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-4">
+      <ul className="mt-10 grid grid-cols-3 gap-2 md:grid-cols-4">
         {clients.logos.map((client) => (
-          <li key={client.name} className="grid aspect-[3/2] place-items-center bg-background p-4">
+          <li key={client.name} className="grid aspect-[3/2] place-items-center rounded-2xl bg-muted p-4">
             {client.logo ? (
               <img
                 src={client.logo}
