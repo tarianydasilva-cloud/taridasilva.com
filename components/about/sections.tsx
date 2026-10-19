@@ -38,7 +38,12 @@ function Section({
         </p>
       )}
       {title && (
-        <h2 className={cn("reveal text-3xl leading-[1.05] tracking-tight text-balance md:text-5xl", !bare && "mt-6")}>
+        <h2
+          className={cn(
+            "reveal text-balance",
+            bare ? "text-statement" : "mt-6 text-3xl leading-[1.05] tracking-tight md:text-5xl",
+          )}
+        >
           {title}
         </h2>
       )}
@@ -50,15 +55,9 @@ function Section({
 function Origins() {
   const { locale } = useLanguage()
 
-  // The text scales with the column so it stays within eight lines (Spanish runs longer).
   return (
-    <Section id="origins" bare className="@container">
-      <p
-        className={cn(
-          "reveal leading-snug tracking-tight text-pretty",
-          locale === "es" ? "text-[clamp(1rem,3cqi,1.5rem)]" : "text-[clamp(1rem,3.2cqi,1.5rem)]",
-        )}
-      >
+    <Section id="origins" bare>
+      <p className="text-lead reveal text-pretty">
         {origins.body[locale]} <span className="text-muted-foreground">{origins.aside[locale]}</span>
       </p>
     </Section>
@@ -161,7 +160,7 @@ function Methodology() {
 
 export function AboutSections() {
   return (
-    <div className="flex flex-col gap-28 pb-32 pt-20 md:gap-40 md:pb-48 md:pt-28">
+    <div className="@container flex flex-col gap-28 pb-32 pt-20 md:gap-40 md:pb-48 md:pt-28">
       <Origins />
       <Services />
       <Clients />

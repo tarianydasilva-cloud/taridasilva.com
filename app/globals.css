@@ -46,6 +46,23 @@
   }
 }
 
+/*
+ * About page type scale. Both sizes follow the width of the nearest @container (the content column):
+ * - statement: headline-like sentences of up to ~135 characters, kept within three lines.
+ * - lead: running intro text, kept within eight lines for ~650 characters.
+ */
+@utility text-statement {
+  font-size: clamp(1.125rem, 4.2cqi, 3rem);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
+
+@utility text-lead {
+  font-size: clamp(1rem, 3cqi, 1.5rem);
+  line-height: 1.375;
+  letter-spacing: -0.025em;
+}
+
 /* Lets accordions animate to and from `height: auto`. */
 :root {
   interpolate-size: allow-keywords;

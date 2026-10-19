@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import { hero, heroVideos } from "@/lib/about"
-import { cn } from "@/lib/utils"
 import { useLanguage } from "../language-provider"
 
 function HeroVideo() {
@@ -35,19 +34,11 @@ export function AboutHero() {
   return (
     <section className="@container">
       <HeroVideo />
-      <p className="mt-16 flex items-center gap-3 text-xl tracking-tight md:mt-24 md:text-2xl">
+      <p className="text-lead mt-16 flex items-center gap-3 md:mt-24">
         <span aria-hidden="true" className="size-2.5 shrink-0 rounded-full bg-accent" />
         {hero.eyebrow[locale]}
       </p>
-      {/* Scales with the column width so the headline stays within three lines; Spanish runs longer. */}
-      <h1
-        className={cn(
-          "mt-6 leading-[1.08] tracking-tight text-balance",
-          locale === "es" ? "text-[clamp(1.125rem,4.3cqi,3rem)]" : "text-[clamp(1.25rem,5.3cqi,3.5rem)]",
-        )}
-      >
-        {hero.title[locale]}
-      </h1>
+      <h1 className="text-statement mt-6 text-balance">{hero.title[locale]}</h1>
     </section>
   )
 }
