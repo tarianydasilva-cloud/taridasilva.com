@@ -19,7 +19,7 @@ export function CaseStudyIntro({ slug }: { slug: string }) {
         <span aria-hidden="true">{"←"}</span>
         {t.work.allWork}
       </Link>
-      <h1 className="mt-8 max-w-4xl font-serif text-4xl leading-[1.1] text-balance md:text-6xl">
+      <h1 className="mt-8 max-w-4xl text-4xl leading-[1.05] tracking-tight text-balance md:text-6xl">
         {project.title[locale]}
       </h1>
       <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground text-pretty">

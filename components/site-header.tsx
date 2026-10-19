@@ -25,14 +25,14 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-md">
-      <div className={cn(container, "flex h-16 items-center justify-between gap-6")}>
+      <div className={cn(container, "flex h-20 items-center justify-between gap-6")}>
         <Link href="/about" className="min-w-0 leading-tight">
-          <span className="block font-medium tracking-tight">Tari da Silva</span>
-          <span className="block truncate text-xs text-muted-foreground">{t.role}</span>
+          <span className="block text-lg leading-snug tracking-tight">Tari da Silva</span>
+          <span className="block truncate text-sm text-muted-foreground">{t.role}</span>
         </Link>
 
         <nav aria-label="Primary">
-          <ul className="flex items-center gap-4 text-sm text-muted-foreground md:gap-6">
+          <ul className="flex items-center gap-4 text-sm text-muted-foreground md:gap-7 md:text-base">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link

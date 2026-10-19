@@ -13,7 +13,7 @@ export function SiteFooter() {
     <footer className="mt-24 border-t border-border md:mt-32">
       <div className={cn(container, "grid gap-10 py-16 md:grid-cols-12 md:py-20")}>
         <div className="md:col-span-8">
-          <p className="font-serif text-3xl leading-tight text-balance md:text-5xl">{t.footer.cta}</p>
+          <p className="text-3xl leading-tight tracking-tight text-balance md:text-5xl">{t.footer.cta}</p>
           <a
             href={`mailto:${email}`}
             className="mt-6 inline-block text-lg underline decoration-accent decoration-2 underline-offset-[6px] transition-colors hover:text-accent md:text-xl"

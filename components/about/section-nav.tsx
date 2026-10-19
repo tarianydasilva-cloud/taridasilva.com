@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 import { useLanguage } from "../language-provider"
 
 // A section becomes current once its top passes this line (px from the top of the viewport).
-// It sits below where a clicked section lands (scroll-mt-28) and above where the next one starts.
+// It sits below where a clicked section lands (scroll-mt-32) and above where the next one starts.
 const ACTIVE_LINE = 180
 
 function currentSection(): SectionId {
@@ -69,7 +69,7 @@ export function SectionNav({ vertical, className }: { vertical?: boolean; classN
       aria-label={t.about.sectionNav}
       data-section-nav
       className={cn(
-        !vertical && "sticky top-16 z-30 -mx-4 mt-12 border-b border-border bg-background/90 px-4 backdrop-blur-md md:-mx-8 md:px-8",
+        !vertical && "sticky top-20 z-30 -mx-4 mt-12 border-b border-border bg-background/90 px-4 backdrop-blur-md md:-mx-8 md:px-8",
         className,
       )}
     >

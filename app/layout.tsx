@@ -9,7 +9,6 @@ import { SiteFooter } from "@/components/site-footer"
 import { defaultLocale, dictionary, isLocale, LOCALE_COOKIE } from "@/lib/i18n"
 import { container } from "@/lib/site"
 import { cn } from "@/lib/utils"
-import "@fontsource-variable/newsreader/opsz.css"
 import "./globals.css"
 
 export const metadata: Metadata = {

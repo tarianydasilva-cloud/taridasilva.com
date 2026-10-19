@@ -27,7 +27,7 @@ export function ProjectGrid() {
                 priority={index < 2}
                 className="isolate rounded-lg group-focus-visible:ring-2 group-focus-visible:ring-accent group-focus-visible:ring-offset-4"
               />
-              <h3 className="mt-5 font-serif text-2xl leading-tight text-balance decoration-accent decoration-2 underline-offset-[6px] group-hover:underline md:text-3xl">
+              <h3 className="mt-5 text-xl leading-snug tracking-tight text-balance decoration-accent decoration-2 underline-offset-[6px] group-hover:underline md:text-2xl">
                 {project.title[locale]}
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">

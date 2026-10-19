@@ -10,7 +10,7 @@ function Section({ id, className, children }: { id: SectionId; className?: strin
   const { t } = useLanguage()
 
   return (
-    <section id={id} aria-label={t.about.sections[id]} className={cn("scroll-mt-28", className)}>
+    <section id={id} aria-label={t.about.sections[id]} className={cn("scroll-mt-32", className)}>
       {children}
     </section>
   )
@@ -38,7 +38,7 @@ function Services() {
           <li key={service.title.en}>
             <details className="accordion group rounded-lg bg-muted">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-6 px-5 py-4 md:px-6 md:py-5 [&::-webkit-details-marker]:hidden">
-                <span className="font-serif text-2xl leading-tight md:text-3xl">{service.title[locale]}</span>
+                <span className="text-xl tracking-tight md:text-2xl">{service.title[locale]}</span>
                 {/* A plus that turns into a cross when the card is open. */}
                 <svg
                   viewBox="0 0 16 16"
@@ -80,7 +80,7 @@ function Principles() {
       <ul className="grid gap-2 sm:grid-cols-2">
         {principles.map((principle) => (
           <li key={principle.title.en} className="reveal flex flex-col gap-8 rounded-lg bg-muted p-6">
-            <h3 className="font-serif text-2xl leading-tight md:text-3xl">{principle.title[locale]}</h3>
+            <h3 className="text-2xl tracking-tight md:text-3xl">{principle.title[locale]}</h3>
             <p className="leading-relaxed text-muted-foreground">{principle.body[locale]}</p>
           </li>
         ))}
