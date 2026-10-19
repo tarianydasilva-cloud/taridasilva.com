@@ -10,7 +10,7 @@ export function isLocale(value: unknown): value is Locale {
 export const dictionary = {
   en: {
     skip: "Skip to content",
-    role: "Product design & strategy",
+    role: "Product Design & Strategy",
     nav: { work: "Work", about: "About", contact: "Contact" },
     language: "Language",
     home: "Home",
@@ -61,7 +61,7 @@ export const dictionary = {
   },
   es: {
     skip: "Saltar al contenido",
-    role: "Diseño de producto y estrategia",
+    role: "Diseño de Producto y Estrategia",
     nav: { work: "Trabajo", about: "Sobre mí", contact: "Contacto" },
     language: "Idioma",
     home: "Inicio",

@@ -8,7 +8,7 @@ type Localized = Record<Locale, string>
 export const heroVideos: string[] = []
 
 export const hero = {
-  eyebrow: { en: "Product design & strategy", es: "Diseño de producto y estrategia" },
+  eyebrow: { en: "Product Design & Strategy", es: "Diseño de Producto y Estrategia" },
   title: {
     en: "I shape digital products and the strategy behind them, through research, product design, design systems and data.",
     es: "Doy forma a productos digitales y a la estrategia que los sostiene, con investigación, diseño de producto, sistemas de diseño y datos.",

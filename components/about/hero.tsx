@@ -9,7 +9,7 @@ function HeroVideo() {
   const src = heroVideos[index]
 
   return (
-    <div aria-hidden="true" className="relative mt-16 aspect-video overflow-hidden rounded-2xl bg-foreground md:mt-24">
+    <div aria-hidden="true" className="relative aspect-video overflow-hidden rounded-2xl bg-foreground">
       {src ? (
         <video
           key={src}
@@ -33,14 +33,14 @@ export function AboutHero() {
 
   return (
     <section>
-      <h1 className="max-w-5xl text-4xl leading-[1.05] tracking-tight text-balance md:text-6xl">
-        {hero.title[locale]}
-      </h1>
+      <HeroVideo />
       <p className="mt-10 flex items-center gap-3 text-sm text-muted-foreground md:mt-12">
         <span aria-hidden="true" className="size-2 rounded-full bg-accent" />
         {hero.eyebrow[locale]}
       </p>
-      <HeroVideo />
+      <h1 className="mt-6 max-w-5xl text-4xl leading-[1.05] tracking-tight text-balance md:text-6xl">
+        {hero.title[locale]}
+      </h1>
     </section>
   )
 }

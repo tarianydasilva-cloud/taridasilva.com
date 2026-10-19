@@ -13,7 +13,7 @@ import "./globals.css"
 
 export const metadata: Metadata = {
   title: {
-    default: "Tari da Silva — Product design & strategy",
+    default: "Tari da Silva — Product Design & Strategy",
     template: "%s — Tari da Silva",
   },
   description: "Portfolio of Tari da Silva, working across product design and strategy.",
