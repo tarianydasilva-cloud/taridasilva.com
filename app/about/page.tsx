@@ -9,7 +9,8 @@ export default function AboutPage() {
   return (
     <>
       <AboutHero />
-      <SectionNav />
+      {/* On large screens the steps sit under the name card instead (see NameCard). */}
+      <SectionNav className="lg:hidden" />
       <AboutSections />
     </>
   )

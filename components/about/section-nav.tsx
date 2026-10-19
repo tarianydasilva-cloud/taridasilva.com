@@ -2,9 +2,12 @@
 
 import { useEffect, useRef, useState } from "react"
 import { sectionIds, type SectionId } from "@/lib/about"
+import { cn } from "@/lib/utils"
 import { useLanguage } from "../language-provider"
 
-export function SectionNav() {
+// The About page's in-page steps: a vertical list under the name card on large screens,
+// and a sticky horizontal bar inside the page below that.
+export function SectionNav({ vertical, className }: { vertical?: boolean; className?: string }) {
   const { t } = useLanguage()
   const [active, setActive] = useState<SectionId>(sectionIds[0])
   const listRef = useRef<HTMLUListElement>(null)
@@ -24,26 +27,38 @@ export function SectionNav() {
     return () => observer.disconnect()
   }, [])
 
-  // Keep the current step visible when the list scrolls sideways on small screens.
+  // Keep the current step visible when the horizontal bar scrolls sideways on small screens.
   useEffect(() => {
     const list = listRef.current
     const item = list?.querySelector<HTMLElement>(`[href="#${active}"]`)
-    if (!list || !item) return
+    if (vertical || !list || !item) return
     list.scrollTo({ left: item.offsetLeft - (list.clientWidth - item.clientWidth) / 2, behavior: "smooth" })
-  }, [active])
+  }, [active, vertical])
 
   return (
-    <nav aria-label={t.about.sectionNav} data-section-nav className="sticky top-4 z-20 mt-6 lg:top-6">
+    <nav
+      aria-label={t.about.sectionNav}
+      data-section-nav
+      className={cn(!vertical && "sticky top-4 z-20 mt-16", className)}
+    >
       <ul
         ref={listRef}
-        className="relative flex gap-1 overflow-x-auto rounded-full bg-muted/80 p-1.5 ring-1 ring-black/5 backdrop-blur-xl [scrollbar-width:none]"
+        className={cn(
+          "relative flex gap-1 p-1.5",
+          vertical
+            ? "flex-col rounded-2xl bg-muted"
+            : "overflow-x-auto rounded-full bg-muted/80 ring-1 ring-black/5 backdrop-blur-xl [scrollbar-width:none]",
+        )}
       >
         {sectionIds.map((id, index) => (
           <li key={id} className="shrink-0">
             <a
               href={`#${id}`}
               aria-current={active === id ? "location" : undefined}
-              className="flex items-center gap-2 rounded-full px-3 py-2 text-sm text-foreground/70 transition-colors hover:text-foreground aria-[current=location]:bg-foreground aria-[current=location]:text-background"
+              className={cn(
+                "flex items-center gap-3 text-sm text-foreground/70 transition-colors hover:text-foreground aria-[current=location]:bg-foreground aria-[current=location]:text-background",
+                vertical ? "rounded-xl px-4 py-2.5 lg:px-3.5 lg:py-2" : "rounded-full px-3 py-2",
+              )}
             >
               <span className="font-mono text-[10px] opacity-60">{String(index + 1).padStart(2, "0")}</span>
               {t.about.sections[id]}

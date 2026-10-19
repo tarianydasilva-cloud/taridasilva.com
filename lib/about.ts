@@ -20,10 +20,7 @@ export const sectionIds = [
   "services",
   "clients",
   "values",
-  "rebellion",
   "methodology",
-  "companies",
-  "team",
 ] as const
 
 export type SectionId = (typeof sectionIds)[number]
@@ -156,16 +153,6 @@ export const values: { title: Localized; body: Localized }[] = [
   },
 ]
 
-export const rebellion = {
-  title: {
-    en: "Elegant rebellion: break the rules you understand, keep the ones that work.",
-    es: "Rebeldía elegante: romper las reglas que entiendes, mantener las que funcionan.",
-  },
-  body: {
-    en: "Rebellion without rigour is noise, and rigour without rebellion is a template. The work sits between the two: a strict, minimal system that leaves room for one decision nobody expected, made for a reason that can be explained.",
-    es: "La rebeldía sin rigor es ruido, y el rigor sin rebeldía es una plantilla. El trabajo vive entre los dos: un sistema estricto y mínimo que deja espacio para una decisión que nadie esperaba, tomada por una razón que se puede explicar.",
-  },
-} satisfies Record<string, Localized>
 
 export const methodology = {
   title: { en: "Lean, by default.", es: "Lean, por defecto." },
@@ -196,25 +183,4 @@ export const methodology = {
       },
     },
   ],
-}
-
-export const companies = {
-  title: { en: "Part of the [group] family.", es: "Parte de la familia [grupo]." },
-  // Add an href to each company to make it a link.
-  items: [1, 2, 3, 4].map((n) => ({
-    name: `[Company ${n}]`,
-    descriptor: { en: "[One-line descriptor]", es: "[Descripción en una línea]" } as Localized,
-    href: undefined as string | undefined,
-  })),
-}
-
-export const team = {
-  title: { en: "The people I build with.", es: "Las personas con las que construyo." },
-  // Add a portrait path (in /public/team/) to replace each placeholder.
-  members: [
-    { name: "Tari da Silva", role: { en: "Product design & strategy", es: "Diseño de producto y estrategia" } },
-    { name: "[Name]", role: { en: "[Role]", es: "[Rol]" } },
-    { name: "[Name]", role: { en: "[Role]", es: "[Rol]" } },
-    { name: "[Name]", role: { en: "[Role]", es: "[Rol]" } },
-  ].map((member) => ({ ...member, portrait: undefined as string | undefined })),
 }

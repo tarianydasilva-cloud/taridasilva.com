@@ -1,19 +1,21 @@
 "use client"
 
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
+import { SectionNav } from "./about/section-nav"
 import { useLanguage } from "./language-provider"
 import { LetsTalkTrigger } from "./lets-talk"
 
-// z-10 keeps the cards above full-bleed sections such as the About hero.
-const stickySide = "relative z-10 lg:sticky lg:top-6 lg:row-span-2 lg:row-start-1 lg:self-start"
+const stickySide = "lg:sticky lg:top-6 lg:row-span-2 lg:row-start-1 lg:self-start"
 const cardBox = "flex rounded-2xl px-6 py-5 lg:px-5 lg:py-3.5"
 
 export function NameCard() {
   const { t } = useLanguage()
+  const onAbout = usePathname() === "/about"
 
   return (
-    <aside aria-label="Tari da Silva" className={cn(stickySide, "lg:col-start-1")}>
+    <aside aria-label="Tari da Silva" className={cn(stickySide, "flex flex-col gap-2 lg:col-start-1")}>
       <Link
         href="/about"
         className={cn(cardBox, "flex-col justify-center bg-muted transition-colors hover:bg-border/70")}
@@ -21,6 +23,7 @@ export function NameCard() {
         <p className="text-lg leading-snug tracking-tight">Tari da Silva</p>
         <p className="text-sm text-muted-foreground">{t.role}</p>
       </Link>
+      {onAbout && <SectionNav vertical className="hidden lg:block" />}
     </aside>
   )
 }

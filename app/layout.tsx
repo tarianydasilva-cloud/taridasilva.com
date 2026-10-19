@@ -32,7 +32,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 
   return (
     <html lang={locale} id="top" className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body className="flex min-h-dvh flex-col overflow-x-clip">
+      <body className="flex min-h-dvh flex-col">
         <LanguageProvider initialLocale={locale}>
           <a
             href="#main"

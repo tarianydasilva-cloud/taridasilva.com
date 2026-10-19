@@ -1,46 +1,23 @@
 "use client"
 
 import type { ReactNode } from "react"
-import {
-  clients,
-  companies,
-  methodology,
-  origins,
-  rebellion,
-  services,
-  team,
-  values,
-  type SectionId,
-} from "@/lib/about"
+import { clients, methodology, origins, services, values, type SectionId } from "@/lib/about"
 import { cn } from "@/lib/utils"
 import { useLanguage } from "../language-provider"
 import { ServiceIcon } from "./service-icon"
 
 const label = "font-mono text-xs uppercase tracking-wider"
 
-function Section({
-  id,
-  title,
-  inverse,
-  children,
-}: {
-  id: SectionId
-  title: string
-  inverse?: boolean
-  children: ReactNode
-}) {
+function Section({ id, title, children }: { id: SectionId; title: string; children: ReactNode }) {
   const { t } = useLanguage()
 
   return (
     <section
       id={id}
       aria-labelledby={`${id}-title`}
-      className={cn(
-        "scroll-mt-24",
-        inverse ? "rounded-3xl bg-foreground p-6 text-background md:p-10" : "border-t border-border pt-10 md:pt-14",
-      )}
+      className="scroll-mt-24 border-t border-border pt-10 md:pt-14"
     >
-      <p className={cn(label, "flex items-center gap-3", inverse ? "text-background/60" : "text-muted-foreground")}>
+      <p className={cn(label, "flex items-center gap-3 text-muted-foreground")}>
         <span aria-hidden="true" className="size-2 rounded-full bg-accent" />
         {t.about.sections[id]}
       </p>
@@ -153,17 +130,6 @@ function Values() {
   )
 }
 
-function Rebellion() {
-  const { locale } = useLanguage()
-
-  return (
-    <Section id="rebellion" title={rebellion.title[locale]} inverse>
-      <p className="reveal mt-8 max-w-2xl text-lg leading-relaxed text-background/70 text-pretty">
-        {rebellion.body[locale]}
-      </p>
-    </Section>
-  )
-}
 
 function Methodology() {
   const { locale } = useLanguage()
@@ -195,75 +161,7 @@ function Methodology() {
   )
 }
 
-function Companies() {
-  const { locale } = useLanguage()
 
-  return (
-    <Section id="companies" title={companies.title[locale]}>
-      <ul className="mt-10 divide-y divide-border border-y border-border">
-        {companies.items.map((company) => {
-          const content = (
-            <>
-              <span className="min-w-0">
-                <span className="block text-xl tracking-tight md:text-2xl">{company.name}</span>
-                <span className="mt-1 block text-sm text-muted-foreground">{company.descriptor[locale]}</span>
-              </span>
-              <span aria-hidden="true" className="text-accent transition-transform group-hover:translate-x-1">
-                →
-              </span>
-            </>
-          )
-          const row = "group flex items-center justify-between gap-6 py-5"
-          return (
-            <li key={company.name}>
-              {company.href ? (
-                <a href={company.href} target="_blank" rel="noopener noreferrer" className={cn(row, "hover:text-accent")}>
-                  {content}
-                </a>
-              ) : (
-                <div className={row}>{content}</div>
-              )}
-            </li>
-          )
-        })}
-      </ul>
-    </Section>
-  )
-}
-
-function Team() {
-  const { locale } = useLanguage()
-
-  return (
-    <Section id="team" title={team.title[locale]}>
-      <ul className="mt-10 grid grid-cols-2 gap-x-3 gap-y-8 md:gap-x-6">
-        {team.members.map((member, index) => (
-          <li key={`${member.name}-${index}`} className="reveal">
-            <figure className="group">
-              <div className="grid aspect-[4/5] place-items-center overflow-hidden rounded-2xl bg-muted">
-                {member.portrait ? (
-                  <img
-                    src={member.portrait}
-                    alt={member.name}
-                    className="size-full object-cover grayscale transition duration-500 group-hover:grayscale-0"
-                  />
-                ) : (
-                  <span aria-hidden="true" className="text-4xl tracking-tight text-muted-foreground">
-                    {member.name.startsWith("[") ? "?" : member.name.split(" ").map((word) => word[0]).join("")}
-                  </span>
-                )}
-              </div>
-              <figcaption className="mt-4">
-                <span className="block text-lg tracking-tight">{member.name}</span>
-                <span className="block text-sm text-muted-foreground">{member.role[locale]}</span>
-              </figcaption>
-            </figure>
-          </li>
-        ))}
-      </ul>
-    </Section>
-  )
-}
 
 export function AboutSections() {
   return (
@@ -272,10 +170,7 @@ export function AboutSections() {
       <Services />
       <Clients />
       <Values />
-      <Rebellion />
       <Methodology />
-      <Companies />
-      <Team />
     </div>
   )
 }
