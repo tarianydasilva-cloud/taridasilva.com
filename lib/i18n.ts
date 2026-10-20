@@ -65,7 +65,7 @@ export const dictionary = {
   es: {
     skip: "Saltar al contenido",
     role: "Diseño de Producto y Estrategia",
-    nav: { work: "Trabajo", about: "Sobre mí", contact: "¡Di hola!" },
+    nav: { work: "Trabajo", about: "Sobre mí", contact: "Di olá!" },
     language: "Idioma",
     home: "Inicio",
     about: {

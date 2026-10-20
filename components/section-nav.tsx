@@ -21,8 +21,7 @@ function currentSection(ids: string[]): string {
 export type SectionNavItem = { id: string; label: string }
 
 // A long page's index (About, case studies): a card of pills in the left margin on large screens,
-// and a floating pill bar that sticks to the top below that. When the header returns at the end of
-// the page, the bar steps aside on phones and moves below the header on wider screens.
+// and a floating pill bar that sticks to the top below that, moving down whenever the header shows.
 export function SectionNav({
   items,
   label,
@@ -83,7 +82,7 @@ export function SectionNav({
       className={cn(
         vertical
           ? "rounded-2xl bg-muted p-2"
-          : "sticky top-3 z-30 mt-20 rounded-full transition-[top,translate,opacity] duration-300 max-md:[html[data-page-end]_&]:pointer-events-none max-md:[html[data-page-end]_&]:-translate-y-[150%] max-md:[html[data-page-end]_&]:opacity-0 md:[html[data-page-end]_&]:top-20 bg-muted/85 p-1.5 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.2)] ring-1 ring-black/5 backdrop-blur-xl",
+          : "sticky top-3 z-30 mt-20 rounded-full transition-[top] duration-300 [html[data-header-shown]_&]:top-20 bg-muted/85 p-1.5 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.2)] ring-1 ring-black/5 backdrop-blur-xl",
         className,
       )}
     >

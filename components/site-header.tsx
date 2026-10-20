@@ -18,36 +18,30 @@ function isActive(pathname: string, href: string) {
 
 const pill = "block rounded-full px-3 py-1.5 text-sm transition-colors md:px-4"
 
-// Hidden while scrolling down, shown again on any scroll up or near the top of the page.
-// With `onlyAtEnds` (pages with their own section bar, About and case studies, below desktop size),
-// it shows only near the top or the bottom of the page.
-function useHideOnScroll(onlyAtEnds: boolean) {
+// One rule on every page and screen: shown near the top and bottom of the page and on any scroll up,
+// hidden while scrolling down. The visibility is also published on <html data-header-shown>, so a
+// page's own floating bar (the About and case study section bar) can move below the header.
+function useHideOnScroll() {
   const [hidden, setHidden] = useState(false)
 
   useEffect(() => {
-    const narrow = window.matchMedia("(max-width: 1023px)")
     let lastY = window.scrollY
     const update = () => {
       const y = window.scrollY
       const nearTop = y <= 80
       const nearBottom = window.innerHeight + y >= document.documentElement.scrollHeight - 80
-      // Lets the About section bar step aside at the end of the page, where the header takes over.
-      document.documentElement.toggleAttribute("data-page-end", nearBottom)
-      if (onlyAtEnds && narrow.matches) {
-        setHidden(!nearTop && !nearBottom)
-      } else if (Math.abs(y - lastY) >= 4) {
-        setHidden(!nearTop && y > lastY)
-      }
+      if (nearTop || nearBottom) setHidden(false)
+      else if (Math.abs(y - lastY) >= 4) setHidden(y > lastY)
       lastY = y
     }
     update()
     window.addEventListener("scroll", update, { passive: true })
-    narrow.addEventListener("change", update)
-    return () => {
-      window.removeEventListener("scroll", update)
-      narrow.removeEventListener("change", update)
-    }
-  }, [onlyAtEnds])
+    return () => window.removeEventListener("scroll", update)
+  }, [])
+
+  useEffect(() => {
+    document.documentElement.toggleAttribute("data-header-shown", !hidden)
+  }, [hidden])
 
   return hidden
 }
@@ -55,10 +49,7 @@ function useHideOnScroll(onlyAtEnds: boolean) {
 export function SiteHeader() {
   const pathname = usePathname()
   const { t } = useLanguage()
-  // About and case studies have their own section bar, which takes the top on smaller screens.
-  // On those pages the name leads back home; everywhere else it opens About.
-  const onLongPage = isActive(pathname, "/about") || pathname.startsWith("/work/")
-  const hidden = useHideOnScroll(onLongPage)
+  const hidden = useHideOnScroll()
 
   return (
     <header
@@ -69,7 +60,7 @@ export function SiteHeader() {
       <div className={container}>
         <div className="flex h-14 items-center justify-between gap-2 rounded-2xl bg-background/80 p-1.5 pl-4 shadow-[0_8px_32px_-16px_rgba(0,0,0,0.25)] ring-1 ring-black/[0.07] backdrop-blur-xl md:pl-5">
           <Link
-            href={onLongPage ? "/" : "/about"}
+            href="/"
             className="shrink-0 text-lg font-medium tracking-tight transition-colors hover:text-accent"
           >
             Tari da Silva
