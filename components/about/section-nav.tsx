@@ -75,7 +75,6 @@ export function SectionNav({ vertical, className }: { vertical?: boolean; classN
         className,
       )}
     >
-      {vertical && <p className="px-3 pb-2 pt-2 text-sm text-muted-foreground">{t.about.onThisPage}</p>}
       <ul
         ref={listRef}
         className={cn("relative flex gap-1", vertical ? "flex-col" : "overflow-x-auto [scrollbar-width:none]")}

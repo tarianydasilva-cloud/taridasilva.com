@@ -16,7 +16,6 @@ export const dictionary = {
     home: "Home",
     about: {
       sectionNav: "About sections",
-      onThisPage: "On this page",
       sections: {
         story: "Story",
         services: "What I do",
@@ -47,7 +46,6 @@ export const dictionary = {
     home: "Inicio",
     about: {
       sectionNav: "Secciones de Sobre mí",
-      onThisPage: "En esta página",
       sections: {
         story: "Historia",
         services: "Qué hago",

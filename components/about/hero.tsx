@@ -34,8 +34,8 @@ export function AboutHero() {
   return (
     <section className="@container">
       <HeroVideo />
-      <p className="text-lead mt-16 inline-block rounded-full bg-accent/10 px-4 py-1.5 text-accent md:mt-24">{hero.eyebrow[locale]}</p>
-      <h1 className="text-statement mt-6 text-balance">{hero.title[locale]}</h1>
+      <p className="text-lead mt-16 text-accent md:mt-24">{hero.eyebrow[locale]}</p>
+      <h1 className="text-statement mt-4 text-balance">{hero.title[locale]}</h1>
     </section>
   )
 }
