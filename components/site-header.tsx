@@ -57,7 +57,9 @@ export function SiteHeader() {
   const pathname = usePathname()
   const { t } = useLanguage()
   // About and case studies have their own section bar, which takes the top on smaller screens.
-  const hidden = useHideOnScroll(isActive(pathname, "/about") || pathname.startsWith("/work/"))
+  // On those pages the name leads back home; everywhere else it opens About.
+  const onLongPage = isActive(pathname, "/about") || pathname.startsWith("/work/")
+  const hidden = useHideOnScroll(onLongPage)
 
   return (
     <header
@@ -67,9 +69,8 @@ export function SiteHeader() {
     >
       <div className={container}>
         <div className="flex h-14 items-center justify-between gap-2 rounded-2xl bg-background/80 p-1.5 pl-4 shadow-[0_8px_32px_-16px_rgba(0,0,0,0.25)] ring-1 ring-black/[0.07] backdrop-blur-xl md:pl-5">
-          {/* The name opens About; on About itself it leads back to the home page. */}
           <Link
-            href={isActive(pathname, "/about") ? "/" : "/about"}
+            href={onLongPage ? "/" : "/about"}
             className="shrink-0 text-lg font-medium tracking-tight transition-colors hover:text-accent"
           >
             Tari da Silva

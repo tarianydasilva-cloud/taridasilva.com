@@ -34,15 +34,15 @@ export const services: { title: Localized; body: Localized }[] = [
   {
     title: { en: "Product Design", es: "Diseño de producto" },
     body: {
-      en: "End-to-end design of digital products, from discovery and research to flows, interfaces and validated prototypes. Every screen answers a business goal and a user need, and ships with the specs, states and edge cases engineering needs to build it right the first time.",
-      es: "Diseño integral de productos digitales, desde el discovery y la investigación hasta los flujos, las interfaces y los prototipos validados. Cada pantalla responde a un objetivo de negocio y a una necesidad del usuario, y se entrega con las especificaciones, estados y casos límite que ingeniería necesita para construirla bien a la primera.",
+      en: "End-to-end design of digital products, from research to flows, interfaces and working prototypes. From rebuilding a SaaS platform with deep UX problems to turning data-heavy dashboards into tools for decisions, every screen answers a user need and a business goal.",
+      es: "Diseño integral de productos digitales, de la investigación a los flujos, las interfaces y los prototipos funcionales. Desde reconstruir una plataforma SaaS con problemas profundos de UX hasta convertir dashboards cargados de datos en herramientas para decidir, cada pantalla responde a una necesidad del usuario y a un objetivo de negocio.",
     },
   },
   {
     title: { en: "Strategy", es: "Estrategia" },
     body: {
-      en: "Turning ambiguity into a clear direction: user and market insight, positioning, opportunity framing and roadmaps that connect what people need with what the business has to achieve. The result is a plan teams can act on, with the bets, trade-offs and success metrics made explicit.",
-      es: "Convertir la ambigüedad en una dirección clara: insights de usuarios y de mercado, posicionamiento, definición de oportunidades y roadmaps que conectan lo que las personas necesitan con lo que el negocio tiene que lograr. El resultado es un plan sobre el que los equipos pueden actuar, con las apuestas, las renuncias y las métricas de éxito explícitas.",
+      en: "Turning ambiguity into a clear direction: framing the real problem, prioritising what matters most and defining the use cases that guide what gets built. Grounded in research with users and stakeholders, and shared so teams can act on it.",
+      es: "Convertir la ambigüedad en una dirección clara: plantear el problema real, priorizar lo que más importa y definir los casos de uso que guían lo que se construye. Basado en investigación con usuarios y stakeholders, y compartido para que los equipos puedan actuar.",
     },
   },
   {
@@ -50,13 +50,6 @@ export const services: { title: Localized; body: Localized }[] = [
     body: {
       en: "Designing the whole service, front stage and back stage: journeys, blueprints, touchpoints and the operations behind them. Finding the moments where people get stuck and fixing them at the root, so every channel works as one experience.",
       es: "Diseñar el servicio completo, lo que se ve y lo que no: recorridos, blueprints, puntos de contacto y las operaciones que los sostienen. Encontrar los momentos en los que las personas se atascan y resolverlos de raíz, para que todos los canales funcionen como una sola experiencia.",
-    },
-  },
-  {
-    title: { en: "Design Systems", es: "Sistemas de diseño" },
-    body: {
-      en: "Tokens, components, patterns and documentation that let many teams ship one coherent product. Designed together with engineering, versioned like code and governed so the system keeps up with the product instead of slowing it down.",
-      es: "Tokens, componentes, patrones y documentación para que muchos equipos construyan un único producto coherente. Diseñados junto a ingeniería, versionados como el código y gobernados para que el sistema acompañe al producto en lugar de frenarlo.",
     },
   },
   {
@@ -69,8 +62,8 @@ export const services: { title: Localized; body: Localized }[] = [
   {
     title: { en: "Design Ops", es: "Design Ops" },
     body: {
-      en: "The operating model behind good design at scale: rituals, tooling, critique, hiring and career frameworks. Less time lost to process, more time spent on the work, and a design team the rest of the company can plan around.",
-      es: "El modelo operativo detrás del buen diseño a escala: rituales, herramientas, crítica, contratación y planes de carrera. Menos tiempo perdido en procesos, más tiempo dedicado al trabajo y un equipo de diseño con el que el resto de la empresa puede planificar.",
+      en: "Bringing structure to how design and creative teams work: clearer briefings, a shared language for scope and effort, calmer client communication and rituals that keep everyone aligned. Less friction, more time spent on the work.",
+      es: "Dar estructura a cómo trabajan los equipos de diseño y creativos: briefings más claros, un lenguaje común para alcance y esfuerzo, una comunicación con clientes más serena y rituales que mantienen a todos alineados. Menos fricción, más tiempo para el trabajo.",
     },
   },
 ]
