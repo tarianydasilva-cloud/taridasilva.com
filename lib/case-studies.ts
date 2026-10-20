@@ -290,41 +290,94 @@ export const caseStudies: Record<string, CaseStudy> = {
 
   "design-ops-strategy": {
     statement: {
-      en: "Shaping how a design studio works, as an ongoing process.",
-      es: "Dar forma a cómo trabaja un estudio de diseño, como un proceso continuo.",
+      en: "Bringing structure to how a creative studio receives, scopes and manages work under constant ambiguity.",
+      es: "Dar estructura a cómo un estudio creativo recibe, dimensiona y gestiona el trabajo en un contexto de ambigüedad constante.",
     },
     facts: {
-      client: { en: "[Design studio]", es: "[Estudio de diseño]" },
+      client: { en: "Multidisciplinary creative studio", es: "Estudio creativo multidisciplinar" },
       role,
       team,
-      timeline: { en: "Ongoing since 2025", es: "En curso desde 2025" },
+      timeline: { en: "[Duration], 2025", es: "[Duración], 2025" },
     },
     outcomes: [
-      { value: { en: "[X]", es: "[X]" }, label: { en: "[result, e.g. hours saved per project]", es: "[resultado, p. ej. horas ahorradas por proyecto]" } },
-      { value: { en: "[X]", es: "[X]" }, label: { en: "[result]", es: "[resultado]" } },
+      { value: { en: "[X]", es: "[X]" }, label: { en: "levels of project complexity defined", es: "niveles de complejidad de proyecto definidos" } },
+      { value: { en: "[X]", es: "[X]" }, label: { en: "[another result, e.g. projects run with the new briefing]", es: "[otro resultado, p. ej. proyectos con el nuevo briefing]" } },
     ],
     challenge: [
       {
-        en: "[What wasn't working in the studio's dynamics: handoffs, rituals, tools, visibility of work.]",
-        es: "[Qué no funcionaba en las dinámicas del estudio: traspasos, rituales, herramientas, visibilidad del trabajo.]",
+        en: "Creative organisations running many projects in parallel share a common problem: work arrives with varying levels of clarity. Requests may lack defined priorities, clear timelines or complete briefings, creating friction in client relationships and internal workflows. This multidisciplinary studio dealt with high ambiguity and constant demand.",
+        es: "Las organizaciones creativas que llevan muchos proyectos en paralelo comparten un problema: el trabajo llega con niveles de claridad muy distintos. Las peticiones pueden no tener prioridades definidas, plazos claros ni briefings completos, lo que genera fricción con los clientes y en los flujos internos. Este estudio multidisciplinar convivía con mucha ambigüedad y una demanda constante.",
+      },
+      {
+        en: "At the core was ambiguity: unclear requests, misaligned expectations, emotionally charged interactions with clients, and internal bottlenecks caused by centralised information flow. The goal was to bring structure to how requests were received, understood and managed, while balancing client expectations, team capacity and an evolving vision.",
+        es: "En el centro estaba la ambigüedad: peticiones poco claras, expectativas desalineadas, interacciones con clientes cargadas emocionalmente y cuellos de botella internos causados por un flujo de información centralizado. El objetivo era dar estructura a cómo se recibían, entendían y gestionaban las peticiones, equilibrando las expectativas de los clientes, la capacidad del equipo y una visión en evolución.",
       },
     ],
     decisions: [
       {
-        title: { en: "Make the work visible", es: "Hacer visible el trabajo" },
-        body: { en: "[How.]", es: "[Cómo.]" },
+        title: { en: "Structure incoming requests", es: "Estructurar las peticiones" },
+        body: {
+          en: "Raw client demands were translated into clear, actionable briefings before reaching the team, enabling realistic effort estimates and early alignment.",
+          es: "Las demandas de los clientes se convertían en briefings claros y accionables antes de llegar al equipo, lo que permitía estimar el esfuerzo de forma realista y alinearse pronto.",
+        },
       },
       {
-        title: { en: "Set shared rituals", es: "Establecer rituales comunes" },
-        body: { en: "[Which ones and why.]", es: "[Cuáles y por qué.]" },
+        title: { en: "Stabilise client communication", es: "Estabilizar la comunicación con clientes" },
+        body: {
+          en: "Interactions were reframed towards calm, fact-based responses, avoiding confrontation and setting a minimum line of professional respect.",
+          es: "Las interacciones se reorientaron hacia respuestas serenas y basadas en hechos, evitando la confrontación y estableciendo un mínimo de respeto profesional.",
+        },
       },
       {
-        title: { en: "Measure and iterate", es: "Medir e iterar" },
-        body: { en: "[What you track and what changed.]", es: "[Qué mides y qué cambió.]" },
+        title: { en: "Introduce project dimensioning", es: "Introducir el dimensionamiento de proyectos" },
+        body: {
+          en: "A shared language for levels of complexity and effort made conversations about scope and timelines more realistic.",
+          es: "Un lenguaje común para los niveles de complejidad y esfuerzo hizo más realistas las conversaciones sobre alcance y plazos.",
+        },
+      },
+      {
+        title: { en: "Rethink the structure", es: "Repensar la estructura" },
+        body: {
+          en: "We explored a more distributed and sustainable setup, identifying where centralised coordination created bottlenecks and how shared systems could enable autonomy.",
+          es: "Exploramos una organización más distribuida y sostenible, identificando dónde la coordinación centralizada creaba cuellos de botella y cómo los sistemas compartidos podían dar autonomía.",
+        },
+      },
+      {
+        title: { en: "Treat culture as infrastructure", es: "Tratar la cultura como infraestructura" },
+        body: {
+          en: "Team rituals and informal practices were recognised as key to cohesion, trust and long-term sustainability.",
+          es: "Los rituales del equipo y las prácticas informales se reconocieron como clave para la cohesión, la confianza y la sostenibilidad a largo plazo.",
+        },
       },
     ],
-    gallery: [{ caption: { en: "[Studio operating model]", es: "[Modelo operativo del estudio]" } }],
-    results: [{ en: "[What has changed so far.]", es: "[Qué ha cambiado hasta ahora.]" }],
-    learnings: [{ en: "[What you are learning along the way.]", es: "[Qué estás aprendiendo por el camino.]" }],
+    solution: [
+      {
+        en: "Rather than implementing a closed or final system, the focus was on setting a direction and creating the conditions for clearer decisions under uncertainty.",
+        es: "En lugar de implantar un sistema cerrado o definitivo, el foco estuvo en marcar una dirección y crear las condiciones para tomar decisiones más claras en la incertidumbre.",
+      },
+    ],
+    gallery: [
+      { caption: { en: "[Briefing structure]", es: "[Estructura del briefing]" } },
+      { caption: { en: "[Project dimensioning levels]", es: "[Niveles de dimensionamiento de proyectos]" } },
+    ],
+    results: [
+      {
+        en: "Although the work did not become a fully implemented operational framework, it led to meaningful shifts in how the studio works.",
+        es: "Aunque el trabajo no llegó a ser un marco operativo totalmente implantado, provocó cambios significativos en cómo trabaja el estudio.",
+      },
+    ],
+    resultHighlights: [
+      { en: "Projects began with clearer alignment and less ambiguity.", es: "Los proyectos empezaban con más alineación y menos ambigüedad." },
+      { en: "Client interactions became more stable and predictable.", es: "Las interacciones con clientes se volvieron más estables y predecibles." },
+      { en: "Scope and effort discussions gained a shared reference framework.", es: "Las conversaciones sobre alcance y esfuerzo ganaron un marco de referencia común." },
+      { en: "Organisational bottlenecks were surfaced and made explicit.", es: "Los cuellos de botella de la organización se hicieron visibles y explícitos." },
+      { en: "Cultural practices were recognised as strategic assets.", es: "Las prácticas culturales se reconocieron como activos estratégicos." },
+    ],
+    learnings: [
+      {
+        en: "Strategic design can work beyond deliverables, shaping how creative organisations function, communicate and grow in contexts of uncertainty.",
+        es: "El diseño estratégico puede ir más allá de los entregables y dar forma a cómo las organizaciones creativas funcionan, se comunican y crecen en contextos de incertidumbre.",
+      },
+    ],
   },
 }

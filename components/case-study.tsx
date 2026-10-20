@@ -4,6 +4,7 @@ import Link from "next/link"
 import type { ReactNode } from "react"
 import { caseStudies } from "@/lib/case-studies"
 import { projects } from "@/lib/projects"
+import { cn } from "@/lib/utils"
 import { useLanguage } from "./language-provider"
 import { ProjectMedia } from "./project-media"
 import { SectionNav } from "./section-nav"
@@ -127,9 +128,16 @@ export function CaseStudy({ slug }: { slug: string }) {
           </Section>
 
           <Section id="approach">
-            <ul className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
-              {study.decisions.map((decision) => (
-                <li key={decision.title.en} className="reveal flex flex-col gap-3 rounded-2xl bg-muted p-6">
+            {/* Rows always fill: on a 6-column grid, cards take thirds, and a final pair takes halves. */}
+            <ul className="grid gap-2 sm:grid-cols-2 xl:grid-cols-6">
+              {study.decisions.map((decision, i) => (
+                <li
+                  key={decision.title.en}
+                  className={cn(
+                    "reveal flex flex-col gap-3 rounded-2xl bg-muted p-6 sm:max-xl:last:odd:col-span-2 xl:col-span-2",
+                    study.decisions.length % 3 === 2 && i >= study.decisions.length - 2 && "xl:col-span-3",
+                  )}
+                >
                   <h3 className="text-xl tracking-tight">{decision.title[locale]}</h3>
                   <p className="leading-relaxed text-muted-foreground">{decision.body[locale]}</p>
                 </li>
