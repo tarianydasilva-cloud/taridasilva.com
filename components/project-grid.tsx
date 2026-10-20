@@ -32,7 +32,7 @@ export function ProjectGrid() {
               <ProjectMedia
                 image={project.image}
                 video={project.video}
-                alt={project.imageAlt[locale]}
+                alt={project.imageAlt?.[locale]}
                 priority={index < 2}
                 className="isolate aspect-auto min-h-0 flex-1"
               />

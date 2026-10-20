@@ -38,7 +38,7 @@ export function CaseStudyIntro({ slug }: { slug: string }) {
       <ProjectMedia
         image={project.image}
         video={project.video}
-        alt={project.imageAlt[locale]}
+        alt={project.imageAlt?.[locale]}
         priority
         className="mt-12 rounded-2xl"
       />

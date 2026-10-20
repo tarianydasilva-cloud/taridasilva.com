@@ -8,85 +8,66 @@ export type Project = {
   summary: Localized
   year: string
   tags: Localized[]
-  image: string
-  imageAlt: Localized
+  // Without an image, cards and case studies show a neutral placeholder. Put files in /public/projects/.
+  image?: string
+  imageAlt?: Localized
   video?: string
 }
 
 export const projects: Project[] = [
   {
-    slug: "ledger",
-    title: { en: "Ledger — Rethinking everyday banking", es: "Ledger — Repensar la banca diaria" },
+    slug: "innohub",
+    title: { en: "Innohub", es: "Innohub" },
     summary: {
-      en: "A mobile-first banking experience that turned a legacy product into a daily habit.",
-      es: "Una experiencia bancaria mobile-first que convirtió un producto heredado en un hábito diario.",
+      en: "Igniting innovation participation.",
+      es: "Impulsar la participación en la innovación.",
+    },
+    year: "2026",
+    tags: [
+      { en: "Product Design", es: "Diseño de producto" },
+      { en: "UX Redesign", es: "Rediseño UX" },
+      { en: "AI Prototyping", es: "Prototipado con IA" },
+    ],
+  },
+  {
+    slug: "fleet-connect",
+    title: { en: "Fleet Connect", es: "Fleet Connect" },
+    summary: {
+      en: "Driving client adoption with insights.",
+      es: "Impulsar la adopción de clientes con insights.",
+    },
+    year: "2026",
+    tags: [
+      { en: "Product Design", es: "Diseño de producto" },
+      { en: "Data Visualisation", es: "Visualización de datos" },
+      { en: "Mobility", es: "Movilidad" },
+    ],
+  },
+  {
+    slug: "service-experience-design",
+    title: { en: "Service & Experience Design", es: "Diseño de servicios y experiencia" },
+    summary: {
+      en: "Clarifying and aligning services across a growing organisation.",
+      es: "Aclarar y alinear servicios en una organización en crecimiento.",
     },
     year: "2025",
     tags: [
-      { en: "Product Strategy", es: "Estrategia de producto" },
-      { en: "UX/UI", es: "UX/UI" },
-      { en: "Fintech", es: "Fintech" },
-    ],
-    image: "/projects/ledger.png",
-    imageAlt: {
-      en: "Banking app dashboard on a phone and laptop",
-      es: "Panel de la app bancaria en un teléfono y un portátil",
-    },
-  },
-  {
-    slug: "atlas",
-    title: { en: "Atlas — A design system at scale", es: "Atlas — Un sistema de diseño a escala" },
-    summary: {
-      en: "One shared language for 12 product teams, from tokens to governance.",
-      es: "Un lenguaje común para 12 equipos de producto, de los tokens a la gobernanza.",
-    },
-    year: "2024",
-    tags: [
-      { en: "Design Systems", es: "Sistemas de diseño" },
-      { en: "Governance", es: "Gobernanza" },
-    ],
-    image: "/projects/atlas.png",
-    imageAlt: {
-      en: "Grid of monochrome interface components",
-      es: "Cuadrícula de componentes de interfaz monocromos",
-    },
-  },
-  {
-    slug: "clinic",
-    title: { en: "Clinic — Service design for care", es: "Clinic — Diseño de servicios para la salud" },
-    summary: {
-      en: "Mapping the patient journey end-to-end to cut waiting times by a third.",
-      es: "Mapear el recorrido del paciente de principio a fin para reducir un tercio las esperas.",
-    },
-    year: "2024",
-    tags: [
       { en: "Service Design", es: "Diseño de servicios" },
-      { en: "Research", es: "Investigación" },
-      { en: "Healthcare", es: "Salud" },
+      { en: "Strategy", es: "Estrategia" },
     ],
-    image: "/projects/clinic.png",
-    imageAlt: {
-      en: "Workshop wall with a journey map and sticky notes",
-      es: "Pared de taller con un mapa de recorrido y notas adhesivas",
-    },
   },
   {
-    slug: "transit",
-    title: { en: "Transit — Mobility, simplified", es: "Transit — Movilidad simplificada" },
+    slug: "design-ops-strategy",
+    title: { en: "Design Ops & Strategy", es: "Design Ops y estrategia" },
     summary: {
-      en: "Planning, paying and riding unified in a single city mobility app.",
-      es: "Planificar, pagar y viajar en una sola app de movilidad urbana.",
+      en: "Looking into my ongoing process.",
+      es: "Una mirada a mi proceso en curso.",
     },
-    year: "2023",
+    year: "2025",
     tags: [
-      { en: "Product Design", es: "Diseño de producto" },
-      { en: "Prototyping", es: "Prototipado" },
+      { en: "Design Ops", es: "Design Ops" },
+      { en: "Strategy", es: "Estrategia" },
     ],
-    image: "/projects/transit.png",
-    imageAlt: {
-      en: "Transit app on a phone over a city street",
-      es: "App de transporte en un teléfono sobre una calle de la ciudad",
-    },
   },
 ]
 
