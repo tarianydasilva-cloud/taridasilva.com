@@ -56,7 +56,7 @@ export function CaseStudy({ slug }: { slug: string }) {
   }))
 
   return (
-    <article className="lg:grid lg:grid-cols-12 lg:gap-x-10">
+    <article className="pt-8 md:pt-12 lg:grid lg:grid-cols-12 lg:gap-x-10">
       <aside className="hidden lg:col-span-3 lg:block">
         <div className="sticky top-32 flex flex-col gap-2">
           <Link
