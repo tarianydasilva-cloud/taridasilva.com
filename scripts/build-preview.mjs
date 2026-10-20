@@ -88,7 +88,9 @@ document.documentElement.className = ${JSON.stringify(htmlClass)};
 document.body.className = ${JSON.stringify(bodyClass)};
 document.querySelectorAll("img[data-pv-src]").forEach((img) => { img.src = images[img.dataset.pvSrc]; });
 let locale = "en";
-try { locale = localStorage.getItem("locale") || "en"; } catch {}
+// Like the site: a chosen language wins, otherwise the browser's language, English by default.
+try { locale = localStorage.getItem("locale") || ""; } catch {}
+if (locale !== "en" && locale !== "es") locale = (navigator.language || "").toLowerCase().startsWith("es") ? "es" : "en";
 let current = "home";
 
 // Every view repeats the same ids, so only the visible view keeps its real ids.
@@ -182,6 +184,12 @@ function route() {
   current = keys.has(hash) ? hash : "home";
   render(true);
 }
+
+// Copy buttons (the contact page's email).
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-copy]");
+  if (button) navigator.clipboard?.writeText(button.dataset.copy).catch(() => {});
+});
 
 document.addEventListener("click", (event) => {
   const button = event.target.closest('[role="group"] button[lang]');

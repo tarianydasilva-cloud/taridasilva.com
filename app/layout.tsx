@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from "next"
 import type { ReactNode } from "react"
-import { cookies } from "next/headers"
+import { cookies, headers } from "next/headers"
 import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
 import { LanguageProvider } from "@/components/language-provider"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
-import { defaultLocale, dictionary, isLocale, LOCALE_COOKIE } from "@/lib/i18n"
+import { dictionary, isLocale, LOCALE_COOKIE, localeFromAcceptLanguage } from "@/lib/i18n"
 import { container } from "@/lib/site"
 import { cn } from "@/lib/utils"
 import "./globals.css"
@@ -27,8 +27,9 @@ export const viewport: Viewport = {
 }
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
+  // A language chosen in the footer wins; otherwise the browser's language decides, English by default.
   const stored = (await cookies()).get(LOCALE_COOKIE)?.value
-  const locale = isLocale(stored) ? stored : defaultLocale
+  const locale = isLocale(stored) ? stored : localeFromAcceptLanguage((await headers()).get("accept-language"))
 
   return (
     <html lang={locale} id="top" className={`${GeistSans.variable} ${GeistMono.variable}`}>

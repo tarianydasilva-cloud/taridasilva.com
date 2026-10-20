@@ -7,11 +7,17 @@ export function isLocale(value: unknown): value is Locale {
   return typeof value === "string" && (locales as readonly string[]).includes(value)
 }
 
+// Picks Spanish only when the browser's preferred language is Spanish; English otherwise.
+export function localeFromAcceptLanguage(header: string | null): Locale {
+  const preferred = header?.split(",")[0]?.trim().toLowerCase() ?? ""
+  return preferred.startsWith("es") ? "es" : defaultLocale
+}
+
 export const dictionary = {
   en: {
     skip: "Skip to content",
     role: "Product Design & Strategy",
-    nav: { work: "Work", about: "About", contact: "Contact" },
+    nav: { work: "Work", about: "About", contact: "Hola!" },
     language: "Language",
     home: "Home",
     about: {
@@ -27,7 +33,6 @@ export const dictionary = {
     pages: {
       work: { eyebrow: "Selected work", title: "Work" },
       about: { eyebrow: "Profile", title: "About" },
-      contact: { eyebrow: "Get in touch", title: "Contact" },
     },
     work: { disciplines: "Disciplines", allWork: "All work", year: "Year" },
     caseStudy: {
@@ -43,8 +48,15 @@ export const dictionary = {
       facts: { client: "Client", role: "Role", team: "Team", timeline: "Timeline" },
       nextProject: "Next project",
     },
+    contact: {
+      title: "Say hola.",
+      intro: "Whether it's a role, a project or a question, email is the fastest way to reach me.",
+      email: "Email",
+      copy: "Copy",
+      copied: "Copied",
+      elsewhere: "Elsewhere",
+    },
     footer: {
-      cta: "Have a product worth shaping?",
       elsewhere: "Elsewhere",
       backToTop: "Back to top",
       rights: "All rights reserved.",
@@ -53,7 +65,7 @@ export const dictionary = {
   es: {
     skip: "Saltar al contenido",
     role: "Diseño de Producto y Estrategia",
-    nav: { work: "Trabajo", about: "Sobre mí", contact: "Contacto" },
+    nav: { work: "Trabajo", about: "Sobre mí", contact: "¡Hola!" },
     language: "Idioma",
     home: "Inicio",
     about: {
@@ -69,7 +81,6 @@ export const dictionary = {
     pages: {
       work: { eyebrow: "Trabajo seleccionado", title: "Trabajo" },
       about: { eyebrow: "Perfil", title: "Sobre mí" },
-      contact: { eyebrow: "Hablemos", title: "Contacto" },
     },
     work: { disciplines: "Disciplinas", allWork: "Todo el trabajo", year: "Año" },
     caseStudy: {
@@ -85,8 +96,15 @@ export const dictionary = {
       facts: { client: "Cliente", role: "Rol", team: "Equipo", timeline: "Duración" },
       nextProject: "Siguiente proyecto",
     },
+    contact: {
+      title: "Di hola.",
+      intro: "Ya sea un puesto, un proyecto o una pregunta, el email es la forma más rápida de contactarme.",
+      email: "Email",
+      copy: "Copiar",
+      copied: "Copiado",
+      elsewhere: "En otros sitios",
+    },
     footer: {
-      cta: "¿Tienes un producto que merece forma?",
       elsewhere: "En otros sitios",
       backToTop: "Volver arriba",
       rights: "Todos los derechos reservados.",

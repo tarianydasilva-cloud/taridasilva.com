@@ -3,10 +3,9 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
-import { container, email } from "@/lib/site"
+import { container } from "@/lib/site"
 import { cn } from "@/lib/utils"
 import { useLanguage } from "./language-provider"
-import { LanguageToggle } from "./language-toggle"
 
 const navItems = [
   { href: "/about", key: "about" },
@@ -95,17 +94,14 @@ export function SiteHeader() {
                   </li>
                 )
               })}
-              {/* On phones the language switch lives in the footer only, to keep the bar on one line. */}
-              <li className="hidden rounded-full bg-muted px-3 py-1.5 sm:block md:px-4">
-                <LanguageToggle />
-              </li>
               <li>
-                <a
-                  href={`mailto:${email}`}
-                  className={cn(pill, "bg-accent text-accent-foreground hover:bg-foreground")}
+                <Link
+                  href="/contact"
+                  aria-current={isActive(pathname, "/contact") ? "page" : undefined}
+                  className={cn(pill, "bg-accent text-accent-foreground hover:bg-foreground aria-[current=page]:bg-foreground")}
                 >
                   {t.nav.contact}
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
