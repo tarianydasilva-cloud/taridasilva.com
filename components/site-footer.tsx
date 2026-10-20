@@ -10,44 +10,49 @@ export function SiteFooter() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="mt-24 border-t border-border md:mt-32">
-      <div className={cn(container, "grid gap-10 py-16 md:grid-cols-12 md:py-20")}>
-        <div className="md:col-span-8">
-          <p className="text-3xl leading-tight tracking-tight text-balance md:text-5xl">{t.footer.cta}</p>
-          <a
-            href={`mailto:${email}`}
-            className="mt-6 inline-block text-lg underline decoration-accent decoration-2 underline-offset-[6px] transition-colors hover:text-accent md:text-xl"
-          >
-            {email}
-          </a>
+    <footer className={cn(container, "mt-24 pb-4 md:mt-32 md:pb-6")}>
+      <div className="rounded-3xl bg-muted p-6 md:p-10">
+        <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-2xl">
+            <p className="text-3xl leading-tight tracking-tight text-balance md:text-5xl">{t.footer.cta}</p>
+            <a
+              href={`mailto:${email}`}
+              className="mt-8 inline-block rounded-full bg-accent px-5 py-3 text-accent-foreground transition-colors hover:bg-foreground md:text-lg"
+            >
+              {email}
+            </a>
+          </div>
+          <div className="flex flex-col gap-3">
+            <p className="text-sm text-muted-foreground">{t.footer.elsewhere}</p>
+            <ul className="flex flex-wrap gap-2">
+              {socials.map((social) => (
+                <li key={social.label}>
+                  <a
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block rounded-full bg-background px-4 py-2 text-sm transition-colors hover:bg-foreground hover:text-background"
+                  >
+                    {social.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-        <div className="flex flex-col gap-3 md:col-span-3 md:col-start-10">
-          <p className="text-sm text-muted-foreground">{t.footer.elsewhere}</p>
-          <ul className="flex flex-col gap-2">
-            {socials.map((social) => (
-              <li key={social.label}>
-                <a
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-colors hover:text-accent"
-                >
-                  {social.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
 
-      <div className="border-t border-border">
-        <div className={cn(container, "flex flex-wrap items-center justify-between gap-4 py-6 text-sm text-muted-foreground")}>
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-6 text-sm text-muted-foreground">
           <p>
             © {year} Tari da Silva. {t.footer.rights}
           </p>
-          <div className="flex items-center gap-6">
-            <LanguageToggle />
-            <a href="#top" className="transition-colors hover:text-foreground">
+          <div className="flex items-center gap-2">
+            <div className="rounded-full bg-background px-4 py-2">
+              <LanguageToggle />
+            </div>
+            <a
+              href="#top"
+              className="rounded-full bg-background px-4 py-2 transition-colors hover:bg-foreground hover:text-background"
+            >
               {t.footer.backToTop} ↑
             </a>
           </div>

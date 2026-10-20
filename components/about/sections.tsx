@@ -21,9 +21,11 @@ function Story() {
 
   return (
     <Section id="story">
-      <p className="text-lead reveal text-pretty">
-        {story.body[locale]} <span className="text-muted-foreground">{story.aside[locale]}</span>
-      </p>
+      <div className="rounded-2xl bg-muted p-6 md:p-10">
+        <p className="text-lead reveal text-pretty">
+          {story.body[locale]} <span className="text-muted-foreground">{story.aside[locale]}</span>
+        </p>
+      </div>
     </Section>
   )
 }
@@ -36,7 +38,7 @@ function Services() {
       <ul className="flex flex-col gap-2">
         {services.map((service) => (
           <li key={service.title.en}>
-            <details className="accordion group rounded-lg bg-muted">
+            <details className="accordion group rounded-2xl bg-muted transition-colors hover:bg-border/70 open:hover:bg-muted">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-6 px-5 py-4 md:px-6 md:py-5 [&::-webkit-details-marker]:hidden">
                 <span className="text-xl tracking-tight md:text-2xl">{service.title[locale]}</span>
                 {/* A plus that turns into a cross when the card is open. */}
@@ -46,7 +48,7 @@ function Services() {
                   stroke="currentColor"
                   strokeWidth="1.5"
                   aria-hidden="true"
-                  className="size-5 shrink-0 text-accent transition-transform duration-300 group-open:rotate-45"
+                  className="size-9 shrink-0 rounded-full bg-background p-2.5 text-accent transition-transform duration-300 group-open:rotate-45"
                 >
                   <path d="M8 2.5v11M2.5 8h11" />
                 </svg>
@@ -67,7 +69,9 @@ function Industries() {
 
   return (
     <Section id="industries">
-      <h2 className="text-statement reveal text-balance">{industries.title[locale]}</h2>
+      <div className="rounded-2xl bg-muted p-6 md:p-10">
+        <h2 className="text-statement reveal text-balance">{industries.title[locale]}</h2>
+      </div>
     </Section>
   )
 }
@@ -79,7 +83,7 @@ function Principles() {
     <Section id="principles">
       <ul className="grid gap-2 sm:grid-cols-2">
         {principles.map((principle) => (
-          <li key={principle.title.en} className="reveal flex flex-col gap-8 rounded-lg bg-muted p-6">
+          <li key={principle.title.en} className="reveal flex flex-col gap-8 rounded-2xl bg-muted p-6">
             <h3 className="text-2xl tracking-tight md:text-3xl">{principle.title[locale]}</h3>
             <p className="leading-relaxed text-muted-foreground">{principle.body[locale]}</p>
           </li>
@@ -95,10 +99,12 @@ function Approach() {
   return (
     <Section id="approach">
       <h2 className="text-statement reveal text-balance">{approach.title[locale]}</h2>
-      <ol className="mt-10 grid gap-x-8 gap-y-8 border-t border-foreground pt-6 md:grid-cols-3">
+      <ol className="mt-8 grid gap-2 md:grid-cols-3">
         {approach.steps.map((step, index) => (
-          <li key={step.title.en} className="reveal flex flex-col gap-2">
-            <span className="font-mono text-xs text-accent">{String(index + 1).padStart(2, "0")}</span>
+          <li key={step.title.en} className="reveal flex flex-col gap-2 rounded-2xl bg-muted p-6">
+            <span className="mb-6 self-start rounded-full bg-background px-3 py-1 font-mono text-xs text-accent">
+              {String(index + 1).padStart(2, "0")}
+            </span>
             <span className="text-lg font-medium tracking-tight">{step.title[locale]}</span>
             <span className="text-sm leading-relaxed text-muted-foreground">{step.body[locale]}</span>
           </li>

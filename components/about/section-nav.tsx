@@ -20,8 +20,8 @@ function currentSection(): SectionId {
   return current
 }
 
-// The About page's index: a vertical list in the left margin on large screens,
-// and a sticky horizontal bar under the header below that.
+// The About page's index: a card of pills in the left margin on large screens,
+// and a floating pill bar that sticks to the top below that.
 export function SectionNav({ vertical, className }: { vertical?: boolean; className?: string }) {
   const { t } = useLanguage()
   const [active, setActive] = useState<SectionId>(sectionIds[0])
@@ -69,14 +69,16 @@ export function SectionNav({ vertical, className }: { vertical?: boolean; classN
       aria-label={t.about.sectionNav}
       data-section-nav
       className={cn(
-        !vertical && "sticky top-20 z-30 -mx-4 mt-12 border-b border-border bg-background/90 px-4 backdrop-blur-md md:-mx-8 md:px-8",
+        vertical
+          ? "rounded-2xl bg-muted p-2"
+          : "sticky top-3 z-30 mt-12 rounded-full bg-muted/85 p-1.5 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.2)] ring-1 ring-black/5 backdrop-blur-xl",
         className,
       )}
     >
-      {vertical && <p className="mb-4 text-sm text-muted-foreground">{t.about.onThisPage}</p>}
+      {vertical && <p className="px-3 pb-2 pt-2 text-sm text-muted-foreground">{t.about.onThisPage}</p>}
       <ul
         ref={listRef}
-        className={cn("relative flex", vertical ? "flex-col" : "gap-5 overflow-x-auto [scrollbar-width:none]")}
+        className={cn("relative flex gap-1", vertical ? "flex-col" : "overflow-x-auto [scrollbar-width:none]")}
       >
         {sectionIds.map((id) => (
           <li key={id} className="shrink-0">
@@ -85,10 +87,8 @@ export function SectionNav({ vertical, className }: { vertical?: boolean; classN
               onClick={() => select(id)}
               aria-current={active === id ? "location" : undefined}
               className={cn(
-                "block text-sm text-muted-foreground transition-colors hover:text-foreground aria-[current=location]:text-foreground",
-                vertical
-                  ? "border-l-2 border-border py-1.5 pl-4 aria-[current=location]:border-accent"
-                  : "border-b-2 border-transparent py-3 aria-[current=location]:border-accent",
+                "block text-sm text-foreground/75 transition-colors hover:bg-background hover:text-foreground aria-[current=location]:bg-foreground aria-[current=location]:text-background",
+                vertical ? "rounded-xl px-3 py-2" : "rounded-full px-4 py-2",
               )}
             >
               {t.about.sections[id]}

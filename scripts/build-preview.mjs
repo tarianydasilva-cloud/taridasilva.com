@@ -152,6 +152,16 @@ document.addEventListener("click", (event) => {
   navTimer = setTimeout(release, 1200);
 });
 addEventListener("scroll", updateNav, { passive: true });
+
+// Mirrors the site header (components/site-header.tsx): hidden while scrolling down, shown on scroll up.
+let lastScrollY = scrollY;
+addEventListener("scroll", () => {
+  const y = scrollY;
+  if (Math.abs(y - lastScrollY) < 4) return;
+  const hidden = y > 80 && y > lastScrollY;
+  document.querySelectorAll("[data-autohide]").forEach((header) => header.toggleAttribute("data-hidden", hidden));
+  lastScrollY = y;
+}, { passive: true });
 addEventListener("resize", updateNav);
 
 function route() {
