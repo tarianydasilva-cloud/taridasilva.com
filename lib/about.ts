@@ -5,7 +5,23 @@ type Localized = Record<Locale, string>
 // Text in [square brackets] is a placeholder waiting for real content.
 
 // Clips play in order and loop. Put the files in /public/about/ and list them here, e.g. "/about/hero-1.mp4".
+// The clips are shown mirrored, like a webcam.
 export const heroVideos: string[] = []
+
+// Icons on the About "desktop", placed down the left and right edges so the face in the video stays clear.
+// File names stay in English in both languages, like real files.
+export type DesktopIcon = "folder" | "text" | "pdf" | "mail"
+
+export const desktopItems: { label: string; icon: DesktopIcon; href: string; side: "left" | "right" }[] = [
+  { label: "about_me.txt", icon: "text", href: "#story", side: "left" },
+  { label: "how_i_work.pdf", icon: "pdf", href: "#approach", side: "left" },
+  { label: "principles.txt", icon: "text", href: "#principles", side: "left" },
+  { label: "say_hola", icon: "mail", href: "/contact", side: "left" },
+  { label: "Innohub", icon: "folder", href: "/work/innohub", side: "right" },
+  { label: "Fleet Connect", icon: "folder", href: "/work/fleet-connect", side: "right" },
+  { label: "Service Design", icon: "folder", href: "/work/service-experience-design", side: "right" },
+  { label: "Design Ops", icon: "folder", href: "/work/design-ops-strategy", side: "right" },
+]
 
 export const hero = {
   eyebrow: { en: "Product Design & Strategy", es: "Diseño de Producto y Estrategia" },
