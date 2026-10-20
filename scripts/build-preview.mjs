@@ -53,7 +53,8 @@ for (const locale of locales) {
       .replace(/<link\b[^>]*>/g, "")
       .replace(/\shref="(\/[^"#]*)"/g, (_, path) => ` href="#${routeKey(path)}"`)
       .replace(/<img\b[^>]*>/g, (tag) => {
-        const src = decodeURIComponent(tag.match(/url=([^&"]+)/)?.[1] ?? "")
+        // next/image tags carry the file in ?url=; plain <img> tags point at it directly.
+        const src = decodeURIComponent(tag.match(/url=([^&"]+)/)?.[1] ?? tag.match(/\ssrc="(\/[^"]+)"/)?.[1] ?? "")
         if (!src) return tag
         images.set(src, null)
         return tag

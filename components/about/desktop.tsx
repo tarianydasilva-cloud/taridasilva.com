@@ -78,15 +78,16 @@ function Icon({ item }: { item: Pick<DesktopItem, "icon" | "color" | "image" | "
     )
   }
   if (item.icon === "image") {
-    // A photo with a white border, like Finder's thumbnail of a .jpg; a soft placeholder until the picture is set.
-    return (
+    // A picture with a white border, like Finder's thumbnail of a .jpg; a soft placeholder until the picture is set.
+    // Set pictures are posters, so they stand upright and narrower to keep the icon's height.
+    return item.image ? (
+      <span className="mx-auto block w-[62%] bg-white p-[0.25cqi] shadow-md">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={item.image} alt="" className="aspect-[2/3] w-full object-cover" />
+      </span>
+    ) : (
       <span className="block rotate-[-3deg] bg-white p-[0.35cqi] shadow-md">
-        {item.image ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={item.image} alt="" className="aspect-[4/3] w-full object-cover" />
-        ) : (
-          <span className="media-placeholder block aspect-[4/3] w-full" />
-        )}
+        <span className="media-placeholder block aspect-[4/3] w-full" />
       </span>
     )
   }

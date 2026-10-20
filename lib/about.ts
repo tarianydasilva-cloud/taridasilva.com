@@ -32,8 +32,7 @@ export const desktopItems: DesktopItem[] = [
   { label: "Service Design", icon: "folder", side: "right", color: "blue", href: "/work/service-experience-design" },
   { label: "Design Ops", icon: "folder", side: "right", color: "blue", href: "/work/design-ops-strategy" },
   { label: "Tari HD", icon: "drive", side: "right", href: "/work" },
-  { label: "favourite_book.jpg", icon: "image", side: "right" },
-  { label: "favourite_film.jpg", icon: "image", side: "right" },
+  { label: "Erin Brockovich", icon: "image", side: "right", image: "/about/erin-brockovich.jpg" },
 ]
 
 export const hero = {
