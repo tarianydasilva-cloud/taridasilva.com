@@ -8,7 +8,7 @@ export function HomeIntro() {
   const { locale } = useLanguage()
 
   return (
-    <section className="@container pb-16 pt-12 md:pb-24 md:pt-20">
+    <section className="@container pb-16 pt-6 md:pb-24 md:pt-12">
       <h1 className="text-statement max-w-5xl text-balance">{hero.title[locale]}</h1>
     </section>
   )
