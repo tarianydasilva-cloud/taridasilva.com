@@ -16,6 +16,8 @@ export type CaseStudy = {
   // Captions for the solution images; pictures go in /public/projects/<slug>/ once available.
   gallery: { caption: Localized; image?: string }[]
   results: Localized[]
+  // Optional short wins shown as cards under the results text.
+  resultHighlights?: Localized[]
   learnings: Localized[]
 }
 
@@ -186,63 +188,102 @@ export const caseStudies: Record<string, CaseStudy> = {
 
   "service-experience-design": {
     statement: {
-      en: "Clarifying and aligning services across a growing organisation.",
-      es: "Aclarar y alinear servicios en una organización en crecimiento.",
+      en: "Bringing coherence to services that had grown organically, for customers and employees alike.",
+      es: "Dar coherencia a unos servicios que habían crecido de forma orgánica, para clientes y empleados por igual.",
     },
     facts: {
-      client: { en: "[Organisation]", es: "[Organización]" },
+      client: { en: "Growing organisation, B2B and B2C", es: "Organización en crecimiento, B2B y B2C" },
       role,
       team,
       timeline: { en: "[Duration], 2025", es: "[Duración], 2025" },
     },
     outcomes: [
       { value: { en: "[X]", es: "[X]" }, label: { en: "services mapped end to end", es: "servicios mapeados de principio a fin" } },
-      { value: { en: "[X]", es: "[X]" }, label: { en: "teams aligned", es: "equipos alineados" } },
-      { value: { en: "[X]", es: "[X]" }, label: { en: "[another result]", es: "[otro resultado]" } },
+      { value: { en: "[X]", es: "[X]" }, label: { en: "journey maps created", es: "journey maps creados" } },
+      { value: { en: "[X]", es: "[X]" }, label: { en: "teams involved", es: "equipos implicados" } },
     ],
     challenge: [
       {
-        en: "As the organisation grew, its services multiplied and overlapped. [What that looked like: teams describing the same service differently, confused clients, duplicated work.]",
-        es: "Al crecer la organización, sus servicios se multiplicaron y se solaparon. [Cómo se notaba: equipos que describían el mismo servicio de forma distinta, clientes confundidos, trabajo duplicado.]",
+        en: "The organisation worked across multiple services and touchpoints, serving both B2B and B2C audiences. Its offering, services and supporting processes had evolved organically over time, which led to fragmented experiences, duplicated effort and misalignment between customer needs, internal operations and communication.",
+        es: "La organización trabajaba con múltiples servicios y puntos de contacto, para públicos B2B y B2C. Su oferta, sus servicios y sus procesos habían evolucionado de forma orgánica con el tiempo, lo que provocó experiencias fragmentadas, esfuerzo duplicado y falta de alineación entre las necesidades de los clientes, las operaciones internas y la comunicación.",
+      },
+      {
+        en: "The core challenge was misalignment: services were not always structured around real user needs, internal processes were inconsistently documented, and communication varied across channels and teams. The goal was to understand how services were really experienced end to end, and to bring greater coherence to processes, communication and delivery.",
+        es: "El reto principal era la falta de alineación: los servicios no siempre se estructuraban en torno a necesidades reales, los procesos internos estaban documentados de forma desigual y la comunicación variaba entre canales y equipos. El objetivo era entender cómo se vivían de verdad los servicios de principio a fin y dar más coherencia a los procesos, la comunicación y la entrega.",
       },
     ],
     decisions: [
       {
-        title: { en: "Map every service end to end", es: "Mapear cada servicio de principio a fin" },
+        title: { en: "Map services and experiences", es: "Mapear servicios y experiencias" },
         body: {
-          en: "[Service blueprints of what clients see and what happens behind it.]",
-          es: "[Blueprints de servicio de lo que ve el cliente y lo que ocurre detrás.]",
+          en: "Journey maps made customer and employee experiences visible across key services, so pain points, inefficiencies and moments of friction were shared by every stakeholder.",
+          es: "Los journey maps hicieron visibles las experiencias de clientes y empleados en los servicios clave, para que todos los stakeholders compartieran los puntos de dolor, las ineficiencias y los momentos de fricción.",
         },
       },
       {
-        title: { en: "Agree on one shared language", es: "Acordar un lenguaje común" },
+        title: { en: "Redesign services and processes", es: "Rediseñar servicios y procesos" },
         body: {
-          en: "[Workshops with the teams to define and name each service.]",
-          es: "[Talleres con los equipos para definir y nombrar cada servicio.]",
+          en: "Existing services and internal workflows were reviewed and restructured to align with user needs and business objectives, improving clarity, efficiency and consistency.",
+          es: "Los servicios existentes y los flujos internos se revisaron y reestructuraron para alinearlos con las necesidades de los usuarios y los objetivos de negocio, mejorando la claridad, la eficiencia y la coherencia.",
         },
       },
       {
-        title: { en: "Design the target experience", es: "Diseñar la experiencia objetivo" },
+        title: { en: "Streamline and document processes", es: "Simplificar y documentar procesos" },
         body: {
-          en: "[The future journeys and the changes needed to get there.]",
-          es: "[Los recorridos futuros y los cambios necesarios para llegar a ellos.]",
+          en: "Business processes were documented and simplified to reduce ambiguity, support smoother collaboration and give teams a clearer operational baseline.",
+          es: "Los procesos de negocio se documentaron y simplificaron para reducir la ambigüedad, facilitar la colaboración y dar a los equipos una base operativa más clara.",
         },
+      },
+      {
+        title: { en: "Align communication and visuals", es: "Alinear la comunicación y lo visual" },
+        body: {
+          en: "Visual and written materials were developed so services were clearly and consistently articulated across internal and external channels.",
+          es: "Se desarrollaron materiales visuales y escritos para que los servicios se explicaran de forma clara y coherente en los canales internos y externos.",
+        },
+      },
+      {
+        title: { en: "Work across teams", es: "Trabajar entre equipos" },
+        body: {
+          en: "The work was carried out with multiple teams to build shared understanding, consistent messaging and alignment between service intent and execution.",
+          es: "El trabajo se hizo junto a varios equipos para construir una comprensión compartida, un mensaje coherente y alineación entre la intención del servicio y su ejecución.",
+        },
+      },
+      {
+        title: { en: "Monitor and evolve", es: "Medir y evolucionar" },
+        body: {
+          en: "Services and communication strategies were treated as evolving systems, monitored and adapted over time to improve engagement, relevance and satisfaction.",
+          es: "Los servicios y las estrategias de comunicación se trataron como sistemas vivos, medidos y adaptados con el tiempo para mejorar la participación, la relevancia y la satisfacción.",
+        },
+      },
+    ],
+    solution: [
+      {
+        en: "Rather than fixing isolated touchpoints or delivering a single fixed solution, the work looked at services as a whole and built shared understanding and structures that enable ongoing improvement.",
+        es: "En lugar de arreglar puntos de contacto aislados o entregar una única solución cerrada, el trabajo miró los servicios en su conjunto y construyó una comprensión compartida y estructuras que permiten mejorar de forma continua.",
       },
     ],
     gallery: [
-      { caption: { en: "[Service map]", es: "[Mapa de servicios]" } },
+      { caption: { en: "[Journey map]", es: "[Journey map]" } },
       { caption: { en: "[Service blueprint]", es: "[Blueprint de servicio]" } },
+      { caption: { en: "[Redesigned services website]", es: "[Web de servicios rediseñada]" } },
     ],
     results: [
       {
-        en: "[What changed: clearer offer, faster onboarding, fewer handoff problems, feedback from teams or clients.]",
-        es: "[Qué cambió: una oferta más clara, onboarding más rápido, menos problemas de traspaso, feedback de equipos o clientes.]",
+        en: "Due to organisational constraints and shifting priorities, the work did not progress to a formal rollout. It worked instead as an exploratory and diagnostic effort: elements were shared and reviewed with team members, helping validate assumptions and refine thinking about service structure, customer needs and internal processes.",
+        es: "Por restricciones de la organización y cambios de prioridades, el trabajo no llegó a un despliegue formal. Funcionó como un esfuerzo exploratorio y de diagnóstico: partes del trabajo se compartieron y revisaron con el equipo, lo que ayudó a validar hipótesis y afinar la estructura de los servicios, las necesidades de los clientes y los procesos internos.",
       },
+    ],
+    resultHighlights: [
+      { en: "Surfaced misalignments between services, communication and internal operations.", es: "Hizo visibles los desajustes entre servicios, comunicación y operaciones internas." },
+      { en: "Gave a structured view of services and journeys that had never been documented.", es: "Ofreció una visión estructurada de servicios y recorridos que nunca se habían documentado." },
+      { en: "Created references that can be reused or expanded when the organisation is ready.", es: "Creó referencias que pueden reutilizarse o ampliarse cuando la organización esté preparada." },
+      { en: "Strengthened cross-team dialogue about consistency, efficiency and experience quality.", es: "Reforzó el diálogo entre equipos sobre coherencia, eficiencia y calidad de la experiencia." },
+      { en: "Led to a redesign of the main website, simplifying the first view of the services.", es: "Llevó al rediseño de la web principal, simplificando la primera visión de los servicios." },
     ],
     learnings: [
       {
-        en: "[What you learned about aligning many teams around one service.]",
-        es: "[Qué aprendiste sobre alinear a muchos equipos en torno a un servicio.]",
+        en: "While the initiative remained exploratory, it laid the groundwork and showed how service design tools can support clearer decisions and future improvements. [What you would do differently to get it adopted.]",
+        es: "Aunque la iniciativa quedó en fase exploratoria, sentó las bases y demostró cómo las herramientas de diseño de servicios pueden apoyar decisiones más claras y mejoras futuras. [Qué harías diferente para conseguir que se adoptara.]",
       },
     ],
   },

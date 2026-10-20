@@ -155,6 +155,16 @@ export function CaseStudy({ slug }: { slug: string }) {
 
           <Section id="results">
             <Paragraphs items={study.results} />
+            {study.resultHighlights && (
+              <ul className="mt-8 grid gap-2 sm:grid-cols-2">
+                {study.resultHighlights.map((highlight) => (
+                  // An odd last card spans the row instead of sitting alone.
+                  <li key={highlight.en} className="reveal rounded-2xl bg-muted p-5 leading-relaxed sm:last:odd:col-span-2">
+                    {highlight[locale]}
+                  </li>
+                ))}
+              </ul>
+            )}
           </Section>
 
           <Section id="learnings">
