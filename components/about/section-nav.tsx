@@ -21,7 +21,8 @@ function currentSection(): SectionId {
 }
 
 // The About page's index: a card of pills in the left margin on large screens,
-// and a floating pill bar that sticks to the top below that.
+// and a floating pill bar that sticks to the top below that. When the header returns at the end of
+// the page, the bar steps aside on phones and moves below the header on wider screens.
 export function SectionNav({ vertical, className }: { vertical?: boolean; className?: string }) {
   const { t } = useLanguage()
   const [active, setActive] = useState<SectionId>(sectionIds[0])
@@ -71,7 +72,7 @@ export function SectionNav({ vertical, className }: { vertical?: boolean; classN
       className={cn(
         vertical
           ? "rounded-2xl bg-muted p-2"
-          : "sticky top-3 z-30 mt-20 rounded-full transition-[translate,opacity] duration-300 [html[data-page-end]_&]:pointer-events-none [html[data-page-end]_&]:-translate-y-[150%] [html[data-page-end]_&]:opacity-0 bg-muted/85 p-1.5 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.2)] ring-1 ring-black/5 backdrop-blur-xl",
+          : "sticky top-3 z-30 mt-20 rounded-full transition-[top,translate,opacity] duration-300 max-md:[html[data-page-end]_&]:pointer-events-none max-md:[html[data-page-end]_&]:-translate-y-[150%] max-md:[html[data-page-end]_&]:opacity-0 md:[html[data-page-end]_&]:top-24 bg-muted/85 p-1.5 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.2)] ring-1 ring-black/5 backdrop-blur-xl",
         className,
       )}
     >
