@@ -111,10 +111,10 @@ export function AboutSections() {
   return (
     <div className="@container flex flex-col gap-24 pt-20 md:gap-32 md:pt-28">
       <Story />
-      <Services />
-      <Industries />
-      <Principles />
       <Approach />
+      <Services />
+      <Principles />
+      <Industries />
     </div>
   )
 }

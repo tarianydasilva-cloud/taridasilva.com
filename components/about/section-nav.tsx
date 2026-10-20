@@ -72,7 +72,7 @@ export function SectionNav({ vertical, className }: { vertical?: boolean; classN
       className={cn(
         vertical
           ? "rounded-2xl bg-muted p-2"
-          : "sticky top-3 z-30 mt-20 rounded-full transition-[top,translate,opacity] duration-300 max-md:[html[data-page-end]_&]:pointer-events-none max-md:[html[data-page-end]_&]:-translate-y-[150%] max-md:[html[data-page-end]_&]:opacity-0 md:[html[data-page-end]_&]:top-24 bg-muted/85 p-1.5 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.2)] ring-1 ring-black/5 backdrop-blur-xl",
+          : "sticky top-3 z-30 mt-20 rounded-full transition-[top,translate,opacity] duration-300 max-md:[html[data-page-end]_&]:pointer-events-none max-md:[html[data-page-end]_&]:-translate-y-[150%] max-md:[html[data-page-end]_&]:opacity-0 md:[html[data-page-end]_&]:top-20 bg-muted/85 p-1.5 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.2)] ring-1 ring-black/5 backdrop-blur-xl",
         className,
       )}
     >

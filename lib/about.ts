@@ -15,7 +15,7 @@ export const hero = {
   },
 } satisfies Record<string, Localized>
 
-export const sectionIds = ["story", "services", "industries", "principles", "approach"] as const
+export const sectionIds = ["story", "approach", "services", "principles", "industries"] as const
 
 export type SectionId = (typeof sectionIds)[number]
 

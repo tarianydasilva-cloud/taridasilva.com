@@ -17,7 +17,7 @@ function isActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`)
 }
 
-const pill = "block rounded-full px-3 py-2 text-sm transition-colors md:px-4 md:text-base"
+const pill = "block rounded-full px-3 py-1.5 text-sm transition-colors md:px-4"
 
 // Hidden while scrolling down, shown again on any scroll up or near the top of the page.
 // With `onlyAtEnds` (the About page below desktop size, where its own section bar takes the top),
@@ -65,11 +65,16 @@ export function SiteHeader() {
       className="fixed inset-x-0 top-3 z-40 transition-transform duration-300 ease-out focus-within:translate-y-0 data-[hidden]:-translate-y-[150%] motion-reduce:transition-none"
     >
       <div className={container}>
-        <div className="flex items-center justify-between gap-2 rounded-2xl bg-muted/85 p-2 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.2)] ring-1 ring-black/5 backdrop-blur-xl">
+        <div className="flex h-14 items-center justify-between gap-2 rounded-2xl bg-background/80 p-1.5 pl-4 shadow-[0_8px_32px_-16px_rgba(0,0,0,0.25)] ring-1 ring-black/[0.07] backdrop-blur-xl md:pl-5">
           {/* The name opens About; on About itself it leads back to the home page. */}
-          <Link href={isActive(pathname, "/about") ? "/" : "/about"} className="group min-w-0 px-3 py-1.5 md:px-4">
-            <span className="block text-lg leading-snug tracking-tight transition-colors group-hover:text-accent">Tari da Silva</span>
-            <span className="block truncate text-sm text-muted-foreground">{t.role}</span>
+          <Link
+            href={isActive(pathname, "/about") ? "/" : "/about"}
+            className="group flex min-w-0 items-baseline gap-3"
+          >
+            <span className="shrink-0 text-lg font-medium tracking-tight transition-colors group-hover:text-accent">
+              Tari da Silva
+            </span>
+            <span className="hidden truncate text-sm text-muted-foreground md:inline">{t.role}</span>
           </Link>
 
           <nav aria-label="Primary">
@@ -83,7 +88,7 @@ export function SiteHeader() {
                       aria-current={active ? "page" : undefined}
                       className={cn(
                         pill,
-                        active ? "bg-foreground text-background" : "text-foreground/80 hover:bg-background",
+                        active ? "bg-foreground text-background" : "text-foreground/80 hover:bg-muted",
                       )}
                     >
                       {t.nav[item.key]}
@@ -92,7 +97,7 @@ export function SiteHeader() {
                 )
               })}
               {/* On phones the language switch lives in the footer only, to keep the bar on one line. */}
-              <li className="hidden rounded-full bg-background px-3 py-2 sm:block md:px-4">
+              <li className="hidden rounded-full bg-muted px-3 py-1.5 sm:block md:px-4">
                 <LanguageToggle />
               </li>
               <li>

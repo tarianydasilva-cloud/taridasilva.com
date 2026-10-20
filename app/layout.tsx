@@ -41,7 +41,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
             {dictionary[locale].skip}
           </a>
           <SiteHeader />
-          <main id="main" className={cn(container, "flex-1 pt-28 md:pt-32")}>
+          <main id="main" className={cn(container, "flex-1 pt-24 md:pt-28")}>
             {children}
           </main>
           <SiteFooter />
