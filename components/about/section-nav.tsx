@@ -80,14 +80,15 @@ export function SectionNav({ vertical, className }: { vertical?: boolean; classN
         className={cn("relative flex gap-1", vertical ? "flex-col" : "overflow-x-auto [scrollbar-width:none]")}
       >
         {sectionIds.map((id) => (
-          <li key={id} className="shrink-0">
+          // In the horizontal bar the pills share the full width; they scroll sideways only if they cannot fit.
+          <li key={id} className={cn("shrink-0", !vertical && "flex-1")}>
             <a
               href={`#${id}`}
               onClick={() => select(id)}
               aria-current={active === id ? "location" : undefined}
               className={cn(
                 "block text-sm text-foreground/75 transition-colors hover:bg-background hover:text-foreground aria-[current=location]:bg-foreground aria-[current=location]:text-background",
-                vertical ? "rounded-xl px-3 py-2 text-center" : "rounded-full px-4 py-2",
+                vertical ? "rounded-xl px-3 py-2" : "whitespace-nowrap rounded-full px-3 py-2 text-center sm:px-4",
               )}
             >
               {t.about.sections[id]}
