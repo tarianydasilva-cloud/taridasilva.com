@@ -9,8 +9,8 @@ import { useLanguage } from "./language-provider"
 import { LanguageToggle } from "./language-toggle"
 
 const navItems = [
-  { href: "/work", key: "work" },
   { href: "/about", key: "about" },
+  { href: "/work", key: "work" },
 ] as const
 
 function isActive(pathname: string, href: string) {
@@ -32,6 +32,8 @@ function useHideOnScroll(onlyAtEnds: boolean) {
       const y = window.scrollY
       const nearTop = y <= 80
       const nearBottom = window.innerHeight + y >= document.documentElement.scrollHeight - 80
+      // Lets the About section bar step aside at the end of the page, where the header takes over.
+      document.documentElement.toggleAttribute("data-page-end", nearBottom)
       if (onlyAtEnds && narrow.matches) {
         setHidden(!nearTop && !nearBottom)
       } else if (Math.abs(y - lastY) >= 4) {
@@ -55,11 +57,6 @@ export function SiteHeader() {
   const pathname = usePathname()
   const { t } = useLanguage()
   const hidden = useHideOnScroll(isActive(pathname, "/about"))
-
-  // Lets other floating bars (the About section bar) move out of the header's way while it shows.
-  useEffect(() => {
-    document.documentElement.toggleAttribute("data-header-shown", !hidden)
-  }, [hidden])
 
   return (
     <header

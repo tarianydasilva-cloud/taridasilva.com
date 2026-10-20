@@ -85,7 +85,6 @@ const images = ${JSON.stringify(Object.fromEntries(images))};
 const views = [...document.querySelectorAll(".pv-view")];
 const keys = new Set(views.map((v) => v.dataset.key));
 document.documentElement.className = ${JSON.stringify(htmlClass)};
-document.documentElement.toggleAttribute("data-header-shown", true);
 document.body.className = ${JSON.stringify(bodyClass)};
 document.querySelectorAll("img[data-pv-src]").forEach((img) => { img.src = images[img.dataset.pvSrc]; });
 let locale = "en";
@@ -161,13 +160,11 @@ addEventListener("scroll", () => {
   const y = scrollY;
   const nearTop = y <= 80;
   const nearBottom = innerHeight + y >= document.documentElement.scrollHeight - 80;
+  document.documentElement.toggleAttribute("data-page-end", nearBottom);
   let hidden;
   if (current === "about" && matchMedia("(max-width: 1023px)").matches) hidden = !nearTop && !nearBottom;
   else if (Math.abs(y - lastScrollY) >= 4) hidden = !nearTop && y > lastScrollY;
-  if (hidden !== undefined) {
-    document.querySelectorAll("[data-autohide]").forEach((header) => header.toggleAttribute("data-hidden", hidden));
-    document.documentElement.toggleAttribute("data-header-shown", !hidden);
-  }
+  if (hidden !== undefined) document.querySelectorAll("[data-autohide]").forEach((header) => header.toggleAttribute("data-hidden", hidden));
   lastScrollY = y;
 }, { passive: true });
 addEventListener("resize", updateNav);
