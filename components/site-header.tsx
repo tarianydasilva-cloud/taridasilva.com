@@ -51,7 +51,8 @@ export function SiteHeader() {
     >
       <div className={container}>
         <div className="flex items-center justify-between gap-2 rounded-2xl bg-muted/85 p-2 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.2)] ring-1 ring-black/5 backdrop-blur-xl">
-          <Link href="/about" className="group min-w-0 px-3 py-1.5 md:px-4">
+          {/* The name opens About; on About itself it leads back to the home page. */}
+          <Link href={isActive(pathname, "/about") ? "/" : "/about"} className="group min-w-0 px-3 py-1.5 md:px-4">
             <span className="block text-lg leading-snug tracking-tight transition-colors group-hover:text-accent">Tari da Silva</span>
             <span className="block truncate text-sm text-muted-foreground">{t.role}</span>
           </Link>
