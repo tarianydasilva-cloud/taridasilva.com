@@ -25,7 +25,6 @@ export const dictionary = {
       },
     },
     pages: {
-      home: { eyebrow: "Selected work", title: "Strategy, systems and products that move people forward." },
       work: { eyebrow: "Selected work", title: "Work" },
       about: { eyebrow: "Profile", title: "About" },
       contact: { eyebrow: "Get in touch", title: "Contact" },
@@ -55,7 +54,6 @@ export const dictionary = {
       },
     },
     pages: {
-      home: { eyebrow: "Trabajo seleccionado", title: "Estrategia, sistemas y productos que impulsan a las personas." },
       work: { eyebrow: "Trabajo seleccionado", title: "Trabajo" },
       about: { eyebrow: "Perfil", title: "Sobre mí" },
       contact: { eyebrow: "Hablemos", title: "Contacto" },

@@ -1,10 +1,10 @@
-import { PageIntro } from "@/components/page-intro"
+import { HomeIntro } from "@/components/home-intro"
 import { ProjectGrid } from "@/components/project-grid"
 
 export default function HomePage() {
   return (
     <>
-      <PageIntro page="home" />
+      <HomeIntro />
       <ProjectGrid />
     </>
   )
