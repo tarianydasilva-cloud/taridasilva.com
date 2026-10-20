@@ -5,8 +5,10 @@ type Localized = Record<Locale, string>
 // Text in [square brackets] is a placeholder waiting for real content.
 
 // Clips play in order and loop. Put the files in /public/about/ and list them here, e.g. "/about/hero-1.mp4".
-// The clips are shown mirrored, like a webcam.
-export const heroVideos: string[] = []
+// Encode them mirrored, muted and web-sized, with a first-frame poster next to each as .jpg:
+//   ffmpeg -i in.mov -vf "hflip,scale=1440:-2" -an -c:v libx264 -crf 26 -pix_fmt yuv420p -movflags +faststart out.mp4
+//   ffmpeg -i out.mp4 -frames:v 1 -q:v 4 out.jpg
+export const heroVideos: string[] = ["/about/tari-desktop.mp4"]
 
 // Icons on the About "desktop", placed down the left and right edges so the face in the video stays clear.
 // File names stay in English in both languages, like real files.

@@ -33,6 +33,7 @@ const routes = ["/", "/work", "/about", "/contact", ...slugs.map((slug) => `/wor
 
 const stylesheets = new Set()
 const images = new Map()
+const media = new Map()
 let htmlClass = ""
 let bodyClass = ""
 const views = []
@@ -59,6 +60,10 @@ for (const locale of locales) {
           .replace(/\s(srcSet|sizes)="[^"]*"/g, "")
           .replace(/\ssrc="[^"]*"/, ` data-pv-src="${src}"`)
       })
+    // Videos and their posters are inlined whole, like the fonts.
+    for (const m of body.matchAll(/<video\b[^>]*>/g)) {
+      for (const [, path] of m[0].matchAll(/\s(?:src|poster)="(\/[^"]+)"/g)) media.set(path, null)
+    }
     views.push(
       `<div class="pv-view" data-key="${routeKey(route)}" data-locale="${locale}" data-title="${title}" hidden>${body}</div>`,
     )
@@ -68,6 +73,8 @@ for (const locale of locales) {
 for (const src of images.keys()) {
   images.set(src, await dataUri(`/_next/image?url=${encodeURIComponent(src)}&w=${imageWidth}&q=75`, "image/webp"))
 }
+
+for (const path of media.keys()) media.set(path, await dataUri(path))
 
 let css = ""
 for (const href of stylesheets) {
@@ -208,7 +215,7 @@ route();
 const page = `<title>Tari da Silva Portfolio</title>
 <style>${css}
 .pv-view{display:contents}</style>
-${views.join("\n")}
+${views.join("\n").replace(/(<video\b[^>]*>)/g, (tag) => tag.replace(/\s(src|poster)="(\/[^"]+)"/g, (_, attr, path) => ` ${attr}="${media.get(path)}"`))}
 <script>${script}</script>
 `
 

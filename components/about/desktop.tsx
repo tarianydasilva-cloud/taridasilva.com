@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { desktopItems, heroVideos, type DesktopIcon } from "@/lib/about"
 import { useLanguage } from "../language-provider"
 
@@ -133,6 +133,13 @@ const menus = ["File", "Edit", "View", "Go", "Window", "Help"]
 export function AboutDesktop() {
   const [index, setIndex] = useState(0)
   const src = heroVideos[index]
+  const video = useRef<HTMLVideoElement>(null)
+
+  // With reduced motion the video stays on its first frame.
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) video.current?.pause()
+  }, [src])
+
   const left = desktopItems.filter((item) => item.side === "left")
   const right = desktopItems.filter((item) => item.side === "right")
 
@@ -141,20 +148,22 @@ export function AboutDesktop() {
       {src ? (
         <video
           key={src}
+          ref={video}
           src={src}
           autoPlay
           muted
           playsInline
           loop={heroVideos.length === 1}
           onEnded={() => setIndex((index + 1) % heroVideos.length)}
+          poster={src.replace(/\.mp4$/, ".jpg")}
           aria-hidden="true"
-          className="size-full -scale-x-100 object-cover motion-reduce:hidden"
+          className="size-full object-cover"
         />
       ) : (
         <div aria-hidden="true" className="size-full" style={{ background: wallpaper }} />
       )}
 
-      <div className="absolute inset-x-0 top-0 flex h-6 items-center justify-between bg-black/20 px-3 text-[11px] text-white backdrop-blur-2xl md:h-7 md:px-4 md:text-[13px]">
+      <div className="absolute inset-x-0 top-0 flex h-6 items-center justify-between bg-white/45 px-3 text-[11px] text-black backdrop-blur-2xl md:h-7 md:px-4 md:text-[13px]">
         <span className="flex items-center gap-4">
           <span className="font-semibold">Tari da Silva</span>
           {menus.map((menu) => (
