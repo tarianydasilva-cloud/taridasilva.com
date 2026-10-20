@@ -19,22 +19,22 @@ export function ProjectGrid() {
             {/* Nearly a screen tall, so one row fills the view and the next row peeks in below. */}
             <Link
               href={`/work/${project.slug}`}
-              className="group flex h-[calc(100svh-11rem)] max-h-[60rem] min-h-[28rem] flex-col rounded-2xl bg-muted p-2 transition-colors hover:bg-border/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="group flex h-[calc(100svh-11rem)] max-h-[60rem] min-h-[28rem] flex-col overflow-hidden rounded-2xl bg-muted transition-colors hover:bg-border/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
-              <div className="px-4 pb-6 pt-5 md:px-5">
+              <div className="px-6 pb-6 pt-7 md:px-7">
                 <h3 className="text-2xl leading-tight tracking-tight text-balance md:text-3xl">{project.title[locale]}</h3>
                 <p className="mt-3 text-sm text-muted-foreground">{project.year}</p>
                 <p className="mt-2 line-clamp-2 max-w-md leading-relaxed text-muted-foreground">
                   {project.summary[locale]}
                 </p>
               </div>
-              {/* The picture takes all the space left below the text. */}
+              {/* The picture bleeds to the card edges and takes all the space left below the text. */}
               <ProjectMedia
                 image={project.image}
                 video={project.video}
                 alt={project.imageAlt[locale]}
                 priority={index < 2}
-                className="isolate aspect-auto min-h-0 flex-1 rounded-xl"
+                className="isolate aspect-auto min-h-0 flex-1"
               />
             </Link>
           </li>
