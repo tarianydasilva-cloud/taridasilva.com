@@ -10,19 +10,18 @@ type Localized = Record<Locale, string>
 //   ffmpeg -i out.mp4 -frames:v 1 -q:v 4 out.jpg
 export const heroVideos: string[] = ["/about/tari-desktop.mp4"]
 
-// Icons on the About "desktop", placed down the left and right edges so the face in the video stays clear.
-// File names stay in English in both languages, like real files.
-export type DesktopIcon = "folder" | "text" | "pdf" | "mail"
+// Icons on the About "desktop", arranged like Finder: top to bottom in columns from the right edge,
+// so the face in the video stays clear. File names stay in English in both languages, like real files.
+export type DesktopIcon = "folder" | "text" | "pdf"
 
-export const desktopItems: { label: string; icon: DesktopIcon; href: string; side: "left" | "right" }[] = [
-  { label: "about_me.txt", icon: "text", href: "#story", side: "left" },
-  { label: "how_i_work.pdf", icon: "pdf", href: "#approach", side: "left" },
-  { label: "principles.txt", icon: "text", href: "#principles", side: "left" },
-  { label: "say_hola", icon: "mail", href: "/contact", side: "left" },
-  { label: "Innohub", icon: "folder", href: "/work/innohub", side: "right" },
-  { label: "Fleet Connect", icon: "folder", href: "/work/fleet-connect", side: "right" },
-  { label: "Service Design", icon: "folder", href: "/work/service-experience-design", side: "right" },
-  { label: "Design Ops", icon: "folder", href: "/work/design-ops-strategy", side: "right" },
+export const desktopItems: { label: string; icon: DesktopIcon; href: string }[] = [
+  { label: "Innohub", icon: "folder", href: "/work/innohub" },
+  { label: "Fleet Connect", icon: "folder", href: "/work/fleet-connect" },
+  { label: "Service Design", icon: "folder", href: "/work/service-experience-design" },
+  { label: "Design Ops", icon: "folder", href: "/work/design-ops-strategy" },
+  { label: "about_me.txt", icon: "text", href: "#story" },
+  { label: "how_i_work.pdf", icon: "pdf", href: "#approach" },
+  { label: "principles.txt", icon: "text", href: "#principles" },
 ]
 
 export const hero = {
