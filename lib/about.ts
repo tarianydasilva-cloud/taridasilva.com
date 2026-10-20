@@ -10,18 +10,30 @@ type Localized = Record<Locale, string>
 //   ffmpeg -i out.mp4 -frames:v 1 -q:v 4 out.jpg
 export const heroVideos: string[] = ["/about/tari-desktop.mp4"]
 
-// Icons on the About "desktop", arranged like Finder: top to bottom in columns from the right edge,
-// so the face in the video stays clear. File names stay in English in both languages, like real files.
-export type DesktopIcon = "folder" | "text" | "pdf"
+// Icons on the About "desktop". Left ones sit under the widgets; right ones fill columns from the right edge,
+// like Finder, so the face in the video stays clear. File names stay in English in both languages, like real files.
+// Items without an href are shown but not clickable yet; an image item shows its picture as the icon once set.
+export type DesktopIcon = "folder" | "text" | "pdf" | "map" | "drive" | "image"
 
-export const desktopItems: { label: string; icon: DesktopIcon; href: string }[] = [
-  { label: "Innohub", icon: "folder", href: "/work/innohub" },
-  { label: "Fleet Connect", icon: "folder", href: "/work/fleet-connect" },
-  { label: "Service Design", icon: "folder", href: "/work/service-experience-design" },
-  { label: "Design Ops", icon: "folder", href: "/work/design-ops-strategy" },
-  { label: "about_me.txt", icon: "text", href: "#story" },
-  { label: "how_i_work.pdf", icon: "pdf", href: "#approach" },
-  { label: "principles.txt", icon: "text", href: "#principles" },
+export type DesktopItem = {
+  label: string
+  icon: DesktopIcon
+  side: "left" | "right"
+  href?: string
+  color?: "orange" | "blue"
+  image?: string
+}
+
+export const desktopItems: DesktopItem[] = [
+  { label: "About Me.txt", icon: "text", side: "left", href: "#story" },
+  { label: "World Map", icon: "map", side: "left" },
+  { label: "Innohub", icon: "folder", side: "right", color: "orange", href: "/work/innohub" },
+  { label: "Fleet Connect", icon: "folder", side: "right", color: "blue", href: "/work/fleet-connect" },
+  { label: "Service Design", icon: "folder", side: "right", color: "orange", href: "/work/service-experience-design" },
+  { label: "Design Ops", icon: "folder", side: "right", color: "blue", href: "/work/design-ops-strategy" },
+  { label: "Tari HD", icon: "drive", side: "right", href: "/work" },
+  { label: "favourite_book.jpg", icon: "image", side: "right" },
+  { label: "favourite_film.jpg", icon: "image", side: "right" },
 ]
 
 export const hero = {

@@ -195,6 +195,16 @@ function route() {
   render(true);
 }
 
+// The About desktop's menu bar clock shows the visitor's own time (components/about/desktop.tsx).
+function tickClocks() {
+  const time = new Date()
+    .toLocaleString(undefined, { weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })
+    .replace(/,/g, "");
+  document.querySelectorAll("[data-local-clock]").forEach((el) => { el.textContent = time; });
+}
+tickClocks();
+setInterval(tickClocks, 15000);
+
 // Copy buttons (the contact page's email).
 document.addEventListener("click", (event) => {
   const button = event.target.closest("button[data-copy]");
