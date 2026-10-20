@@ -27,9 +27,9 @@ export type DesktopItem = {
 export const desktopItems: DesktopItem[] = [
   { label: "About Me.txt", icon: "text", side: "left", href: "#story" },
   { label: "World Map", icon: "map", side: "left" },
-  { label: "Innohub", icon: "folder", side: "right", color: "orange", href: "/work/innohub" },
+  { label: "Innohub", icon: "folder", side: "right", color: "blue", href: "/work/innohub" },
   { label: "Fleet Connect", icon: "folder", side: "right", color: "blue", href: "/work/fleet-connect" },
-  { label: "Service Design", icon: "folder", side: "right", color: "orange", href: "/work/service-experience-design" },
+  { label: "Service Design", icon: "folder", side: "right", color: "blue", href: "/work/service-experience-design" },
   { label: "Design Ops", icon: "folder", side: "right", color: "blue", href: "/work/design-ops-strategy" },
   { label: "Tari HD", icon: "drive", side: "right", href: "/work" },
   { label: "favourite_book.jpg", icon: "image", side: "right" },
