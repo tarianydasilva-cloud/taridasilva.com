@@ -84,31 +84,31 @@ export const industries = {
 
 export const principles: { title: Localized; body: Localized }[] = [
   {
-    title: { en: "Judgment", es: "Criterio" },
+    title: { en: "Vision", es: "Visión" },
     body: {
-      en: "Knowing what matters, what to cut and when good enough isn't. Decisions made on evidence and explained in plain words.",
-      es: "Saber qué importa, qué recortar y cuándo lo suficiente no basta. Decisiones basadas en evidencias y explicadas con claridad.",
+      en: "Start with the destination. Before designing anything, define what success looks like and who it's for.",
+      es: "Empezar por el destino. Antes de diseñar nada, definir cómo es el éxito y para quién es.",
     },
   },
   {
-    title: { en: "Curiosity", es: "Curiosidad" },
+    title: { en: "Evidence", es: "Evidencia" },
     body: {
-      en: "Asking why until the real problem shows up. Every assumption is a question worth testing.",
-      es: "Preguntar por qué hasta que aparece el problema real. Cada suposición es una pregunta que vale la pena poner a prueba.",
+      en: "Opinions start the conversation, research and testing end it. Decisions are made on evidence and explained in plain words.",
+      es: "Las opiniones abren la conversación; la investigación y las pruebas la cierran. Las decisiones se toman con evidencias y se explican con palabras claras.",
     },
   },
   {
-    title: { en: "Excellence", es: "Excelencia" },
+    title: { en: "Craft", es: "Oficio" },
     body: {
-      en: "Thorough to the last detail, because the details are what people actually use.",
-      es: "Cuidado hasta el último detalle, porque los detalles son lo que las personas usan de verdad.",
+      en: "Make it real, then make it right. Prototype early, often with AI, and refine every detail until the experience feels effortless.",
+      es: "Primero hacerlo real, después hacerlo bien. Prototipar pronto, a menudo con IA, y pulir cada detalle hasta que la experiencia parezca natural.",
     },
   },
   {
-    title: { en: "Commitment", es: "Compromiso" },
+    title: { en: "Ambition", es: "Ambición" },
     body: {
-      en: "Owning the outcome, not just the deliverable, and staying until it works for the people who use it.",
-      es: "Hacerme cargo del resultado, no solo del entregable, y quedarme hasta que funcione para quien lo usa.",
+      en: "Raise the bar every time. Everything should be better than what came before, down to the last detail.",
+      es: "Subir el listón cada vez. Todo debería ser mejor que lo anterior, hasta el último detalle.",
     },
   },
 ]

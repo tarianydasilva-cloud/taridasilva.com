@@ -87,7 +87,7 @@ export function SectionNav({ vertical, className }: { vertical?: boolean; classN
               aria-current={active === id ? "location" : undefined}
               className={cn(
                 "block text-sm text-foreground/75 transition-colors hover:bg-background hover:text-foreground aria-[current=location]:bg-foreground aria-[current=location]:text-background",
-                vertical ? "rounded-xl px-3 py-2" : "rounded-full px-4 py-2",
+                vertical ? "rounded-xl px-3 py-2 text-center" : "rounded-full px-4 py-2",
               )}
             >
               {t.about.sections[id]}
