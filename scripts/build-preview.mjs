@@ -162,7 +162,7 @@ addEventListener("scroll", () => {
   const nearBottom = innerHeight + y >= document.documentElement.scrollHeight - 80;
   document.documentElement.toggleAttribute("data-page-end", nearBottom);
   let hidden;
-  if (current === "about" && matchMedia("(max-width: 1023px)").matches) hidden = !nearTop && !nearBottom;
+  if ((current === "about" || current.startsWith("work.")) && matchMedia("(max-width: 1023px)").matches) hidden = !nearTop && !nearBottom;
   else if (Math.abs(y - lastScrollY) >= 4) hidden = !nearTop && y > lastScrollY;
   if (hidden !== undefined) document.querySelectorAll("[data-autohide]").forEach((header) => header.toggleAttribute("data-hidden", hidden));
   lastScrollY = y;

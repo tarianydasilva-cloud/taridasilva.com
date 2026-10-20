@@ -20,7 +20,7 @@ function isActive(pathname: string, href: string) {
 const pill = "block rounded-full px-3 py-1.5 text-sm transition-colors md:px-4"
 
 // Hidden while scrolling down, shown again on any scroll up or near the top of the page.
-// With `onlyAtEnds` (the About page below desktop size, where its own section bar takes the top),
+// With `onlyAtEnds` (pages with their own section bar, About and case studies, below desktop size),
 // it shows only near the top or the bottom of the page.
 function useHideOnScroll(onlyAtEnds: boolean) {
   const [hidden, setHidden] = useState(false)
@@ -56,7 +56,8 @@ function useHideOnScroll(onlyAtEnds: boolean) {
 export function SiteHeader() {
   const pathname = usePathname()
   const { t } = useLanguage()
-  const hidden = useHideOnScroll(isActive(pathname, "/about"))
+  // About and case studies have their own section bar, which takes the top on smaller screens.
+  const hidden = useHideOnScroll(isActive(pathname, "/about") || pathname.startsWith("/work/"))
 
   return (
     <header
@@ -69,12 +70,9 @@ export function SiteHeader() {
           {/* The name opens About; on About itself it leads back to the home page. */}
           <Link
             href={isActive(pathname, "/about") ? "/" : "/about"}
-            className="group flex min-w-0 items-baseline gap-3"
+            className="shrink-0 text-lg font-medium tracking-tight transition-colors hover:text-accent"
           >
-            <span className="shrink-0 text-lg font-medium tracking-tight transition-colors group-hover:text-accent">
-              Tari da Silva
-            </span>
-            <span className="hidden truncate text-sm text-muted-foreground md:inline">{t.role}</span>
+            Tari da Silva
           </Link>
 
           <nav aria-label="Primary">

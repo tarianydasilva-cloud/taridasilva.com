@@ -30,6 +30,19 @@ export const dictionary = {
       contact: { eyebrow: "Get in touch", title: "Contact" },
     },
     work: { disciplines: "Disciplines", allWork: "All work", year: "Year" },
+    caseStudy: {
+      sectionNav: "Case study sections",
+      sections: {
+        overview: "Overview",
+        challenge: "Challenge",
+        approach: "Approach",
+        solution: "Solution",
+        results: "Results",
+        learnings: "Learnings",
+      },
+      facts: { client: "Client", role: "Role", team: "Team", timeline: "Timeline" },
+      nextProject: "Next project",
+    },
     footer: {
       cta: "Have a product worth shaping?",
       elsewhere: "Elsewhere",
@@ -59,6 +72,19 @@ export const dictionary = {
       contact: { eyebrow: "Hablemos", title: "Contacto" },
     },
     work: { disciplines: "Disciplinas", allWork: "Todo el trabajo", year: "Año" },
+    caseStudy: {
+      sectionNav: "Secciones del caso de estudio",
+      sections: {
+        overview: "Resumen",
+        challenge: "Reto",
+        approach: "Enfoque",
+        solution: "Solución",
+        results: "Resultados",
+        learnings: "Aprendizajes",
+      },
+      facts: { client: "Cliente", role: "Rol", team: "Equipo", timeline: "Duración" },
+      nextProject: "Siguiente proyecto",
+    },
     footer: {
       cta: "¿Tienes un producto que merece forma?",
       elsewhere: "En otros sitios",

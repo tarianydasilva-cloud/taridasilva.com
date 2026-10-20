@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { AboutHero } from "@/components/about/hero"
+import { AboutSectionNav } from "@/components/about/section-nav"
 import { AboutSections } from "@/components/about/sections"
-import { SectionNav } from "@/components/about/section-nav"
 
 export const metadata: Metadata = { title: "About" }
 
@@ -11,12 +11,12 @@ export default function AboutPage() {
     <div className="lg:grid lg:grid-cols-12 lg:gap-x-10">
       <aside className="hidden lg:col-span-3 lg:block">
         <div className="sticky top-32">
-          <SectionNav vertical />
+          <AboutSectionNav vertical />
         </div>
       </aside>
       <div className="min-w-0 lg:col-span-9">
         <AboutHero />
-        <SectionNav className="lg:hidden" />
+        <AboutSectionNav className="lg:hidden" />
         <AboutSections />
       </div>
     </div>

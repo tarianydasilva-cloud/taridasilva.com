@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { getProject, projects } from "@/lib/projects"
-import { CaseStudyIntro } from "@/components/case-study-intro"
+import { CaseStudy } from "@/components/case-study"
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }))
@@ -16,5 +16,5 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
   const project = getProject((await params).slug)
   if (!project) notFound()
 
-  return <CaseStudyIntro slug={project.slug} />
+  return <CaseStudy slug={project.slug} />
 }
