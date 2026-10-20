@@ -16,28 +16,26 @@ export function ProjectGrid() {
       <ul className="grid grid-cols-1 gap-3 md:grid-cols-2">
         {projects.map((project, index) => (
           <li key={project.slug}>
+            {/* Nearly a screen tall, so one row fills the view and the next row peeks in below. */}
             <Link
               href={`/work/${project.slug}`}
-              className="group block h-full rounded-2xl bg-muted p-2 transition-colors hover:bg-border/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="group flex h-[calc(100svh-11rem)] max-h-[60rem] min-h-[28rem] flex-col rounded-2xl bg-muted p-2 transition-colors hover:bg-border/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
+              <div className="px-4 pb-6 pt-5 md:px-5">
+                <h3 className="text-2xl leading-tight tracking-tight text-balance md:text-3xl">{project.title[locale]}</h3>
+                <p className="mt-3 text-sm text-muted-foreground">{project.year}</p>
+                <p className="mt-2 line-clamp-2 max-w-md leading-relaxed text-muted-foreground">
+                  {project.summary[locale]}
+                </p>
+              </div>
+              {/* The picture takes all the space left below the text. */}
               <ProjectMedia
                 image={project.image}
                 video={project.video}
                 alt={project.imageAlt[locale]}
                 priority={index < 2}
-                className="isolate rounded-xl"
+                className="isolate aspect-auto min-h-0 flex-1 rounded-xl"
               />
-              <div className="px-3 pb-3 pt-4">
-                <h3 className="text-xl leading-snug tracking-tight text-balance md:text-2xl">{project.title[locale]}</h3>
-                <ul className="mt-4 flex flex-wrap gap-1.5 text-xs" aria-label={t.work.disciplines}>
-                  <li className="rounded-full bg-foreground px-3 py-1 text-background">{project.year}</li>
-                  {project.tags.map((tag) => (
-                    <li key={tag.en} className="rounded-full bg-background px-3 py-1 text-muted-foreground">
-                      {tag[locale]}
-                    </li>
-                  ))}
-                </ul>
-              </div>
             </Link>
           </li>
         ))}
