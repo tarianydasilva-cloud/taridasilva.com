@@ -85,6 +85,7 @@ const images = ${JSON.stringify(Object.fromEntries(images))};
 const views = [...document.querySelectorAll(".pv-view")];
 const keys = new Set(views.map((v) => v.dataset.key));
 document.documentElement.className = ${JSON.stringify(htmlClass)};
+document.documentElement.toggleAttribute("data-header-shown", true);
 document.body.className = ${JSON.stringify(bodyClass)};
 document.querySelectorAll("img[data-pv-src]").forEach((img) => { img.src = images[img.dataset.pvSrc]; });
 let locale = "en";
@@ -153,13 +154,20 @@ document.addEventListener("click", (event) => {
 });
 addEventListener("scroll", updateNav, { passive: true });
 
-// Mirrors the site header (components/site-header.tsx): hidden while scrolling down, shown on scroll up.
+// Mirrors the site header (components/site-header.tsx): hidden while scrolling down, shown on scroll up;
+// on About below desktop size it shows only near the top or the bottom of the page.
 let lastScrollY = scrollY;
 addEventListener("scroll", () => {
   const y = scrollY;
-  if (Math.abs(y - lastScrollY) < 4) return;
-  const hidden = y > 80 && y > lastScrollY;
-  document.querySelectorAll("[data-autohide]").forEach((header) => header.toggleAttribute("data-hidden", hidden));
+  const nearTop = y <= 80;
+  const nearBottom = innerHeight + y >= document.documentElement.scrollHeight - 80;
+  let hidden;
+  if (current === "about" && matchMedia("(max-width: 1023px)").matches) hidden = !nearTop && !nearBottom;
+  else if (Math.abs(y - lastScrollY) >= 4) hidden = !nearTop && y > lastScrollY;
+  if (hidden !== undefined) {
+    document.querySelectorAll("[data-autohide]").forEach((header) => header.toggleAttribute("data-hidden", hidden));
+    document.documentElement.toggleAttribute("data-header-shown", !hidden);
+  }
   lastScrollY = y;
 }, { passive: true });
 addEventListener("resize", updateNav);

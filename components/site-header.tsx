@@ -20,20 +20,33 @@ function isActive(pathname: string, href: string) {
 const pill = "block rounded-full px-3 py-2 text-sm transition-colors md:px-4 md:text-base"
 
 // Hidden while scrolling down, shown again on any scroll up or near the top of the page.
-function useHideOnScroll() {
+// With `onlyAtEnds` (the About page below desktop size, where its own section bar takes the top),
+// it shows only near the top or the bottom of the page.
+function useHideOnScroll(onlyAtEnds: boolean) {
   const [hidden, setHidden] = useState(false)
 
   useEffect(() => {
+    const narrow = window.matchMedia("(max-width: 1023px)")
     let lastY = window.scrollY
     const update = () => {
       const y = window.scrollY
-      if (Math.abs(y - lastY) < 4) return
-      setHidden(y > 80 && y > lastY)
+      const nearTop = y <= 80
+      const nearBottom = window.innerHeight + y >= document.documentElement.scrollHeight - 80
+      if (onlyAtEnds && narrow.matches) {
+        setHidden(!nearTop && !nearBottom)
+      } else if (Math.abs(y - lastY) >= 4) {
+        setHidden(!nearTop && y > lastY)
+      }
       lastY = y
     }
+    update()
     window.addEventListener("scroll", update, { passive: true })
-    return () => window.removeEventListener("scroll", update)
-  }, [])
+    narrow.addEventListener("change", update)
+    return () => {
+      window.removeEventListener("scroll", update)
+      narrow.removeEventListener("change", update)
+    }
+  }, [onlyAtEnds])
 
   return hidden
 }
@@ -41,7 +54,12 @@ function useHideOnScroll() {
 export function SiteHeader() {
   const pathname = usePathname()
   const { t } = useLanguage()
-  const hidden = useHideOnScroll()
+  const hidden = useHideOnScroll(isActive(pathname, "/about"))
+
+  // Lets other floating bars (the About section bar) move out of the header's way while it shows.
+  useEffect(() => {
+    document.documentElement.toggleAttribute("data-header-shown", !hidden)
+  }, [hidden])
 
   return (
     <header
