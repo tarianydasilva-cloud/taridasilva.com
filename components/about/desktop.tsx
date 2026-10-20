@@ -1,10 +1,10 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { useEffect, useRef, useState, type ReactNode } from "react";
-import { desktopItems, heroVideos, type DesktopItem } from "@/lib/about";
-import { email, socials } from "@/lib/site";
-import { useLanguage } from "../language-provider";
+import Link from "next/link"
+import { useEffect, useRef, useState, type ReactNode } from "react"
+import { desktopItems, heroVideos, type DesktopItem } from "@/lib/about"
+import { email, socials } from "@/lib/site"
+import { useLanguage } from "../language-provider"
 
 const folderColors = {
   blue: { back: "#3b97e3", top: "#8fd3ff", bottom: "#4fb0f5", edge: "#c4e8ff" },
@@ -14,93 +14,68 @@ const folderColors = {
     bottom: "#ff4a1c",
     edge: "#ffc4ad",
   },
-};
+}
 
-function Icon({
-  item,
-}: {
-  item: Pick<DesktopItem, "icon" | "color" | "image" | "label">;
-}) {
+function Icon({ item }: { item: Pick<DesktopItem, "icon" | "color" | "image" | "label"> }) {
   if (item.icon === "folder") {
-    const color = folderColors[item.color ?? "blue"];
-    const id = `folder-${item.color ?? "blue"}`;
+    const color = folderColors[item.color ?? "blue"]
+    const id = `folder-${item.color ?? "blue"}`
     return (
-      <svg
-        viewBox="0 0 64 52"
-        aria-hidden="true"
-        className="w-full drop-shadow-md"
-      >
+      <svg viewBox="0 0 64 52" aria-hidden="true" className="w-full drop-shadow-md">
         <defs>
           <linearGradient id={id} x1="0" y1="0" x2="0" y2="1">
             <stop offset="0" stopColor={color.top} />
             <stop offset="1" stopColor={color.bottom} />
           </linearGradient>
         </defs>
-        <path
-          d="M4 9a4 4 0 0 1 4-4h15.5a4 4 0 0 1 2.8 1.2L30 10h26a4 4 0 0 1 4 4v6H4z"
-          fill={color.back}
-        />
+        <path d="M4 9a4 4 0 0 1 4-4h15.5a4 4 0 0 1 2.8 1.2L30 10h26a4 4 0 0 1 4 4v6H4z" fill={color.back} />
         <rect x="4" y="14" width="56" height="34" rx="4" fill={`url(#${id})`} />
-        <rect
-          x="4"
-          y="14"
-          width="56"
-          height="1.5"
-          rx="0.75"
-          fill={color.edge}
-        />
+        <rect x="4" y="14" width="56" height="1.5" rx="0.75" fill={color.edge} />
       </svg>
-    );
+    )
   }
   if (item.icon === "map") {
-    // A folded paper map: three panels of land and sea with a pin.
+    // A globe turned to Europe and Africa, with an orange dot on Madrid.
     return (
-      <svg
-        viewBox="0 0 64 52"
-        aria-hidden="true"
-        className="w-full drop-shadow-md"
-      >
-        <path d="M8 10l16-5 16 5 16-5v37l-16 5-16-5-16 5z" fill="#cfe9f7" />
-        <path d="M24 5v37M40 10v37" stroke="#9cc7de" strokeWidth="1" />
-        <path
-          d="M11 17c4-3 9-2 11 1s-1 7-5 8-8-1-7-5zM27 22c3-4 9-4 11 0s-2 9-6 9-6-5-5-9zM43 14c4-2 9 0 10 4s-3 6-7 5-5-6-3-9z"
-          fill="#7cc576"
-        />
-        <path
-          d="M45 30c0-3 2.2-5 5-5s5 2 5 5c0 4-5 9-5 9s-5-5-5-9z"
-          fill="#ff2700"
-        />
-        <circle cx="50" cy="30" r="1.8" fill="#ffffff" />
+      <svg viewBox="0 0 64 52" aria-hidden="true" className="w-full drop-shadow-md">
+        <defs>
+          <radialGradient id="globe-sea" cx="0.38" cy="0.32" r="0.75">
+            <stop offset="0" stopColor="#8fd3ff" />
+            <stop offset="1" stopColor="#1f6fd1" />
+          </radialGradient>
+          <clipPath id="globe-clip">
+            <circle cx="32" cy="26" r="22" />
+          </clipPath>
+        </defs>
+        <circle cx="32" cy="26" r="22" fill="url(#globe-sea)" />
+        <g clipPath="url(#globe-clip)" fill="#7cc576">
+          {/* Europe, Scandinavia, Britain, Africa, the Middle East and a sliver of South America. */}
+          <path d="M27 18l-1-4 3-2 2-3 4 1-1 3 4-2 5-1 4 4-2 4-5-1-3 2-4-2-3 2z" />
+          <path d="M35 10l2-5 4 1-1 5z" />
+          <path d="M23 12l2-2 2 4-2 1z" />
+          <path d="M27 21l8-1 5 2 3 5-2 4-2 5-3 6-3 1-1-5-2-5-4-3-2-4z" />
+          <path d="M46 19l7-1 2 6-5 2-4-4z" />
+          <path d="M9 32l6 2-1 8-4-2z" />
+        </g>
+        <circle cx="28.5" cy="17" r="1.8" fill="#ff2700" stroke="#ffffff" strokeWidth="0.8" />
+        <ellipse cx="25" cy="15" rx="9" ry="5" fill="#ffffff" opacity="0.18" />
       </svg>
-    );
+    )
   }
   if (item.icon === "drive") {
     return (
-      <svg
-        viewBox="0 0 64 52"
-        aria-hidden="true"
-        className="w-full drop-shadow-md"
-      >
+      <svg viewBox="0 0 64 52" aria-hidden="true" className="w-full drop-shadow-md">
         <defs>
           <linearGradient id="drive" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0" stopColor="#f4f4f6" />
             <stop offset="1" stopColor="#b9bbc2" />
           </linearGradient>
         </defs>
-        <rect
-          x="6"
-          y="14"
-          width="52"
-          height="26"
-          rx="5"
-          fill="url(#drive)"
-          stroke="#9a9ca3"
-          strokeWidth="0.75"
-        />
+        <rect x="6" y="14" width="52" height="26" rx="5" fill="url(#drive)" stroke="#9a9ca3" strokeWidth="0.75" />
         <rect x="10" y="32" width="44" height="1" fill="#9a9ca3" />
         <circle cx="50" cy="36.5" r="1.4" fill="#5ad16b" />
       </svg>
-    );
+    )
   }
   if (item.icon === "image") {
     // A photo with a white border, like Finder's thumbnail of a .jpg; a soft placeholder until the picture is set.
@@ -108,28 +83,17 @@ function Icon({
       <span className="block rotate-[-3deg] bg-white p-[0.35cqi] shadow-md">
         {item.image ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={item.image}
-            alt=""
-            className="aspect-[4/3] w-full object-cover"
-          />
+          <img src={item.image} alt="" className="aspect-[4/3] w-full object-cover" />
         ) : (
           <span className="media-placeholder block aspect-[4/3] w-full" />
         )}
       </span>
-    );
+    )
   }
   // A page with a folded corner; PDFs get a red label, text files ruled lines.
   return (
-    <svg
-      viewBox="0 0 64 52"
-      aria-hidden="true"
-      className="w-full drop-shadow-md"
-    >
-      <path
-        d="M17 2h21l11 11v35a2 2 0 0 1-2 2H17a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"
-        fill="#ffffff"
-      />
+    <svg viewBox="0 0 64 52" aria-hidden="true" className="w-full drop-shadow-md">
+      <path d="M17 2h21l11 11v35a2 2 0 0 1-2 2H17a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" fill="#ffffff" />
       <path d="M38 2v9a2 2 0 0 0 2 2h9" fill="#e6e4e0" />
       {item.icon === "pdf" ? (
         <>
@@ -147,14 +111,10 @@ function Icon({
           </text>
         </>
       ) : (
-        <path
-          d="M21 20h22M21 25h22M21 30h22M21 35h22M21 40h14"
-          stroke="#c9c6c1"
-          strokeWidth="1.5"
-        />
+        <path d="M21 20h22M21 25h22M21 30h22M21 35h22M21 40h14" stroke="#c9c6c1" strokeWidth="1.5" />
       )}
     </svg>
-  );
+  )
 }
 
 function SmartLink({
@@ -163,19 +123,19 @@ function SmartLink({
   children,
   label,
 }: {
-  href: string;
-  className: string;
-  children: ReactNode;
-  label?: string;
+  href: string
+  className: string
+  children: ReactNode
+  label?: string
 }) {
   if (href.startsWith("/")) {
     return (
       <Link href={href} className={className} aria-label={label} title={label}>
         {children}
       </Link>
-    );
+    )
   }
-  const external = href.startsWith("http");
+  const external = href.startsWith("http")
   return (
     <a
       href={href}
@@ -187,13 +147,12 @@ function SmartLink({
     >
       {children}
     </a>
-  );
+  )
 }
 
 // Finder's look: bold white labels on the wallpaper; hover or focus selects the icon like a click.
 function DesktopLink({ item }: { item: DesktopItem }) {
-  const className =
-    "group flex w-[11.5cqi] flex-col items-center gap-[0.2cqi] outline-none";
+  const className = "group flex w-[11.5cqi] flex-col items-center gap-[0.2cqi] outline-none"
   const content = (
     <>
       <span className="block w-[6cqi] rounded-[0.6cqi] p-[0.4cqi] transition-colors group-hover:bg-black/25 group-focus-visible:bg-black/25">
@@ -203,7 +162,7 @@ function DesktopLink({ item }: { item: DesktopItem }) {
         {item.label}
       </span>
     </>
-  );
+  )
 
   return item.href ? (
     <SmartLink href={item.href} className={className}>
@@ -211,37 +170,39 @@ function DesktopLink({ item }: { item: DesktopItem }) {
     </SmartLink>
   ) : (
     <span className={className}>{content}</span>
-  );
+  )
 }
 
-// The visitor's own clock, in their own format. It is filled in on their device, so the server sends it empty
-// (the preview fills [data-local-clock] the same way).
+// The visitor's own time, always written the European way ("Tue 20 Oct 14:52"). It is filled in on their
+// device, so the server sends it empty (the preview fills [data-local-clock] the same way).
 function LocalClock() {
-  const [time, setTime] = useState("");
+  const { locale } = useLanguage()
+  const [time, setTime] = useState("")
 
   useEffect(() => {
     const tick = () =>
       setTime(
         new Date()
-          .toLocaleString(undefined, {
+          .toLocaleString(locale === "es" ? "es-ES" : "en-GB", {
             weekday: "short",
-            month: "short",
             day: "numeric",
-            hour: "numeric",
+            month: "short",
+            hour: "2-digit",
             minute: "2-digit",
+            hour12: false,
           })
           .replace(/,/g, ""),
-      );
-    tick();
-    const id = window.setInterval(tick, 15_000);
-    return () => window.clearInterval(id);
-  }, []);
+      )
+    tick()
+    const id = window.setInterval(tick, 15_000)
+    return () => window.clearInterval(id)
+  }, [locale])
 
   return (
     <time data-local-clock className="min-w-[10ch] text-right tabular-nums">
       {time}
     </time>
-  );
+  )
 }
 
 const contactGlyphs: Record<string, ReactNode> = {
@@ -263,40 +224,25 @@ const contactGlyphs: Record<string, ReactNode> = {
     </svg>
   ),
   Email: (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinejoin="round"
-    >
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round">
       <rect x="3" y="5" width="18" height="14" rx="2" />
       <path d="M3.5 6l8.5 7 8.5-7" />
     </svg>
   ),
-};
+}
 
 function MenuBar() {
-  const { t } = useLanguage();
-  const contacts = [...socials, { label: "Email", href: `mailto:${email}` }];
+  const { t } = useLanguage()
+  const contacts = [...socials, { label: "Email", href: `mailto:${email}` }]
 
   return (
     <div className="relative flex h-[3.2cqi] min-h-6 shrink-0 items-center justify-between bg-[#f4f3f1] px-[1.6cqi] text-[clamp(10px,1.4cqi,13px)] text-black">
       <span className="flex items-center gap-[1.6cqi]">
-        {/* Tari's signature until there is a logo: a ring with an orange dot. */}
-        <span
-          aria-hidden="true"
-          className="flex size-[1.7cqi] min-h-3 min-w-3 items-center justify-center rounded-full border-[1.5px] border-black"
-        >
-          <span className="size-[45%] rounded-full bg-accent" />
-        </span>
+        {/* Tari's signature until there is a logo: an orange dot. */}
+        <span aria-hidden="true" className="size-[1.3cqi] min-h-2.5 min-w-2.5 rounded-full bg-accent" />
         <span className="font-bold">Tari da Silva</span>
-        <a
-          href="#story"
-          className="rounded-[0.4cqi] px-[0.6cqi] py-px hover:bg-black/10"
-        >
-          Info
-          <span className="sr-only"> – {t.about.sections.story}</span>
+        <a href="#story" className="rounded-[0.4cqi] px-[0.6cqi] py-px hover:bg-black/10">
+          {t.nav.about}
         </a>
       </span>
       <span className="flex items-center gap-[1.4cqi]">
@@ -315,23 +261,22 @@ function MenuBar() {
         <LocalClock />
       </span>
     </div>
-  );
+  )
 }
 
 // The About hero as a Mac desktop: the menu bar, then Tari's video as the wallpaper with
 // files on the left and folders, the drive and pictures on the right.
 export function AboutDesktop() {
-  const [index, setIndex] = useState(0);
-  const src = heroVideos[index];
-  const video = useRef<HTMLVideoElement>(null);
-  const left = desktopItems.filter((item) => item.side === "left");
-  const right = desktopItems.filter((item) => item.side === "right");
+  const [index, setIndex] = useState(0)
+  const src = heroVideos[index]
+  const video = useRef<HTMLVideoElement>(null)
+  const left = desktopItems.filter((item) => item.side === "left")
+  const right = desktopItems.filter((item) => item.side === "right")
 
   // With reduced motion the video stays on its first frame.
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
-      video.current?.pause();
-  }, [src]);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) video.current?.pause()
+  }, [src])
 
   return (
     <div className="@container">
@@ -354,10 +299,7 @@ export function AboutDesktop() {
               className="absolute inset-0 size-full object-cover"
             />
           ) : (
-            <div
-              aria-hidden="true"
-              className="hero-placeholder absolute inset-0"
-            />
+            <div aria-hidden="true" className="hero-placeholder absolute inset-0" />
           )}
 
           {/* Icons appear once the desktop is wide enough to keep them legible. */}
@@ -384,5 +326,5 @@ export function AboutDesktop() {
         </div>
       </div>
     </div>
-  );
+  )
 }

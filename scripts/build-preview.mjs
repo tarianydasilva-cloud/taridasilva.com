@@ -195,10 +195,10 @@ function route() {
   render(true);
 }
 
-// The About desktop's menu bar clock shows the visitor's own time (components/about/desktop.tsx).
+// The About desktop's menu bar clock: the visitor's own time, written the European way (components/about/desktop.tsx).
 function tickClocks() {
   const time = new Date()
-    .toLocaleString(undefined, { weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })
+    .toLocaleString(locale === "es" ? "es-ES" : "en-GB", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", hour12: false })
     .replace(/,/g, "");
   document.querySelectorAll("[data-local-clock]").forEach((el) => { el.textContent = time; });
 }
@@ -217,6 +217,7 @@ document.addEventListener("click", (event) => {
   locale = button.lang;
   try { localStorage.setItem("locale", locale); } catch {}
   render(false);
+  tickClocks();
 });
 window.addEventListener("hashchange", route);
 route();
