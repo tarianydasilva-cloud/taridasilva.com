@@ -100,8 +100,8 @@ export const principles: { title: Localized; body: Localized }[] = [
   {
     title: { en: "Craft", es: "Oficio" },
     body: {
-      en: "Make it real, then make it right. Prototype early, often with AI, and refine every detail until the experience feels effortless.",
-      es: "Primero hacerlo real, después hacerlo bien. Prototipar pronto, a menudo con IA, y pulir cada detalle hasta que la experiencia parezca natural.",
+      en: "Make it real, then make it right. Prototype early and refine every detail until the experience feels effortless.",
+      es: "Primero hacerlo real, después hacerlo bien. Prototipar pronto y pulir cada detalle hasta que la experiencia parezca natural.",
     },
   },
   {
@@ -114,27 +114,27 @@ export const principles: { title: Localized; body: Localized }[] = [
 ]
 
 export const approach = {
-  title: { en: "From question to evidence.", es: "De la pregunta a la evidencia." },
+  title: { en: "Test early, learn faster", es: "Probar pronto, aprender más rápido" },
   steps: [
     {
-      title: { en: "Question the brief", es: "Cuestionar el brief" },
+      title: { en: "Think", es: "Pensar" },
       body: {
-        en: "Start from the problem, not the request: research, data and the people it affects.",
-        es: "Empezar por el problema, no por el encargo: investigación, datos y las personas a las que afecta.",
+        en: "Frame the problem and what to test, from user research.",
+        es: "Plantear el problema y qué probar, desde la investigación.",
       },
     },
     {
-      title: { en: "Prototype early", es: "Prototipar pronto" },
+      title: { en: "Make", es: "Hacer" },
       body: {
-        en: "AI-built prototypes in days, so ideas get tested instead of debated.",
-        es: "Prototipos construidos con IA en días, para que las ideas se prueben en lugar de debatirse.",
+        en: "Prototype early, often with AI, to test rather than debate.",
+        es: "Prototipar pronto, a menudo con IA, para probar y no debatir.",
       },
     },
     {
-      title: { en: "Prove and refine", es: "Demostrar y afinar" },
+      title: { en: "Check", es: "Comprobar" },
       body: {
-        en: "Measure against the goal, keep what works and document why.",
-        es: "Medir contra el objetivo, quedarse con lo que funciona y documentar por qué.",
+        en: "Test with real users and refine until it's ready to build.",
+        es: "Probar con usuarios reales y pulir hasta poder construirlo.",
       },
     },
   ],

@@ -96,9 +96,8 @@ function Approach() {
     <Section id="approach">
       <h2 className="text-statement reveal text-balance">{approach.title[locale]}</h2>
       <ol className="mt-10 grid gap-x-8 gap-y-8 border-t border-foreground pt-6 md:grid-cols-3">
-        {approach.steps.map((step, index) => (
+        {approach.steps.map((step) => (
           <li key={step.title.en} className="reveal flex flex-col gap-2">
-            <span className="font-mono text-xs text-accent">{String(index + 1).padStart(2, "0")}</span>
             <span className="text-lg font-medium tracking-tight">{step.title[locale]}</span>
             <span className="text-sm leading-relaxed text-muted-foreground">{step.body[locale]}</span>
           </li>
