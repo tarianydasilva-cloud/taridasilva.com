@@ -138,6 +138,11 @@ export function CaseStudy({ slug }: { slug: string }) {
           </Section>
 
           <Section id="solution">
+            {study.solution && (
+              <div className="mb-10">
+                <Paragraphs items={study.solution} />
+              </div>
+            )}
             <div className="flex flex-col gap-8">
               {study.gallery.map((item) => (
                 <figure key={item.caption.en} className="reveal">

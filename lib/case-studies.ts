@@ -11,6 +11,8 @@ export type CaseStudy = {
   outcomes: { value: Localized; label: Localized }[]
   challenge: Localized[]
   decisions: { title: Localized; body: Localized }[]
+  // Optional text shown above the solution images.
+  solution?: Localized[]
   // Captions for the solution images; pictures go in /public/projects/<slug>/ once available.
   gallery: { caption: Localized; image?: string }[]
   results: Localized[]
@@ -97,71 +99,87 @@ export const caseStudies: Record<string, CaseStudy> = {
 
   "fleet-connect": {
     statement: {
-      en: "Dashboards that adapt to every fleet analyst, so vehicle data turns into decisions.",
-      es: "Dashboards que se adaptan a cada analista de flotas, para que los datos de los vehículos se conviertan en decisiones.",
+      en: "Turning a sea of numbers into a decision-support tool for fleet managers.",
+      es: "Convertir un mar de números en una herramienta de apoyo a la decisión para gestores de flotas.",
     },
     facts: {
-      client: { en: "[Mobility company]", es: "[Empresa de movilidad]" },
+      client: { en: "Arval, Arval Connect", es: "Arval, Arval Connect" },
       role,
       team,
       timeline: { en: "[Duration], 2026", es: "[Duración], 2026" },
     },
     outcomes: [
       {
-        value: { en: "[X]", es: "[X]" },
-        label: { en: "user profiles served by one adaptive system", es: "perfiles de usuario en un único sistema adaptable" },
+        value: { en: "6", es: "6" },
+        label: { en: "high-fidelity dashboard prototypes", es: "prototipos de dashboard de alta fidelidad" },
       },
-      { value: { en: "[X]", es: "[X]" }, label: { en: "key metrics made visual", es: "métricas clave visualizadas" } },
-      { value: { en: "[X]", es: "[X]" }, label: { en: "users tested with", es: "usuarios en las pruebas" } },
+      {
+        value: { en: "100+", es: "100+" },
+        label: { en: "performance indicators mapped and prioritised", es: "indicadores de rendimiento mapeados y priorizados" },
+      },
+      {
+        value: { en: "6", es: "6" },
+        label: { en: "strategic internal use cases defined", es: "casos de uso internos estratégicos definidos" },
+      },
     ],
     challenge: [
       {
-        en: "The people analysing data from the client's vehicles needed dashboards that changed with each user's role and questions, while showing complex data in a visual, immediate way.",
-        es: "Las personas que analizaban los datos de los vehículos del cliente necesitaban dashboards que cambiaran según el rol y las preguntas de cada usuario, mostrando datos complejos de forma visual e inmediata.",
+        en: "Arval's deep expertise in mobility and access to extensive operational data should have enabled clients to manage their fleets with confidence. However, as the volume and complexity of information grew, Arval Connect dashboards became increasingly difficult to navigate, often perceived as a \"sea of numbers\" rather than a tool for decision-making.",
+        es: "La experiencia de Arval en movilidad y su acceso a una gran cantidad de datos operativos deberían haber permitido a sus clientes gestionar sus flotas con confianza. Sin embargo, a medida que crecían el volumen y la complejidad de la información, los dashboards de Arval Connect se volvieron cada vez más difíciles de navegar, y a menudo se percibían como un \"mar de números\" en lugar de una herramienta para tomar decisiones.",
       },
       {
-        en: "[What they used before and why it wasn't working.]",
-        es: "[Qué usaban antes y por qué no funcionaba.]",
+        en: "At the heart of the challenge was information overload. Users were presented with hundreds of metrics and indicators, making it difficult to identify priorities, understand performance and act with confidence. The problem was not a lack of data, but the inability to distinguish what truly mattered.",
+        es: "En el centro del reto estaba la sobrecarga de información. Los usuarios veían cientos de métricas e indicadores, lo que dificultaba identificar prioridades, entender el rendimiento y actuar con confianza. El problema no era la falta de datos, sino la incapacidad de distinguir lo que de verdad importaba.",
       },
     ],
     decisions: [
       {
-        title: { en: "Start from the questions, not the data", es: "Empezar por las preguntas, no por los datos" },
+        title: { en: "Listen to the people using it", es: "Escuchar a quienes lo usan" },
         body: {
-          en: "[Which questions each type of user needed to answer every day, and how that shaped the dashboards.]",
-          es: "[Qué preguntas necesitaba responder cada tipo de usuario a diario y cómo eso dio forma a los dashboards.]",
+          en: "Qualitative conversations with internal stakeholders showed how different teams used the dashboards, where friction emerged and how insights fed day-to-day operations.",
+          es: "Conversaciones cualitativas con stakeholders internos mostraron cómo usaban los dashboards los distintos equipos, dónde surgía la fricción y cómo se aplicaban los insights en el día a día.",
         },
       },
       {
-        title: { en: "One system, many views", es: "Un sistema, muchas vistas" },
+        title: { en: "Learn from data-heavy products", es: "Aprender de productos con muchos datos" },
         body: {
-          en: "Dashboards built from modular widgets that each user can arrange and filter, so the product adapts instead of multiplying versions.",
-          es: "Dashboards hechos de widgets modulares que cada usuario puede ordenar y filtrar, para que el producto se adapte en lugar de multiplicar versiones.",
+          en: "A benchmark of leading products in mobility, logistics and other data-intensive industries showed how the best platforms surface critical signals instead of adding more information.",
+          es: "Un benchmark de productos líderes en movilidad, logística y otros sectores intensivos en datos mostró cómo las mejores plataformas destacan las señales críticas en lugar de añadir más información.",
         },
       },
       {
-        title: { en: "Visual first, numbers one click away", es: "Primero lo visual, los números a un clic" },
+        title: { en: "Prioritise, don't remove", es: "Priorizar, no eliminar" },
         body: {
-          en: "Each chart chosen for the decision it supports, with the exact figures always one click away.",
-          es: "Cada gráfico elegido según la decisión que apoya, con las cifras exactas siempre a un clic.",
+          en: "Instead of removing data, we kept the full set and defined two levels of prioritisation, so users focus first on the metrics with the greatest operational impact.",
+          es: "En lugar de eliminar datos, mantuvimos el conjunto completo y definimos dos niveles de priorización, para que los usuarios se centren primero en las métricas con mayor impacto operativo.",
         },
+      },
+    ],
+    solution: [
+      {
+        en: "This reframing turned the dashboard from a reporting tool into a decision-support system, designed around clarity, actionability and business value.",
+        es: "Este cambio de enfoque transformó el dashboard de una herramienta de reporting en un sistema de apoyo a la decisión, diseñado en torno a la claridad, la accionabilidad y el valor de negocio.",
       },
     ],
     gallery: [
       { caption: { en: "[Dashboard overview]", es: "[Vista general del dashboard]" } },
-      { caption: { en: "[Customisable widgets]", es: "[Widgets personalizables]" } },
-      { caption: { en: "[Data detail view]", es: "[Vista de detalle de datos]" } },
+      { caption: { en: "[Two levels of prioritisation]", es: "[Dos niveles de priorización]" } },
+      { caption: { en: "[Metric detail view]", es: "[Vista de detalle de una métrica]" } },
     ],
     results: [
       {
-        en: "The project was delivered as a design proposal. [Whether it was presented or built, and any feedback.] If it shipped, I would measure [adoption, time to insight, weekly active users].",
-        es: "El proyecto se entregó como propuesta de diseño. [Si se presentó o se construyó, y el feedback recibido.] Si se lanzara, mediría [adopción, tiempo hasta el insight, usuarios activos semanales].",
+        en: "The project delivered six high-fidelity dashboard prototypes that showed how complex mobility and operational data could become clear, actionable insights for both clients and internal teams. We also mapped and prioritised over 100 performance indicators, creating a scalable foundation for the evolution of Arval Connect.",
+        es: "El proyecto entregó seis prototipos de dashboard de alta fidelidad que mostraban cómo datos complejos de movilidad y operaciones podían convertirse en insights claros y accionables, tanto para clientes como para equipos internos. También mapeamos y priorizamos más de 100 indicadores de rendimiento, creando una base escalable para la evolución de Arval Connect.",
+      },
+      {
+        en: "Beyond the dashboards, the work defined six strategic internal use cases showing how connected data could unlock value across the organisation. Sharing the vision and recommendations with stakeholders set a clear direction for a more connected, intuitive and insight-driven ecosystem, and a foundation for future development within Arval Connect.",
+        es: "Más allá de los dashboards, el trabajo definió seis casos de uso internos estratégicos que mostraban cómo los datos conectados podían generar valor en toda la organización. Compartir la visión y las recomendaciones con los stakeholders marcó una dirección clara hacia un ecosistema más conectado, intuitivo y basado en insights, y una base para el desarrollo futuro de Arval Connect.",
       },
     ],
     learnings: [
       {
-        en: "[What you learned about designing for data-heavy, expert users.]",
-        es: "[Qué aprendiste sobre diseñar para usuarios expertos con mucha carga de datos.]",
+        en: "[What you learned about designing for data-heavy, expert users, and what you would measure if the dashboards shipped.]",
+        es: "[Qué aprendiste sobre diseñar para usuarios expertos con mucha carga de datos, y qué medirías si los dashboards se lanzaran.]",
       },
     ],
   },
