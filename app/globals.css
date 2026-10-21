@@ -155,17 +155,9 @@
 }
 
 /* Animated project tiles (components/project-motion.tsx). Without motion, scene one shows in its final state:
-   rows in place, the selection on the middle row and every switch on. */
+   rows in place and the selection on the middle row. */
 .motion-select {
   translate: 0 100%;
-}
-
-.motion-track {
-  background-color: var(--accent);
-}
-
-.motion-knob {
-  translate: 1.1em 0;
 }
 
 .motion-type {
@@ -193,17 +185,6 @@
   }
   .motion-select {
     animation: motion-select 10s cubic-bezier(0.4, 0, 0.2, 1) infinite both;
-  }
-  .motion-track {
-    animation: motion-track 10s ease-out infinite both;
-    animation-delay: calc(var(--i) * 0.5s);
-  }
-  .motion-knob {
-    animation: motion-knob 10s cubic-bezier(0.3, 1.4, 0.5, 1) infinite both;
-    animation-delay: inherit;
-  }
-  .motion-marquee {
-    animation: motion-marquee 14s linear infinite;
   }
   .motion-type {
     animation: motion-type 10s steps(24, end) infinite both;
@@ -300,34 +281,6 @@
   100% {
     opacity: 1;
     translate: 0 200%;
-  }
-}
-
-@keyframes motion-track {
-  0%,
-  20% {
-    background-color: rgb(0 0 0 / 0.15);
-  }
-  23%,
-  100% {
-    background-color: var(--accent);
-  }
-}
-
-@keyframes motion-knob {
-  0%,
-  20% {
-    translate: 0 0;
-  }
-  24%,
-  100% {
-    translate: 1.1em 0;
-  }
-}
-
-@keyframes motion-marquee {
-  to {
-    translate: -50% 0;
   }
 }
 

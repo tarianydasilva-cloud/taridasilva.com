@@ -14,16 +14,12 @@ const copy = {
   en: {
     tiers: "B2B Services",
     plans: ["Basic", "Pro", "Master"],
-    principles: ["Coherence", "Clarity", "Alignment"],
-    steps: ["Map journeys", "Align teams", "Simplify processes", "Clarify services", "Document", "Launch"],
     ask: "What should this service feel like?",
     answer: "Clear from the first view.",
   },
   es: {
     tiers: "Servicios B2B",
     plans: ["Basic", "Pro", "Master"],
-    principles: ["Coherencia", "Claridad", "Alineación"],
-    steps: ["Mapear recorridos", "Alinear equipos", "Simplificar procesos", "Aclarar servicios", "Documentar", "Lanzar"],
     ask: "¿Cómo debería sentirse este servicio?",
     answer: "Claro desde la primera vista.",
   },
@@ -39,8 +35,8 @@ function Service() {
 
   return (
     <>
-      {/* Scene one: the service tiers list, with a selection moving down it, and principles switching on. */}
-      <div className="motion-a absolute inset-0 flex flex-col items-center justify-center gap-[3cqi] @xl:flex-row">
+      {/* Scene one: the service tiers list, with a selection moving down it. */}
+      <div className="motion-a absolute inset-0 flex items-center justify-center">
         <div className={cn(card, width, text, "p-[clamp(10px,2cqi,18px)]")}>
           <p className="motion-row px-[0.6em] pb-[0.5em] text-[0.85em] text-muted-foreground" style={index(0)}>
             {c.tiers}
@@ -61,29 +57,10 @@ function Service() {
             ))}
           </ul>
         </div>
-        <ul className={cn(card, width, text, "flex flex-col gap-[0.9em] p-[clamp(12px,2.4cqi,20px)]")}>
-          {c.principles.map((principle, i) => (
-            <li key={principle} style={index(i)} className="motion-row flex items-center justify-between">
-              {principle}
-              <span style={index(i)} className="motion-track relative h-[1.25em] w-[2.2em] rounded-full">
-                <span className="motion-knob absolute left-[0.15em] top-[0.15em] size-[0.95em] rounded-full bg-white shadow-sm" />
-              </span>
-            </li>
-          ))}
-        </ul>
       </div>
 
-      {/* Scene two: the steps of the work scrolling past, and a prompt answered as if typed. */}
-      <div className="motion-b absolute inset-0 flex flex-col items-center justify-center gap-[4cqi]">
-        <div className="w-full overflow-hidden">
-          <ul className={cn("motion-marquee flex w-max gap-[1.5cqi]", text)}>
-            {[...c.steps, ...c.steps].map((step, i) => (
-              <li key={i} className="whitespace-nowrap rounded-full bg-white/70 px-[1em] py-[0.5em] backdrop-blur">
-                {step}
-              </li>
-            ))}
-          </ul>
-        </div>
+      {/* Scene two: a prompt answered as if typed. */}
+      <div className="motion-b absolute inset-0 flex items-center justify-center">
         <div className={cn(card, text, "w-[78cqi] p-[clamp(14px,2.8cqi,24px)] @xl:w-[48cqi]")}>
           <p className="text-[1.15em] tracking-tight">{c.ask}</p>
           <p className="mt-[0.8em] flex items-center rounded-[0.6em] bg-muted px-[0.8em] py-[0.6em]">
