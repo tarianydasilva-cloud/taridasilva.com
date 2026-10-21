@@ -355,23 +355,27 @@ export const caseStudies: Record<string, CaseStudy> = {
 
   "design-ops-strategy": {
     statement: {
-      en: "Bringing structure to how a creative studio receives, scopes and manages work under constant ambiguity.",
-      es: "Dar estructura a cómo un estudio creativo recibe, dimensiona y gestiona el trabajo en un contexto de ambigüedad constante.",
+      en: "Bringing structure to how a multidisciplinary team receives, scopes and manages work under constant ambiguity.",
+      es: "Dar estructura a cómo un equipo multidisciplinar recibe, dimensiona y gestiona el trabajo en un contexto de ambigüedad constante.",
     },
     facts: {
-      client: { en: "Multidisciplinary creative studio", es: "Estudio creativo multidisciplinar" },
-      role,
-      team,
-      date: { en: "[Month] 2025", es: "[Mes] de 2025" },
+      client: { en: "Multidisciplinary organisation", es: "Organización multidisciplinar" },
+      role: { en: "Design Program Manager", es: "Design Program Manager" },
+      team: {
+        en: "A team of 25, working closely with the Director of Operations",
+        es: "Un equipo de 25, junto a la dirección de operaciones",
+      },
+      date: { en: "September to December 2025", es: "De septiembre a diciembre de 2025" },
     },
     outcomes: [
-      { value: { en: "[X]", es: "[X]" }, label: { en: "levels of project complexity defined", es: "niveles de complejidad de proyecto definidos" } },
-      { value: { en: "[X]", es: "[X]" }, label: { en: "[another result, e.g. projects run with the new briefing]", es: "[otro resultado, p. ej. proyectos con el nuevo briefing]" } },
+      { value: { en: "25", es: "25" }, label: { en: "people the new way of working was built for", es: "personas para las que se diseñó la nueva forma de trabajar" } },
+      { value: { en: "10+", es: "10+" }, label: { en: "projects a quarter scoped and dimensioned", es: "proyectos por trimestre definidos y dimensionados" } },
+      { value: { en: "4", es: "4" }, label: { en: "months from diagnosis to framework", es: "meses del diagnóstico al marco de trabajo" } },
     ],
     challenge: [
       {
-        en: "Creative organisations running many projects in parallel share a common problem: work arrives with varying levels of clarity. Requests may lack defined priorities, clear timelines or complete briefings, creating friction in client relationships and internal workflows. This multidisciplinary studio dealt with high ambiguity and constant demand.",
-        es: "Las organizaciones creativas que llevan muchos proyectos en paralelo comparten un problema: el trabajo llega con niveles de claridad muy distintos. Las peticiones pueden no tener prioridades definidas, plazos claros ni briefings completos, lo que genera fricción con los clientes y en los flujos internos. Este estudio multidisciplinar convivía con mucha ambigüedad y una demanda constante.",
+        en: "Organisations running many client projects in parallel share a common problem: work arrives with varying levels of clarity. Requests may lack defined priorities, clear timelines or complete briefings, creating friction in client relationships and internal workflows. This multidisciplinary team dealt with high ambiguity and constant demand.",
+        es: "Las organizaciones que llevan muchos proyectos de cliente en paralelo comparten un problema: el trabajo llega con niveles de claridad muy distintos. Las peticiones pueden no tener prioridades definidas, plazos claros ni briefings completos, lo que genera fricción con los clientes y en los flujos internos. Este equipo multidisciplinar convivía con mucha ambigüedad y una demanda constante.",
       },
       {
         en: "At the core was ambiguity: unclear requests, misaligned expectations, emotionally charged interactions with clients, and internal bottlenecks caused by centralised information flow. The goal was to bring structure to how requests were received, understood and managed, while balancing client expectations, team capacity and an evolving vision.",
@@ -427,21 +431,21 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     results: [
       {
-        en: "Although the work did not become a fully implemented operational framework, it led to meaningful shifts in how the studio works.",
-        es: "Aunque el trabajo no llegó a ser un marco operativo totalmente implantado, provocó cambios significativos en cómo trabaja el estudio.",
+        en: "The work gave the team a clearer way to receive, scope and manage projects. The organisation has since moved in the same direction, with dedicated project managers and a defined structure.",
+        es: "El trabajo dio al equipo una forma más clara de recibir, dimensionar y gestionar proyectos. Desde entonces, la organización ha avanzado en la misma dirección, con project managers dedicados y una estructura definida.",
       },
     ],
     resultHighlights: [
       { en: "Projects began with clearer alignment and less ambiguity.", es: "Los proyectos empezaban con más alineación y menos ambigüedad." },
-      { en: "Client interactions became more stable and predictable.", es: "Las interacciones con clientes se volvieron más estables y predecibles." },
+      { en: "The client accounts I owned stayed stable and under control.", es: "Las cuentas de cliente que llevaba se mantuvieron estables y bajo control." },
       { en: "Scope and effort discussions gained a shared reference framework.", es: "Las conversaciones sobre alcance y esfuerzo ganaron un marco de referencia común." },
       { en: "Organisational bottlenecks were surfaced and made explicit.", es: "Los cuellos de botella de la organización se hicieron visibles y explícitos." },
       { en: "Cultural practices were recognised as strategic assets.", es: "Las prácticas culturales se reconocieron como activos estratégicos." },
     ],
     learnings: [
       {
-        en: "Strategic design can work beyond deliverables, shaping how creative organisations function, communicate and grow in contexts of uncertainty.",
-        es: "El diseño estratégico puede ir más allá de los entregables y dar forma a cómo las organizaciones creativas funcionan, se comunican y crecen en contextos de incertidumbre.",
+        en: "Strategic design can work beyond deliverables, shaping how organisations function, communicate and grow in contexts of uncertainty.",
+        es: "El diseño estratégico puede ir más allá de los entregables y dar forma a cómo las organizaciones funcionan, se comunican y crecen en contextos de incertidumbre.",
       },
     ],
   },

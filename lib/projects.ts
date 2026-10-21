@@ -72,8 +72,8 @@ export const projects: Project[] = [
     slug: "design-ops-strategy",
     title: { en: "Design Ops & Strategy", es: "Design Ops y estrategia" },
     summary: {
-      en: "Looking into my ongoing process.",
-      es: "Una mirada a mi proceso en curso.",
+      en: "Bringing structure to work under pressure.",
+      es: "Dar estructura al trabajo bajo presión.",
     },
     year: "2025",
     tags: [

@@ -63,7 +63,7 @@ function Service() {
       <div className="motion-b absolute inset-0 flex items-center justify-center">
         <div className={cn(card, text, "w-[78cqi] p-[clamp(14px,2.8cqi,24px)] @xl:w-[48cqi]")}>
           <p className="text-[1.15em] tracking-tight">{c.ask}</p>
-          <p className="mt-[0.8em] flex items-center rounded-[0.6em] bg-muted px-[0.8em] py-[0.6em]">
+          <p className="mt-[0.5em] flex items-center text-muted-foreground">
             <span className="motion-type">{c.answer}</span>
             <span aria-hidden="true" className="motion-caret ml-px h-[1.1em] w-px bg-foreground" />
           </p>
