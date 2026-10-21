@@ -130,8 +130,8 @@ export const caseStudies: Record<string, CaseStudy> = {
       {
         image: "/projects/innohub/success-story.jpg",
         caption: {
-          en: "Ideas that made it are shown back to everyone, so employees can see what their own idea could become.",
-          es: "Las ideas que salieron adelante se muestran a todos, para que cada empleado vea en qué podría convertirse la suya.",
+          en: "One of the innovation lines explored with employees: ideas for families, across generations.",
+          es: "Una de las líneas de innovación que exploramos con los empleados: ideas para las familias, de todas las generaciones.",
         },
       },
       {
