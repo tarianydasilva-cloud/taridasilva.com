@@ -1,0 +1,355 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #16151a;
+  --muted: #f3f2f0;
+  --muted-foreground: #66636b;
+  --border: #e4e2df;
+  --accent: #ff2700;
+  --accent-foreground: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-foreground);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+}
+
+/*
+ * About page type scale. Both sizes follow the width of the nearest @container (the content column):
+ * - statement: headline-like sentences of up to ~135 characters, kept within three lines.
+ * - lead: running intro text, kept within eight lines for ~650 characters.
+ */
+@utility text-statement {
+  font-size: clamp(1.25rem, 4.2cqi, 3rem);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
+
+@utility text-lead {
+  font-size: clamp(1rem, 2.75cqi, 1.375rem);
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+}
+
+/* Lets accordions animate to and from `height: auto`. */
+:root {
+  interpolate-size: allow-keywords;
+}
+
+.accordion::details-content {
+  block-size: 0;
+  overflow: hidden;
+  transition:
+    block-size 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
+    content-visibility 0.4s allow-discrete;
+}
+
+.accordion[open]::details-content {
+  block-size: auto;
+}
+
+/* Stand-in for the About hero video until real clips are added. */
+.hero-placeholder {
+  background:
+    radial-gradient(50% 60% at 15% 85%, color-mix(in oklab, var(--accent) 22%, transparent), transparent),
+    radial-gradient(45% 50% at 85% 20%, color-mix(in oklab, var(--foreground) 10%, transparent), transparent),
+    var(--muted);
+  background-size: 160% 160%;
+}
+
+/* Stand-in for project pictures: a shade darker than the cards so it reads as the image area. */
+.media-placeholder {
+  background:
+    radial-gradient(60% 70% at 85% 90%, color-mix(in oklab, var(--accent) 16%, transparent), transparent),
+    linear-gradient(160deg, var(--border), color-mix(in oklab, var(--border) 70%, var(--muted)));
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    translate: 0 1.5rem;
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    scale: 0.85;
+    translate: 0 1rem;
+  }
+}
+
+@keyframes float {
+  to {
+    translate: 0 -0.4rem;
+  }
+}
+
+@keyframes drift {
+  to {
+    background-position: 100% 100%;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Scroll reveals: content is fully visible wherever scroll-driven animations are unsupported. */
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+
+    /* Case study scenes: pieces pop in one after another (--i), the later ones further into the scroll. */
+    .scene-pop {
+      animation: pop ease-out both;
+      animation-timeline: view();
+      animation-range: cover calc(8% + var(--i) * 6%) cover calc(24% + var(--i) * 6%);
+    }
+
+    .scene-word {
+      animation-range: cover calc(10% + var(--i) * 2%) cover calc(22% + var(--i) * 2%);
+    }
+  }
+
+  .scene-float {
+    animation: float 3.2s ease-in-out infinite alternate;
+    animation-delay: calc(var(--i) * -0.9s);
+  }
+
+  .hero-placeholder {
+    animation: drift 18s ease-in-out infinite alternate;
+  }
+}
+
+/* Animated project tiles (components/project-motion.tsx). Without motion, scene one shows in its final state:
+   rows in place and the selection on the middle row. */
+.motion-select {
+  translate: 0 100%;
+}
+
+.motion-type {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-b,
+  .ops-traveller {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .motion-a {
+    animation: motion-a 10s ease-in-out infinite both;
+  }
+  .motion-b {
+    animation: motion-b 10s ease-in-out infinite both;
+  }
+  .motion-row {
+    animation: motion-row 10s cubic-bezier(0.2, 0.7, 0.2, 1) infinite both;
+    animation-delay: calc(var(--i) * 0.15s);
+  }
+  .motion-select {
+    animation: motion-select 10s cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+  }
+  .motion-type {
+    animation: motion-type 10s steps(24, end) infinite both;
+  }
+  .motion-caret {
+    animation: motion-caret 1s steps(1) infinite;
+  }
+  .motion-ops-word {
+    animation: motion-ops-word 6s ease-in-out infinite both;
+    animation-delay: calc(var(--i) * 0.12s);
+  }
+  .ops-draw {
+    stroke-dasharray: 1;
+    animation: ops-draw 1.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+  }
+  .ops-pop {
+    animation: ops-pop 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(0.5s + var(--i) * 0.12s);
+  }
+  .ops-title {
+    animation: motion-wordmark 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s both;
+  }
+  .motion-glow {
+    animation: motion-glow 12s ease-in-out infinite alternate;
+  }
+  .motion-wordmark {
+    animation: motion-wordmark 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s both;
+  }
+}
+
+@keyframes motion-ops-word {
+  0%,
+  50% {
+    opacity: 1;
+    filter: blur(0);
+    translate: 0 0;
+  }
+  60%,
+  72% {
+    opacity: 0;
+    filter: blur(8px);
+    translate: 0 -0.15em;
+  }
+  73% {
+    translate: 0 0.15em;
+  }
+  85%,
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    translate: 0 0;
+  }
+}
+
+@keyframes ops-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+
+@keyframes ops-pop {
+  from {
+    opacity: 0;
+    scale: 0.6;
+  }
+}
+
+@keyframes motion-glow {
+  to {
+    translate: 20% 15%;
+  }
+}
+
+@keyframes motion-wordmark {
+  from {
+    opacity: 0;
+    translate: 0 4%;
+    filter: blur(8px);
+  }
+}
+
+@keyframes motion-a {
+  0% {
+    opacity: 0;
+    translate: 0 2%;
+  }
+  5%,
+  44% {
+    opacity: 1;
+    translate: 0 0;
+  }
+  49%,
+  100% {
+    opacity: 0;
+    translate: 0 -2%;
+  }
+}
+
+@keyframes motion-b {
+  0%,
+  50% {
+    opacity: 0;
+    translate: 0 2%;
+  }
+  55%,
+  94% {
+    opacity: 1;
+    translate: 0 0;
+  }
+  99%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes motion-row {
+  0%,
+  3% {
+    opacity: 0;
+    translate: 0 0.4em;
+  }
+  8%,
+  100% {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes motion-select {
+  0%,
+  14% {
+    opacity: 0;
+    translate: 0 0;
+  }
+  17%,
+  23% {
+    opacity: 1;
+    translate: 0 0;
+  }
+  27%,
+  33% {
+    opacity: 1;
+    translate: 0 100%;
+  }
+  37%,
+  100% {
+    opacity: 1;
+    translate: 0 200%;
+  }
+}
+
+@keyframes motion-type {
+  0%,
+  58% {
+    max-width: 0;
+  }
+  80%,
+  100% {
+    max-width: 32ch;
+  }
+}
+
+@keyframes motion-caret {
+  50% {
+    opacity: 0;
+  }
+}
