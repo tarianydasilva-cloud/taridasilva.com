@@ -12,6 +12,9 @@ export type Project = {
   // The case study header uses `cover` when set, so the card and the header can show different pictures.
   image?: string
   cover?: string
+  // An animated tile built in code (components/project-motion.tsx), shown instead of the picture on the card
+  // and as the case study cover.
+  motion?: "service"
   imageAlt?: Localized
   video?: string
 }
@@ -63,12 +66,7 @@ export const projects: Project[] = [
       { en: "Service Design", es: "Diseño de servicios" },
       { en: "Strategy", es: "Estrategia" },
     ],
-    image: "/projects/service-experience-design/card-tiers.png",
-    cover: "/projects/service-experience-design/cover-phone.jpg",
-    imageAlt: {
-      en: "A phone showing the redesigned services page, on an orange background",
-      es: "Un móvil con la página de servicios rediseñada, sobre un fondo naranja",
-    },
+    motion: "service",
   },
   {
     slug: "design-ops-strategy",

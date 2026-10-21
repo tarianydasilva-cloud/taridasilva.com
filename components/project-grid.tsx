@@ -4,6 +4,7 @@ import Link from "next/link"
 import { projects } from "@/lib/projects"
 import { useLanguage } from "./language-provider"
 import { ProjectMedia } from "./project-media"
+import { ProjectMotion } from "./project-motion"
 
 export function ProjectGrid() {
   const { locale, t } = useLanguage()
@@ -29,13 +30,17 @@ export function ProjectGrid() {
                 </p>
               </div>
               {/* The picture bleeds to the card edges and takes all the space left below the text. */}
-              <ProjectMedia
-                image={project.image}
-                video={project.video}
-                alt={project.imageAlt?.[locale]}
-                priority={index < 2}
-                className="isolate aspect-auto min-h-0 flex-1"
-              />
+              {project.motion ? (
+                <ProjectMotion motion={project.motion} className="min-h-0 flex-1" />
+              ) : (
+                <ProjectMedia
+                  image={project.image}
+                  video={project.video}
+                  alt={project.imageAlt?.[locale]}
+                  priority={index < 2}
+                  className="isolate aspect-auto min-h-0 flex-1"
+                />
+              )}
             </Link>
           </li>
         ))}

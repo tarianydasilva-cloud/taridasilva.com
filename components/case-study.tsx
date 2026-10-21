@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils"
 import { useLanguage } from "./language-provider"
 import { Scene } from "./case-study-scenes"
 import { ProjectMedia } from "./project-media"
+import { ProjectMotion } from "./project-motion"
 import { SectionNav } from "./section-nav"
 
 // The case study column: three quarters of the page on large screens, full width below.
@@ -93,14 +94,18 @@ export function CaseStudy({ slug }: { slug: string }) {
               </li>
             ))}
           </ul>
-          <ProjectMedia
-            image={project.cover ?? project.image}
-            video={project.video}
-            alt={project.imageAlt?.[locale]}
-            priority
-            sizes={wide}
-            className="mt-10 rounded-2xl"
-          />
+          {project.motion ? (
+            <ProjectMotion motion={project.motion} className="mt-10 aspect-video rounded-2xl" />
+          ) : (
+            <ProjectMedia
+              image={project.cover ?? project.image}
+              video={project.video}
+              alt={project.imageAlt?.[locale]}
+              priority
+              sizes={wide}
+              className="mt-10 rounded-2xl"
+            />
+          )}
         </header>
 
         <SectionNav items={navItems} label={t.caseStudy.sectionNav} className="lg:hidden" />

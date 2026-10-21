@@ -153,3 +153,177 @@
     animation: drift 18s ease-in-out infinite alternate;
   }
 }
+
+/* Animated project tiles (components/project-motion.tsx). Without motion, scene one shows in its final state:
+   rows in place, the selection on the middle row and every switch on. */
+.motion-select {
+  translate: 0 100%;
+}
+
+.motion-track {
+  background-color: var(--accent);
+}
+
+.motion-knob {
+  translate: 1.1em 0;
+}
+
+.motion-type {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-b {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .motion-a {
+    animation: motion-a 10s ease-in-out infinite both;
+  }
+  .motion-b {
+    animation: motion-b 10s ease-in-out infinite both;
+  }
+  .motion-row {
+    animation: motion-row 10s cubic-bezier(0.2, 0.7, 0.2, 1) infinite both;
+    animation-delay: calc(var(--i) * 0.15s);
+  }
+  .motion-select {
+    animation: motion-select 10s cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+  }
+  .motion-track {
+    animation: motion-track 10s ease-out infinite both;
+    animation-delay: calc(var(--i) * 0.5s);
+  }
+  .motion-knob {
+    animation: motion-knob 10s cubic-bezier(0.3, 1.4, 0.5, 1) infinite both;
+    animation-delay: inherit;
+  }
+  .motion-marquee {
+    animation: motion-marquee 14s linear infinite;
+  }
+  .motion-type {
+    animation: motion-type 10s steps(24, end) infinite both;
+  }
+  .motion-caret {
+    animation: motion-caret 1s steps(1) infinite;
+  }
+}
+
+@keyframes motion-a {
+  0% {
+    opacity: 0;
+    translate: 0 2%;
+  }
+  5%,
+  44% {
+    opacity: 1;
+    translate: 0 0;
+  }
+  49%,
+  100% {
+    opacity: 0;
+    translate: 0 -2%;
+  }
+}
+
+@keyframes motion-b {
+  0%,
+  50% {
+    opacity: 0;
+    translate: 0 2%;
+  }
+  55%,
+  94% {
+    opacity: 1;
+    translate: 0 0;
+  }
+  99%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes motion-row {
+  0%,
+  3% {
+    opacity: 0;
+    translate: 0 0.4em;
+  }
+  8%,
+  100% {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes motion-select {
+  0%,
+  14% {
+    opacity: 0;
+    translate: 0 0;
+  }
+  17%,
+  23% {
+    opacity: 1;
+    translate: 0 0;
+  }
+  27%,
+  33% {
+    opacity: 1;
+    translate: 0 100%;
+  }
+  37%,
+  100% {
+    opacity: 1;
+    translate: 0 200%;
+  }
+}
+
+@keyframes motion-track {
+  0%,
+  20% {
+    background-color: rgb(0 0 0 / 0.15);
+  }
+  23%,
+  100% {
+    background-color: var(--accent);
+  }
+}
+
+@keyframes motion-knob {
+  0%,
+  20% {
+    translate: 0 0;
+  }
+  24%,
+  100% {
+    translate: 1.1em 0;
+  }
+}
+
+@keyframes motion-marquee {
+  to {
+    translate: -50% 0;
+  }
+}
+
+@keyframes motion-type {
+  0%,
+  58% {
+    max-width: 0;
+  }
+  80%,
+  100% {
+    max-width: 32ch;
+  }
+}
+
+@keyframes motion-caret {
+  50% {
+    opacity: 0;
+  }
+}
