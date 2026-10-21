@@ -33,79 +33,146 @@ export type CaseStudy = {
 }
 
 const role = { en: "[Your role, e.g. Lead Product Designer]", es: "[Tu rol, p. ej. Lead Product Designer]" }
-const team = { en: "[Team size and roles]", es: "[Tamaño y roles del equipo]" }
 
 export const caseStudies: Record<string, CaseStudy> = {
   innohub: {
     statement: {
-      en: "Rebuilding an innovation platform so anyone in a large insurer could turn an idea into a proposal.",
-      es: "Reconstruir una plataforma de innovación para que cualquiera en una gran aseguradora pudiera convertir una idea en una propuesta.",
+      en: "Turning innovation from a specialist activity into a shared capability across a 100-year-old insurer.",
+      es: "Convertir la innovación de una actividad de especialistas en una capacidad compartida en una aseguradora centenaria.",
     },
     facts: {
-      client: { en: "Spanish insurance company, Innovation Hub", es: "Aseguradora española, Innovation Hub" },
+      client: { en: "Leading Spanish insurer, 100+ years old", es: "Aseguradora española líder, con más de 100 años" },
       role,
-      team,
+      team: {
+        en: "5: growth strategy, design research, product design and visual design",
+        es: "5: estrategia de crecimiento, design research, diseño de producto y diseño visual",
+      },
       date: { en: "[Month] 2026", es: "[Mes] de 2026" },
     },
     outcomes: [
-      { value: { en: "[+X%]", es: "[+X%]" }, label: { en: "ideas submitted", es: "ideas enviadas" } },
+      { value: { en: "3", es: "3" }, label: { en: "employee archetypes defined", es: "arquetipos de empleado definidos" } },
       {
-        value: { en: "[X → Y]", es: "[X → Y]" },
-        label: { en: "steps to submit an idea", es: "pasos para enviar una idea" },
+        value: { en: "2", es: "2" },
+        label: { en: "experiences designed: employees and external collaborators", es: "experiencias diseñadas: empleados y colaboradores externos" },
       },
       {
-        value: { en: "[X]", es: "[X]" },
-        label: { en: "sections built in HTML with AI", es: "secciones construidas en HTML con IA" },
+        value: { en: "4", es: "4" },
+        label: { en: "shifts in how the company innovates", es: "cambios en cómo innova la compañía" },
       },
     ],
     challenge: [
       {
-        en: "The Innovation Hub ran its innovation model on a SaaS tool that people found hard to use. [Name the main UX problems, e.g. confusing navigation, a long idea form, no visibility of an idea's status.]",
-        es: "El Innovation Hub gestionaba su modelo de innovación con una herramienta SaaS difícil de usar. [Nombra los principales problemas de UX, p. ej. navegación confusa, un formulario de ideas largo, sin visibilidad del estado de una idea.]",
+        en: "The corporate innovation team wanted to strengthen innovation as a shared capability across the organisation. They were already driving new initiatives and engaging employees, but embedding innovation practices beyond dedicated teams remained a key challenge. Ideas also needed stronger alignment with business needs, and more buy-in from stakeholders, to reach their full impact.",
+        es: "El equipo de innovación corporativa quería reforzar la innovación como una capacidad compartida en toda la organización. Ya impulsaba nuevas iniciativas y movilizaba a los empleados, pero llevar las prácticas de innovación más allá de los equipos dedicados seguía siendo un reto clave. Además, las ideas necesitaban alinearse mejor con las necesidades del negocio y contar con más apoyo de los stakeholders para alcanzar todo su impacto.",
       },
       {
-        en: "[What it caused, e.g. low participation or ideas abandoned halfway, and how you knew: interviews, analytics, usability tests.]",
-        es: "[Qué provocaba, p. ej. poca participación o ideas abandonadas a medias, y cómo lo supiste: entrevistas, analítica, tests de usabilidad.]",
+        en: "Generating ideas is only one part of the innovation journey. As organisations mature, the challenge shifts from collecting ideas to turning them into meaningful outcomes: ideas must align with business priorities, be validated with stakeholders and connect to clear paths to implementation.",
+        es: "Generar ideas es solo una parte del camino de la innovación. A medida que las organizaciones maduran, el reto pasa de recoger ideas a convertirlas en resultados con sentido: las ideas tienen que alinearse con las prioridades del negocio, validarse con los stakeholders y conectar con caminos claros de implementación.",
       },
     ],
     decisions: [
       {
-        title: { en: "Map the innovation model first", es: "Mapear primero el modelo de innovación" },
+        title: { en: "Research both sides", es: "Investigar ambos lados" },
         body: {
-          en: "Before touching screens, I mapped how an idea moves through the hub, from submission to evaluation, to see where the tool got in the way.",
-          es: "Antes de tocar pantallas, mapeé cómo avanza una idea en el hub, del envío a la evaluación, para ver dónde estorbaba la herramienta.",
+          en: "Internal and external research shaped personas and journeys for employees and for external collaborators, finding the key moments where innovation could fit into their work.",
+          es: "La investigación interna y externa dio forma a personas y journeys de empleados y colaboradores externos, identificando los momentos clave en los que la innovación podía encajar en su trabajo.",
         },
       },
       {
-        title: { en: "Rebuild instead of patching", es: "Reconstruir en lugar de parchear" },
+        title: { en: "Design the rules", es: "Diseñar las reglas" },
         body: {
-          en: "The problems were structural, so I recreated the flows and information architecture rather than fixing screens one by one. [Why this was the right call.]",
-          es: "Los problemas eran estructurales, así que rehice los flujos y la arquitectura de información en lugar de arreglar pantallas una a una. [Por qué fue la decisión correcta.]",
+          en: "Beyond the digital platforms, we defined the participation mechanisms and governance principles needed to keep ideas coming over time.",
+          es: "Más allá de las plataformas digitales, definimos los mecanismos de participación y los principios de gobierno necesarios para mantener la generación de ideas en el tiempo.",
         },
       },
       {
-        title: { en: "Build parts in HTML with AI", es: "Construir partes en HTML con IA" },
+        title: { en: "Tailor participation", es: "Adaptar la participación" },
         body: {
-          en: "Some sections I built directly in HTML with AI, so the team could test real, working interfaces instead of static mock-ups.",
-          es: "Algunas secciones las construí directamente en HTML con IA, para que el equipo probara interfaces reales y funcionales en lugar de maquetas estáticas.",
+          en: "Three employee archetypes and community maturity levels let the experience meet people where they are, from first-time contributors to regulars.",
+          es: "Tres arquetipos de empleado y niveles de madurez de la comunidad permitieron que la experiencia se adaptara a cada persona, desde quien participa por primera vez hasta quien lo hace siempre.",
         },
+      },
+      {
+        title: { en: "Open up to partners", es: "Abrirse a partners" },
+        body: {
+          en: "An external collaboration experience connected talent, knowledge and strategic partners through clear roles and participation journeys.",
+          es: "Una experiencia de colaboración externa conectó talento, conocimiento y partners estratégicos mediante roles claros y journeys de participación.",
+        },
+      },
+      {
+        title: { en: "Validate with the team", es: "Validar con el equipo" },
+        body: {
+          en: "Ideation and validation workshops let us test, refine and challenge ideas continuously, so every concept answered a real business need.",
+          es: "Los workshops de ideación y validación nos permitieron probar, afinar y cuestionar las ideas de forma continua, para que cada concepto respondiera a una necesidad real del negocio.",
+        },
+      },
+      {
+        title: { en: "Speak their language", es: "Hablar su idioma" },
+        body: {
+          en: "Working closely with the innovation team kept the experience aligned with the organisation's own innovation language and culture.",
+          es: "Trabajar de cerca con el equipo de innovación mantuvo la experiencia alineada con el lenguaje y la cultura de innovación propios de la organización.",
+        },
+      },
+    ],
+    solution: [
+      {
+        en: "We designed an innovation experience that empowers employees to contribute to the company's future: a shared framework, experience and platforms that let ideas be generated and developed across business units and brands, plus a vision for an external ecosystem around them.",
+        es: "Diseñamos una experiencia de innovación que permite a los empleados contribuir al futuro de la compañía: un marco, una experiencia y unas plataformas compartidas para generar y desarrollar ideas en todas las unidades de negocio y marcas, junto con la visión de un ecosistema externo a su alrededor.",
       },
     ],
     gallery: [
-      { caption: { en: "[Idea creation flow]", es: "[Flujo de creación de ideas]" } },
-      { caption: { en: "[Idea status and feedback]", es: "[Estado de la idea y feedback]" } },
-      { caption: { en: "[A section built in HTML with AI]", es: "[Una sección construida en HTML con IA]" } },
+      {
+        quote: {
+          en: [
+            "Innovation must become a shared capability across the business.",
+            "From specialists to everyone, from isolated ideas to insight-led opportunities, from sporadic workshops to everyday practice.",
+          ],
+          es: [
+            "La innovación tiene que ser una capacidad compartida en todo el negocio.",
+            "De los especialistas a todos, de ideas aisladas a oportunidades basadas en insights, de talleres puntuales a la práctica diaria.",
+          ],
+        },
+      },
+      { caption: { en: "[Employee journey and key moments]", es: "[Journey del empleado y momentos clave]" } },
+      { caption: { en: "[Archetypes and community maturity levels]", es: "[Arquetipos y niveles de madurez de la comunidad]" } },
+      { caption: { en: "[External ecosystem: profiles, journeys and roadmap]", es: "[Ecosistema externo: perfiles, journeys y roadmap]" } },
     ],
     results: [
       {
-        en: "[What changed after launch: participation, quality of ideas, time saved, feedback from the hub team.]",
-        es: "[Qué cambió tras el lanzamiento: participación, calidad de las ideas, tiempo ahorrado, feedback del equipo del hub.]",
+        en: "Together, these initiatives gave the client a more structured and scalable innovation model, focused on driving business impact.",
+        es: "En conjunto, estas iniciativas dieron al cliente un modelo de innovación más estructurado y escalable, centrado en generar impacto de negocio.",
+      },
+    ],
+    resultHighlights: [
+      {
+        en: "A shared framework, experience and platforms for innovating across business units and brands.",
+        es: "Un marco, una experiencia y plataformas compartidas para innovar en todas las unidades de negocio y marcas.",
+      },
+      {
+        en: "Three employee archetypes and community maturity levels to tailor participation.",
+        es: "Tres arquetipos de empleado y niveles de madurez de la comunidad para adaptar la participación.",
+      },
+      {
+        en: "A vision for an external ecosystem, with user profiles, journeys and a platform roadmap.",
+        es: "La visión de un ecosistema externo, con perfiles de usuario, journeys y un roadmap de plataforma.",
+      },
+      {
+        en: "Participation mechanisms and governance principles to sustain ideas over time.",
+        es: "Mecanismos de participación y principios de gobierno para sostener las ideas en el tiempo.",
+      },
+      {
+        en: "Concepts refined with the client's team and aligned with real business needs.",
+        es: "Conceptos afinados con el equipo del cliente y alineados con necesidades reales del negocio.",
       },
     ],
     learnings: [
       {
-        en: "[What you would do differently, and what you learned about designing for participation.]",
-        es: "[Qué harías diferente y qué aprendiste sobre diseñar para la participación.]",
+        en: "The validation workshops were the most valuable part of the project. Testing, refining and challenging ideas with the team kept every concept tied to real business needs and built alignment around the opportunities with the greatest potential.",
+        es: "Los workshops de validación fueron lo más valioso del proyecto. Probar, afinar y cuestionar las ideas con el equipo mantuvo cada concepto ligado a necesidades reales del negocio y generó alineación en torno a las oportunidades con más potencial.",
+      },
+      {
+        en: "That open, iterative dialogue turned early thinking into stronger solutions, and made innovation a truly collaborative effort.",
+        es: "Ese diálogo abierto e iterativo convirtió las primeras ideas en soluciones más sólidas, e hizo de la innovación un esfuerzo verdaderamente colaborativo.",
       },
     ],
   },

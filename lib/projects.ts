@@ -29,9 +29,9 @@ export const projects: Project[] = [
     },
     year: "2026",
     tags: [
-      { en: "Product Design", es: "Diseño de producto" },
-      { en: "UX Redesign", es: "Rediseño UX" },
-      { en: "AI Prototyping", es: "Prototipado con IA" },
+      { en: "Experience Design", es: "Diseño de experiencia" },
+      { en: "Innovation Strategy", es: "Estrategia de innovación" },
+      { en: "Design Research", es: "Design research" },
     ],
   },
   {
