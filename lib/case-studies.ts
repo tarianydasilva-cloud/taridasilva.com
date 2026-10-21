@@ -32,7 +32,6 @@ export type CaseStudy = {
   learnings: Localized[]
 }
 
-const role = { en: "[Your role, e.g. Lead Product Designer]", es: "[Tu rol, p. ej. Lead Product Designer]" }
 
 export const caseStudies: Record<string, CaseStudy> = {
   innohub: {
@@ -42,12 +41,12 @@ export const caseStudies: Record<string, CaseStudy> = {
     },
     facts: {
       client: { en: "Leading Spanish insurer, 100+ years old", es: "Aseguradora española líder, con más de 100 años" },
-      role,
+      role: { en: "Product Designer", es: "Product Designer" },
       team: {
-        en: "5: growth strategy, design research, product design and visual design",
-        es: "5: estrategia de crecimiento, design research, diseño de producto y diseño visual",
+        en: "Growth strategy, design research, product design and visual design",
+        es: "Estrategia de crecimiento, design research, diseño de producto y diseño visual",
       },
-      date: { en: "[Month] 2026", es: "[Mes] de 2026" },
+      date: { en: "March to June 2026", es: "De marzo a junio de 2026" },
     },
     outcomes: [
       { value: { en: "3", es: "3" }, label: { en: "employee archetypes defined", es: "arquetipos de empleado definidos" } },
