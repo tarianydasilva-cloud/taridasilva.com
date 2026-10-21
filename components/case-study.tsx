@@ -6,6 +6,7 @@ import { caseStudies } from "@/lib/case-studies"
 import { projects } from "@/lib/projects"
 import { cn } from "@/lib/utils"
 import { useLanguage } from "./language-provider"
+import { Scene } from "./case-study-scenes"
 import { ProjectMedia } from "./project-media"
 import { SectionNav } from "./section-nav"
 
@@ -156,15 +157,33 @@ export function CaseStudy({ slug }: { slug: string }) {
               </div>
             )}
             <div className="flex flex-col gap-8">
-              {study.gallery.map((item) => (
-                <figure key={item.caption.en} className="reveal">
-                  <ProjectMedia
-                    image={item.image}
-                    alt={item.caption[locale]}
-                    sizes={wide}
-                    className="aspect-[16/10] rounded-2xl"
-                  />
-                  <figcaption className="mt-3 text-sm text-muted-foreground">{item.caption[locale]}</figcaption>
+              {study.gallery.map((item, i) => (
+                <figure key={i} className="reveal">
+                  {item.scene ? (
+                    <Scene scene={item.scene} />
+                  ) : item.pair ? (
+                    <div className="grid gap-2 sm:grid-cols-2">
+                      {item.pair.map((image) => (
+                        <ProjectMedia
+                          key={image}
+                          image={image}
+                          alt={item.caption?.[locale]}
+                          sizes="(min-width: 1024px) 38vw, (min-width: 640px) 50vw, 100vw"
+                          className="aspect-[2592/3351] rounded-2xl"
+                        />
+                      ))}
+                    </div>
+                  ) : (
+                    <ProjectMedia
+                      image={item.image}
+                      alt={item.caption?.[locale]}
+                      sizes={wide}
+                      className="aspect-[16/10] rounded-2xl"
+                    />
+                  )}
+                  {item.caption && (
+                    <figcaption className="mt-3 text-sm text-muted-foreground">{item.caption[locale]}</figcaption>
+                  )}
                 </figure>
               ))}
             </div>

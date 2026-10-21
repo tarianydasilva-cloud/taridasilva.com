@@ -45,7 +45,7 @@ export const projects: Project[] = [
       { en: "Mobility", es: "Movilidad" },
     ],
     image: "/projects/fleet-connect/card.jpg",
-    cover: "/projects/fleet-connect/cover-dashboard.jpg",
+    cover: "/projects/fleet-connect/cover-dashboard-2x.jpg",
     imageAlt: {
       en: "The Fleet Connect dashboard, with cost savings and emissions cards, over a road through a forest",
       es: "El dashboard de Fleet Connect, con las tarjetas de ahorro de costes y de emisiones, sobre una carretera entre bosques",
@@ -63,6 +63,12 @@ export const projects: Project[] = [
       { en: "Service Design", es: "Diseño de servicios" },
       { en: "Strategy", es: "Estrategia" },
     ],
+    image: "/projects/service-experience-design/services-phone.jpg",
+    cover: "/projects/service-experience-design/cover.jpg",
+    imageAlt: {
+      en: "A phone showing the redesigned services page, on an orange background",
+      es: "Un móvil con la página de servicios rediseñada, sobre un fondo naranja",
+    },
   },
   {
     slug: "design-ops-strategy",

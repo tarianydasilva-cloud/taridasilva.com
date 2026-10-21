@@ -4,6 +4,15 @@ type Localized = Record<Locale, string>
 
 // Text in [square brackets] is a placeholder for facts only Tari can fill in: role, team, numbers, results.
 
+// One solution image, two portrait images side by side (`pair`), or an animated scene built in code
+// (components/case-study-scenes.tsx). Scenes can go without a caption.
+export type GalleryItem = {
+  caption?: Localized
+  image?: string
+  pair?: [string, string]
+  scene?: "principles" | "tagline"
+}
+
 export type CaseStudy = {
   statement: Localized
   facts: { client: Localized; role: Localized; team: Localized; date: Localized }
@@ -13,8 +22,8 @@ export type CaseStudy = {
   decisions: { title: Localized; body: Localized }[]
   // Optional text shown above the solution images.
   solution?: Localized[]
-  // Captions for the solution images; pictures go in /public/projects/<slug>/ once available.
-  gallery: { caption: Localized; image?: string }[]
+  // The solution images, in order; pictures go in /public/projects/<slug>/.
+  gallery: GalleryItem[]
   results: Localized[]
   // Optional short wins shown as cards under the results text.
   resultHighlights?: Localized[]
@@ -168,14 +177,14 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     gallery: [
       {
-        image: "/projects/fleet-connect/savings.png",
+        image: "/projects/fleet-connect/savings-2x.png",
         caption: {
           en: "Savings first: one headline number, with the levers behind it a filter away.",
           es: "Primero el ahorro: una cifra principal y, a un filtro, las palancas que la explican.",
         },
       },
       {
-        image: "/projects/fleet-connect/fleet-status.png",
+        image: "/projects/fleet-connect/fleet-status-2x.png",
         caption: {
           en: "Fleet status at a glance: connected and disconnected vehicles in a single bar.",
           es: "El estado de la flota de un vistazo: vehículos conectados y desconectados en una sola barra.",
@@ -292,9 +301,21 @@ export const caseStudies: Record<string, CaseStudy> = {
       },
     ],
     gallery: [
-      { caption: { en: "[Journey map]", es: "[Journey map]" } },
-      { caption: { en: "[Service blueprint]", es: "[Blueprint de servicio]" } },
-      { caption: { en: "[Redesigned services website]", es: "[Web de servicios rediseñada]" } },
+      {
+        scene: "principles",
+        caption: {
+          en: "Four ideas guided the work: coherence, structure, clarity and alignment.",
+          es: "Cuatro ideas guiaron el trabajo: coherencia, estructura, claridad y alineación.",
+        },
+      },
+      {
+        pair: ["/projects/service-experience-design/services-phone.jpg", "/projects/service-experience-design/service-tiers-crop.png"],
+        caption: {
+          en: "Each service gets one clear way in, with simple tiers behind it.",
+          es: "Cada servicio tiene una entrada clara, con niveles sencillos detrás.",
+        },
+      },
+      { scene: "tagline" },
     ],
     results: [
       {
