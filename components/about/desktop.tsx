@@ -281,7 +281,7 @@ export function AboutDesktop() {
 
   return (
     <div className="@container">
-      <div className="flex aspect-[16/10] flex-col overflow-hidden rounded-2xl bg-black">
+      <div className="flex aspect-[16/10] flex-col bg-muted [clip-path:inset(0_round_1rem)]">
         <MenuBar />
 
         <div className="relative flex-1">
