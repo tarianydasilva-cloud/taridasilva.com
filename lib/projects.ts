@@ -45,10 +45,10 @@ export const projects: Project[] = [
       { en: "Mobility", es: "Movilidad" },
     ],
     image: "/projects/fleet-connect/card.jpg",
-    cover: "/projects/fleet-connect/cover.jpg",
+    cover: "/projects/fleet-connect/cover-dashboard.jpg",
     imageAlt: {
-      en: "White company cars on a road through a forest, under the Fleet Connect name",
-      es: "Coches de empresa blancos en una carretera entre bosques, bajo el nombre Fleet Connect",
+      en: "The Fleet Connect dashboard, with cost savings and emissions cards, over a road through a forest",
+      es: "El dashboard de Fleet Connect, con las tarjetas de ahorro de costes y de emisiones, sobre una carretera entre bosques",
     },
   },
   {

@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import type { ReactNode } from "react"
+import type { CSSProperties, ReactNode } from "react"
 import { caseStudies } from "@/lib/case-studies"
 import { projects } from "@/lib/projects"
 import { cn } from "@/lib/utils"
@@ -122,10 +122,12 @@ export function CaseStudy({ slug }: { slug: string }) {
                 Each card spans two subgrid rows, so titles and descriptions line up across a row. */}
             <ul className="grid gap-2 sm:grid-cols-2 xl:grid-cols-6">
               {study.decisions.map((decision, i) => (
+                // On phones the cards stack: each one sticks a little lower than the last and the next slides over it.
                 <li
                   key={decision.title.en}
+                  style={{ "--stack": i } as CSSProperties}
                   className={cn(
-                    "reveal row-span-2 grid grid-rows-subgrid gap-y-3 rounded-2xl bg-muted p-6 sm:max-xl:last:odd:col-span-2 xl:col-span-2",
+                    "reveal row-span-2 grid grid-rows-subgrid gap-y-3 rounded-2xl bg-muted p-6 max-sm:sticky max-sm:top-[calc(9rem+var(--stack)*0.75rem)] max-sm:shadow-[0_-12px_24px_-16px_rgba(0,0,0,0.25)] max-sm:ring-1 max-sm:ring-black/5 sm:max-xl:last:odd:col-span-2 xl:col-span-2",
                     study.decisions.length % 3 === 2 && i >= study.decisions.length - 2 && "xl:col-span-3",
                   )}
                 >
