@@ -8,8 +8,10 @@ export type Project = {
   summary: Localized
   year: string
   tags: Localized[]
-  // Without an image, cards and case studies show a neutral placeholder. Put files in /public/projects/.
+  // Without an image, cards and case studies show a neutral placeholder. Put files in /public/projects/<slug>/.
+  // The case study header uses `cover` when set, so the card and the header can show different pictures.
   image?: string
+  cover?: string
   imageAlt?: Localized
   video?: string
 }
@@ -42,6 +44,12 @@ export const projects: Project[] = [
       { en: "Data Visualisation", es: "Visualización de datos" },
       { en: "Mobility", es: "Movilidad" },
     ],
+    image: "/projects/fleet-connect/card.jpg",
+    cover: "/projects/fleet-connect/cover.jpg",
+    imageAlt: {
+      en: "White company cars on a road through a forest, under the Fleet Connect name",
+      es: "Coches de empresa blancos en una carretera entre bosques, bajo el nombre Fleet Connect",
+    },
   },
   {
     slug: "service-experience-design",

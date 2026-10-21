@@ -9,6 +9,9 @@ import { useLanguage } from "./language-provider"
 import { ProjectMedia } from "./project-media"
 import { SectionNav } from "./section-nav"
 
+// The case study column: three quarters of the page on large screens, full width below.
+const wide = "(min-width: 1024px) 75vw, 100vw"
+
 const sectionIds = ["overview", "challenge", "approach", "solution", "results", "learnings"] as const
 type SectionId = (typeof sectionIds)[number]
 
@@ -50,7 +53,7 @@ export function CaseStudy({ slug }: { slug: string }) {
 
   const next = projects[(index + 1) % projects.length]
   const navItems = sectionIds.map((id) => ({ id, label: t.caseStudy.sections[id] }))
-  const facts = (["client", "role", "team", "timeline"] as const).map((key) => ({
+  const facts = (["client", "role", "team", "date"] as const).map((key) => ({
     label: t.caseStudy.facts[key],
     value: study.facts[key][locale],
   }))
@@ -78,10 +81,11 @@ export function CaseStudy({ slug }: { slug: string }) {
             ))}
           </ul>
           <ProjectMedia
-            image={project.image}
+            image={project.cover ?? project.image}
             video={project.video}
             alt={project.imageAlt?.[locale]}
             priority
+            sizes={wide}
             className="mt-10 rounded-2xl"
           />
         </header>
@@ -141,7 +145,12 @@ export function CaseStudy({ slug }: { slug: string }) {
             <div className="flex flex-col gap-8">
               {study.gallery.map((item) => (
                 <figure key={item.caption.en} className="reveal">
-                  <ProjectMedia image={item.image} alt={item.caption[locale]} className="aspect-[16/10] rounded-2xl" />
+                  <ProjectMedia
+                    image={item.image}
+                    alt={item.caption[locale]}
+                    sizes={wide}
+                    className="aspect-[16/10] rounded-2xl"
+                  />
                   <figcaption className="mt-3 text-sm text-muted-foreground">{item.caption[locale]}</figcaption>
                 </figure>
               ))}

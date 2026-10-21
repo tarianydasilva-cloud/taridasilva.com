@@ -9,10 +9,12 @@ type ProjectMediaProps = {
   alt?: string
   video?: string
   priority?: boolean
+  // Defaults to a grid card's width; wider placements (a case study's cover and gallery) pass their own.
+  sizes?: string
   className?: string
 }
 
-export function ProjectMedia({ image, alt, video, priority, className }: ProjectMediaProps) {
+export function ProjectMedia({ image, alt, video, priority, sizes, className }: ProjectMediaProps) {
   const [videoFailed, setVideoFailed] = useState(false)
   const showVideo = Boolean(video) && !videoFailed
 
@@ -24,7 +26,7 @@ export function ProjectMedia({ image, alt, video, priority, className }: Project
           alt={alt ?? ""}
           fill
           priority={priority}
-          sizes="(min-width: 1280px) 40vw, (min-width: 768px) 50vw, 100vw"
+          sizes={sizes ?? "(min-width: 1280px) 40vw, (min-width: 768px) 50vw, 100vw"}
           className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
         />
       ) : (

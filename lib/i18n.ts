@@ -45,7 +45,7 @@ export const dictionary = {
         results: "Results",
         learnings: "Learnings",
       },
-      facts: { client: "Client", role: "Role", team: "Team", timeline: "Timeline" },
+      facts: { client: "Client", role: "Role", team: "Team", date: "Date" },
       nextProject: "Next project",
     },
     contact: {
@@ -93,7 +93,7 @@ export const dictionary = {
         results: "Resultados",
         learnings: "Aprendizajes",
       },
-      facts: { client: "Cliente", role: "Rol", team: "Equipo", timeline: "Duración" },
+      facts: { client: "Cliente", role: "Rol", team: "Equipo", date: "Fecha" },
       nextProject: "Siguiente proyecto",
     },
     contact: {

@@ -6,7 +6,7 @@ type Localized = Record<Locale, string>
 
 export type CaseStudy = {
   statement: Localized
-  facts: { client: Localized; role: Localized; team: Localized; timeline: Localized }
+  facts: { client: Localized; role: Localized; team: Localized; date: Localized }
   // Key numbers shown near the top: the value (e.g. "+40%") and what it measures.
   outcomes: { value: Localized; label: Localized }[]
   challenge: Localized[]
@@ -34,7 +34,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       client: { en: "Spanish insurance company, Innovation Hub", es: "Aseguradora española, Innovation Hub" },
       role,
       team,
-      timeline: { en: "[Duration], 2026", es: "[Duración], 2026" },
+      date: { en: "[Month] 2026", es: "[Mes] de 2026" },
     },
     outcomes: [
       { value: { en: "[+X%]", es: "[+X%]" }, label: { en: "ideas submitted", es: "ideas enviadas" } },
@@ -106,12 +106,12 @@ export const caseStudies: Record<string, CaseStudy> = {
     },
     facts: {
       client: { en: "Fleet management company", es: "Empresa de gestión de flotas" },
-      role: { en: "Mid Product Designer", es: "Product Designer (mid)" },
+      role: { en: "Product Designer", es: "Product Designer" },
       team: {
-        en: "3: a senior CX manager, a strategy consultant and me",
-        es: "3: un senior CX manager, una consultora de estrategia y yo",
+        en: "Senior Manager, Strategy Consultant and Product Designer",
+        es: "Senior Manager, Consultora de Estrategia y Product Designer",
       },
-      timeline: { en: "2 weeks, February 2026", es: "2 semanas, febrero de 2026" },
+      date: { en: "February 2026", es: "Febrero de 2026" },
     },
     outcomes: [
       {
@@ -167,9 +167,20 @@ export const caseStudies: Record<string, CaseStudy> = {
       },
     ],
     gallery: [
-      { caption: { en: "[Dashboard overview]", es: "[Vista general del dashboard]" } },
-      { caption: { en: "[Two levels of prioritisation]", es: "[Dos niveles de priorización]" } },
-      { caption: { en: "[Metric detail view]", es: "[Vista de detalle de una métrica]" } },
+      {
+        image: "/projects/fleet-connect/savings.png",
+        caption: {
+          en: "Savings first: one headline number, with the levers behind it a filter away.",
+          es: "Primero el ahorro: una cifra principal y, a un filtro, las palancas que la explican.",
+        },
+      },
+      {
+        image: "/projects/fleet-connect/fleet-status.png",
+        caption: {
+          en: "Fleet status at a glance: connected and disconnected vehicles in a single bar.",
+          es: "El estado de la flota de un vistazo: vehículos conectados y desconectados en una sola barra.",
+        },
+      },
     ],
     results: [
       {
@@ -201,7 +212,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       client: { en: "Growing organisation, B2B and B2C", es: "Organización en crecimiento, B2B y B2C" },
       role,
       team,
-      timeline: { en: "[Duration], 2025", es: "[Duración], 2025" },
+      date: { en: "[Month] 2025", es: "[Mes] de 2025" },
     },
     outcomes: [
       { value: { en: "[X]", es: "[X]" }, label: { en: "services mapped end to end", es: "servicios mapeados de principio a fin" } },
@@ -303,7 +314,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       client: { en: "Multidisciplinary creative studio", es: "Estudio creativo multidisciplinar" },
       role,
       team,
-      timeline: { en: "[Duration], 2025", es: "[Duración], 2025" },
+      date: { en: "[Month] 2025", es: "[Mes] de 2025" },
     },
     outcomes: [
       { value: { en: "[X]", es: "[X]" }, label: { en: "levels of project complexity defined", es: "niveles de complejidad de proyecto definidos" } },
