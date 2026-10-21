@@ -34,7 +34,7 @@ export const dictionary = {
       work: { eyebrow: "Selected work", title: "Work" },
       about: { eyebrow: "Profile", title: "About" },
     },
-    work: { disciplines: "Disciplines", allWork: "All work", year: "Year" },
+    work: { disciplines: "Disciplines", year: "Year" },
     caseStudy: {
       sectionNav: "Case study sections",
       sections: {
@@ -82,7 +82,7 @@ export const dictionary = {
       work: { eyebrow: "Trabajo seleccionado", title: "Trabajo" },
       about: { eyebrow: "Perfil", title: "Sobre mí" },
     },
-    work: { disciplines: "Disciplinas", allWork: "Todo el trabajo", year: "Año" },
+    work: { disciplines: "Disciplinas", year: "Año" },
     caseStudy: {
       sectionNav: "Secciones del caso de estudio",
       sections: {

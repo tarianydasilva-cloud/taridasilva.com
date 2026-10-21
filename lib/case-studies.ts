@@ -106,9 +106,12 @@ export const caseStudies: Record<string, CaseStudy> = {
     },
     facts: {
       client: { en: "Fleet management company", es: "Empresa de gestión de flotas" },
-      role,
-      team,
-      timeline: { en: "[Duration], 2026", es: "[Duración], 2026" },
+      role: { en: "Mid Product Designer", es: "Product Designer (mid)" },
+      team: {
+        en: "3: a senior CX manager, a strategy consultant and me",
+        es: "3: un senior CX manager, una consultora de estrategia y yo",
+      },
+      timeline: { en: "2 weeks, February 2026", es: "2 semanas, febrero de 2026" },
     },
     outcomes: [
       {
@@ -136,14 +139,14 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     decisions: [
       {
-        title: { en: "Listen to the people using it", es: "Escuchar a quienes lo usan" },
+        title: { en: "Listen to users", es: "Escuchar a usuarios" },
         body: {
           en: "Qualitative conversations with internal stakeholders showed how different teams used the dashboards, where friction emerged and how insights fed day-to-day operations.",
           es: "Conversaciones cualitativas con stakeholders internos mostraron cómo usaban los dashboards los distintos equipos, dónde surgía la fricción y cómo se aplicaban los insights en el día a día.",
         },
       },
       {
-        title: { en: "Learn from data-heavy products", es: "Aprender de productos con muchos datos" },
+        title: { en: "Learn from the best", es: "Aprender de los mejores" },
         body: {
           en: "A benchmark of leading products in mobility, logistics and other data-intensive industries showed how the best platforms surface critical signals instead of adding more information.",
           es: "Un benchmark de productos líderes en movilidad, logística y otros sectores intensivos en datos mostró cómo las mejores plataformas destacan las señales críticas en lugar de añadir más información.",
@@ -180,12 +183,15 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     learnings: [
       {
-        en: "[What you learned about designing for data-heavy, expert users, and what you would measure if the dashboards shipped.]",
-        es: "[Qué aprendiste sobre diseñar para usuarios expertos con mucha carga de datos, y qué medirías si los dashboards se lanzaran.]",
+        en: "This was one of my first projects prototyping with AI. I built the dashboards in Figma Make, which let us explore and test layouts far faster than designing every screen by hand.",
+        es: "Fue uno de mis primeros proyectos prototipando con IA. Construí los dashboards en Figma Make, lo que nos permitió explorar y probar layouts mucho más rápido que diseñando cada pantalla a mano.",
+      },
+      {
+        en: "It's also where I learned that AI doesn't keep consistency on its own. Each new generation drifted in components, spacing and how numbers were shown, so I had to set the rules first and check every output against them. AI speeds up the making; the system and the judgement still come from the designer.",
+        es: "También fue donde aprendí que la IA no mantiene la consistencia por sí sola. Cada nueva generación se desviaba en componentes, espaciados y en cómo se mostraban los números, así que tuve que definir las reglas primero y revisar cada resultado con ellas. La IA acelera la ejecución; el sistema y el criterio siguen viniendo del diseñador.",
       },
     ],
   },
-
   "service-experience-design": {
     statement: {
       en: "Bringing coherence to services that had grown organically, for customers and employees alike.",

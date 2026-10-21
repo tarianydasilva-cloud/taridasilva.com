@@ -58,28 +58,14 @@ export function CaseStudy({ slug }: { slug: string }) {
   return (
     <article className="pt-8 md:pt-12 lg:grid lg:grid-cols-12 lg:gap-x-10">
       <aside className="hidden lg:col-span-3 lg:block">
-        <div className="sticky top-32 flex flex-col gap-2">
-          <Link
-            href="/work"
-            className="inline-flex items-center gap-2 self-start rounded-full bg-muted px-4 py-2 text-sm transition-colors hover:bg-foreground hover:text-background"
-          >
-            <span aria-hidden="true">←</span>
-            {t.work.allWork}
-          </Link>
+        <div className="sticky top-32">
           <SectionNav items={navItems} label={t.caseStudy.sectionNav} vertical />
         </div>
       </aside>
 
       <div className="min-w-0 lg:col-span-9">
         <header>
-          <Link
-            href="/work"
-            className="inline-flex items-center gap-2 rounded-full bg-muted px-4 py-2 text-sm transition-colors hover:bg-foreground hover:text-background lg:hidden"
-          >
-            <span aria-hidden="true">←</span>
-            {t.work.allWork}
-          </Link>
-          <h1 className="mt-8 text-4xl leading-[1.05] tracking-tight text-balance md:text-6xl lg:mt-0">
+          <h1 className="text-4xl leading-[1.05] tracking-tight text-balance md:text-6xl">
             {project.title[locale]}
           </h1>
           <p className="mt-4 text-lg text-muted-foreground">{project.summary[locale]}</p>
@@ -128,13 +114,14 @@ export function CaseStudy({ slug }: { slug: string }) {
           </Section>
 
           <Section id="approach">
-            {/* Rows always fill: on a 6-column grid, cards take thirds, and a final pair takes halves. */}
+            {/* Rows always fill: on a 6-column grid, cards take thirds, and a final pair takes halves.
+                Each card spans two subgrid rows, so titles and descriptions line up across a row. */}
             <ul className="grid gap-2 sm:grid-cols-2 xl:grid-cols-6">
               {study.decisions.map((decision, i) => (
                 <li
                   key={decision.title.en}
                   className={cn(
-                    "reveal flex flex-col gap-3 rounded-2xl bg-muted p-6 sm:max-xl:last:odd:col-span-2 xl:col-span-2",
+                    "reveal row-span-2 grid grid-rows-subgrid gap-y-3 rounded-2xl bg-muted p-6 sm:max-xl:last:odd:col-span-2 xl:col-span-2",
                     study.decisions.length % 3 === 2 && i >= study.decisions.length - 2 && "xl:col-span-3",
                   )}
                 >
