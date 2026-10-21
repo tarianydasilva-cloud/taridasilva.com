@@ -96,7 +96,34 @@ function Service() {
   )
 }
 
-export function ProjectMotion({ motion, className }: { motion: NonNullable<Project["motion"]>; className?: string }) {
+const wordmark = { en: ["Service", "& Experience"], es: ["Servicios", "y Experiencia"] }
+
+// The case study cover: the same orange, with the name set large in white and the light slowly drifting.
+function Wordmark() {
+  const { locale } = useLanguage()
+
+  return (
+    <>
+      <div className="motion-glow absolute -inset-1/4 bg-[radial-gradient(40%_35%_at_35%_30%,rgb(255_240_232/0.85),transparent_70%)]" />
+      <p className="motion-wordmark absolute inset-0 flex flex-col items-center justify-center text-center text-[9cqi] font-medium leading-[0.95] tracking-[-0.04em] text-white">
+        {wordmark[locale].map((line) => (
+          <span key={line}>{line}</span>
+        ))}
+      </p>
+    </>
+  )
+}
+
+// `tile` is the card on Home and Work; `cover` opens the case study.
+export function ProjectMotion({
+  motion,
+  variant = "tile",
+  className,
+}: {
+  motion: NonNullable<Project["motion"]>
+  variant?: "tile" | "cover"
+  className?: string
+}) {
   return (
     <div
       aria-hidden="true"
@@ -106,7 +133,7 @@ export function ProjectMotion({ motion, className }: { motion: NonNullable<Proje
         className,
       )}
     >
-      <Service />
+      {variant === "cover" ? <Wordmark /> : <Service />}
     </div>
   )
 }
