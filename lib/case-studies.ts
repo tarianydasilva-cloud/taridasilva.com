@@ -10,7 +10,7 @@ export type GalleryItem = {
   caption?: Localized
   image?: string
   pair?: [string, string]
-  scene?: "principles" | "tagline" | "blueprint"
+  scene?: "principles" | "tagline"
 }
 
 export type CaseStudy = {

@@ -93,20 +93,14 @@ export function CaseStudy({ slug }: { slug: string }) {
               </li>
             ))}
           </ul>
-          {project.coverScene ? (
-            <div className="mt-10">
-              <Scene scene={project.coverScene} />
-            </div>
-          ) : (
-            <ProjectMedia
-              image={project.cover ?? project.image}
-              video={project.video}
-              alt={project.imageAlt?.[locale]}
-              priority
-              sizes={wide}
-              className="mt-10 rounded-2xl"
-            />
-          )}
+          <ProjectMedia
+            image={project.cover ?? project.image}
+            video={project.video}
+            alt={project.imageAlt?.[locale]}
+            priority
+            sizes={wide}
+            className="mt-10 rounded-2xl"
+          />
         </header>
 
         <SectionNav items={navItems} label={t.caseStudy.sectionNav} className="lg:hidden" />

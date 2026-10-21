@@ -12,8 +12,6 @@ export type Project = {
   // The case study header uses `cover` when set, so the card and the header can show different pictures.
   image?: string
   cover?: string
-  // An animated cover built in code (components/case-study-scenes.tsx), used instead of `cover`.
-  coverScene?: "blueprint"
   imageAlt?: Localized
   video?: string
 }
@@ -66,7 +64,7 @@ export const projects: Project[] = [
       { en: "Strategy", es: "Estrategia" },
     ],
     image: "/projects/service-experience-design/services-phone.jpg",
-    coverScene: "blueprint",
+    cover: "/projects/service-experience-design/cover-phone.jpg",
     imageAlt: {
       en: "A phone showing the redesigned services page, on an orange background",
       es: "Un móvil con la página de servicios rediseñada, sobre un fondo naranja",
