@@ -63,7 +63,7 @@ export const projects: Project[] = [
       { en: "Service Design", es: "Diseño de servicios" },
       { en: "Strategy", es: "Estrategia" },
     ],
-    image: "/projects/service-experience-design/services-phone.jpg",
+    image: "/projects/service-experience-design/card-tiers.png",
     cover: "/projects/service-experience-design/cover-phone.jpg",
     imageAlt: {
       en: "A phone showing the redesigned services page, on an orange background",
