@@ -114,10 +114,110 @@ function Ops() {
   )
 }
 
+// The Design Ops cover: Tari's process as a loop. The loop draws itself, the stages appear in order around it and a
+// dot keeps travelling the path. Points sit on an ellipse in a 1600×900 box, so labels never leave the frame.
+const loop = { cx: 640, cy: 450, rx: 560, ry: 300 }
+type Stop = { t: number; en: string; es: string; phase?: boolean }
+const stops: Stop[] = [
+  { t: -92, en: "Observe & diagnose", es: "Observar y diagnosticar", phase: true },
+  { t: -76, en: "Requests intake", es: "Entrada de peticiones" },
+  { t: -60, en: "Decision making", es: "Toma de decisiones" },
+  { t: -44, en: "Information flow", es: "Flujo de información" },
+  { t: -27, en: "Framing", es: "Enmarcar", phase: true },
+  { t: -10, en: "Structure design", es: "Diseño de estructura", phase: true },
+  { t: 3, en: "Framework creation", es: "Creación del marco" },
+  { t: 16, en: "Mediate & align", es: "Mediar y alinear", phase: true },
+  { t: 28, en: "Relationships", es: "Relaciones" },
+  { t: 39, en: "Expectations", es: "Expectativas" },
+  { t: 54, en: "Adapt", es: "Adaptar", phase: true },
+  { t: 70, en: "Reiterate", es: "Reiterar" },
+  { t: 86, en: "Culture focus", es: "Foco en la cultura" },
+  { t: 102, en: "Reiterate", es: "Reiterar" },
+]
+const point = (t: number) => {
+  const a = (t * Math.PI) / 180
+  return { x: loop.cx + loop.rx * Math.cos(a), y: loop.cy + loop.ry * Math.sin(a) }
+}
+const loopPath = `M${loop.cx - loop.rx} ${loop.cy}a${loop.rx} ${loop.ry} 0 1 1 ${loop.rx * 2} 0a${loop.rx} ${loop.ry} 0 1 1 ${-loop.rx * 2} 0`
+
+function OpsLoop() {
+  const { locale } = useLanguage()
+
+  return (
+    <>
+      <svg viewBox="0 0 1600 900" className="absolute inset-0 size-full" fill="none">
+        <path d={loopPath} pathLength={1} stroke="rgb(255 255 255 / 0.55)" strokeWidth="1.5" className="ops-draw" />
+        {stops.map((stop, i) => {
+          const { x, y } = point(stop.t)
+          return (
+            <circle
+              key={i}
+              cx={x}
+              cy={y}
+              r={stop.phase ? 9 : 5}
+              fill="#ffffff"
+              style={index(i)}
+              className="ops-pop [transform-box:fill-box] [transform-origin:center]"
+            />
+          )
+        })}
+        <circle r="5" fill="var(--accent)" className="ops-traveller">
+          <animateMotion dur="14s" repeatCount="indefinite" path={loopPath} />
+        </circle>
+      </svg>
+
+      {stops.map((stop, i) => {
+        const { x, y } = point(stop.t)
+        // Labels sit outside the loop: above the top stops, to the right of the side ones, below the bottom ones.
+        const side = stop.t < -85 ? "top" : stop.t > 64 ? "bottom" : "right"
+        const place = {
+          top: "-translate-x-1/2 -translate-y-[calc(100%+1.4cqi)]",
+          right: "translate-x-[1.6cqi] -translate-y-1/2",
+          bottom: "-translate-x-1/2 translate-y-[1.2cqi]",
+        }[side]
+        return (
+          <span
+            key={i}
+            style={{ left: `${(x / 1600) * 100}%`, top: `${(y / 900) * 100}%` }}
+            className={cn("absolute", place, !stop.phase && "hidden @lg:block")}
+          >
+            <span
+              style={index(i)}
+              className={cn(
+                "ops-pop block text-white",
+                stop.phase
+                  ? "max-w-[24cqi] text-[clamp(8px,1.55cqi,18px)] uppercase leading-tight @lg:max-w-none @lg:whitespace-nowrap"
+                  : "whitespace-nowrap text-[clamp(8px,1.1cqi,13px)] text-white/80",
+                side !== "right" && "text-center",
+              )}
+            >
+              {stop[locale]}
+            </span>
+          </span>
+        )
+      })}
+
+      <div className="ops-title absolute left-[13%] top-1/2 -translate-y-1/2 text-white">
+        <p className="text-[6.6cqi] leading-[1.02] tracking-[-0.03em]">
+          {ops[locale].map((line) => (
+            <span key={line} className="block">
+              {line}
+            </span>
+          ))}
+        </p>
+        <p className="mt-[1.6cqi] text-[clamp(7px,1cqi,12px)] uppercase tracking-wider text-white/70">
+          {locale === "es" ? "Mi proceso en curso" : "My ongoing process"}
+        </p>
+      </div>
+    </>
+  )
+}
+
 const backgrounds = {
   service:
     "bg-[radial-gradient(80%_60%_at_30%_0%,#ffe6da_0%,transparent_60%),radial-gradient(70%_70%_at_100%_100%,#ff3d00,transparent_70%),linear-gradient(160deg,#ffb08a,#ff5a1f_60%,#ff2700)]",
   ops: "bg-[linear-gradient(160deg,#f2f2f0,#e3e3e0)]",
+  opsCover: "bg-black",
 }
 
 // `tile` is the card on Home and Work; `cover` opens the case study.
@@ -134,9 +234,19 @@ export function ProjectMotion({
     <div
       aria-hidden="true"
       data-motion={motion}
-      className={cn("@container relative overflow-hidden", backgrounds[motion], className)}
+      className={cn(
+        "@container relative overflow-hidden",
+        backgrounds[motion === "ops" && variant === "cover" ? "opsCover" : motion],
+        className,
+      )}
     >
-      {motion === "ops" ? <Ops /> : variant === "cover" ? <Wordmark /> : <Service />}
+      {motion === "ops" ? (
+        variant === "cover" ? <OpsLoop /> : <Ops />
+      ) : variant === "cover" ? (
+        <Wordmark />
+      ) : (
+        <Service />
+      )}
     </div>
   )
 }

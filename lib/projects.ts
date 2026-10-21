@@ -81,11 +81,6 @@ export const projects: Project[] = [
       { en: "Strategy", es: "Estrategia" },
     ],
     motion: "ops",
-    cover: "/projects/design-ops-strategy/cover-process.png",
-    imageAlt: {
-      en: "The Design Ops & Strategy process as a loop: observe and diagnose, framing, structure design, mediate and align, adapt",
-      es: "El proceso de Design Ops y estrategia como un ciclo: observar y diagnosticar, enmarcar, diseñar la estructura, mediar y alinear, adaptar",
-    },
   },
 ]
 
