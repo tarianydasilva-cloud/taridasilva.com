@@ -51,7 +51,7 @@ function Service() {
               <li
                 key={plan}
                 style={index(i + 1)}
-                className="motion-row relative flex items-center justify-between border-black/5 px-[0.6em] py-[0.7em] not-last:border-b"
+                className="motion-row relative flex items-center justify-between px-[0.6em] py-[0.7em]"
               >
                 {plan}
                 <span aria-hidden="true" className="text-muted-foreground">
