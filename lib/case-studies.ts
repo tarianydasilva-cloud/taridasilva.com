@@ -4,13 +4,15 @@ type Localized = Record<Locale, string>
 
 // Text in [square brackets] is a placeholder for facts only Tari can fill in: role, team, numbers, results.
 
-// One solution image, two portrait images side by side (`pair`), or an animated scene built in code
-// (components/case-study-scenes.tsx). Scenes can go without a caption.
+// One solution image, two portrait images side by side (`pair`), a quote revealed word by word (one string per
+// line; later lines muted), or an animated scene built in code (components/case-study-scenes.tsx).
+// Quotes and scenes can go without a caption.
 export type GalleryItem = {
   caption?: Localized
   image?: string
   pair?: [string, string]
-  scene?: "principles" | "tagline"
+  quote?: Record<Locale, string[]>
+  scene?: "principles"
 }
 
 export type CaseStudy = {
@@ -315,7 +317,12 @@ export const caseStudies: Record<string, CaseStudy> = {
           es: "Cada servicio tiene una entrada clara, con niveles sencillos detrás.",
         },
       },
-      { scene: "tagline" },
+      {
+        quote: {
+          en: ["Clearer services and better experiences,", "designed from the inside out."],
+          es: ["Servicios más claros y mejores experiencias,", "diseñados de dentro hacia fuera."],
+        },
+      },
     ],
     results: [
       {
@@ -426,8 +433,25 @@ export const caseStudies: Record<string, CaseStudy> = {
       },
     ],
     gallery: [
-      { caption: { en: "[Briefing structure]", es: "[Estructura del briefing]" } },
-      { caption: { en: "[Project dimensioning levels]", es: "[Niveles de dimensionamiento de proyectos]" } },
+      {
+        pair: ["/projects/design-ops-strategy/intake-flow.png", "/projects/design-ops-strategy/artefacts.png"],
+        caption: {
+          en: "The intake flow, from a client's request to a designer starting work, and the artefacts that support it.",
+          es: "El flujo de entrada, desde la petición del cliente hasta que un diseñador empieza a trabajar, y los artefactos que lo sostienen.",
+        },
+      },
+      {
+        quote: {
+          en: [
+            "The first priority is always to stabilise delivery and protect the team.",
+            "In parallel, I observe how work actually happens to design structures that reduce friction over time.",
+          ],
+          es: [
+            "La primera prioridad siempre es estabilizar la entrega y proteger al equipo.",
+            "En paralelo, observo cómo sucede de verdad el trabajo para diseñar estructuras que reduzcan la fricción con el tiempo.",
+          ],
+        },
+      },
     ],
     results: [
       {

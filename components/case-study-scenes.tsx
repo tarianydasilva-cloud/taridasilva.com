@@ -2,6 +2,7 @@
 
 import type { CSSProperties } from "react"
 import type { GalleryItem } from "@/lib/case-studies"
+import type { Locale } from "@/lib/i18n"
 import { useLanguage } from "./language-provider"
 
 // Animated scenes for case study galleries, built in code so they stay sharp at any size.
@@ -39,20 +40,15 @@ function Principles() {
   )
 }
 
-const tagline = {
-  en: ["Clearer services and better experiences,", "designed from the inside out."],
-  es: ["Servicios más claros y mejores experiencias,", "diseñados de dentro hacia fuera."],
-}
-
-// The closing line, revealed word by word: the first line in full colour, the second muted.
-function Tagline() {
+// A quote revealed word by word as it scrolls into view: the first line in full colour, the rest muted.
+export function Quote({ lines }: { lines: Record<Locale, string[]> }) {
   const { locale } = useLanguage()
   let word = 0
 
   return (
-    <p className="text-lead rounded-2xl bg-[#f4f4f4] px-6 py-16 text-center text-balance md:py-24">
-      {tagline[locale].map((line, l) => (
-        <span key={line} className={l === 0 ? "block" : "block text-muted-foreground"}>
+    <p className="text-lead rounded-2xl bg-[#f4f4f4] px-6 py-16 text-center text-balance md:px-12 md:py-24">
+      {lines[locale].map((line, l) => (
+        <span key={line} className={l === 0 ? "block" : "mt-1 block text-muted-foreground"}>
           {line.split(" ").map((w) => (
             <span key={w + word} style={index(word++)} className="scene-pop scene-word inline-block">
               {w}&nbsp;
@@ -64,6 +60,7 @@ function Tagline() {
   )
 }
 
+// Only one scene exists so far; the prop keeps the gallery data explicit about which one it shows.
 export function Scene({ scene }: { scene: NonNullable<GalleryItem["scene"]> }) {
-  return scene === "principles" ? <Principles /> : <Tagline />
+  return scene === "principles" ? <Principles /> : null
 }

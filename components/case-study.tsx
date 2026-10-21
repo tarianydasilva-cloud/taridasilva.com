@@ -6,7 +6,7 @@ import { caseStudies } from "@/lib/case-studies"
 import { projects } from "@/lib/projects"
 import { cn } from "@/lib/utils"
 import { useLanguage } from "./language-provider"
-import { Scene } from "./case-study-scenes"
+import { Quote, Scene } from "./case-study-scenes"
 import { ProjectMedia } from "./project-media"
 import { ProjectMotion } from "./project-motion"
 import { SectionNav } from "./section-nav"
@@ -94,7 +94,7 @@ export function CaseStudy({ slug }: { slug: string }) {
               </li>
             ))}
           </ul>
-          {project.motion ? (
+          {project.motion && !project.cover ? (
             <ProjectMotion motion={project.motion} variant="cover" className="mt-10 aspect-video rounded-2xl" />
           ) : (
             <ProjectMedia
@@ -166,6 +166,8 @@ export function CaseStudy({ slug }: { slug: string }) {
                 <figure key={i} className="reveal">
                   {item.scene ? (
                     <Scene scene={item.scene} />
+                  ) : item.quote ? (
+                    <Quote lines={item.quote} />
                   ) : item.pair ? (
                     <div className="grid gap-2 sm:grid-cols-2">
                       {item.pair.map((image) => (
@@ -174,7 +176,7 @@ export function CaseStudy({ slug }: { slug: string }) {
                           image={image}
                           alt={item.caption?.[locale]}
                           sizes="(min-width: 1024px) 38vw, (min-width: 640px) 50vw, 100vw"
-                          className="aspect-[2592/3351] rounded-2xl"
+                          className="aspect-[4/5] rounded-2xl ring-1 ring-black/5"
                         />
                       ))}
                     </div>

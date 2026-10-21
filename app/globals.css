@@ -160,6 +160,11 @@
   translate: 0 100%;
 }
 
+/* Without motion, the Design Ops tile just shows its name. */
+.motion-ops-ring {
+  opacity: 0;
+}
+
 .motion-type {
   display: inline-block;
   overflow: hidden;
@@ -192,11 +197,60 @@
   .motion-caret {
     animation: motion-caret 1s steps(1) infinite;
   }
+  .motion-ops-word {
+    animation: motion-ops-word 6s ease-in-out infinite both;
+  }
+  .motion-ops-ring {
+    animation: motion-ops-ring 6s cubic-bezier(0.45, 0, 0.25, 1) infinite both;
+  }
   .motion-glow {
     animation: motion-glow 12s ease-in-out infinite alternate;
   }
   .motion-wordmark {
     animation: motion-wordmark 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s both;
+  }
+}
+
+@keyframes motion-ops-word {
+  0%,
+  36% {
+    opacity: 1;
+    filter: blur(0);
+    scale: 1;
+  }
+  44%,
+  84% {
+    opacity: 0;
+    filter: blur(6px);
+    scale: 0.96;
+  }
+  92%,
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    scale: 1;
+  }
+}
+
+/* The ring opens from a thin line (turned side-on), spins a little, and folds away again. */
+@keyframes motion-ops-ring {
+  0%,
+  38% {
+    opacity: 0;
+    transform: rotateY(85deg) rotate(0deg);
+  }
+  48% {
+    opacity: 1;
+    transform: rotateY(0deg) rotate(0deg);
+  }
+  78% {
+    opacity: 1;
+    transform: rotateY(0deg) rotate(120deg);
+  }
+  88%,
+  100% {
+    opacity: 0;
+    transform: rotateY(85deg) rotate(150deg);
   }
 }
 

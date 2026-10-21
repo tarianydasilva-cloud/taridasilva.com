@@ -12,9 +12,9 @@ export type Project = {
   // The case study header uses `cover` when set, so the card and the header can show different pictures.
   image?: string
   cover?: string
-  // An animated tile built in code (components/project-motion.tsx), shown instead of the picture on the card
-  // and as the case study cover.
-  motion?: "service"
+  // An animated tile built in code (components/project-motion.tsx), shown instead of the picture on the card,
+  // and as the case study cover when the project has no `cover`.
+  motion?: "service" | "ops"
   imageAlt?: Localized
   video?: string
 }
@@ -80,6 +80,12 @@ export const projects: Project[] = [
       { en: "Design Ops", es: "Design Ops" },
       { en: "Strategy", es: "Estrategia" },
     ],
+    motion: "ops",
+    cover: "/projects/design-ops-strategy/cover-process.png",
+    imageAlt: {
+      en: "The Design Ops & Strategy process as a loop: observe and diagnose, framing, structure design, mediate and align, adapt",
+      es: "El proceso de Design Ops y estrategia como un ciclo: observar y diagnosticar, enmarcar, diseñar la estructura, mediar y alinear, adaptar",
+    },
   },
 ]
 
