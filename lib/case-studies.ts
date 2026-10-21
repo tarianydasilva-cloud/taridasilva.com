@@ -209,28 +209,22 @@ export const caseStudies: Record<string, CaseStudy> = {
       es: "Dar coherencia a unos servicios que habían crecido de forma orgánica, para clientes y empleados por igual.",
     },
     facts: {
-      client: { en: "Talent and recruitment firm, B2B and B2C", es: "Firma de talento y selección, B2B y B2C" },
+      client: { en: "Growing organisation, B2B and B2C", es: "Organización en crecimiento, B2B y B2C" },
       role: { en: "Strategic Service Designer", es: "Strategic Service Designer" },
       team: {
-        en: "Sole designer, working with the talent and sales teams",
-        es: "Única diseñadora, junto a los equipos de talento y ventas",
+        en: "Solo, working with the talent and sales teams",
+        es: "En solitario, junto a los equipos de talento y ventas",
       },
       date: { en: "January to June 2025", es: "De enero a junio de 2025" },
     },
     outcomes: [
       {
         value: { en: "3", es: "3" },
-        label: {
-          en: "offerings mapped end to end: the website and two services",
-          es: "ofertas mapeadas de principio a fin: la web y dos servicios",
-        },
+        label: { en: "services mapped end to end", es: "servicios mapeados de principio a fin" },
       },
       {
         value: { en: "3", es: "3" },
-        label: {
-          en: "journey maps: visitor, job seeker and hiring leader",
-          es: "journey maps: visitante, candidato y líder que contrata",
-        },
+        label: { en: "journeys mapped", es: "recorridos mapeados" },
       },
       {
         value: { en: "6", es: "6" },
@@ -304,8 +298,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     results: [
       {
-        en: "The work progressed to a formal rollout. The main deliverable was a redesigned website that presents the firm's services clearly, for companies looking to hire leaders and for people looking for their next role. It was also my first design handed over to a development team.",
-        es: "El trabajo llegó a un despliegue formal. El entregable principal fue una web rediseñada que presenta con claridad los servicios de la firma, tanto para empresas que buscan contratar líderes como para personas que buscan su siguiente puesto. También fue mi primer diseño entregado a un equipo de desarrollo.",
+        en: "The work progressed to a formal rollout, with a redesigned website that presents the services clearly.",
+        es: "El trabajo llegó a un despliegue formal, con una web rediseñada que presenta los servicios con claridad.",
       },
     ],
     resultHighlights: [
@@ -314,8 +308,8 @@ export const caseStudies: Record<string, CaseStudy> = {
         es: "Lanzamos una web rediseñada que deja claros los servicios desde la primera vista.",
       },
       {
-        en: "Shaped the two core services: hiring leaders for companies, and finding the next role for candidates.",
-        es: "Dimos forma a los dos servicios principales: contratar líderes para empresas y encontrar el siguiente puesto para candidatos.",
+        en: "Shaped the two core services.",
+        es: "Dimos forma a los dos servicios principales.",
       },
       {
         en: "Mapped how sales first meets clients and hands them on, linking commercial work to the service.",
@@ -334,10 +328,6 @@ export const caseStudies: Record<string, CaseStudy> = {
       {
         en: "This is where I learned how service design really works: how a business runs, how clients come in, and how a service comes to life behind every screen.",
         es: "Aquí aprendí cómo funciona de verdad el diseño de servicios: cómo opera un negocio, cómo llegan los clientes y cómo cobra vida un servicio detrás de cada pantalla.",
-      },
-      {
-        en: "It was also my first deliverable for a development team, which taught me to design with the build in mind: clear decisions, written down, so nothing gets lost between the map and the website.",
-        es: "También fue mi primer entregable para un equipo de desarrollo, lo que me enseñó a diseñar pensando en la construcción: decisiones claras y por escrito, para que nada se pierda entre el mapa y la web.",
       },
     ],
   },
