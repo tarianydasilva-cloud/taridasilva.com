@@ -121,6 +121,20 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     gallery: [
       {
+        image: "/projects/innohub/workshops.jpg",
+        caption: {
+          en: "Ideation and validation workshops with the client's team: where ideas were tested, refined and challenged.",
+          es: "Workshops de ideación y validación con el equipo del cliente: donde las ideas se probaban, afinaban y cuestionaban.",
+        },
+      },
+      {
+        image: "/projects/innohub/success-story.jpg",
+        caption: {
+          en: "Ideas that made it are shown back to everyone, so employees can see what their own idea could become.",
+          es: "Las ideas que salieron adelante se muestran a todos, para que cada empleado vea en qué podría convertirse la suya.",
+        },
+      },
+      {
         quote: {
           en: [
             "Innovation must become a shared capability across the business.",
@@ -132,9 +146,6 @@ export const caseStudies: Record<string, CaseStudy> = {
           ],
         },
       },
-      { caption: { en: "[Employee journey and key moments]", es: "[Journey del empleado y momentos clave]" } },
-      { caption: { en: "[Archetypes and community maturity levels]", es: "[Arquetipos y niveles de madurez de la comunidad]" } },
-      { caption: { en: "[External ecosystem: profiles, journeys and roadmap]", es: "[Ecosistema externo: perfiles, journeys y roadmap]" } },
     ],
     results: [
       {
