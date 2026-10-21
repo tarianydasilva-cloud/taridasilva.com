@@ -92,33 +92,25 @@ function Wordmark() {
 }
 
 const ops = { en: ["Design Ops", "& Strategy"], es: ["Design Ops", "y Estrategia"] }
-const dots = Array.from({ length: 12 }, (_, i) => i)
 
-// Design Ops: black type on light grey that dissolves into a turning ring of dots and comes back, every 6 seconds.
+// Design Ops: black type on light grey. Every 6 seconds the words blur away one by one and come back in order.
 function Ops() {
   const { locale } = useLanguage()
+  let word = 0
 
   return (
-    <>
-      <p className="motion-ops-word absolute inset-0 flex flex-col items-center justify-center text-center text-[11cqi] leading-[1.02] tracking-[-0.035em] text-foreground">
-        {ops[locale].map((line) => (
-          <span key={line}>{line}</span>
-        ))}
-      </p>
-      <div className="absolute inset-0 flex items-center justify-center [perspective:600px]">
-        <div className="motion-ops-ring relative size-[26cqi]">
-          {dots.map((i) => (
-            <span
-              key={i}
-              style={{ rotate: `${i * 30}deg` }}
-              className="absolute inset-0 flex justify-center"
-            >
-              <span className="size-[1.3cqi] min-h-1 min-w-1 rounded-[0.2cqi] bg-foreground" />
+    <p className="absolute inset-0 flex flex-col items-center justify-center text-center text-[11cqi] leading-[1.02] tracking-[-0.035em] text-foreground">
+      {ops[locale].map((line) => (
+        <span key={line}>
+          {line.split(" ").map((w, k) => (
+            <span key={w} style={index(word++)} className="motion-ops-word inline-block">
+              {k > 0 && "\u00a0"}
+              {w}
             </span>
           ))}
-        </div>
-      </div>
-    </>
+        </span>
+      ))}
+    </p>
   )
 }
 
