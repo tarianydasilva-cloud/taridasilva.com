@@ -209,15 +209,33 @@ export const caseStudies: Record<string, CaseStudy> = {
       es: "Dar coherencia a unos servicios que habían crecido de forma orgánica, para clientes y empleados por igual.",
     },
     facts: {
-      client: { en: "Growing organisation, B2B and B2C", es: "Organización en crecimiento, B2B y B2C" },
-      role,
-      team,
-      date: { en: "[Month] 2025", es: "[Mes] de 2025" },
+      client: { en: "Talent and recruitment firm, B2B and B2C", es: "Firma de talento y selección, B2B y B2C" },
+      role: { en: "Strategic Service Designer", es: "Strategic Service Designer" },
+      team: {
+        en: "Sole designer, working with the talent and sales teams",
+        es: "Única diseñadora, junto a los equipos de talento y ventas",
+      },
+      date: { en: "January to June 2025", es: "De enero a junio de 2025" },
     },
     outcomes: [
-      { value: { en: "[X]", es: "[X]" }, label: { en: "services mapped end to end", es: "servicios mapeados de principio a fin" } },
-      { value: { en: "[X]", es: "[X]" }, label: { en: "journey maps created", es: "journey maps creados" } },
-      { value: { en: "[X]", es: "[X]" }, label: { en: "teams involved", es: "equipos implicados" } },
+      {
+        value: { en: "3", es: "3" },
+        label: {
+          en: "offerings mapped end to end: the website and two services",
+          es: "ofertas mapeadas de principio a fin: la web y dos servicios",
+        },
+      },
+      {
+        value: { en: "3", es: "3" },
+        label: {
+          en: "journey maps: visitor, job seeker and hiring leader",
+          es: "journey maps: visitante, candidato y líder que contrata",
+        },
+      },
+      {
+        value: { en: "6", es: "6" },
+        label: { en: "months from discovery to launch", es: "meses del descubrimiento al lanzamiento" },
+      },
     ],
     challenge: [
       {
@@ -286,21 +304,40 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     results: [
       {
-        en: "Due to organisational constraints and shifting priorities, the work did not progress to a formal rollout. It worked instead as an exploratory and diagnostic effort: elements were shared and reviewed with team members, helping validate assumptions and refine thinking about service structure, customer needs and internal processes.",
-        es: "Por restricciones de la organización y cambios de prioridades, el trabajo no llegó a un despliegue formal. Funcionó como un esfuerzo exploratorio y de diagnóstico: partes del trabajo se compartieron y revisaron con el equipo, lo que ayudó a validar hipótesis y afinar la estructura de los servicios, las necesidades de los clientes y los procesos internos.",
+        en: "The work progressed to a formal rollout. The main deliverable was a redesigned website that presents the firm's services clearly, for companies looking to hire leaders and for people looking for their next role. It was also my first design handed over to a development team.",
+        es: "El trabajo llegó a un despliegue formal. El entregable principal fue una web rediseñada que presenta con claridad los servicios de la firma, tanto para empresas que buscan contratar líderes como para personas que buscan su siguiente puesto. También fue mi primer diseño entregado a un equipo de desarrollo.",
       },
     ],
     resultHighlights: [
-      { en: "Surfaced misalignments between services, communication and internal operations.", es: "Hizo visibles los desajustes entre servicios, comunicación y operaciones internas." },
-      { en: "Gave a structured view of services and journeys that had never been documented.", es: "Ofreció una visión estructurada de servicios y recorridos que nunca se habían documentado." },
-      { en: "Created references that can be reused or expanded when the organisation is ready.", es: "Creó referencias que pueden reutilizarse o ampliarse cuando la organización esté preparada." },
-      { en: "Strengthened cross-team dialogue about consistency, efficiency and experience quality.", es: "Reforzó el diálogo entre equipos sobre coherencia, eficiencia y calidad de la experiencia." },
-      { en: "Led to a redesign of the main website, simplifying the first view of the services.", es: "Llevó al rediseño de la web principal, simplificando la primera visión de los servicios." },
+      {
+        en: "Launched a redesigned website that makes the services clear from the first view.",
+        es: "Lanzamos una web rediseñada que deja claros los servicios desde la primera vista.",
+      },
+      {
+        en: "Shaped the two core services: hiring leaders for companies, and finding the next role for candidates.",
+        es: "Dimos forma a los dos servicios principales: contratar líderes para empresas y encontrar el siguiente puesto para candidatos.",
+      },
+      {
+        en: "Mapped how sales first meets clients and hands them on, linking commercial work to the service.",
+        es: "Mapeamos cómo ventas conoce a los clientes y los traspasa, conectando el trabajo comercial con el servicio.",
+      },
+      {
+        en: "Gave a structured view of services and journeys that had never been documented.",
+        es: "Ofrecimos una visión estructurada de servicios y recorridos que nunca se habían documentado.",
+      },
+      {
+        en: "Mapped the journeys for a community the firm planned to launch, ready for when it moves forward.",
+        es: "Mapeamos los recorridos de una comunidad que la firma quería lanzar, listos para cuando avance.",
+      },
     ],
     learnings: [
       {
-        en: "While the initiative remained exploratory, it laid the groundwork and showed how service design tools can support clearer decisions and future improvements. [What you would do differently to get it adopted.]",
-        es: "Aunque la iniciativa quedó en fase exploratoria, sentó las bases y demostró cómo las herramientas de diseño de servicios pueden apoyar decisiones más claras y mejoras futuras. [Qué harías diferente para conseguir que se adoptara.]",
+        en: "This is where I learned how service design really works: how a business runs, how clients come in, and how a service comes to life behind every screen.",
+        es: "Aquí aprendí cómo funciona de verdad el diseño de servicios: cómo opera un negocio, cómo llegan los clientes y cómo cobra vida un servicio detrás de cada pantalla.",
+      },
+      {
+        en: "It was also my first deliverable for a development team, which taught me to design with the build in mind: clear decisions, written down, so nothing gets lost between the map and the website.",
+        es: "También fue mi primer entregable para un equipo de desarrollo, lo que me enseñó a diseñar pensando en la construcción: decisiones claras y por escrito, para que nada se pierda entre el mapa y la web.",
       },
     ],
   },

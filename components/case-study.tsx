@@ -15,6 +15,18 @@ const wide = "(min-width: 1024px) 75vw, 100vw"
 const sectionIds = ["overview", "challenge", "approach", "solution", "results", "learnings"] as const
 type SectionId = (typeof sectionIds)[number]
 
+// Card rows always fill. With two columns an odd last card spans the row; on the 6-column grid cards take
+// thirds, a final pair takes halves and a lone final card the full row (5 cards: 3 + 2, 4 cards: 3 + 1).
+function fillRow(i: number, count: number) {
+  const rest = count % 3
+  const inLastRow = i >= count - rest
+  return cn(
+    "sm:max-xl:last:odd:col-span-2 xl:col-span-2",
+    inLastRow && rest === 2 && "xl:col-span-3",
+    inLastRow && rest === 1 && "xl:col-span-6",
+  )
+}
+
 function Section({ id, children }: { id: SectionId; children: ReactNode }) {
   const { t } = useLanguage()
 
@@ -118,8 +130,7 @@ export function CaseStudy({ slug }: { slug: string }) {
           </Section>
 
           <Section id="approach">
-            {/* Rows always fill: on a 6-column grid, cards take thirds, and a final pair takes halves.
-                Each card spans two subgrid rows, so titles and descriptions line up across a row. */}
+            {/* Each card spans two subgrid rows, so titles and descriptions line up across a row. */}
             <ul className="grid gap-2 sm:grid-cols-2 xl:grid-cols-6">
               {study.decisions.map((decision, i) => (
                 // On phones the cards stack: each one sticks a little lower than the last and the next slides over it.
@@ -127,8 +138,8 @@ export function CaseStudy({ slug }: { slug: string }) {
                   key={decision.title.en}
                   style={{ "--stack": i } as CSSProperties}
                   className={cn(
-                    "reveal row-span-2 grid grid-rows-subgrid gap-y-3 rounded-2xl bg-muted p-6 max-sm:sticky max-sm:top-[calc(9rem+var(--stack)*0.75rem)] max-sm:shadow-[0_-12px_24px_-16px_rgba(0,0,0,0.25)] max-sm:ring-1 max-sm:ring-black/5 sm:max-xl:last:odd:col-span-2 xl:col-span-2",
-                    study.decisions.length % 3 === 2 && i >= study.decisions.length - 2 && "xl:col-span-3",
+                    "reveal row-span-2 grid grid-rows-subgrid gap-y-3 rounded-2xl bg-muted p-6 max-sm:sticky max-sm:top-[calc(9rem+var(--stack)*0.75rem)] max-sm:shadow-[0_-12px_24px_-16px_rgba(0,0,0,0.25)] max-sm:ring-1 max-sm:ring-black/5",
+                    fillRow(i, study.decisions.length),
                   )}
                 >
                   <h3 className="text-xl tracking-tight">{decision.title[locale]}</h3>
@@ -162,10 +173,12 @@ export function CaseStudy({ slug }: { slug: string }) {
           <Section id="results">
             <Paragraphs items={study.results} />
             {study.resultHighlights && (
-              <ul className="mt-8 grid gap-2 sm:grid-cols-2">
-                {study.resultHighlights.map((highlight) => (
-                  // An odd last card spans the row instead of sitting alone.
-                  <li key={highlight.en} className="reveal rounded-2xl bg-muted p-5 leading-relaxed sm:last:odd:col-span-2">
+              <ul className="mt-8 grid gap-2 sm:grid-cols-2 xl:grid-cols-6">
+                {study.resultHighlights.map((highlight, i, all) => (
+                  <li
+                    key={highlight.en}
+                    className={cn("reveal rounded-2xl bg-muted p-5 leading-relaxed", fillRow(i, all.length))}
+                  >
                     {highlight[locale]}
                   </li>
                 ))}
