@@ -7,6 +7,7 @@ import { projects } from "@/lib/projects"
 import { cn } from "@/lib/utils"
 import { useLanguage } from "./language-provider"
 import { Quote, Scene, ServicesPhone } from "./case-study-scenes"
+import { EdgeCaseSpec } from "./edge-case-spec"
 import { FleetPrototype } from "./fleet-prototype"
 import { ProjectMedia } from "./project-media"
 import { ProjectMotion } from "./project-motion"
@@ -164,7 +165,9 @@ export function CaseStudy({ slug }: { slug: string }) {
             <div className="flex flex-col gap-8">
               {study.gallery.map((item, i) => (
                 <figure key={i} className="reveal">
-                  {item.embed ? (
+                  {item.embed === "edge-cases" ? (
+                    <EdgeCaseSpec />
+                  ) : item.embed ? (
                     <FleetPrototype />
                   ) : item.scene ? (
                     <Scene scene={item.scene} />

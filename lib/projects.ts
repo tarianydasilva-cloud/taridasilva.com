@@ -24,8 +24,8 @@ export const projects: Project[] = [
     slug: "fleet-connect",
     title: { en: "Fleet Connect", es: "Fleet Connect" },
     summary: {
-      en: "Driving client adoption with insights.",
-      es: "Impulsar la adopción de clientes con insights.",
+      en: "Turning 100+ indicators into a savings-first dashboard.",
+      es: "Convertir más de 100 indicadores en un dashboard que prioriza el ahorro.",
     },
     year: "2026",
     tags: [
@@ -39,6 +39,20 @@ export const projects: Project[] = [
       en: "The Fleet Connect dashboard, with cost savings and emissions cards, over a road through a forest",
       es: "El dashboard de Fleet Connect, con las tarjetas de ahorro de costes y de emisiones, sobre una carretera entre bosques",
     },
+  },
+  {
+    slug: "service-experience-design",
+    title: { en: "Service & Experience Design", es: "Diseño de servicios y experiencia" },
+    summary: {
+      en: "Clarifying and aligning services across a growing organisation.",
+      es: "Aclarar y alinear servicios en una organización en crecimiento.",
+    },
+    year: "2025",
+    tags: [
+      { en: "Service Design", es: "Diseño de servicios" },
+      { en: "Strategy", es: "Estrategia" },
+    ],
+    motion: "service",
   },
   {
     slug: "innohub",
@@ -59,20 +73,6 @@ export const projects: Project[] = [
       en: "The Innohub platform: cards inviting employees to share ideas with impact, on a blue background",
       es: "La plataforma Innohub: tarjetas que invitan a los empleados a compartir ideas con impacto, sobre fondo azul",
     },
-  },
-  {
-    slug: "service-experience-design",
-    title: { en: "Service & Experience Design", es: "Diseño de servicios y experiencia" },
-    summary: {
-      en: "Clarifying and aligning services across a growing organisation.",
-      es: "Aclarar y alinear servicios en una organización en crecimiento.",
-    },
-    year: "2025",
-    tags: [
-      { en: "Service Design", es: "Diseño de servicios" },
-      { en: "Strategy", es: "Estrategia" },
-    ],
-    motion: "service",
   },
   {
     slug: "design-ops-strategy",

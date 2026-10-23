@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { EdgeCaseSpec } from "./edge-case-spec"
 import { FleetPrototype } from "./fleet-prototype"
 import { useLanguage } from "./language-provider"
 
@@ -8,14 +9,20 @@ const copy = {
   en: {
     back: "Fleet Connect case study",
     title: "Fleet Connect, coded",
+    spec: "The spec behind it",
+    specIntro:
+      "For this rebuild, before coding, I had Claude list every state a card could reach. Four made it into the prototype as switchable states, five more edge cases are handled, and the rest are queued for the next iteration.",
     intro:
-      "A working rebuild of the dashboard, made in Claude Code for this portfolio with sample data. The dashboard system comes from my Figma prototypes; the filters and their states are in code, because the states mattered more than the layout.",
+      "A working rebuild of the dashboard, made in Claude Code for this portfolio with sample data. The original dashboards were made in Figma Make, where I prompted each change and adjusted details by hand; here the filters and their states are in code, because the states mattered more than the layout.",
   },
   es: {
     back: "Caso de estudio de Fleet Connect",
     title: "Fleet Connect, en código",
+    spec: "La especificación detrás",
+    specIntro:
+      "Para esta reconstrucción, antes de programar, pedí a Claude que listara cada estado al que podía llegar una tarjeta. Cuatro entraron en el prototipo como estados activables, otros cinco casos límite están resueltos y el resto queda para la siguiente iteración.",
     intro:
-      "Una reconstrucción funcional del dashboard, hecha con Claude Code para este portfolio con datos de ejemplo. El sistema del dashboard viene de mis prototipos en Figma; los filtros y sus estados están en código, porque los estados importaban más que el layout.",
+      "Una reconstrucción funcional del dashboard, hecha con Claude Code para este portfolio con datos de ejemplo. Los dashboards originales se hicieron en Figma Make, donde pedía cada cambio por prompt y ajustaba los detalles a mano; aquí los filtros y sus estados están en código, porque los estados importaban más que el layout.",
   },
 }
 
@@ -37,6 +44,15 @@ export function PrototypePage() {
       <div className="mt-10">
         <FleetPrototype />
       </div>
+      <section aria-labelledby="spec-title" className="mt-20 max-w-4xl">
+        <h2 id="spec-title" className="text-2xl tracking-tight md:text-3xl">
+          {c.spec}
+        </h2>
+        <p className="mt-4 leading-relaxed text-muted-foreground text-pretty">{c.specIntro}</p>
+        <div className="mt-6">
+          <EdgeCaseSpec />
+        </div>
+      </section>
     </article>
   )
 }

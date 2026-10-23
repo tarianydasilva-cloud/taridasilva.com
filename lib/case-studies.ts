@@ -14,7 +14,7 @@ export type GalleryItem = {
   // A link under the caption, e.g. to a full-screen prototype.
   link?: { href: string; label: Localized }
   // A live, coded prototype embedded in the page.
-  embed?: "fleet-prototype"
+  embed?: "fleet-prototype" | "edge-cases"
   image?: string
   // Each side is an image path, or an animated scene built in code.
   pair?: [PairSide, PairSide]
@@ -197,8 +197,8 @@ export const caseStudies: Record<string, CaseStudy> = {
         es: "Mantuve los más de 100 indicadores y los dividí en dos niveles de prioridad.",
       },
       tradeoff: {
-        en: "With so much data, not all of it could be put to its best use.",
-        es: "Con tantos datos, no todos podían aprovecharse al máximo.",
+        en: "Keeping all 100+ indicators made the tier-2 views denser and the filter logic heavier.",
+        es: "Mantener los más de 100 indicadores hizo más densas las vistas de segundo nivel y más pesada la lógica de los filtros.",
       },
       status: {
         en: "Six prototypes handed over to the client; I don't know whether they reached production.",
@@ -257,12 +257,19 @@ export const caseStudies: Record<string, CaseStudy> = {
       {
         embed: "fleet-prototype",
         caption: {
-          en: "Built in Claude Code, with sample data. The dashboard system comes from my Figma prototypes; the filter interactions are in code, because the states mattered more than the layout.",
-          es: "Construido con Claude Code, con datos de ejemplo. El sistema del dashboard viene de mis prototipos en Figma; las interacciones de los filtros están en código, porque los estados importaban más que el layout.",
+          en: "The original dashboards were made in Figma Make: I prompted each change and adjusted details by hand when the output wasn't right. This rebuild, made in Claude Code with sample data, puts the filter interactions in code, because the states mattered more than the layout.",
+          es: "Los dashboards originales se hicieron en Figma Make: pedía cada cambio por prompt y ajustaba los detalles a mano cuando el resultado no era el correcto. Esta reconstrucción, hecha con Claude Code y datos de ejemplo, lleva las interacciones de los filtros a código, porque los estados importaban más que el layout.",
         },
         link: {
           href: "/work/fleet-connect/prototype",
           label: { en: "Open the prototype full screen", es: "Abrir el prototipo a pantalla completa" },
+        },
+      },
+      {
+        embed: "edge-cases",
+        caption: {
+          en: "For this rebuild, before coding, I had Claude list every state a card could reach. Four made it into the prototype as switchable states: live, loading, empty and error. Five more edge cases are handled, and the rest are queued for the next iteration.",
+          es: "Para esta reconstrucción, antes de programar, pedí a Claude que listara cada estado al que podía llegar una tarjeta. Cuatro entraron en el prototipo como estados que se pueden activar: en vivo, cargando, vacío y error. Otros cinco casos límite están resueltos, y el resto queda para la siguiente iteración.",
         },
       },
       {
