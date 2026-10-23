@@ -74,10 +74,10 @@ export const principles: { title: Localized; body: Localized }[] = [
     },
   },
   {
-    title: { en: "Name the trade-off", es: "Nombrar la contrapartida" },
+    title: { en: "Document as I go", es: "Documentar sobre la marcha" },
     body: {
-      en: "Every choice costs something. I write down what we gave up, so nobody is surprised later.",
-      es: "Cada decisión cuesta algo. Dejo por escrito a qué renunciamos, para que nadie se sorprenda después.",
+      en: "Decisions, trade-offs and the reasons behind them get written down while the work happens. It keeps everyone aligned, makes handovers fast and saves the team from rebuilding context later.",
+      es: "Las decisiones, las contrapartidas y sus motivos quedan por escrito mientras se trabaja. Mantiene a todos alineados, agiliza los traspasos y evita que el equipo tenga que reconstruir el contexto después.",
     },
   },
   {
