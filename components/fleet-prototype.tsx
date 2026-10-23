@@ -294,15 +294,15 @@ const tile =
 function CardHeader({ icon, title, aside }: { icon: IconName; title: string; aside?: ReactNode }) {
   return (
     <header className="flex items-center justify-between gap-3">
-      <div className="flex items-center gap-3">
+      <div className="flex min-w-0 items-center gap-3">
         <span className={tile} aria-hidden="true">
           <Icon name={icon} />
         </span>
-        <h3 className="font-semibold uppercase leading-tight tracking-tight text-[#04473d]">{title}</h3>
+        <h3 className="min-w-0 text-sm font-semibold uppercase leading-tight tracking-tight break-words text-pretty text-[#04473d] @sm:text-base">{title}</h3>
       </div>
       {aside ?? (
         // The info and download actions from the Figma cards; shown for fidelity, not wired up in this rebuild.
-        <span aria-hidden="true" className="flex gap-1.5 text-[#0d8a55]">
+        <span aria-hidden="true" className="flex shrink-0 gap-1.5 text-[#0d8a55]">
           {(["info", "download"] as const).map((name) => (
             <span
               key={name}
@@ -364,7 +364,7 @@ function MetricWidget({ card, forced, locale }: { card: MetricCard; forced: Stat
         <>
           <div className="rounded-xl bg-[linear-gradient(160deg,#0fa864,#04473d)] p-5 text-white shadow-lg">
             <p className="text-xs uppercase tracking-wider text-white/80">{card.total[locale]}</p>
-            <p aria-live="polite" className="mt-1 flex items-baseline gap-2">
+            <p aria-live="polite" className="mt-1 flex flex-wrap items-baseline gap-x-2">
               {state === "loading" ? (
                 <span className="h-12 w-32 animate-pulse rounded-lg bg-white/25" />
               ) : (
@@ -660,7 +660,7 @@ export function FleetPrototype() {
   const visible = all.filter((item) => !q || item.title.toLowerCase().includes(q))
 
   return (
-    <div className="flex flex-col gap-4 rounded-3xl bg-[#eef2f1] p-3 sm:p-5">
+    <div className="@container flex flex-col gap-4 rounded-3xl bg-[#eef2f1] p-3 sm:p-5">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <Segmented
           label={`${c.before} / ${c.after}`}
@@ -683,7 +683,7 @@ export function FleetPrototype() {
 
       {view === "before" ? (
         <div className={cn(widget, "p-3")}>
-          <ul className="grid grid-cols-2 gap-1.5 sm:grid-cols-4 lg:grid-cols-5">
+          <ul className="grid grid-cols-2 gap-1.5 @lg:grid-cols-4 @3xl:grid-cols-5">
             {before.map((item) => (
               <li key={item.label.en} className="rounded-md bg-[#f4f4f4] p-2">
                 <span className="block truncate text-[11px] text-muted-foreground">{item.label[locale]}</span>
@@ -695,15 +695,15 @@ export function FleetPrototype() {
         </div>
       ) : (
         // The app shell from the Figma prototype: product switch and menu on the left, search and client on top.
-        <div className="overflow-hidden rounded-2xl bg-white ring-1 ring-black/5 lg:grid lg:grid-cols-[11rem_1fr]">
-          <aside className="flex flex-wrap items-center gap-2 border-b border-black/5 p-3 lg:flex-col lg:items-stretch lg:border-b-0 lg:border-r">
+        <div className="overflow-hidden rounded-2xl bg-white ring-1 ring-black/5 @3xl:grid @3xl:grid-cols-[11rem_1fr]">
+          <aside className="flex flex-wrap items-center gap-2 border-b border-black/5 p-3 @3xl:flex-col @3xl:items-stretch @3xl:border-b-0 @3xl:border-r">
             <span className="rounded-lg bg-[linear-gradient(160deg,#109a63,#04473d)] px-3 py-2 text-center text-xs font-bold uppercase tracking-wide text-white">
               Fleet Connect
             </span>
             <span className="rounded-lg px-3 py-2 text-center text-xs font-bold uppercase tracking-wide text-[#04473d] ring-1 ring-[#04473d]/40">
               Fleet Review
             </span>
-            <ul className="flex gap-1 text-sm lg:mt-4 lg:flex-col">
+            <ul className="flex flex-wrap gap-1 text-sm @3xl:mt-4 @3xl:flex-col">
               {c.menu.map((item, i) => (
                 <li
                   key={item}
@@ -718,7 +718,7 @@ export function FleetPrototype() {
               ))}
             </ul>
           </aside>
-          <div className="flex min-w-0 flex-col gap-4 bg-[#f7f9f8] p-3 sm:p-4">
+          <div className="@container flex min-w-0 flex-col gap-4 bg-[#f7f9f8] p-3 sm:p-4">
             <div className="flex items-center gap-3">
               <label className="flex flex-1 items-center gap-2 rounded-xl bg-white px-3 py-2 text-sm ring-1 ring-black/10 focus-within:ring-[#0d8a55]">
                 <Icon name="search" className="size-4 text-muted-foreground" />
@@ -738,9 +738,9 @@ export function FleetPrototype() {
               </span>
             </div>
             {visible.length ? (
-              <div className="grid items-start gap-4 xl:grid-cols-2">
+              <div className="grid items-start gap-4 @3xl:grid-cols-2">
                 {visible.map((item) => (
-                  <div key={item.key} className={cn(item.key === "status" && "xl:col-span-2")}>
+                  <div key={item.key} className={cn("min-w-0", item.key === "status" && "@3xl:col-span-2")}>
                     {item.node}
                   </div>
                 ))}

@@ -193,14 +193,17 @@ export function CaseStudy({ slug }: { slug: string }) {
                     />
                   )}
                   {item.caption && (
-                    <figcaption className="mt-3 text-sm text-muted-foreground">
-                      {item.caption[locale]}
-                      {item.link && (
-                        <Link href={item.link.href} className="ml-1 text-foreground underline underline-offset-4 hover:text-accent">
-                          {item.link.label[locale]} →
-                        </Link>
-                      )}
-                    </figcaption>
+                    <figcaption className="mt-3 text-sm text-muted-foreground">{item.caption[locale]}</figcaption>
+                  )}
+                  {/* A clear way out to the full-size version, for anything that works better with room. */}
+                  {item.link && (
+                    <Link
+                      href={item.link.href}
+                      className="mt-4 inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-3 text-background transition-colors hover:bg-accent"
+                    >
+                      {item.link.label[locale]}
+                      <span aria-hidden="true">→</span>
+                    </Link>
                   )}
                 </figure>
               ))}

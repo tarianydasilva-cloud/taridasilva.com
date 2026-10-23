@@ -46,8 +46,8 @@ export const caseStudies: Record<string, CaseStudy> = {
       },
       tradeoff: { en: "More to set up and govern than a single platform.", es: "Más que configurar y gobernar que una única plataforma." },
       status: {
-        en: "Framework, experience and platform roadmap handed over in June 2026; implementation is with the client.",
-        es: "Marco, experiencia y roadmap de plataforma entregados en junio de 2026; la implantación está en manos del cliente.",
+        en: "Handed over in June 2026 and in use by the client today; it's too early to share KPIs.",
+        es: "Entregado en junio de 2026 y en uso por el cliente hoy; aún es pronto para compartir KPIs.",
       },
     },
     facts: {
