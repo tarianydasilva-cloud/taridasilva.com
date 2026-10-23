@@ -102,8 +102,8 @@ export const approach = {
     {
       title: { en: "Make", es: "Hacer" },
       body: {
-        en: "Prototype early in code, often with Claude Code, to test rather than debate.",
-        es: "Prototipar pronto en código, a menudo con Claude Code, para probar y no debatir.",
+        en: "Prototype early in code, often with AI, to test rather than debate.",
+        es: "Prototipar pronto en código, a menudo con IA, para probar y no debatir.",
       },
     },
     {
