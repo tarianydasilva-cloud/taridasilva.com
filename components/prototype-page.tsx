@@ -9,13 +9,13 @@ const copy = {
     back: "Fleet Connect case study",
     title: "Fleet Connect, coded",
     intro:
-      "A working rebuild of two dashboard widgets, made in Claude Code for this portfolio with sample data. The dashboard system comes from my Figma prototypes; the filters and their states are in code, because the states mattered more than the layout.",
+      "A working rebuild of the dashboard, made in Claude Code for this portfolio with sample data. The dashboard system comes from my Figma prototypes; the filters and their states are in code, because the states mattered more than the layout.",
   },
   es: {
     back: "Caso de estudio de Fleet Connect",
     title: "Fleet Connect, en código",
     intro:
-      "Una reconstrucción funcional de dos widgets del dashboard, hecha con Claude Code para este portfolio con datos de ejemplo. El sistema del dashboard viene de mis prototipos en Figma; los filtros y sus estados están en código, porque los estados importaban más que el layout.",
+      "Una reconstrucción funcional del dashboard, hecha con Claude Code para este portfolio con datos de ejemplo. El sistema del dashboard viene de mis prototipos en Figma; los filtros y sus estados están en código, porque los estados importaban más que el layout.",
   },
 }
 

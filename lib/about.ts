@@ -49,8 +49,8 @@ export type SectionId = (typeof sectionIds)[number]
 
 export const story = {
   body: {
-    en: "I was born in 2001 in the Peruvian Andes and grew up between countries and languages, which taught me to ask why things work the way they do before trying to change them. Today I do that as a product designer, on whatever the problem turns out to be: fleet dashboards, an insurer's innovation platform, a company's services, the way a 25-person team takes on work. My test for a design is simple: can someone make a decision with it?",
-    es: "Nací en 2001 en los Andes peruanos y crecí entre países e idiomas, lo que me enseñó a preguntar por qué las cosas funcionan como funcionan antes de intentar cambiarlas. Hoy lo hago como product designer, sea cual sea el problema: dashboards de flotas, la plataforma de innovación de una aseguradora, los servicios de una empresa, la forma en que un equipo de 25 personas recibe el trabajo. Mi prueba para un diseño es sencilla: ¿alguien puede tomar una decisión con él?",
+    en: "I was born in 2001 in the Peruvian Andes and grew up between countries and languages, which taught me to ask why things work the way they do before trying to change them. Today I bring that to product design, end to end: from understanding people and the business, to strategy, interface and working code, whatever shape the problem takes. My test for any design is simple: does it make things clearer for the people who use it?",
+    es: "Nací en 2001 en los Andes peruanos y crecí entre países e idiomas, lo que me enseñó a preguntar por qué las cosas funcionan como funcionan antes de intentar cambiarlas. Hoy llevo eso al diseño de producto, de principio a fin: desde entender a las personas y el negocio hasta la estrategia, la interfaz y el código que funciona, tenga el problema la forma que tenga. Mi prueba para cualquier diseño es sencilla: ¿hace las cosas más claras para quien lo usa?",
   },
   aside: {
     en: "And yes, my parents did kind of make up my name.",
