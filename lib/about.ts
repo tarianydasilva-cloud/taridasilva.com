@@ -60,28 +60,28 @@ export const story = {
 
 export const principles: { title: Localized; body: Localized }[] = [
   {
-    title: { en: "Show the decision", es: "Mostrar la decisión" },
+    title: { en: "Clarity", es: "Claridad" },
     body: {
       en: "A screen earns its place when it makes the next step obvious. Everything else goes one level down.",
       es: "Una pantalla se gana su sitio cuando deja claro el siguiente paso. Todo lo demás baja un nivel.",
     },
   },
   {
-    title: { en: "Prototype, then talk", es: "Prototipar y luego hablar" },
+    title: { en: "Prototyping", es: "Prototipado" },
     body: {
       en: "A working prototype settles in a day what a meeting argues about for a week.",
       es: "Un prototipo que funciona resuelve en un día lo que una reunión discute durante una semana.",
     },
   },
   {
-    title: { en: "Document as I go", es: "Documentar sobre la marcha" },
+    title: { en: "Documentation", es: "Documentación" },
     body: {
       en: "Decisions, trade-offs and the reasons behind them get written down while the work happens. It keeps everyone aligned, makes handovers fast and saves the team from rebuilding context later.",
       es: "Las decisiones, las contrapartidas y sus motivos quedan por escrito mientras se trabaja. Mantiene a todos alineados, agiliza los traspasos y evita que el equipo tenga que reconstruir el contexto después.",
     },
   },
   {
-    title: { en: "Leave a system", es: "Dejar un sistema" },
+    title: { en: "Continuity", es: "Continuidad" },
     body: {
       en: "Good work outlives the people who made it: components, rules and docs that keep running whoever joins or leaves the team.",
       es: "El buen trabajo sobrevive a quienes lo hicieron: componentes, reglas y documentación que siguen funcionando entre o salga quien salga del equipo.",
