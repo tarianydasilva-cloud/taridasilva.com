@@ -132,6 +132,15 @@
       animation-range: entry 0% entry 60%;
     }
 
+    /* Plain text (statements and paragraphs) only reveals from tablet width up; on phones it is simply there. */
+    @media (min-width: 40rem) {
+      .reveal-text {
+        animation: reveal linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 60%;
+      }
+    }
+
     /* Case study scenes: pieces pop in one after another (--i), the later ones further into the scroll. */
     .scene-pop {
       animation: pop ease-out both;

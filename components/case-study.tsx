@@ -48,7 +48,7 @@ function Paragraphs({ items }: { items: { en: string; es: string }[] }) {
   return (
     <div className="flex flex-col gap-4">
       {items.map((item) => (
-        <p key={item.en} className="text-lead reveal text-pretty">
+        <p key={item.en} className="text-lead reveal-text text-pretty">
           {item[locale]}
         </p>
       ))}
@@ -112,7 +112,7 @@ export function CaseStudy({ slug }: { slug: string }) {
 
         <div className="@container flex flex-col gap-24 pt-20 md:gap-32 md:pt-28">
           <Section id="overview">
-            <p className="text-statement reveal text-balance">{study.statement[locale]}</p>
+            <p className="text-statement reveal-text text-balance">{study.statement[locale]}</p>
             <dl className="mt-10 grid grid-cols-2 gap-2 md:grid-cols-4">
               {facts.map((fact) => (
                 <div key={fact.label} className="rounded-2xl bg-muted p-4">

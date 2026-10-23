@@ -21,7 +21,7 @@ function Story() {
 
   return (
     <Section id="story">
-      <p className="text-lead reveal text-pretty">
+      <p className="text-lead reveal-text text-pretty">
         {story.body[locale]} <span className="text-muted-foreground">{story.aside[locale]}</span>
       </p>
     </Section>
@@ -67,7 +67,7 @@ function Industries() {
 
   return (
     <Section id="industries">
-      <h2 className="text-statement reveal text-balance">{industries.title[locale]}</h2>
+      <h2 className="text-statement reveal-text text-balance">{industries.title[locale]}</h2>
     </Section>
   )
 }
@@ -94,7 +94,7 @@ function Approach() {
 
   return (
     <Section id="approach">
-      <h2 className="text-statement reveal text-balance">{approach.title[locale]}</h2>
+      <h2 className="text-statement reveal-text text-balance">{approach.title[locale]}</h2>
       <ol className="mt-8 grid gap-2 xl:grid-cols-3">
         {approach.steps.map((step) => (
           <li key={step.title.en} className="reveal flex flex-col gap-2 rounded-2xl bg-muted p-5">
