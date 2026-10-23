@@ -60,7 +60,7 @@ export const story = {
 
 export const principles: { title: Localized; body: Localized }[] = [
   {
-    title: { en: "Clarity", es: "Claridad" },
+    title: { en: "Focus", es: "Foco" },
     body: {
       en: "A screen earns its place when it makes the next step obvious. Everything else goes one level down.",
       es: "Una pantalla se gana su sitio cuando deja claro el siguiente paso. Todo lo demás baja un nivel.",
