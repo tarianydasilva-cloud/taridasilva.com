@@ -301,8 +301,8 @@ export const caseStudies: Record<string, CaseStudy> = {
   "service-experience-design": {
     lead: {
       decision: {
-        en: "I mapped every service end to end before touching the website.",
-        es: "Mapeé cada servicio de principio a fin antes de tocar la web.",
+        en: "Before crafting a single screen of the digital product, I mapped every service end to end.",
+        es: "Antes de diseñar una sola pantalla del producto digital, mapeé cada servicio de principio a fin.",
       },
       tradeoff: { en: "Months of mapping before anything visible shipped.", es: "Meses de mapeo antes de que se publicara nada visible." },
       status: {
