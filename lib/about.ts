@@ -38,8 +38,8 @@ export const desktopItems: DesktopItem[] = [
 export const hero = {
   eyebrow: { en: "Product Designer", es: "Product Designer" },
   title: {
-    en: "If there's no way, I make one. Bold ideas and stubborn follow-through, from the first research to working code.",
-    es: "Si no hay camino, lo abro. Ideas audaces y la tenacidad de llevarlas a cabo, de la primera investigación al código que funciona.",
+    en: "Curious, and not one to give up easily. I keep looking for a way through, from the first research to working code.",
+    es: "Con curiosidad y sin rendirme fácilmente, sigo buscando el camino, de la primera investigación al código que funciona.",
   },
 } satisfies Record<string, Localized>
 
