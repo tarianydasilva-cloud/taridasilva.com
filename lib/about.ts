@@ -83,8 +83,8 @@ export const principles: { title: Localized; body: Localized }[] = [
   {
     title: { en: "Leave a system", es: "Dejar un sistema" },
     body: {
-      en: "Good work keeps working after I leave: components, rules and docs the team can run without me.",
-      es: "El buen trabajo sigue funcionando cuando me voy: componentes, reglas y documentación que el equipo puede usar sin mí.",
+      en: "Good work outlives the people who made it: components, rules and docs that keep running whoever joins or leaves the team.",
+      es: "El buen trabajo sobrevive a quienes lo hicieron: componentes, reglas y documentación que siguen funcionando entre o salga quien salga del equipo.",
     },
   },
 ]
