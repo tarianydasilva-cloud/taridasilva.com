@@ -21,26 +21,6 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "innohub",
-    title: { en: "Innohub", es: "Innohub" },
-    summary: {
-      en: "Igniting innovation participation.",
-      es: "Impulsar la participación en la innovación.",
-    },
-    year: "2026",
-    tags: [
-      { en: "Experience Design", es: "Diseño de experiencia" },
-      { en: "Innovation Strategy", es: "Estrategia de innovación" },
-      { en: "Design Research", es: "Design research" },
-    ],
-    image: "/projects/innohub/card-logo.png",
-    cover: "/projects/innohub/cover.png",
-    imageAlt: {
-      en: "The Innohub platform: cards inviting employees to share ideas with impact, on a blue background",
-      es: "La plataforma Innohub: tarjetas que invitan a los empleados a compartir ideas con impacto, sobre fondo azul",
-    },
-  },
-  {
     slug: "fleet-connect",
     title: { en: "Fleet Connect", es: "Fleet Connect" },
     summary: {
@@ -58,6 +38,26 @@ export const projects: Project[] = [
     imageAlt: {
       en: "The Fleet Connect dashboard, with cost savings and emissions cards, over a road through a forest",
       es: "El dashboard de Fleet Connect, con las tarjetas de ahorro de costes y de emisiones, sobre una carretera entre bosques",
+    },
+  },
+  {
+    slug: "innohub",
+    title: { en: "Innohub", es: "Innohub" },
+    summary: {
+      en: "Igniting innovation participation.",
+      es: "Impulsar la participación en la innovación.",
+    },
+    year: "2026",
+    tags: [
+      { en: "Experience Design", es: "Diseño de experiencia" },
+      { en: "Innovation Strategy", es: "Estrategia de innovación" },
+      { en: "Design Research", es: "Design research" },
+    ],
+    image: "/projects/innohub/card-logo.png",
+    cover: "/projects/innohub/cover.png",
+    imageAlt: {
+      en: "The Innohub platform: cards inviting employees to share ideas with impact, on a blue background",
+      es: "La plataforma Innohub: tarjetas que invitan a los empleados a compartir ideas con impacto, sobre fondo azul",
     },
   },
   {

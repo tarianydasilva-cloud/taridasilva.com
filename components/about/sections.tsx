@@ -1,7 +1,7 @@
 "use client"
 
 import type { ReactNode } from "react"
-import { approach, industries, principles, services, story, type SectionId } from "@/lib/about"
+import { approach, principles, story, type SectionId } from "@/lib/about"
 import { cn } from "@/lib/utils"
 import { useLanguage } from "../language-provider"
 
@@ -24,50 +24,6 @@ function Story() {
       <p className="text-lead reveal-text text-pretty">
         {story.body[locale]} <span className="text-muted-foreground">{story.aside[locale]}</span>
       </p>
-    </Section>
-  )
-}
-
-function Services() {
-  const { locale } = useLanguage()
-
-  return (
-    <Section id="services">
-      <ul className="flex flex-col gap-2">
-        {services.map((service) => (
-          <li key={service.title.en}>
-            <details className="accordion group rounded-2xl bg-muted">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 px-5 py-4 md:px-6 md:py-5 [&::-webkit-details-marker]:hidden">
-                <span className="text-xl tracking-tight md:text-2xl">{service.title[locale]}</span>
-                {/* A plus that turns into a cross when the card is open. */}
-                <svg
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  aria-hidden="true"
-                  className="size-5 shrink-0 text-accent transition-transform duration-300 group-open:rotate-45"
-                >
-                  <path d="M8 2.5v11M2.5 8h11" />
-                </svg>
-              </summary>
-              <p className="max-w-2xl px-5 pb-6 leading-relaxed text-muted-foreground text-pretty md:px-6">
-                {service.body[locale]}
-              </p>
-            </details>
-          </li>
-        ))}
-      </ul>
-    </Section>
-  )
-}
-
-function Industries() {
-  const { locale } = useLanguage()
-
-  return (
-    <Section id="industries">
-      <h2 className="text-statement reveal-text text-balance">{industries.title[locale]}</h2>
     </Section>
   )
 }
@@ -112,9 +68,7 @@ export function AboutSections() {
     <div className="@container flex flex-col gap-24 pt-20 md:gap-32 md:pt-28">
       <Story />
       <Approach />
-      <Services />
       <Principles />
-      <Industries />
     </div>
   )
 }

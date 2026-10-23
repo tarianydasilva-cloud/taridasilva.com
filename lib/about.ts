@@ -27,8 +27,8 @@ export type DesktopItem = {
 export const desktopItems: DesktopItem[] = [
   { label: "About Me.txt", icon: "text", side: "left", href: "#story" },
   { label: "World Map", icon: "map", side: "left" },
-  { label: "Innohub", icon: "folder", side: "right", color: "blue", href: "/work/innohub" },
   { label: "Fleet Connect", icon: "folder", side: "right", color: "blue", href: "/work/fleet-connect" },
+  { label: "Innohub", icon: "folder", side: "right", color: "blue", href: "/work/innohub" },
   { label: "Service Design", icon: "folder", side: "right", color: "blue", href: "/work/service-experience-design" },
   { label: "Design Ops", icon: "folder", side: "right", color: "blue", href: "/work/design-ops-strategy" },
   { label: "Tari HD", icon: "drive", side: "right", href: "/work" },
@@ -36,21 +36,21 @@ export const desktopItems: DesktopItem[] = [
 ]
 
 export const hero = {
-  eyebrow: { en: "Product Design & Strategy", es: "Diseño de Producto y Estrategia" },
+  eyebrow: { en: "Product Designer", es: "Product Designer" },
   title: {
-    en: "I design honest digital products and services through research, strategy, design and AI-built prototypes.",
-    es: "Diseño productos y servicios digitales honestos a través de la investigación, la estrategia, el diseño y prototipos construidos con IA.",
+    en: "I turn data-heavy tools into screens people can decide with, and I prototype them in code to test ideas early.",
+    es: "Convierto herramientas llenas de datos en pantallas con las que la gente puede decidir, y las prototipo en código para probar ideas pronto.",
   },
 } satisfies Record<string, Localized>
 
-export const sectionIds = ["story", "approach", "services", "principles", "industries"] as const
+export const sectionIds = ["story", "approach", "principles"] as const
 
 export type SectionId = (typeof sectionIds)[number]
 
 export const story = {
   body: {
-    en: "I was born in 2001 in the Peruvian Andes and grew up between countries, languages and ways of noticing the world. Living between places taught me to question why things are done the way they are, and I never stopped asking. Curiosity and rebellion still drive my work, all assumptions are challenged. I take ownership with care, rigour and a real commitment to the people I work with. Results are simple, useful, thorough to the last detail, grounded in evidence so the complex feels obvious.",
-    es: "Nací en 2001 en los Andes peruanos y crecí entre países, idiomas y formas de mirar el mundo. Vivir entre lugares me enseñó a cuestionar por qué las cosas se hacen como se hacen, y nunca dejé de preguntar. La curiosidad y la rebeldía siguen impulsando mi trabajo: cuestiono cada suposición. Asumo la responsabilidad con cuidado, rigor y un compromiso real con las personas con las que trabajo. Los resultados son simples, útiles, cuidados hasta el último detalle y basados en evidencias, para que lo complejo parezca obvio.",
+    en: "I was born in 2001 in the Peruvian Andes and grew up between countries and languages, which taught me to ask why things work the way they do before trying to change them. Today I do that as a product designer, mostly on tools where the data or the process has grown too big to read: fleet dashboards, an insurer's innovation platform, the way a 25-person team takes on work. My test for a design is simple: can someone make a decision with it?",
+    es: "Nací en 2001 en los Andes peruanos y crecí entre países e idiomas, lo que me enseñó a preguntar por qué las cosas funcionan como funcionan antes de intentar cambiarlas. Hoy lo hago como product designer, sobre todo en herramientas donde los datos o el proceso han crecido demasiado para leerse: dashboards de flotas, la plataforma de innovación de una aseguradora, la forma en que un equipo de 25 personas recibe el trabajo. Mi prueba para un diseño es sencilla: ¿alguien puede tomar una decisión con él?",
   },
   aside: {
     en: "And yes, my parents did kind of make up my name.",
@@ -58,78 +58,33 @@ export const story = {
   },
 } satisfies Record<string, Localized>
 
-export const services: { title: Localized; body: Localized }[] = [
-  {
-    title: { en: "Product Design", es: "Diseño de producto" },
-    body: {
-      en: "End-to-end design of digital products, from research to flows, interfaces and working prototypes. From rebuilding a SaaS platform with deep UX problems to turning data-heavy dashboards into tools for decisions, every screen answers a user need and a business goal.",
-      es: "Diseño integral de productos digitales, de la investigación a los flujos, las interfaces y los prototipos funcionales. Desde reconstruir una plataforma SaaS con problemas profundos de UX hasta convertir dashboards cargados de datos en herramientas para decidir, cada pantalla responde a una necesidad del usuario y a un objetivo de negocio.",
-    },
-  },
-  {
-    title: { en: "Strategy", es: "Estrategia" },
-    body: {
-      en: "Turning ambiguity into a clear direction: framing the real problem, prioritising what matters most and defining the use cases that guide what gets built. Grounded in research with users and stakeholders, and shared so teams can act on it.",
-      es: "Convertir la ambigüedad en una dirección clara: plantear el problema real, priorizar lo que más importa y definir los casos de uso que guían lo que se construye. Basado en investigación con usuarios y stakeholders, y compartido para que los equipos puedan actuar.",
-    },
-  },
-  {
-    title: { en: "Service Design", es: "Diseño de servicios" },
-    body: {
-      en: "Designing the whole service, front stage and back stage: journeys, blueprints, touchpoints and the operations behind them. Finding the moments where people get stuck and fixing them at the root, so every channel works as one experience.",
-      es: "Diseñar el servicio completo, lo que se ve y lo que no: recorridos, blueprints, puntos de contacto y las operaciones que los sostienen. Encontrar los momentos en los que las personas se atascan y resolverlos de raíz, para que todos los canales funcionen como una sola experiencia.",
-    },
-  },
-  {
-    title: { en: "Rapid Prototyping", es: "Prototipado rápido" },
-    body: {
-      en: "Interactive, AI-built prototypes in days rather than weeks, to test ideas with real users before they become expensive. Real enough to feel like the product, fast enough to throw away, and the quickest way to replace opinion with evidence.",
-      es: "Prototipos interactivos construidos con IA en días y no en semanas, para probar ideas con usuarios reales antes de que salgan caras. Lo bastante reales como para sentirse como el producto, lo bastante rápidos como para descartarlos, y la forma más rápida de cambiar opiniones por evidencias.",
-    },
-  },
-  {
-    title: { en: "Design Ops", es: "Design Ops" },
-    body: {
-      en: "Bringing structure to how design and creative teams work: clearer briefings, a shared language for scope and effort, calmer client communication and rituals that keep everyone aligned. Less friction, more time spent on the work.",
-      es: "Dar estructura a cómo trabajan los equipos de diseño y creativos: briefings más claros, un lenguaje común para alcance y esfuerzo, una comunicación con clientes más serena y rituales que mantienen a todos alineados. Menos fricción, más tiempo para el trabajo.",
-    },
-  },
-]
-
-export const industries = {
-  title: {
-    en: "I've worked for industries such as Banking, Insurance, Automotive & Mobility, Manufacturing, Construction & Services and Public Sector.",
-    es: "He trabajado para sectores como Banca, Seguros, Automoción y Movilidad, Industria, Construcción y Servicios, y Sector Público.",
-  },
-} satisfies Record<string, Localized>
-
 export const principles: { title: Localized; body: Localized }[] = [
   {
-    title: { en: "Vision", es: "Visión" },
+    title: { en: "Show the decision", es: "Mostrar la decisión" },
     body: {
-      en: "Start with the destination. Before designing anything, define what success looks like and who it's for.",
-      es: "Empezar por el destino. Antes de diseñar nada, definir cómo es el éxito y para quién es.",
+      en: "A screen earns its place when it makes the next step obvious. Everything else goes one level down.",
+      es: "Una pantalla se gana su sitio cuando deja claro el siguiente paso. Todo lo demás baja un nivel.",
     },
   },
   {
-    title: { en: "Evidence", es: "Evidencia" },
+    title: { en: "Prototype, then talk", es: "Prototipar y luego hablar" },
     body: {
-      en: "Opinions start the conversation, research and testing end it. Decisions are made on evidence and explained in plain words.",
-      es: "Las opiniones abren la conversación; la investigación y las pruebas la cierran. Las decisiones se toman con evidencias y se explican con palabras claras.",
+      en: "A working prototype settles in a day what a meeting argues about for a week.",
+      es: "Un prototipo que funciona resuelve en un día lo que una reunión discute durante una semana.",
     },
   },
   {
-    title: { en: "Craft", es: "Oficio" },
+    title: { en: "Name the trade-off", es: "Nombrar la contrapartida" },
     body: {
-      en: "Make it real, then make it right. Prototype early and refine every detail until the experience feels effortless.",
-      es: "Primero hacerlo real, después hacerlo bien. Prototipar pronto y pulir cada detalle hasta que la experiencia parezca natural.",
+      en: "Every choice costs something. I write down what we gave up, so nobody is surprised later.",
+      es: "Cada decisión cuesta algo. Dejo por escrito a qué renunciamos, para que nadie se sorprenda después.",
     },
   },
   {
-    title: { en: "Ambition", es: "Ambición" },
+    title: { en: "Leave a system", es: "Dejar un sistema" },
     body: {
-      en: "Raise the bar every time. Everything should be better than what came before, down to the last detail.",
-      es: "Subir el listón cada vez. Todo debería ser mejor que lo anterior, hasta el último detalle.",
+      en: "Good work keeps working after I leave: components, rules and docs the team can run without me.",
+      es: "El buen trabajo sigue funcionando cuando me voy: componentes, reglas y documentación que el equipo puede usar sin mí.",
     },
   },
 ]
@@ -147,8 +102,8 @@ export const approach = {
     {
       title: { en: "Make", es: "Hacer" },
       body: {
-        en: "Prototype early, often with AI, to test rather than debate.",
-        es: "Prototipar pronto, a menudo con IA, para probar y no debatir.",
+        en: "Prototype early in code, often with Claude Code, to test rather than debate.",
+        es: "Prototipar pronto en código, a menudo con Claude Code, para probar y no debatir.",
       },
     },
     {

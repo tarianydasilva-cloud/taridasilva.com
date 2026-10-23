@@ -34,7 +34,7 @@ export function SiteFooter() {
 
         <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-6 text-sm text-muted-foreground">
           <p>
-            © {year} Tari da Silva. {t.footer.rights}
+            © {year} Tari da Silva. {t.footer.rights} {t.footer.builtWith}
           </p>
           <div className="flex items-center gap-2">
             <div className="rounded-full bg-background px-4 py-2">

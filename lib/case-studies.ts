@@ -5,10 +5,14 @@ type Localized = Record<Locale, string>
 // Text in [square brackets] is a placeholder for facts only Tari can fill in: role, team, numbers, results.
 
 // One solution image, two portrait images side by side (`pair`), a quote revealed word by word (one string per
-// line; later lines muted), or an animated scene built in code (components/case-study-scenes.tsx).
+// line; later lines muted), an animated scene built in code (components/case-study-scenes.tsx), or a live prototype.
 // Quotes and scenes can go without a caption.
 export type GalleryItem = {
   caption?: Localized
+  // A link under the caption, e.g. to a full-screen prototype.
+  link?: { href: string; label: Localized }
+  // A live, coded prototype embedded in the page.
+  embed?: "fleet-prototype"
   image?: string
   pair?: [string, string]
   quote?: Record<Locale, string[]>
@@ -16,10 +20,10 @@ export type GalleryItem = {
 }
 
 export type CaseStudy = {
-  statement: Localized
+  // How every case opens: the decision I made, what it cost, and where the work stands today. When there is no
+  // outcome data, the status says so plainly instead of showing counts.
+  lead: { decision: Localized; tradeoff: Localized; status: Localized }
   facts: { client: Localized; role: Localized; team: Localized; date: Localized }
-  // Key numbers shown near the top: the value (e.g. "+40%") and what it measures.
-  outcomes: { value: Localized; label: Localized }[]
   challenge: Localized[]
   decisions: { title: Localized; body: Localized }[]
   // Optional text shown above the solution images.
@@ -35,9 +39,16 @@ export type CaseStudy = {
 
 export const caseStudies: Record<string, CaseStudy> = {
   innohub: {
-    statement: {
-      en: "Turning innovation from a specialist activity into a shared capability across a 100-year-old insurer.",
-      es: "Convertir la innovación de una actividad de especialistas en una capacidad compartida en una aseguradora centenaria.",
+    lead: {
+      decision: {
+        en: "I designed participation around three employee archetypes and community maturity levels, instead of one idea box for everyone.",
+        es: "Diseñé la participación en torno a tres arquetipos de empleado y niveles de madurez de la comunidad, en lugar de un único buzón de ideas para todos.",
+      },
+      tradeoff: { en: "More to set up and govern than a single platform.", es: "Más que configurar y gobernar que una única plataforma." },
+      status: {
+        en: "Framework, experience and platform roadmap handed over in June 2026; implementation is with the client.",
+        es: "Marco, experiencia y roadmap de plataforma entregados en junio de 2026; la implantación está en manos del cliente.",
+      },
     },
     facts: {
       client: { en: "Leading Spanish insurer, 100+ years old", es: "Aseguradora española líder, con más de 100 años" },
@@ -48,17 +59,6 @@ export const caseStudies: Record<string, CaseStudy> = {
       },
       date: { en: "March to June 2026", es: "De marzo a junio de 2026" },
     },
-    outcomes: [
-      { value: { en: "3", es: "3" }, label: { en: "employee archetypes defined", es: "arquetipos de empleado definidos" } },
-      {
-        value: { en: "2", es: "2" },
-        label: { en: "experiences designed: employees and external collaborators", es: "experiencias diseñadas: empleados y colaboradores externos" },
-      },
-      {
-        value: { en: "4", es: "4" },
-        label: { en: "shifts in how the company innovates", es: "cambios en cómo innova la compañía" },
-      },
-    ],
     challenge: [
       {
         en: "The corporate innovation team wanted to strengthen innovation as a shared capability across the organisation. They were already driving new initiatives and engaging employees, but embedding innovation practices beyond dedicated teams remained a key challenge. Ideas also needed stronger alignment with business needs, and more buy-in from stakeholders, to reach their full impact.",
@@ -188,9 +188,16 @@ export const caseStudies: Record<string, CaseStudy> = {
   },
 
   "fleet-connect": {
-    statement: {
-      en: "Turning a sea of numbers into a decision-support tool for fleet managers.",
-      es: "Convertir un mar de números en una herramienta de apoyo a la decisión para gestores de flotas.",
+    lead: {
+      decision: {
+        en: "I kept all 100+ indicators and split them into two priority tiers, so savings read first.",
+        es: "Mantuve los más de 100 indicadores y los dividí en dos niveles de prioridad, para que el ahorro se lea primero.",
+      },
+      tradeoff: { en: "Denser filters for power users.", es: "Filtros más densos para los usuarios avanzados." },
+      status: {
+        en: "Six prototypes handed over; not yet in production.",
+        es: "Seis prototipos entregados; todavía no están en producción.",
+      },
     },
     facts: {
       client: { en: "Fleet management company", es: "Empresa de gestión de flotas" },
@@ -201,20 +208,6 @@ export const caseStudies: Record<string, CaseStudy> = {
       },
       date: { en: "February 2026", es: "Febrero de 2026" },
     },
-    outcomes: [
-      {
-        value: { en: "6", es: "6" },
-        label: { en: "high-fidelity dashboard prototypes", es: "prototipos de dashboard de alta fidelidad" },
-      },
-      {
-        value: { en: "100+", es: "100+" },
-        label: { en: "performance indicators mapped and prioritised", es: "indicadores de rendimiento mapeados y priorizados" },
-      },
-      {
-        value: { en: "6", es: "6" },
-        label: { en: "strategic internal use cases defined", es: "casos de uso internos estratégicos definidos" },
-      },
-    ],
     challenge: [
       {
         en: "The company's deep expertise in mobility and access to extensive operational data should have enabled clients to manage their fleets with confidence. However, as the volume and complexity of information grew, Fleet Connect dashboards became increasingly difficult to navigate, often perceived as a \"sea of numbers\" rather than a tool for decision-making.",
@@ -256,6 +249,17 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     gallery: [
       {
+        embed: "fleet-prototype",
+        caption: {
+          en: "Built in Claude Code, with sample data. The dashboard system comes from my Figma prototypes; the filter interactions are in code, because the states mattered more than the layout.",
+          es: "Construido con Claude Code, con datos de ejemplo. El sistema del dashboard viene de mis prototipos en Figma; las interacciones de los filtros están en código, porque los estados importaban más que el layout.",
+        },
+        link: {
+          href: "/work/fleet-connect/prototype",
+          label: { en: "Open the prototype full screen", es: "Abrir el prototipo a pantalla completa" },
+        },
+      },
+      {
         image: "/projects/fleet-connect/savings-2x.png",
         caption: {
           en: "Savings first: one headline number, with the levers behind it a filter away.",
@@ -292,9 +296,16 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
   },
   "service-experience-design": {
-    statement: {
-      en: "Bringing coherence to services that had grown organically, for customers and employees alike.",
-      es: "Dar coherencia a unos servicios que habían crecido de forma orgánica, para clientes y empleados por igual.",
+    lead: {
+      decision: {
+        en: "I mapped every service end to end before touching the website, so the site could present two clear services instead of a list of offerings.",
+        es: "Mapeé cada servicio de principio a fin antes de tocar la web, para que pudiera presentar dos servicios claros en lugar de una lista de ofertas.",
+      },
+      tradeoff: { en: "Months of mapping before anything visible shipped.", es: "Meses de mapeo antes de que se publicara nada visible." },
+      status: {
+        en: "The redesigned website launched; I can't confirm how the new services are selling.",
+        es: "La web rediseñada se lanzó; no puedo confirmar cómo se están vendiendo los nuevos servicios.",
+      },
     },
     facts: {
       client: { en: "Growing organisation, B2B and B2C", es: "Organización en crecimiento, B2B y B2C" },
@@ -305,20 +316,6 @@ export const caseStudies: Record<string, CaseStudy> = {
       },
       date: { en: "January to June 2025", es: "De enero a junio de 2025" },
     },
-    outcomes: [
-      {
-        value: { en: "3", es: "3" },
-        label: { en: "services mapped end to end", es: "servicios mapeados de principio a fin" },
-      },
-      {
-        value: { en: "3", es: "3" },
-        label: { en: "journeys mapped", es: "recorridos mapeados" },
-      },
-      {
-        value: { en: "6", es: "6" },
-        label: { en: "months from discovery to launch", es: "meses del descubrimiento al lanzamiento" },
-      },
-    ],
     challenge: [
       {
         en: "The organisation worked across multiple services and touchpoints, serving both B2B and B2C audiences. Its offering, services and supporting processes had evolved organically over time, which led to fragmented experiences, duplicated effort and misalignment between customer needs, internal operations and communication.",
@@ -438,9 +435,16 @@ export const caseStudies: Record<string, CaseStudy> = {
   },
 
   "design-ops-strategy": {
-    statement: {
-      en: "Bringing structure to how a multidisciplinary team receives, scopes and manages work under constant ambiguity.",
-      es: "Dar estructura a cómo un equipo multidisciplinar recibe, dimensiona y gestiona el trabajo en un contexto de ambigüedad constante.",
+    lead: {
+      decision: {
+        en: "I added a briefing step and shared complexity levels before work reached designers, so scope was agreed before effort started.",
+        es: "Añadí un paso de briefing y niveles de complejidad compartidos antes de que el trabajo llegara a los diseñadores, para acordar el alcance antes de empezar.",
+      },
+      tradeoff: { en: "One more step at intake for every request.", es: "Un paso más en la entrada de cada petición." },
+      status: {
+        en: "Framework handed over in December 2025. The team has since added dedicated project managers; I can't confirm it runs on my framework.",
+        es: "Marco entregado en diciembre de 2025. Desde entonces el equipo ha incorporado project managers dedicados; no puedo confirmar que funcione con mi marco.",
+      },
     },
     facts: {
       client: { en: "Multidisciplinary organisation", es: "Organización multidisciplinar" },
@@ -451,11 +455,6 @@ export const caseStudies: Record<string, CaseStudy> = {
       },
       date: { en: "September to December 2025", es: "De septiembre a diciembre de 2025" },
     },
-    outcomes: [
-      { value: { en: "25", es: "25" }, label: { en: "people the new way of working was built for", es: "personas para las que se diseñó la nueva forma de trabajar" } },
-      { value: { en: "10+", es: "10+" }, label: { en: "projects a quarter scoped and dimensioned", es: "proyectos por trimestre definidos y dimensionados" } },
-      { value: { en: "4", es: "4" }, label: { en: "months from diagnosis to framework", es: "meses del diagnóstico al marco de trabajo" } },
-    ],
     challenge: [
       {
         en: "Organisations running many client projects in parallel share a common problem: work arrives with varying levels of clarity. Requests may lack defined priorities, clear timelines or complete briefings, creating friction in client relationships and internal workflows. This multidisciplinary team dealt with high ambiguity and constant demand.",

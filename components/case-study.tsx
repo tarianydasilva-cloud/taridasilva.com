@@ -7,6 +7,7 @@ import { projects } from "@/lib/projects"
 import { cn } from "@/lib/utils"
 import { useLanguage } from "./language-provider"
 import { Quote, Scene } from "./case-study-scenes"
+import { FleetPrototype } from "./fleet-prototype"
 import { ProjectMedia } from "./project-media"
 import { ProjectMotion } from "./project-motion"
 import { SectionNav } from "./section-nav"
@@ -112,8 +113,17 @@ export function CaseStudy({ slug }: { slug: string }) {
 
         <div className="@container flex flex-col gap-24 pt-20 md:gap-32 md:pt-28">
           <Section id="overview">
-            <p className="text-statement reveal-text text-balance">{study.statement[locale]}</p>
-            <dl className="mt-10 grid grid-cols-2 gap-2 md:grid-cols-4">
+            {/* The case opens with the decision, then what it cost and where the work stands. */}
+            <p className="text-statement reveal-text text-balance">{study.lead.decision[locale]}</p>
+            <dl className="mt-8 grid gap-2 sm:grid-cols-2">
+              {(["tradeoff", "status"] as const).map((key) => (
+                <div key={key} className="rounded-2xl bg-foreground p-5 text-background">
+                  <dt className="text-sm text-accent">{t.caseStudy.lead[key]}</dt>
+                  <dd className="mt-2 text-lg leading-snug text-pretty">{study.lead[key][locale]}</dd>
+                </div>
+              ))}
+            </dl>
+            <dl className="mt-2 grid grid-cols-2 gap-2 md:grid-cols-4">
               {facts.map((fact) => (
                 <div key={fact.label} className="rounded-2xl bg-muted p-4">
                   <dt className="text-sm text-muted-foreground">{fact.label}</dt>
@@ -121,14 +131,6 @@ export function CaseStudy({ slug }: { slug: string }) {
                 </div>
               ))}
             </dl>
-            <ul className="mt-2 grid gap-2 sm:grid-cols-3">
-              {study.outcomes.map((outcome) => (
-                <li key={outcome.label.en} className="reveal flex flex-col gap-6 rounded-2xl bg-foreground p-5 text-background">
-                  <span className="text-4xl tracking-tight text-accent md:text-5xl">{outcome.value[locale]}</span>
-                  <span className="text-sm text-background/70">{outcome.label[locale]}</span>
-                </li>
-              ))}
-            </ul>
           </Section>
 
           <Section id="challenge">
@@ -164,7 +166,9 @@ export function CaseStudy({ slug }: { slug: string }) {
             <div className="flex flex-col gap-8">
               {study.gallery.map((item, i) => (
                 <figure key={i} className="reveal">
-                  {item.scene ? (
+                  {item.embed ? (
+                    <FleetPrototype />
+                  ) : item.scene ? (
                     <Scene scene={item.scene} />
                   ) : item.quote ? (
                     <Quote lines={item.quote} />
@@ -189,7 +193,14 @@ export function CaseStudy({ slug }: { slug: string }) {
                     />
                   )}
                   {item.caption && (
-                    <figcaption className="mt-3 text-sm text-muted-foreground">{item.caption[locale]}</figcaption>
+                    <figcaption className="mt-3 text-sm text-muted-foreground">
+                      {item.caption[locale]}
+                      {item.link && (
+                        <Link href={item.link.href} className="ml-1 text-foreground underline underline-offset-4 hover:text-accent">
+                          {item.link.label[locale]} →
+                        </Link>
+                      )}
+                    </figcaption>
                   )}
                 </figure>
               ))}

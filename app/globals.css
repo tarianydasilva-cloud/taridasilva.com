@@ -63,23 +63,6 @@
   letter-spacing: -0.015em;
 }
 
-/* Lets accordions animate to and from `height: auto`. */
-:root {
-  interpolate-size: allow-keywords;
-}
-
-.accordion::details-content {
-  block-size: 0;
-  overflow: hidden;
-  transition:
-    block-size 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
-    content-visibility 0.4s allow-discrete;
-}
-
-.accordion[open]::details-content {
-  block-size: auto;
-}
-
 /* Stand-in for the About hero video until real clips are added. */
 .hero-placeholder {
   background:

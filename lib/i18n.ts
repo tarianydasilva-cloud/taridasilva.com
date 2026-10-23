@@ -16,7 +16,7 @@ export function localeFromAcceptLanguage(header: string | null): Locale {
 export const dictionary = {
   en: {
     skip: "Skip to content",
-    role: "Product Design & Strategy",
+    role: "Product Designer",
     nav: { work: "Work", about: "About", contact: "Say hola!" },
     language: "Language",
     home: "Home",
@@ -24,8 +24,6 @@ export const dictionary = {
       sectionNav: "About sections",
       sections: {
         story: "Story",
-        services: "What I do",
-        industries: "Industries",
         principles: "Principles",
         approach: "How I work",
       },
@@ -46,6 +44,7 @@ export const dictionary = {
         learnings: "Learnings",
       },
       facts: { client: "Client", role: "Role", team: "Team", date: "Date" },
+      lead: { decision: "Decision", tradeoff: "Trade-off", status: "Status" },
       nextProject: "Next project",
     },
     contact: {
@@ -59,12 +58,13 @@ export const dictionary = {
     footer: {
       elsewhere: "Elsewhere",
       backToTop: "Back to top",
+      builtWith: "Designed by me, built in Claude Code.",
       rights: "All rights reserved.",
     },
   },
   es: {
     skip: "Saltar al contenido",
-    role: "Diseño de Producto y Estrategia",
+    role: "Product Designer",
     nav: { work: "Trabajo", about: "Sobre mí", contact: "Di olá!" },
     language: "Idioma",
     home: "Inicio",
@@ -72,8 +72,6 @@ export const dictionary = {
       sectionNav: "Secciones de Sobre mí",
       sections: {
         story: "Historia",
-        services: "Qué hago",
-        industries: "Sectores",
         principles: "Principios",
         approach: "Cómo trabajo",
       },
@@ -94,6 +92,7 @@ export const dictionary = {
         learnings: "Aprendizajes",
       },
       facts: { client: "Cliente", role: "Rol", team: "Equipo", date: "Fecha" },
+      lead: { decision: "Decisión", tradeoff: "Contrapartida", status: "Estado" },
       nextProject: "Siguiente proyecto",
     },
     contact: {
@@ -107,6 +106,7 @@ export const dictionary = {
     footer: {
       elsewhere: "En otros sitios",
       backToTop: "Volver arriba",
+      builtWith: "Diseñado por mí, construido con Claude Code.",
       rights: "Todos los derechos reservados.",
     },
   },
