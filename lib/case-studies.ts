@@ -193,10 +193,13 @@ export const caseStudies: Record<string, CaseStudy> = {
         en: "I kept all 100+ indicators and split them into two priority tiers.",
         es: "Mantuve los más de 100 indicadores y los dividí en dos niveles de prioridad.",
       },
-      tradeoff: { en: "Denser filters for power users.", es: "Filtros más densos para los usuarios avanzados." },
+      tradeoff: {
+        en: "Keeping every indicator meant more screens and filters to design than cutting the list would have.",
+        es: "Mantener todos los indicadores supuso más pantallas y filtros que diseñar que si hubiéramos recortado la lista.",
+      },
       status: {
-        en: "Six prototypes handed over; not yet in production.",
-        es: "Seis prototipos entregados; todavía no están en producción.",
+        en: "Six prototypes handed over to the client; I don't know whether they reached production.",
+        es: "Seis prototipos entregados al cliente; no sé si llegaron a producción.",
       },
     },
     facts: {
