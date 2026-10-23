@@ -201,8 +201,8 @@ export const caseStudies: Record<string, CaseStudy> = {
         es: "Mantener los más de 100 indicadores hizo más densas las vistas de segundo nivel y más pesada la lógica de los filtros.",
       },
       status: {
-        en: "Six prototypes handed over to the client; I don't know whether they reached production.",
-        es: "Seis prototipos entregados al cliente; no sé si llegaron a producción.",
+        en: "One prototype handed over to the client; I don't know whether it reached production.",
+        es: "Un prototipo entregado al cliente; no sé si llegó a producción.",
       },
     },
     facts: {
@@ -289,8 +289,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     results: [
       {
-        en: "The project delivered six high-fidelity dashboard prototypes that showed how complex mobility and operational data could become clear, actionable insights for both clients and internal teams. We also mapped and prioritised over 100 performance indicators, creating a scalable foundation for the evolution of Fleet Connect.",
-        es: "El proyecto entregó seis prototipos de dashboard de alta fidelidad que mostraban cómo datos complejos de movilidad y operaciones podían convertirse en insights claros y accionables, tanto para clientes como para equipos internos. También mapeamos y priorizamos más de 100 indicadores de rendimiento, creando una base escalable para la evolución de Fleet Connect.",
+        en: "The project delivered a high-fidelity dashboard prototype that showed how complex mobility and operational data could become clear, actionable insights for both clients and internal teams. We also mapped and prioritised over 100 performance indicators, creating a scalable foundation for the evolution of Fleet Connect.",
+        es: "El proyecto entregó un prototipo de dashboard de alta fidelidad que mostraba cómo datos complejos de movilidad y operaciones podían convertirse en insights claros y accionables, tanto para clientes como para equipos internos. También mapeamos y priorizamos más de 100 indicadores de rendimiento, creando una base escalable para la evolución de Fleet Connect.",
       },
       {
         en: "Beyond the dashboards, the work defined six strategic internal use cases showing how connected data could unlock value across the organisation. Sharing the vision and recommendations with stakeholders set a clear direction for a more connected, intuitive and insight-driven ecosystem, and a foundation for future development within Fleet Connect.",
