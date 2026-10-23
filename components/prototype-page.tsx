@@ -11,7 +11,7 @@ const copy = {
     title: "Fleet Connect, coded",
     spec: "The spec behind it",
     specIntro:
-      "For this rebuild, before coding, I had Claude list every state a card could reach. Four made it into the prototype as switchable states, five more edge cases are handled, and the rest are queued for the next iteration.",
+      "Before designing the screens, I used Figma Make's AI to list every state a card could reach, generated each one by prompt and fixed by hand what it got wrong. For this rebuild I repeated the exercise with Claude before coding: 4 states made it in as switchable states, 5 edge cases are handled, and 4 are queued for the next iteration.",
     intro:
       "A working rebuild of the dashboard, made in Claude Code for this portfolio with sample data. The original dashboards were made in Figma Make, where I prompted each change and adjusted details by hand; here the filters and their states are in code, because the states mattered more than the layout.",
   },
@@ -20,7 +20,7 @@ const copy = {
     title: "Fleet Connect, en código",
     spec: "La especificación detrás",
     specIntro:
-      "Para esta reconstrucción, antes de programar, pedí a Claude que listara cada estado al que podía llegar una tarjeta. Cuatro entraron en el prototipo como estados activables, otros cinco casos límite están resueltos y el resto queda para la siguiente iteración.",
+      "Antes de diseñar las pantallas, usé la IA de Figma Make para listar cada estado al que podía llegar una tarjeta, generé cada uno por prompt y corregí a mano lo que no estaba bien. Para esta reconstrucción repetí el ejercicio con Claude antes de programar: 4 estados entraron como activables, 5 casos límite están resueltos y 4 quedan para la siguiente iteración.",
     intro:
       "Una reconstrucción funcional del dashboard, hecha con Claude Code para este portfolio con datos de ejemplo. Los dashboards originales se hicieron en Figma Make, donde pedía cada cambio por prompt y ajustaba los detalles a mano; aquí los filtros y sus estados están en código, porque los estados importaban más que el layout.",
   },

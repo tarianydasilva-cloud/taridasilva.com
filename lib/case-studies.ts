@@ -268,8 +268,8 @@ export const caseStudies: Record<string, CaseStudy> = {
       {
         embed: "edge-cases",
         caption: {
-          en: "For this rebuild, before coding, I had Claude list every state a card could reach. Four made it into the prototype as switchable states: live, loading, empty and error. Five more edge cases are handled, and the rest are queued for the next iteration.",
-          es: "Para esta reconstrucción, antes de programar, pedí a Claude que listara cada estado al que podía llegar una tarjeta. Cuatro entraron en el prototipo como estados que se pueden activar: en vivo, cargando, vacío y error. Otros cinco casos límite están resueltos, y el resto queda para la siguiente iteración.",
+          en: "Before designing the screens, I used Figma Make's AI to list every state a card could reach, generated each one by prompt and fixed by hand what it got wrong. For this coded rebuild I repeated the exercise with Claude: 4 states made it in as switchable states (live, loading, empty, error), 5 edge cases are handled, and 4 are queued for the next iteration.",
+          es: "Antes de diseñar las pantallas, usé la IA de Figma Make para listar cada estado al que podía llegar una tarjeta, generé cada uno por prompt y corregí a mano lo que no estaba bien. Para esta reconstrucción en código repetí el ejercicio con Claude: 4 estados entraron como activables (en vivo, cargando, vacío, error), 5 casos límite están resueltos y 4 quedan para la siguiente iteración.",
         },
       },
       {
