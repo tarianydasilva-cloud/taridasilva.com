@@ -64,6 +64,11 @@ export function Quote({ lines }: { lines: Record<Locale, string[]> }) {
   )
 }
 
+const servicePaths = [
+  "M4 8h16v11H4zM9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M4 13h16",
+  "M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM5 20a7 7 0 0 1 14 0",
+]
+
 const services = {
   en: {
     title: "Our services",
@@ -112,20 +117,22 @@ export function ServicesPhone() {
                 key={title}
                 className="overflow-hidden rounded-[5cqi] bg-white shadow-[0_8px_24px_-12px_rgba(0,0,0,0.25)]"
               >
-                {i === 0 ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src="/projects/service-experience-design/b2b-photo.jpg"
-                    alt=""
-                    className="aspect-[9/8] w-full object-cover"
-                  />
-                ) : (
-                  <div className="flex aspect-[9/8] items-center justify-center bg-[linear-gradient(150deg,#ffd9c7,#ff8a5b)]">
-                    <span className="flex size-[22cqi] items-center justify-center rounded-full bg-white/80 text-[10cqi]">
-                      ✦
-                    </span>
-                  </div>
-                )}
+                {/* Both services share the same artwork, each with its own icon: a briefcase and a person. */}
+                <div className="flex aspect-[9/8] items-center justify-center bg-[linear-gradient(150deg,#ffd9c7,#ff8a5b)]">
+                  <span className="flex size-[22cqi] items-center justify-center rounded-full bg-white/80 text-[#e8471c]">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="size-[10cqi]"
+                    >
+                      <path d={servicePaths[i]} />
+                    </svg>
+                  </span>
+                </div>
                 <div className="px-[6cqi] py-[5cqi]">
                   <p className="text-[7cqi] font-semibold leading-tight">{title}</p>
                   <p className="mt-[1.5cqi] text-[4.4cqi] text-muted-foreground">{subtitle}</p>
