@@ -115,8 +115,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     solution: [
       {
-        en: "We designed an innovation experience that empowers employees to contribute to the company's future: a shared framework, experience and platforms that let ideas be generated and developed across business units and brands, plus a vision for an external ecosystem around them.",
-        es: "Diseñamos una experiencia de innovación que permite a los empleados contribuir al futuro de la compañía: un marco, una experiencia y unas plataformas compartidas para generar y desarrollar ideas en todas las unidades de negocio y marcas, junto con la visión de un ecosistema externo a su alrededor.",
+        en: "We designed an innovation experience that empowers employees to contribute to the company's future: a shared innovation model, with the experience and platforms behind it, that lets ideas be generated and developed across business units and brands, plus a vision for an external ecosystem around them.",
+        es: "Diseñamos una experiencia de innovación que permite a los empleados contribuir al futuro de la compañía: un modelo de innovación compartido, con la experiencia y las plataformas que lo sostienen, para generar y desarrollar ideas en todas las unidades de negocio y marcas, junto con la visión de un ecosistema externo a su alrededor.",
       },
     ],
     gallery: [
@@ -155,8 +155,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     resultHighlights: [
       {
-        en: "A shared framework, experience and platforms for innovating across business units and brands.",
-        es: "Un marco, una experiencia y plataformas compartidas para innovar en todas las unidades de negocio y marcas.",
+        en: "A shared innovation model for every business unit and brand, with the experience and platforms to run it.",
+        es: "Un modelo de innovación compartido para todas las unidades de negocio y marcas, con la experiencia y las plataformas para ponerlo en marcha.",
       },
       {
         en: "Three employee archetypes and community maturity levels to tailor participation.",
