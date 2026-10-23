@@ -409,24 +409,24 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     resultHighlights: [
       {
-        en: "Launched a redesigned website that makes the services clear from the first view.",
-        es: "Lanzamos una web rediseñada que deja claros los servicios desde la primera vista.",
+        en: "Launched a redesigned website that presents the services clearly.",
+        es: "Lanzamos una web rediseñada que presenta los servicios con claridad.",
       },
       {
-        en: "Shaped the two core services.",
-        es: "Dimos forma a los dos servicios principales.",
+        en: "Shaped the two core services, defining what each one offers and who it is for.",
+        es: "Dimos forma a los dos servicios principales: qué ofrece cada uno y para quién es.",
       },
       {
-        en: "Mapped how sales first meets clients and hands them on, linking commercial work to the service.",
-        es: "Mapeamos cómo ventas conoce a los clientes y los traspasa, conectando el trabajo comercial con el servicio.",
+        en: "Mapped how sales meets new clients and hands them on to the service team.",
+        es: "Mapeamos cómo ventas conoce a nuevos clientes y los traspasa al equipo de servicio.",
       },
       {
         en: "Gave a structured view of services and journeys that had never been documented.",
-        es: "Ofrecimos una visión estructurada de servicios y recorridos que nunca se habían documentado.",
+        es: "Ofrecimos una visión estructurada de servicios y recorridos nunca documentados.",
       },
       {
-        en: "Mapped the journeys for a community the firm planned to launch, ready for when it moves forward.",
-        es: "Mapeamos los recorridos de una comunidad que la firma quería lanzar, listos para cuando avance.",
+        en: "Mapped the journeys for a planned community, ready for when the firm moves it forward.",
+        es: "Mapeamos los recorridos de una comunidad prevista, listos para cuando la firma avance.",
       },
     ],
     learnings: [
