@@ -41,8 +41,8 @@ export const caseStudies: Record<string, CaseStudy> = {
   innohub: {
     lead: {
       decision: {
-        en: "I designed participation around three employee archetypes and community maturity levels, instead of one idea box for everyone.",
-        es: "Diseñé la participación en torno a tres arquetipos de empleado y niveles de madurez de la comunidad, en lugar de un único buzón de ideas para todos.",
+        en: "I designed participation around three employee archetypes and community maturity levels.",
+        es: "Diseñé la participación en torno a tres arquetipos de empleado y niveles de madurez de la comunidad.",
       },
       tradeoff: { en: "More to set up and govern than a single platform.", es: "Más que configurar y gobernar que una única plataforma." },
       status: {
