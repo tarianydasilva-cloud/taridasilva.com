@@ -306,8 +306,8 @@ export const caseStudies: Record<string, CaseStudy> = {
       },
       tradeoff: { en: "Months of mapping before anything visible shipped.", es: "Meses de mapeo antes de que se publicara nada visible." },
       status: {
-        en: "The redesigned website launched; I can't confirm how the new services are selling.",
-        es: "La web rediseñada se lanzó; no puedo confirmar cómo se están vendiendo los nuevos servicios.",
+        en: "The redesigned website launched, giving the services a clear front door; the service maps stay as a blueprint the team can grow into.",
+        es: "La web rediseñada se lanzó y dio a los servicios una puerta de entrada clara; los mapas de servicio quedan como un blueprint en el que el equipo puede crecer.",
       },
     },
     facts: {
