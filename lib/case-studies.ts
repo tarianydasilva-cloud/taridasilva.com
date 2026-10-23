@@ -388,7 +388,7 @@ export const caseStudies: Record<string, CaseStudy> = {
         },
       },
       {
-        pair: ["/projects/service-experience-design/services-phone.jpg", "/projects/service-experience-design/service-tiers-crop.png"],
+        pair: ["/projects/service-experience-design/services-phone-card.jpg", "/projects/service-experience-design/service-tiers-crop.png"],
         caption: {
           en: "Each service gets one clear way in, with simple tiers behind it.",
           es: "Cada servicio tiene una entrada clara, con niveles sencillos detrás.",
