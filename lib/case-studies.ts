@@ -197,8 +197,8 @@ export const caseStudies: Record<string, CaseStudy> = {
         es: "Mantuve los más de 100 indicadores y los dividí en dos niveles de prioridad.",
       },
       tradeoff: {
-        en: "With so much data, not all of it could be put to its best use: the second tier stays available, but gets less attention.",
-        es: "Con tantos datos, no todos podían aprovecharse al máximo: el segundo nivel sigue disponible, pero recibe menos atención.",
+        en: "With so much data, not all of it could be put to its best use.",
+        es: "Con tantos datos, no todos podían aprovecharse al máximo.",
       },
       status: {
         en: "Six prototypes handed over to the client; I don't know whether they reached production.",
