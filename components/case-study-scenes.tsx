@@ -25,7 +25,11 @@ function Principles() {
     <div className="@container relative aspect-[2/1] overflow-hidden rounded-2xl bg-[#f4f4f4]">
       {principles.map((pill, i) => (
         // Three layers, each with its own translate: placement, the pop-in and the float.
-        <span key={pill.en} style={{ left: pill.x, top: pill.y }} className="absolute -translate-x-1/2 -translate-y-1/2">
+        <span
+          key={pill.en}
+          style={{ left: pill.x, top: pill.y }}
+          className="absolute -translate-x-1/2 -translate-y-1/2"
+        >
           <span style={index(i)} className="scene-pop block">
             <span
               style={index(i)}
@@ -57,6 +61,81 @@ export function Quote({ lines }: { lines: Record<Locale, string[]> }) {
         </span>
       ))}
     </p>
+  )
+}
+
+const services = {
+  en: {
+    title: "Our services",
+    cards: [
+      ["B2B service", "For Directors and Leaders"],
+      ["B2C service", "For Professionals"],
+    ],
+  },
+  es: {
+    title: "Nuestros servicios",
+    cards: [
+      ["Servicio B2B", "Para directivos y líderes"],
+      ["Servicio B2C", "Para profesionales"],
+    ],
+  },
+}
+
+// The services page on a phone, on Tari's orange: the list scrolls from the first service to the second and back,
+// on a loop. The phone sits low in the frame, like the original mock-up.
+export function ServicesPhone() {
+  const { locale } = useLanguage()
+  const c = services[locale]
+
+  return (
+    <div
+      aria-hidden="true"
+      className="@container relative aspect-[4/5] overflow-hidden rounded-2xl bg-[radial-gradient(90%_70%_at_0%_0%,#ff4a12,transparent_70%),linear-gradient(160deg,#ff6a2e,#ff9a6b_60%,#ffe2d4)]"
+    >
+      <div className="absolute inset-x-[16%] top-[22%] -bottom-[6%] rounded-[9cqi] bg-[#1a1a1a] p-[2.2cqi] shadow-[0_30px_60px_-30px_rgba(120,30,0,0.6)] ring-[0.6cqi] ring-[#b9b4ad]">
+        <div className="@container relative h-full overflow-hidden rounded-[7cqi] bg-[#f1f1f3]">
+          <div className="relative z-10 flex items-center justify-between bg-white px-[8cqi] pt-[5cqi] text-[4.4cqi] font-semibold">
+            9:41
+            <span className="h-[7cqi] w-[30cqi] rounded-full bg-black" />
+            <span className="flex gap-[1.5cqi]">
+              <span className="h-[3cqi] w-[5cqi] rounded-sm bg-black" />
+              <span className="h-[3cqi] w-[7cqi] rounded-sm border border-black" />
+            </span>
+          </div>
+          <div className="relative z-10 flex items-center justify-center bg-white py-[6cqi] text-[6cqi]">
+            <span className="absolute left-[6cqi] text-[7cqi] leading-none">←</span>
+            {c.title}
+          </div>
+          <div className="services-scroll flex flex-col gap-[6cqi] px-[7cqi] pt-[7cqi]">
+            {c.cards.map(([title, subtitle], i) => (
+              <div
+                key={title}
+                className="overflow-hidden rounded-[5cqi] bg-white shadow-[0_8px_24px_-12px_rgba(0,0,0,0.25)]"
+              >
+                {i === 0 ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src="/projects/service-experience-design/b2b-photo.jpg"
+                    alt=""
+                    className="aspect-[9/8] w-full object-cover"
+                  />
+                ) : (
+                  <div className="flex aspect-[9/8] items-center justify-center bg-[linear-gradient(150deg,#ffd9c7,#ff8a5b)]">
+                    <span className="flex size-[22cqi] items-center justify-center rounded-full bg-white/80 text-[10cqi]">
+                      ✦
+                    </span>
+                  </div>
+                )}
+                <div className="px-[6cqi] py-[5cqi]">
+                  <p className="text-[7cqi] font-semibold leading-tight">{title}</p>
+                  <p className="mt-[1.5cqi] text-[4.4cqi] text-muted-foreground">{subtitle}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 

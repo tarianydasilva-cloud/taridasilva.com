@@ -6,7 +6,7 @@ import { caseStudies } from "@/lib/case-studies"
 import { projects } from "@/lib/projects"
 import { cn } from "@/lib/utils"
 import { useLanguage } from "./language-provider"
-import { Quote, Scene } from "./case-study-scenes"
+import { Quote, Scene, ServicesPhone } from "./case-study-scenes"
 import { FleetPrototype } from "./fleet-prototype"
 import { ProjectMedia } from "./project-media"
 import { ProjectMotion } from "./project-motion"
@@ -83,9 +83,7 @@ export function CaseStudy({ slug }: { slug: string }) {
 
       <div className="min-w-0 lg:col-span-9">
         <header>
-          <h1 className="text-4xl leading-[1.05] tracking-tight text-balance md:text-6xl">
-            {project.title[locale]}
-          </h1>
+          <h1 className="text-4xl leading-[1.05] tracking-tight text-balance md:text-6xl">{project.title[locale]}</h1>
           <p className="mt-4 text-lg text-muted-foreground">{project.summary[locale]}</p>
           <ul className="mt-6 flex flex-wrap gap-1.5 text-sm" aria-label={t.work.disciplines}>
             <li className="rounded-full bg-foreground px-4 py-1.5 text-background">{project.year}</li>
@@ -174,15 +172,19 @@ export function CaseStudy({ slug }: { slug: string }) {
                     <Quote lines={item.quote} />
                   ) : item.pair ? (
                     <div className="grid gap-2 sm:grid-cols-2">
-                      {item.pair.map((image) => (
-                        <ProjectMedia
-                          key={image}
-                          image={image}
-                          alt={item.caption?.[locale]}
-                          sizes="(min-width: 1024px) 38vw, (min-width: 640px) 50vw, 100vw"
-                          className="aspect-[4/5] rounded-2xl ring-1 ring-black/5"
-                        />
-                      ))}
+                      {item.pair.map((side) =>
+                        typeof side === "string" ? (
+                          <ProjectMedia
+                            key={side}
+                            image={side}
+                            alt={item.caption?.[locale]}
+                            sizes="(min-width: 1024px) 38vw, (min-width: 640px) 50vw, 100vw"
+                            className="aspect-[4/5] rounded-2xl ring-1 ring-black/5"
+                          />
+                        ) : (
+                          <ServicesPhone key={side.scene} />
+                        ),
+                      )}
                     </div>
                   ) : (
                     <ProjectMedia

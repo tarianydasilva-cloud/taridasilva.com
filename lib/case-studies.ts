@@ -7,6 +7,8 @@ type Localized = Record<Locale, string>
 // One solution image, two portrait images side by side (`pair`), a quote revealed word by word (one string per
 // line; later lines muted), an animated scene built in code (components/case-study-scenes.tsx), or a live prototype.
 // Quotes and scenes can go without a caption.
+export type PairSide = string | { scene: "services-phone" }
+
 export type GalleryItem = {
   caption?: Localized
   // A link under the caption, e.g. to a full-screen prototype.
@@ -14,7 +16,8 @@ export type GalleryItem = {
   // A live, coded prototype embedded in the page.
   embed?: "fleet-prototype"
   image?: string
-  pair?: [string, string]
+  // Each side is an image path, or an animated scene built in code.
+  pair?: [PairSide, PairSide]
   quote?: Record<Locale, string[]>
   scene?: "principles"
 }
@@ -388,7 +391,7 @@ export const caseStudies: Record<string, CaseStudy> = {
         },
       },
       {
-        pair: ["/projects/service-experience-design/services-phone-card.jpg", "/projects/service-experience-design/service-tiers-crop.png"],
+        pair: [{ scene: "services-phone" }, "/projects/service-experience-design/service-tiers-crop.png"],
         caption: {
           en: "Each service gets one clear way in, with simple tiers behind it.",
           es: "Cada servicio tiene una entrada clara, con niveles sencillos detrás.",
