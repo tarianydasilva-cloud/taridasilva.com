@@ -9,6 +9,14 @@ const copy = {
   en: {
     back: "Fleet Connect case study",
     title: "Fleet Connect, coded",
+    log: "Build log",
+    logIntro: "Friday 23 October 2026, Madrid time, from the project's Git history.",
+    logRows: [
+      ["11:13", "First working version: savings and fleet-status cards, the four states, before/after."],
+      ["11:22", "The full dashboard: five cards, search and icons."],
+      ["11:35", "Fits every screen from 360px up, with a full-screen link from the case study."],
+      ["13:10", "The edge-case spec written up and published next to it."],
+    ],
     spec: "The spec behind it",
     specIntro:
       "Before designing the screens, I used Figma Make's AI to list every state a card could reach, generated each one by prompt and fixed by hand what it got wrong. For this rebuild I repeated the exercise with Claude before coding: 4 states made it in as switchable states, 5 edge cases are handled, and 4 are queued for the next iteration.",
@@ -18,6 +26,14 @@ const copy = {
   es: {
     back: "Caso de estudio de Fleet Connect",
     title: "Fleet Connect, en código",
+    log: "Registro de construcción",
+    logIntro: "Viernes 23 de octubre de 2026, hora de Madrid, según el historial de Git del proyecto.",
+    logRows: [
+      ["11:13", "Primera versión funcional: tarjetas de ahorro y de estado de la flota, los cuatro estados, antes/después."],
+      ["11:22", "El dashboard completo: cinco tarjetas, búsqueda e iconos."],
+      ["11:35", "Se adapta a cualquier pantalla desde 360px, con enlace a pantalla completa desde el caso."],
+      ["13:10", "La especificación de casos límite redactada y publicada junto a él."],
+    ],
     spec: "La especificación detrás",
     specIntro:
       "Antes de diseñar las pantallas, usé la IA de Figma Make para listar cada estado al que podía llegar una tarjeta, generé cada uno por prompt y corregí a mano lo que no estaba bien. Para esta reconstrucción repetí el ejercicio con Claude antes de programar: 4 estados entraron como activables, 5 casos límite están resueltos y 4 quedan para la siguiente iteración.",
@@ -44,6 +60,20 @@ export function PrototypePage() {
       <div className="mt-10">
         <FleetPrototype />
       </div>
+      <section aria-labelledby="log-title" className="mt-20 max-w-4xl">
+        <h2 id="log-title" className="text-2xl tracking-tight md:text-3xl">
+          {c.log}
+        </h2>
+        <p className="mt-4 leading-relaxed text-muted-foreground">{c.logIntro}</p>
+        <ol className="mt-6 flex flex-col gap-2">
+          {c.logRows.map(([time, step]) => (
+            <li key={time} className="flex gap-5 rounded-2xl bg-muted p-4">
+              <span className="w-12 shrink-0 font-medium tabular-nums">{time}</span>
+              <span className="text-pretty">{step}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
       <section aria-labelledby="spec-title" className="mt-20 max-w-4xl">
         <h2 id="spec-title" className="text-2xl tracking-tight md:text-3xl">
           {c.spec}
