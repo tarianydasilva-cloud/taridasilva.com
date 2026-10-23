@@ -190,8 +190,8 @@ export const caseStudies: Record<string, CaseStudy> = {
   "fleet-connect": {
     lead: {
       decision: {
-        en: "I kept all 100+ indicators and split them into two priority tiers, so savings read first.",
-        es: "Mantuve los más de 100 indicadores y los dividí en dos niveles de prioridad, para que el ahorro se lea primero.",
+        en: "I kept all 100+ indicators and split them into two priority tiers.",
+        es: "Mantuve los más de 100 indicadores y los dividí en dos niveles de prioridad.",
       },
       tradeoff: { en: "Denser filters for power users.", es: "Filtros más densos para los usuarios avanzados." },
       status: {
@@ -298,8 +298,8 @@ export const caseStudies: Record<string, CaseStudy> = {
   "service-experience-design": {
     lead: {
       decision: {
-        en: "I mapped every service end to end before touching the website, so the site could present two clear services instead of a list of offerings.",
-        es: "Mapeé cada servicio de principio a fin antes de tocar la web, para que pudiera presentar dos servicios claros en lugar de una lista de ofertas.",
+        en: "I mapped every service end to end before touching the website.",
+        es: "Mapeé cada servicio de principio a fin antes de tocar la web.",
       },
       tradeoff: { en: "Months of mapping before anything visible shipped.", es: "Meses de mapeo antes de que se publicara nada visible." },
       status: {
@@ -437,8 +437,8 @@ export const caseStudies: Record<string, CaseStudy> = {
   "design-ops-strategy": {
     lead: {
       decision: {
-        en: "I added a briefing step and shared complexity levels before work reached designers, so scope was agreed before effort started.",
-        es: "Añadí un paso de briefing y niveles de complejidad compartidos antes de que el trabajo llegara a los diseñadores, para acordar el alcance antes de empezar.",
+        en: "I added a briefing step and shared complexity levels before work reached designers.",
+        es: "Añadí un paso de briefing y niveles de complejidad compartidos antes de que el trabajo llegara a los diseñadores.",
       },
       tradeoff: { en: "One more step at intake for every request.", es: "Un paso más en la entrada de cada petición." },
       status: {
