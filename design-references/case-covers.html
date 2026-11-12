@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Geist", -apple-system, "Helvetica Neue", Arial, sans-serif; }
+  .canvas { width: 1600px; height: 900px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+
+  /* iPhone */
+  .phone { position: relative; width: var(--w); aspect-ratio: 9 / 19.5; background: #151515; border-radius: calc(var(--w) * 0.16); padding: calc(var(--w) * 0.035);
+    box-shadow: 0 0 0 calc(var(--w) * 0.012) #c9c6c2, 0 30px 60px -30px rgba(0,0,0,.35); }
+  .phone .screen { position: relative; width: 100%; height: 100%; border-radius: calc(var(--w) * 0.125); overflow: hidden; background: #fff; }
+  .phone .island { position: absolute; top: calc(var(--w) * 0.03); left: 50%; translate: -50% 0; width: 32%; height: calc(var(--w) * 0.085); background: #000; border-radius: 99px; z-index: 3; }
+  .status { height: calc(var(--w) * 0.15); display: flex; align-items: center; justify-content: space-between; padding: 0 calc(var(--w) * 0.09); font-size: calc(var(--w) * 0.047); font-weight: 600; position: relative; z-index: 2; }
+  .status .bat { width: calc(var(--w) * 0.07); height: calc(var(--w) * 0.035); border: 1.5px solid currentColor; border-radius: 3px; position: relative; }
+  .status .bat::after { content: ""; position: absolute; inset: 1.5px; right: 35%; background: currentColor; border-radius: 1px; }
+
+  /* Studio display */
+  .display { position: relative; width: var(--w); }
+  .display .bezel { background: #1b1b1b; padding: calc(var(--w) * 0.016); border-radius: calc(var(--w) * 0.018); box-shadow: 0 0 0 2px #cfccc8, 0 40px 70px -40px rgba(0,0,0,.4); }
+  .display .screen { aspect-ratio: 16 / 9; overflow: hidden; background: #fff; border-radius: 2px; }
+  .display .neck { width: 22%; height: calc(var(--w) * 0.13); margin: 0 auto; background: linear-gradient(90deg, #cfcdc9, #e9e7e3 45%, #c4c1bc); }
+  .display .foot { width: 34%; height: calc(var(--w) * 0.018); margin: 0 auto; background: #d4d1cc; border-radius: 4px 4px 2px 2px; }
+
+  /* MacBook */
+  .laptop { position: relative; width: var(--w); }
+  .laptop .lid { width: 86%; margin: 0 auto; background: #141414; padding: calc(var(--w) * 0.014) calc(var(--w) * 0.014) calc(var(--w) * 0.03); border-radius: calc(var(--w) * 0.022) calc(var(--w) * 0.022) 0 0; box-shadow: 0 0 0 2px #c9c6c2; }
+  .laptop .screen { aspect-ratio: 16 / 10; overflow: hidden; background: #fff; border-radius: 3px; }
+  .laptop .base { height: calc(var(--w) * 0.022); background: linear-gradient(#e2e0dc, #b9b6b1); border-radius: 0 0 calc(var(--w) * 0.03) calc(var(--w) * 0.03); position: relative; box-shadow: 0 30px 40px -30px rgba(0,0,0,.4); }
+  .laptop .base::before { content: ""; position: absolute; left: 50%; top: 0; translate: -50% 0; width: 14%; height: 45%; background: #c8c5c0; border-radius: 0 0 8px 8px; }
+
+  .fill { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+</style>
+</head>
+<body>
+
+<!-- Fleet Connect: the coded dashboard on a display, the mobile view on an iPhone -->
+<div class="canvas" id="fleet" style="background:#e1ece7">
+  <div style="display:flex; align-items:flex-end; gap:56px; translate: 0 30px">
+    <div class="display" style="--w: 940px">
+      <div class="bezel"><div class="screen"><img class="fill" src="fleet-desktop-crop.png"></div></div>
+      <div class="neck"></div><div class="foot"></div>
+    </div>
+    <div class="phone" style="--w: 270px; margin-bottom: 30px">
+      <div class="screen" style="background:#f7f9f8">
+        <div class="island"></div>
+        <div class="status" style="background:#fff"><span>9:41</span><span class="bat"></span></div>
+        <img src="fleet-mobile-crop.png" style="width:100%; display:block">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Service & Experience Design: the services list and the tiers on two iPhones -->
+<div class="canvas" id="service" style="background:#fbe6dc">
+  <div style="display:flex; align-items:center; gap:70px">
+    <div class="phone" style="--w: 330px">
+      <div class="screen" style="background:#f1f1f3">
+        <div class="island"></div>
+        <div class="status" style="background:#fff"><span>9:41</span><span class="bat"></span></div>
+        <div style="background:#fff; position:relative; text-align:center; padding:14px 0 18px; font-size:20px">
+          <span style="position:absolute; left:20px; font-size:22px; line-height:1">←</span>Our services
+        </div>
+        <div style="padding:20px; display:flex; flex-direction:column; gap:16px">
+          <div style="background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 8px 24px -12px rgba(0,0,0,.25)">
+            <div style="aspect-ratio:9/6; background:linear-gradient(150deg,#ffd9c7,#ff8a5b); display:flex; align-items:center; justify-content:center">
+              <span style="width:64px; height:64px; border-radius:50%; background:rgba(255,255,255,.8); display:flex; align-items:center; justify-content:center; color:#e8471c">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16v11H4zM9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M4 13h16"/></svg>
+              </span>
+            </div>
+            <div style="padding:16px 18px"><p style="font-size:22px; font-weight:600">B2B service</p><p style="margin-top:4px; font-size:14px; color:#66636b">For Directors and Leaders</p></div>
+          </div>
+          <div style="background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 8px 24px -12px rgba(0,0,0,.25)">
+            <div style="aspect-ratio:9/6; background:linear-gradient(150deg,#ffd9c7,#ff8a5b); display:flex; align-items:center; justify-content:center">
+              <span style="width:64px; height:64px; border-radius:50%; background:rgba(255,255,255,.8); display:flex; align-items:center; justify-content:center; color:#e8471c">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM5 20a7 7 0 0 1 14 0"/></svg>
+              </span>
+            </div>
+            <div style="padding:16px 18px"><p style="font-size:22px; font-weight:600">B2C service</p><p style="margin-top:4px; font-size:14px; color:#66636b">For Professionals</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone" style="--w: 330px">
+      <div class="screen" style="background:#f4f4f4">
+        <div class="island"></div>
+        <div class="status" style="background:#fff"><span>9:41</span><span class="bat"></span></div>
+        <div style="background:#fff; position:relative; text-align:center; padding:14px 0 18px; font-size:20px">
+          <span style="position:absolute; left:20px; font-size:22px; line-height:1">←</span>B2B service
+        </div>
+        <div style="padding:34px 20px 0">
+          <p style="font-size:16px; color:#5a5a5a; padding:0 4px 10px">B2B Services</p>
+          <div style="background:#fff; border-radius:14px; padding:0 18px">
+            <div style="display:flex; justify-content:space-between; padding:20px 0; font-size:21px; border-bottom:1px solid #eee">Basic<span>›</span></div>
+            <div style="display:flex; justify-content:space-between; padding:20px 0; font-size:21px; border-bottom:1px solid #eee">Pro<span>›</span></div>
+            <div style="display:flex; justify-content:space-between; padding:20px 0; font-size:21px">Master<span>›</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Innohub: the platform on a MacBook, the app's opening screen on an iPhone -->
+<div class="canvas" id="innohub" style="background:#e3e7f8">
+  <div style="display:flex; align-items:flex-end; gap:40px; translate: 0 20px">
+    <div class="laptop" style="--w: 940px">
+      <div class="lid"><div class="screen"><img class="fill" src="innohub-screen.png" style="object-position:center"></div></div>
+      <div class="base"></div>
+    </div>
+    <div class="phone" style="--w: 250px; margin-bottom: 4px">
+      <div class="screen" style="background:#f9f9f9">
+        <div class="island"></div>
+        <div class="status"><span>9:41</span><span class="bat"></span></div>
+        <p style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:#1638c4; font-size:22px; line-height:1.25">
+          <span><b>Innohub</b> donde</span><span>las ideas suceden</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
