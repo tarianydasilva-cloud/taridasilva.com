@@ -69,7 +69,7 @@ export const projects: Project[] = [
       { en: "Design Research", es: "Design research" },
     ],
     image: "/projects/innohub/card-logo.png",
-    cover: "/projects/innohub/cover-mockup.jpg",
+    cover: "/projects/innohub/cover-devices.jpg",
     imageAlt: {
       en: "The Innohub platform: cards inviting employees to share ideas with impact, on a blue background",
       es: "La plataforma Innohub: tarjetas que invitan a los empleados a compartir ideas con impacto, sobre fondo azul",
