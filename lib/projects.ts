@@ -34,7 +34,7 @@ export const projects: Project[] = [
       { en: "Mobility", es: "Movilidad" },
     ],
     image: "/projects/fleet-connect/card.jpg",
-    cover: "/projects/fleet-connect/cover-mockup.jpg",
+    cover: "/projects/fleet-connect/cover-devices.jpg",
     imageAlt: {
       en: "The Fleet Connect dashboard, with cost savings and emissions cards, over a road through a forest",
       es: "El dashboard de Fleet Connect, con las tarjetas de ahorro de costes y de emisiones, sobre una carretera entre bosques",
@@ -53,7 +53,7 @@ export const projects: Project[] = [
       { en: "Strategy", es: "Estrategia" },
     ],
     motion: "service",
-    cover: "/projects/service-experience-design/cover-mockup.jpg",
+    cover: "/projects/service-experience-design/cover-devices.jpg",
   },
   {
     slug: "innohub",

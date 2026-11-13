@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "Helvetica Neue", Arial, sans-serif; color: #16151a; background: #fff; }
+  .screen { overflow: hidden; position: relative; background: #fbf8f5; }
+  .accent { color: #ff4a12; }
+  .nav { display: flex; align-items: center; justify-content: space-between; background: #fff; border-bottom: 1px solid #eee; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -0.02em; }
+  .logo i { width: 18px; height: 18px; border-radius: 50%; background: #ff4a12; display: inline-block; }
+  .links { display: flex; gap: 28px; color: #4b4952; }
+  .links .on { color: #16151a; font-weight: 600; }
+  .btn { display: inline-block; background: #ff4a12; color: #fff; border-radius: 999px; font-weight: 600; }
+  .btn.ghost { background: #fff; color: #16151a; box-shadow: inset 0 0 0 1.5px #16151a; }
+  .tier { background: #fff; border-radius: 20px; box-shadow: 0 16px 40px -28px rgba(120,40,0,.45); display: flex; flex-direction: column; }
+  .tier.pro { background: linear-gradient(160deg, #ff6a2e, #ff3d00); color: #fff; }
+  .tier ul { list-style: none; display: flex; flex-direction: column; }
+  .tier li { display: flex; gap: 10px; }
+  .tier li::before { content: "✓"; color: #ff4a12; font-weight: 700; }
+  .tier.pro li::before { color: #fff; }
+  .tag { display: inline-block; border-radius: 999px; background: #fff1ea; color: #c2380c; font-weight: 600; }
+  .tile { border-radius: 16px; background: linear-gradient(150deg, #ffd9c7, #ff8a5b); display: flex; align-items: center; justify-content: center; }
+  .tile span { border-radius: 50%; background: rgba(255,255,255,.85); display: flex; align-items: center; justify-content: center; color: #e8471c; }
+  .status { display: flex; justify-content: space-between; align-items: center; font-weight: 600; background: #fff; }
+</style>
+</head>
+<body>
+
+<!-- Laptop: the services page for companies, three tiers side by side -->
+<div class="screen" id="laptop" style="width:1512px; height:982px">
+  <div class="nav" style="height:76px; padding:0 64px; font-size:17px">
+    <span class="logo" style="font-size:22px"><i></i>Studio</span>
+    <span class="links"><span class="on">For companies</span><span>For professionals</span><span>Success stories</span><span>About</span></span>
+    <span class="btn" style="padding:12px 24px">Let's talk</span>
+  </div>
+  <div style="text-align:center; padding:56px 0 40px">
+    <span class="tag" style="font-size:15px; padding:7px 16px">Hiring for architecture and design</span>
+    <h1 style="margin-top:20px; font-size:52px; letter-spacing:-0.03em; font-weight:600">Growing? Find <span class="accent">exceptional</span> talent.</h1>
+    <p style="margin-top:14px; font-size:20px; color:#66636b">Three ways to work with us, from a quick search to a fully managed one.</p>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px; padding:0 64px">
+    <div class="tier" style="padding:32px; gap:18px">
+      <p style="font-size:15px; color:#66636b">Basic</p>
+      <p style="font-size:30px; font-weight:600; letter-spacing:-0.02em">Fast and focused</p>
+      <p style="font-size:17px; color:#66636b; line-height:1.45">For urgent or standard roles. We take care of the search, you meet the shortlist.</p>
+      <ul style="gap:10px; font-size:16px"><li>Junior and senior profiles</li><li>Skills and fit validated</li><li>3-month replacement guarantee</li></ul>
+      <span class="btn ghost" style="margin-top:auto; align-self:flex-start; padding:13px 26px; font-size:16px">Choose Basic</span>
+    </div>
+    <div class="tier pro" style="padding:32px; gap:18px">
+      <p style="font-size:15px; opacity:.85">Pro · Most chosen</p>
+      <p style="font-size:30px; font-weight:600; letter-spacing:-0.02em">The full search</p>
+      <p style="font-size:17px; opacity:.9; line-height:1.45">We define the role with your team and run every step, from first call to signed offer.</p>
+      <ul style="gap:10px; font-size:16px"><li>Role defined with your team</li><li>In-depth interviews</li><li>Every search channel</li><li>3-month replacement guarantee</li></ul>
+      <span class="btn" style="margin-top:auto; align-self:flex-start; padding:13px 26px; font-size:16px; background:#fff; color:#e8471c">Choose Pro</span>
+    </div>
+    <div class="tier" style="padding:32px; gap:18px">
+      <p style="font-size:15px; color:#66636b">Master</p>
+      <p style="font-size:30px; font-weight:600; letter-spacing:-0.02em">Senior and hidden</p>
+      <p style="font-size:17px; color:#66636b; line-height:1.45">For leadership roles and people who aren't looking. Discreet, direct approach.</p>
+      <ul style="gap:10px; font-size:16px"><li>Direct, confidential approach</li><li>Negotiation support</li><li>Onboarding follow-up</li></ul>
+      <span class="btn ghost" style="margin-top:auto; align-self:flex-start; padding:13px 26px; font-size:16px">Choose Master</span>
+    </div>
+  </div>
+  <div style="display:flex; align-items:center; gap:12px; padding:40px 64px 0; font-size:16px">
+    <span style="color:#66636b; margin-right:8px">Profiles we find</span>
+    <span class="tag" style="padding:9px 16px; background:#fff; color:#16151a; box-shadow:inset 0 0 0 1px #eadfd8">Architects</span>
+    <span class="tag" style="padding:9px 16px; background:#fff; color:#16151a; box-shadow:inset 0 0 0 1px #eadfd8">Interior designers</span>
+    <span class="tag" style="padding:9px 16px; background:#fff; color:#16151a; box-shadow:inset 0 0 0 1px #eadfd8">Project managers</span>
+    <span class="tag" style="padding:9px 16px; background:#fff; color:#16151a; box-shadow:inset 0 0 0 1px #eadfd8">Design leads</span>
+  </div>
+</div>
+
+<!-- iPad: the page for professionals, three offers -->
+<div class="screen" id="ipad" style="width:1180px; height:820px">
+  <div class="nav" style="height:68px; padding:0 44px; font-size:16px">
+    <span class="logo" style="font-size:20px"><i></i>Studio</span>
+    <span class="links"><span>For companies</span><span class="on">For professionals</span><span>About</span></span>
+  </div>
+  <div style="padding:48px 44px 0">
+    <span class="tag" style="font-size:14px; padding:6px 14px">For professionals</span>
+    <h1 style="margin-top:18px; font-size:44px; letter-spacing:-0.03em; font-weight:600; max-width:760px">Exceptional at what you do? <span class="accent">Let's meet.</span></h1>
+    <p style="margin-top:12px; font-size:19px; color:#66636b; max-width:680px">Three ways we can help you take the next step in your career.</p>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; padding:36px 44px 0">
+    <div class="tier" style="padding:16px; gap:14px">
+      <div class="tile" style="aspect-ratio:4/3"><span style="width:62px; height:62px"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.6 7.1 18.2l.9-5.5-4-3.9 5.5-.8z"/></svg></span></div>
+      <p style="font-size:21px; font-weight:600; padding:0 6px">Update kits</p>
+      <p style="font-size:15px; color:#66636b; line-height:1.45; padding:0 6px 8px">Refresh your portfolio, CV and story, and feel confident in your next interview.</p>
+    </div>
+    <div class="tier" style="padding:16px; gap:14px">
+      <div class="tile" style="aspect-ratio:4/3"><span style="width:62px; height:62px"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM2 21a7 7 0 0 1 14 0M16 3.5a4 4 0 0 1 0 7.5M22 21a7 7 0 0 0-4-6.3"/></svg></span></div>
+      <p style="font-size:21px; font-weight:600; padding:0 6px">Join the community</p>
+      <p style="font-size:15px; color:#66636b; line-height:1.45; padding:0 6px 8px">Meet other architects and designers, and hear about projects first.</p>
+    </div>
+    <div class="tier" style="padding:16px; gap:14px">
+      <div class="tile" style="aspect-ratio:4/3"><span style="width:62px; height:62px"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16v11H4zM9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M4 13h16"/></svg></span></div>
+      <p style="font-size:21px; font-weight:600; padding:0 6px">Job offers</p>
+      <p style="font-size:15px; color:#66636b; line-height:1.45; padding:0 6px 8px">Roles from studios that are looking for someone exactly like you.</p>
+    </div>
+  </div>
+</div>
+
+<!-- iPhone: the two services -->
+<div class="screen" id="phone" style="width:393px; height:852px; background:#f1f1f3">
+  <div class="status" style="height:54px; padding:0 32px; font-size:16px"><span>9:41</span><span style="width:26px; height:12px; border:1.5px solid #16151a; border-radius:3px"></span></div>
+  <div style="background:#fff; position:relative; text-align:center; padding:12px 0 18px; font-size:18px; font-weight:600">
+    <span style="position:absolute; left:20px; font-weight:400">←</span>Our services
+  </div>
+  <div style="padding:20px; display:flex; flex-direction:column; gap:16px">
+    <div style="background:#fff; border-radius:18px; overflow:hidden; box-shadow:0 8px 24px -12px rgba(0,0,0,.25)">
+      <div class="tile" style="border-radius:0; aspect-ratio:16/10"><span style="width:64px; height:64px"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16v11H4zM9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M4 13h16"/></svg></span></div>
+      <div style="padding:16px 18px"><p style="font-size:22px; font-weight:600">For companies</p><p style="margin-top:4px; font-size:14px; color:#66636b">Basic, Pro and Master searches</p></div>
+    </div>
+    <div style="background:#fff; border-radius:18px; overflow:hidden; box-shadow:0 8px 24px -12px rgba(0,0,0,.25)">
+      <div class="tile" style="border-radius:0; aspect-ratio:16/10"><span style="width:64px; height:64px"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM5 20a7 7 0 0 1 14 0"/></svg></span></div>
+      <div style="padding:16px 18px"><p style="font-size:22px; font-weight:600">For professionals</p><p style="margin-top:4px; font-size:14px; color:#66636b">Kits, community and job offers</p></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
