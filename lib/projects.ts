@@ -14,6 +14,8 @@ export type Project = {
   cover?: string
   // The picture on the Home and Work cards, when it differs from `image` (device mockups).
   card?: string
+  // The tint behind the card picture, matching the mockup's own background.
+  cardBg?: string
   // An animated tile built in code (components/project-motion.tsx), shown instead of the picture on the card,
   // and as the case study cover when the project has no `cover`.
   motion?: "service" | "ops"
@@ -38,6 +40,7 @@ export const projects: Project[] = [
     image: "/projects/fleet-connect/card.jpg",
     cover: "/projects/fleet-connect/cover-dashboard-2x.jpg",
     card: "/projects/fleet-connect/card-devices.jpg",
+    cardBg: "#e1ece7",
     imageAlt: {
       en: "The Fleet Connect dashboard, with cost savings and emissions cards, over a road through a forest",
       es: "El dashboard de Fleet Connect, con las tarjetas de ahorro de costes y de emisiones, sobre una carretera entre bosques",
@@ -57,6 +60,7 @@ export const projects: Project[] = [
     ],
     motion: "service",
     card: "/projects/service-experience-design/card-devices.jpg",
+    cardBg: "#fbe6dc",
   },
   {
     slug: "innohub",
@@ -74,6 +78,7 @@ export const projects: Project[] = [
     image: "/projects/innohub/card-logo.png",
     cover: "/projects/innohub/cover.png",
     card: "/projects/innohub/card-devices.jpg",
+    cardBg: "#e3e7f8",
     imageAlt: {
       en: "The Innohub platform: cards inviting employees to share ideas with impact, on a blue background",
       es: "La plataforma Innohub: tarjetas que invitan a los empleados a compartir ideas con impacto, sobre fondo azul",

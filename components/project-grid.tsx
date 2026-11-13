@@ -37,6 +37,8 @@ export function ProjectGrid() {
               ) : (
                 <ProjectMedia
                   image={project.card ?? project.image}
+                  fit={project.card ? "contain" : "cover"}
+                  background={project.cardBg}
                   video={project.card ? undefined : project.video}
                   alt={project.imageAlt?.[locale]}
                   priority={index < 2}

@@ -11,15 +11,18 @@ type ProjectMediaProps = {
   priority?: boolean
   // Defaults to a grid card's width; wider placements (a case study's cover and gallery) pass their own.
   sizes?: string
+  // "contain" shows the whole picture (device mockups), with `background` filling any space around it.
+  fit?: "cover" | "contain"
+  background?: string
   className?: string
 }
 
-export function ProjectMedia({ image, alt, video, priority, sizes, className }: ProjectMediaProps) {
+export function ProjectMedia({ image, alt, video, priority, sizes, fit = "cover", background, className }: ProjectMediaProps) {
   const [videoFailed, setVideoFailed] = useState(false)
   const showVideo = Boolean(video) && !videoFailed
 
   return (
-    <div className={cn("relative aspect-video overflow-hidden bg-muted", className)}>
+    <div className={cn("relative aspect-video overflow-hidden bg-muted", className)} style={background ? { background } : undefined}>
       {image ? (
         <Image
           src={image}
@@ -27,7 +30,7 @@ export function ProjectMedia({ image, alt, video, priority, sizes, className }: 
           fill
           priority={priority}
           sizes={sizes ?? "(min-width: 1280px) 40vw, (min-width: 768px) 50vw, 100vw"}
-          className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+          className={cn(fit === "contain" ? "object-contain p-[4%]" : "object-cover", "transition-transform duration-700 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100")}
         />
       ) : (
         // Stand-in until the project has its own picture.
