@@ -32,12 +32,12 @@ export function ProjectGrid() {
                 </p>
               </div>
               {/* The picture bleeds to the card edges and takes all the space left below the text. */}
-              {project.motion ? (
+              {project.motion && !project.card ? (
                 <ProjectMotion motion={project.motion} className="min-h-0 flex-1" />
               ) : (
                 <ProjectMedia
-                  image={project.image}
-                  video={project.video}
+                  image={project.card ?? project.image}
+                  video={project.card ? undefined : project.video}
                   alt={project.imageAlt?.[locale]}
                   priority={index < 2}
                   className="isolate aspect-auto min-h-0 flex-1"
