@@ -42,12 +42,40 @@ def status_bar(width, height):
     d.rounded_rectangle((bx + 4, by + 4, bx + int(bw * 0.7), by + bh - 4), radius=int(bh * 0.2), fill=(20, 20, 24, 255))
     return bar
 
-def device(frame_path, screen_path, offset_y=0, bar=0, status=0):
+def fit_width(shot, sw, sh):
+    # Show the whole screenshot across the screen width, nothing cropped; any space left below is filled
+    # with the colour of the screenshot's own bottom edge, so no content is invented.
+    scale = sw / shot.width
+    page = shot.resize((sw, round(shot.height * scale)), Image.LANCZOS)
+    if page.height >= sh:
+        return page.crop((0, 0, sw, sh))
+    # Pick the plainest row near the bottom (background only, no text) and repeat it downwards, so the
+    # sidebar and page background simply continue.
+    best, best_n = page.height - 1, None
+    for y in range(int(page.height * 0.8), page.height):
+        n = len(page.crop((0, y, sw, y + 1)).convert("RGB").getcolors(sw) or range(sw))
+        if best_n is None or n < best_n:
+            best, best_n = y, n
+    row = page.crop((0, best, sw, best + 1))
+    out = Image.new("RGBA", (sw, sh), (255, 255, 255, 255))
+    out.paste(page, (0, 0))
+    out.paste(row.resize((sw, sh - page.height)), (0, page.height))
+    return out
+
+def device(frame_path, screen_path, offset_y=0, bar=0, status=0, fit=None):
     frame = Image.open(frame_path).convert("RGBA")
     mask = screen_mask(frame)
     x0, y0, x1, y1 = mask.getbbox()
     shot = Image.open(screen_path).convert("RGBA")
     sw, sh = x1 - x0, y1 - y0
+    if fit == "width":
+        bh = round(sh * bar) if bar else 0
+        page = fit_width(shot, sw, sh - bh)
+        shot = Image.new("RGBA", (sw, sh), (255, 255, 255, 255))
+        if bh:
+            shot.paste(browser_bar(sw, bh), (0, 0))
+        shot.paste(page, (0, bh))
+        bar = 0
     if bar:
         # Fit the page under the toolbar.
         bh = round(sh * bar)
@@ -78,7 +106,7 @@ W, H = spec["size"]
 transparent = spec["background"] == "transparent"
 canvas = Image.new("RGBA", (W, H), (0, 0, 0, 0) if transparent else spec["background"])
 for d in spec["devices"]:
-    img = device(d["frame"], d["screen"], d.get("offset_y", 0), d.get("bar", 0), d.get("status", 0))
+    img = device(d["frame"], d["screen"], d.get("offset_y", 0), d.get("bar", 0), d.get("status", 0), d.get("fit"))
     img = img.resize((round(img.width * d["scale"]), round(img.height * d["scale"])), Image.LANCZOS)
     # Soft contact shadow under each device.
     # Built on a larger layer so the blur fades out instead of being cut off into a visible box.
