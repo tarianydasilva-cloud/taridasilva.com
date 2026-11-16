@@ -427,23 +427,10 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     gallery: [
       {
-        scene: "principles",
-        caption: {
-          en: "Four ideas guided the work: coherence, structure, clarity and alignment.",
-          es: "Cuatro ideas guiaron el trabajo: coherencia, estructura, claridad y alineación.",
-        },
-      },
-      {
         pair: [{ scene: "services-phone" }, "/projects/service-experience-design/service-tiers-crop.png"],
         caption: {
           en: "Each service gets one clear way in, with simple tiers behind it.",
           es: "Cada servicio tiene una entrada clara, con niveles sencillos detrás.",
-        },
-      },
-      {
-        quote: {
-          en: ["Clearer services and better experiences,", "designed from the inside out."],
-          es: ["Servicios más claros y mejores experiencias,", "diseñados de dentro hacia fuera."],
         },
       },
     ],

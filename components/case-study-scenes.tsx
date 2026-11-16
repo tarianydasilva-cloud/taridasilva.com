@@ -97,15 +97,12 @@ export function ServicesPhone() {
       aria-hidden="true"
       className="@container relative aspect-[4/5] overflow-hidden rounded-2xl bg-[radial-gradient(90%_70%_at_0%_0%,#ff4a12,transparent_70%),linear-gradient(160deg,#ff6a2e,#ff9a6b_60%,#ffe2d4)]"
     >
-      <div className="absolute inset-x-[16%] top-[22%] -bottom-[6%] rounded-[9cqi] bg-[#1a1a1a] p-[2.2cqi] shadow-[0_30px_60px_-30px_rgba(120,30,0,0.6)] ring-[0.6cqi] ring-[#b9b4ad]">
-        <div className="@container relative h-full overflow-hidden rounded-[7cqi] bg-[#f1f1f3]">
-          <div className="relative z-10 flex items-center justify-between bg-white px-[8cqi] pt-[5cqi] text-[4.4cqi] font-semibold">
+      {/* A real iPhone 16 Pro frame laid over the coded screen; the screen sits in the frame's transparent area. */}
+      <div className="absolute left-[16%] top-[20%] w-[68%] aspect-[1350/2760] drop-shadow-[0_30px_40px_rgba(120,30,0,0.35)]">
+        <div className="@container absolute left-[5.33%] top-[2.5%] h-[95%] w-[89.33%] overflow-hidden rounded-[9cqi] bg-[#f1f1f3]">
+          <div className="relative z-10 flex h-[12cqi] items-center justify-between bg-white px-[9cqi] pt-[2cqi] text-[4.6cqi] font-semibold">
             9:41
-            <span className="h-[7cqi] w-[30cqi] rounded-full bg-black" />
-            <span className="flex gap-[1.5cqi]">
-              <span className="h-[3cqi] w-[5cqi] rounded-sm bg-black" />
-              <span className="h-[3cqi] w-[7cqi] rounded-sm border border-black" />
-            </span>
+            <span className="h-[3cqi] w-[7cqi] rounded-sm border border-black" />
           </div>
           <div className="relative z-10 flex items-center justify-center bg-white py-[6cqi] text-[6cqi]">
             <span className="absolute left-[6cqi] text-[7cqi] leading-none">←</span>
@@ -141,6 +138,12 @@ export function ServicesPhone() {
             ))}
           </div>
         </div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/projects/service-experience-design/iphone-frame.png"
+          alt=""
+          className="pointer-events-none absolute inset-0 z-20 size-full"
+        />
       </div>
     </div>
   )
