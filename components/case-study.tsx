@@ -80,7 +80,13 @@ function Media({ item }: { item: GalleryItem }) {
       </div>
     )
   return (
-    <ProjectMedia image={item.image} alt={item.caption?.[locale]} sizes={wide} className="aspect-[16/10] rounded-2xl" />
+    <ProjectMedia
+      image={item.image}
+      alt={item.caption?.[locale]}
+      sizes={wide}
+      className={cn("rounded-2xl", !item.aspect && "aspect-[16/10]")}
+      style={item.aspect ? { aspectRatio: item.aspect } : undefined}
+    />
   )
 }
 

@@ -18,6 +18,8 @@ export type GalleryItem = {
   image?: string
   // Each side is an image path, or an animated scene built in code.
   pair?: [PairSide, PairSide]
+  // Width / height of a single image, so it shows whole instead of cropped to 16:10.
+  aspect?: string
   quote?: Record<Locale, string[]>
   scene?: "principles"
 }
@@ -341,7 +343,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
   },
   "service-experience-design": {
-    galleryFirst: true,
+    heroFromGallery: true,
     headline: {
       en: "Designing services from the inside out",
       es: "Diseñar servicios de dentro hacia fuera",
@@ -444,6 +446,22 @@ export const caseStudies: Record<string, CaseStudy> = {
         caption: {
           en: "Each service gets one clear way in, with simple tiers behind it.",
           es: "Cada servicio tiene una entrada clara, con niveles sencillos detrás.",
+        },
+      },
+      {
+        image: "/projects/service-experience-design/service-screens.jpg",
+        aspect: "3456/2234",
+        caption: {
+          en: "A service in detail, the welcome screen and the list of services.",
+          es: "Un servicio en detalle, la pantalla de bienvenida y la lista de servicios.",
+        },
+      },
+      {
+        image: "/projects/service-experience-design/menu-options.png",
+        aspect: "3456/1616",
+        caption: {
+          en: "The menu, kept to four options.",
+          es: "El menú, reducido a cuatro opciones.",
         },
       },
     ],

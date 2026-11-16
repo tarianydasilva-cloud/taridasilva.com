@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, type CSSProperties } from "react"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 
@@ -15,14 +15,15 @@ type ProjectMediaProps = {
   fit?: "cover" | "contain"
   background?: string
   className?: string
+  style?: CSSProperties
 }
 
-export function ProjectMedia({ image, alt, video, priority, sizes, fit = "cover", background, className }: ProjectMediaProps) {
+export function ProjectMedia({ image, alt, video, priority, sizes, fit = "cover", background, className, style }: ProjectMediaProps) {
   const [videoFailed, setVideoFailed] = useState(false)
   const showVideo = Boolean(video) && !videoFailed
 
   return (
-    <div className={cn("relative aspect-video overflow-hidden bg-muted", className)} style={background ? { background } : undefined}>
+    <div className={cn("relative aspect-video overflow-hidden bg-muted", className)} style={{ ...style, ...(background ? { background } : {}) }}>
       {image ? (
         <Image
           src={image}
