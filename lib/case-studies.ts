@@ -27,6 +27,8 @@ export type CaseStudy = {
   headline: Localized
   // Two or three sentences under the cover: the problem and what was done about it.
   summary: Localized
+  // Show the images at the top, in place of the cover.
+  galleryFirst?: boolean
   challengeTitle: Localized
   workTitle: Localized
   // How every case opens: the decision I made, what it cost, and where the work stands today. When there is no
@@ -329,6 +331,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
   },
   "service-experience-design": {
+    galleryFirst: true,
     headline: {
       en: "Designing services from the inside out",
       es: "Diseñar servicios de dentro hacia fuera",

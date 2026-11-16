@@ -30,7 +30,19 @@ function Text({ items, className }: { items: { en: string; es: string }[]; class
   )
 }
 
-function Chapter({ id, eyebrow, title, className, children }: { id: string; eyebrow: string; title: string; className?: string; children: ReactNode }) {
+function Chapter({
+  id,
+  eyebrow,
+  title,
+  className,
+  children,
+}: {
+  id: string
+  eyebrow: string
+  title: string
+  className?: string
+  children: ReactNode
+}) {
   return (
     <section id={id} aria-labelledby={`${id}-title`} className={cn(reading, className)}>
       <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">{eyebrow}</p>
@@ -67,7 +79,9 @@ function Media({ item }: { item: GalleryItem }) {
         )}
       </div>
     )
-  return <ProjectMedia image={item.image} alt={item.caption?.[locale]} sizes={wide} className="aspect-[16/10] rounded-2xl" />
+  return (
+    <ProjectMedia image={item.image} alt={item.caption?.[locale]} sizes={wide} className="aspect-[16/10] rounded-2xl" />
+  )
 }
 
 // A case study in five beats: the headline and facts, the cover, a short summary with the decision, its
@@ -89,13 +103,37 @@ export function CaseStudy({ slug }: { slug: string }) {
     label: t.caseStudy.lead[key],
     value: study.lead[key][locale],
   }))
+  const gallery = (
+    <div className="flex flex-col gap-6">
+      {study.gallery.map((item, i) => (
+        <figure key={i} className="reveal">
+          <Media item={item} />
+          {item.caption && (
+            <figcaption className="mt-3 text-sm text-muted-foreground">{item.caption[locale]}</figcaption>
+          )}
+          {/* A clear way out to the full-size version, for anything that works better with room. */}
+          {item.link && (
+            <Link
+              href={item.link.href}
+              className="mt-4 inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-3 text-background transition-colors hover:bg-accent"
+            >
+              {item.link.label[locale]}
+              <span aria-hidden="true">→</span>
+            </Link>
+          )}
+        </figure>
+      ))}
+    </div>
+  )
   const pill = "rounded-full px-4 py-2 text-sm transition-colors hover:bg-foreground hover:text-background"
 
   return (
     <article className="mx-auto max-w-[1036px] pt-8 md:pt-12">
       <header>
         <p className="text-sm text-muted-foreground">{project.title[locale]}</p>
-        <h1 className="mt-3 text-4xl leading-[1.05] tracking-tight text-balance md:text-6xl">{study.headline[locale]}</h1>
+        <h1 className="mt-3 text-4xl leading-[1.05] tracking-tight text-balance md:text-6xl">
+          {study.headline[locale]}
+        </h1>
         <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-border pt-5 md:grid-cols-4">
           {facts.map((fact) => (
             <div key={fact.label} className="min-w-0">
@@ -104,7 +142,9 @@ export function CaseStudy({ slug }: { slug: string }) {
             </div>
           ))}
         </dl>
-        {project.motion && !project.cover ? (
+        {study.galleryFirst ? (
+          <div className="mt-10">{gallery}</div>
+        ) : project.motion && !project.cover ? (
           <ProjectMotion motion={project.motion} variant="cover" className="mt-10 aspect-video rounded-2xl" />
         ) : (
           <ProjectMedia
@@ -123,7 +163,10 @@ export function CaseStudy({ slug }: { slug: string }) {
       {/* Where a case has no outcome figures, the three cells hold the decision, its cost and where it stands. */}
       <dl className="mt-14 grid overflow-hidden rounded-2xl border border-border md:grid-cols-3">
         {lead.map((cell) => (
-          <div key={cell.label} className="border-border p-6 not-last:border-b md:not-last:border-r md:not-last:border-b-0">
+          <div
+            key={cell.label}
+            className="border-border p-6 not-last:border-b md:not-last:border-r md:not-last:border-b-0"
+          >
             <dt className="text-xs uppercase tracking-[0.12em] text-accent">{cell.label}</dt>
             <dd className="mt-3 leading-snug text-pretty">{cell.value}</dd>
           </div>
@@ -147,24 +190,7 @@ export function CaseStudy({ slug }: { slug: string }) {
           </div>
         </Chapter>
 
-        <div className="flex flex-col gap-6">
-          {study.gallery.map((item, i) => (
-            <figure key={i} className="reveal">
-              <Media item={item} />
-              {item.caption && <figcaption className="mt-3 text-sm text-muted-foreground">{item.caption[locale]}</figcaption>}
-              {/* A clear way out to the full-size version, for anything that works better with room. */}
-              {item.link && (
-                <Link
-                  href={item.link.href}
-                  className="mt-4 inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-3 text-background transition-colors hover:bg-accent"
-                >
-                  {item.link.label[locale]}
-                  <span aria-hidden="true">→</span>
-                </Link>
-              )}
-            </figure>
-          ))}
-        </div>
+        {!study.galleryFirst && gallery}
 
         <Text items={study.learnings} className="text-lead max-w-xl" />
 
