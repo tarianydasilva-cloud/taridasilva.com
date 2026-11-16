@@ -39,8 +39,6 @@ export const projects: Project[] = [
     ],
     image: "/projects/fleet-connect/card.jpg",
     cover: "/projects/fleet-connect/cover-dashboard-2x.jpg",
-    card: "/projects/fleet-connect/card-devices.png",
-    cardBg: "#e1ece7",
     imageAlt: {
       en: "The Fleet Connect dashboard, with cost savings and emissions cards, over a road through a forest",
       es: "El dashboard de Fleet Connect, con las tarjetas de ahorro de costes y de emisiones, sobre una carretera entre bosques",
@@ -59,8 +57,6 @@ export const projects: Project[] = [
       { en: "Strategy", es: "Estrategia" },
     ],
     motion: "service",
-    card: "/projects/service-experience-design/card-devices.png",
-    cardBg: "#fbe6dc",
   },
   {
     slug: "innohub",
@@ -77,8 +73,6 @@ export const projects: Project[] = [
     ],
     image: "/projects/innohub/card-logo.png",
     cover: "/projects/innohub/cover.png",
-    card: "/projects/innohub/card-devices.png",
-    cardBg: "#e3e7f8",
     imageAlt: {
       en: "The Innohub platform: cards inviting employees to share ideas with impact, on a blue background",
       es: "La plataforma Innohub: tarjetas que invitan a los empleados a compartir ideas con impacto, sobre fondo azul",
