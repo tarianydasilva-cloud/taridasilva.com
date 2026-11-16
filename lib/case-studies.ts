@@ -341,7 +341,6 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
   },
   "service-experience-design": {
-    galleryFirst: true,
     headline: {
       en: "Designing services from the inside out",
       es: "Diseñar servicios de dentro hacia fuera",
