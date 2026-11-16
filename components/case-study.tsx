@@ -1,8 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import type { CSSProperties, ReactNode } from "react"
-import { caseStudies } from "@/lib/case-studies"
+import type { ReactNode } from "react"
+import { caseStudies, type GalleryItem } from "@/lib/case-studies"
 import { projects } from "@/lib/projects"
 import { cn } from "@/lib/utils"
 import { useLanguage } from "./language-provider"
@@ -11,46 +11,18 @@ import { EdgeCaseSpec } from "./edge-case-spec"
 import { FleetPrototype } from "./fleet-prototype"
 import { ProjectMedia } from "./project-media"
 import { ProjectMotion } from "./project-motion"
-import { SectionNav } from "./section-nav"
 
-// The case study column: three quarters of the page on large screens, full width below.
-const wide = "(min-width: 1024px) 75vw, 100vw"
+// One column for the whole case: a wide track for pictures, a narrow one for reading.
+const wide = "(min-width: 1100px) 1036px, 100vw"
+const reading = "max-w-xl"
 
-const sectionIds = ["overview", "challenge", "approach", "solution", "results", "learnings"] as const
-type SectionId = (typeof sectionIds)[number]
-
-// Card rows always fill. With two columns an odd last card spans the row; on the 6-column grid cards take
-// thirds, a final pair takes halves and a lone final card the full row (5 cards: 3 + 2, 4 cards: 3 + 1).
-function fillRow(i: number, count: number) {
-  const rest = count % 3
-  const inLastRow = i >= count - rest
-  return cn(
-    "sm:max-xl:last:odd:col-span-2 xl:col-span-2",
-    inLastRow && rest === 2 && "xl:col-span-3",
-    inLastRow && rest === 1 && "xl:col-span-6",
-  )
-}
-
-function Section({ id, children }: { id: SectionId; children: ReactNode }) {
-  const { t } = useLanguage()
-
-  return (
-    <section id={id} aria-labelledby={`${id}-title`} className="scroll-mt-32">
-      <h2 id={`${id}-title`} className="text-2xl tracking-tight md:text-3xl">
-        {t.caseStudy.sections[id]}
-      </h2>
-      <div className="mt-6">{children}</div>
-    </section>
-  )
-}
-
-function Paragraphs({ items }: { items: { en: string; es: string }[] }) {
+function Text({ items, className }: { items: { en: string; es: string }[]; className?: string }) {
   const { locale } = useLanguage()
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className={cn("flex flex-col gap-4", className)}>
       {items.map((item) => (
-        <p key={item.en} className="text-lead reveal-text text-pretty">
+        <p key={item.en} className="leading-relaxed text-pretty">
           {item[locale]}
         </p>
       ))}
@@ -58,8 +30,48 @@ function Paragraphs({ items }: { items: { en: string; es: string }[] }) {
   )
 }
 
-// One case study: the outcome and facts first, then challenge, decisions, solution, results and learnings,
-// with the same index as the About page and a link to the next project at the end.
+function Chapter({ id, eyebrow, title, className, children }: { id: string; eyebrow: string; title: string; className?: string; children: ReactNode }) {
+  return (
+    <section id={id} aria-labelledby={`${id}-title`} className={cn(reading, className)}>
+      <p className="text-xs uppercase tracking-[0.12em] text-muted-foreground">{eyebrow}</p>
+      <h2 id={`${id}-title`} className="mt-3 text-2xl tracking-tight text-balance md:text-3xl">
+        {title}
+      </h2>
+      <div className="mt-6">{children}</div>
+    </section>
+  )
+}
+
+function Media({ item }: { item: GalleryItem }) {
+  const { locale } = useLanguage()
+
+  if (item.embed === "edge-cases") return <EdgeCaseSpec />
+  if (item.embed) return <FleetPrototype />
+  if (item.scene) return <Scene scene={item.scene} />
+  if (item.quote) return <Quote lines={item.quote} />
+  if (item.pair)
+    return (
+      <div className="grid gap-2 sm:grid-cols-2">
+        {item.pair.map((side) =>
+          typeof side === "string" ? (
+            <ProjectMedia
+              key={side}
+              image={side}
+              alt={item.caption?.[locale]}
+              sizes="(min-width: 1100px) 518px, (min-width: 640px) 50vw, 100vw"
+              className="aspect-[4/5] rounded-2xl ring-1 ring-black/5"
+            />
+          ) : (
+            <ServicesPhone key={side.scene} />
+          ),
+        )}
+      </div>
+    )
+  return <ProjectMedia image={item.image} alt={item.caption?.[locale]} sizes={wide} className="aspect-[16/10] rounded-2xl" />
+}
+
+// A case study in five beats: the headline and facts, the cover, a short summary with the decision, its
+// trade-off and status, the challenge, then the work with its pictures, closing on what it taught.
 export function CaseStudy({ slug }: { slug: string }) {
   const { locale, t } = useLanguage()
   const index = projects.findIndex((project) => project.slug === slug)
@@ -67,188 +79,110 @@ export function CaseStudy({ slug }: { slug: string }) {
   const study = caseStudies[slug]
   if (!project || !study) return null
 
+  const previous = projects[(index - 1 + projects.length) % projects.length]
   const next = projects[(index + 1) % projects.length]
-  const navItems = sectionIds.map((id) => ({ id, label: t.caseStudy.sections[id] }))
   const facts = (["client", "role", "team", "date"] as const).map((key) => ({
     label: t.caseStudy.facts[key],
     value: study.facts[key][locale],
   }))
+  const lead = (["decision", "tradeoff", "status"] as const).map((key) => ({
+    label: t.caseStudy.lead[key],
+    value: study.lead[key][locale],
+  }))
+  const pill = "rounded-full px-4 py-2 text-sm transition-colors hover:bg-foreground hover:text-background"
 
   return (
-    <article className="pt-8 md:pt-12 lg:grid lg:grid-cols-12 lg:gap-x-10">
-      <aside className="hidden lg:col-span-3 lg:block">
-        <div className="sticky top-32">
-          <SectionNav items={navItems} label={t.caseStudy.sectionNav} vertical />
-        </div>
-      </aside>
-
-      <div className="min-w-0 lg:col-span-9">
-        <header>
-          <h1 className="text-4xl leading-[1.05] tracking-tight text-balance md:text-6xl">{project.title[locale]}</h1>
-          <p className="mt-4 text-lg text-muted-foreground">{project.summary[locale]}</p>
-          <ul className="mt-6 flex flex-wrap gap-1.5 text-sm" aria-label={t.work.disciplines}>
-            <li className="rounded-full bg-foreground px-4 py-1.5 text-background">{project.year}</li>
-            {project.tags.map((tag) => (
-              <li key={tag.en} className="rounded-full bg-muted px-4 py-1.5">
-                {tag[locale]}
-              </li>
-            ))}
-          </ul>
-          {project.motion && !project.cover ? (
-            <ProjectMotion motion={project.motion} variant="cover" className="mt-10 aspect-video rounded-2xl" />
-          ) : (
-            <ProjectMedia
-              image={project.cover ?? project.image}
-              video={project.video}
-              alt={project.imageAlt?.[locale]}
-              priority
-              sizes={wide}
-              className="mt-10 rounded-2xl"
-            />
-          )}
-        </header>
-
-        <SectionNav items={navItems} label={t.caseStudy.sectionNav} className="lg:hidden" />
-
-        <div className="@container flex flex-col gap-24 pt-20 md:gap-32 md:pt-28">
-          <Section id="overview">
-            {/* The case opens with the decision, then what it cost and where the work stands. */}
-            <p className="text-statement reveal-text text-balance">{study.lead.decision[locale]}</p>
-            <dl className="mt-8 grid gap-2 sm:grid-cols-2">
-              {(["tradeoff", "status"] as const).map((key) => (
-                <div key={key} className="rounded-2xl bg-foreground p-5 text-background">
-                  <dt className="text-sm text-accent">{t.caseStudy.lead[key]}</dt>
-                  <dd className="mt-2 text-lg leading-snug text-pretty">{study.lead[key][locale]}</dd>
-                </div>
-              ))}
-            </dl>
-            <dl className="mt-2 grid grid-cols-2 gap-2 md:grid-cols-4">
-              {facts.map((fact) => (
-                <div key={fact.label} className="rounded-2xl bg-muted p-4">
-                  <dt className="text-sm text-muted-foreground">{fact.label}</dt>
-                  <dd className="mt-1 text-pretty">{fact.value}</dd>
-                </div>
-              ))}
-            </dl>
-          </Section>
-
-          <Section id="challenge">
-            <Paragraphs items={study.challenge} />
-          </Section>
-
-          <Section id="approach">
-            {/* Each card spans two subgrid rows, so titles and descriptions line up across a row. */}
-            <ul className="grid gap-2 sm:grid-cols-2 xl:grid-cols-6">
-              {study.decisions.map((decision, i) => (
-                // On phones the cards stack: each one sticks a little lower than the last and the next slides over it.
-                <li
-                  key={decision.title.en}
-                  style={{ "--stack": i } as CSSProperties}
-                  className={cn(
-                    "reveal row-span-2 grid grid-rows-subgrid gap-y-3 rounded-2xl bg-muted p-6 max-sm:sticky max-sm:top-[calc(9rem+var(--stack)*0.75rem)] max-sm:shadow-[0_-12px_24px_-16px_rgba(0,0,0,0.25)] max-sm:ring-1 max-sm:ring-black/5",
-                    fillRow(i, study.decisions.length),
-                  )}
-                >
-                  <h3 className="text-xl tracking-tight">{decision.title[locale]}</h3>
-                  <p className="leading-relaxed text-muted-foreground">{decision.body[locale]}</p>
-                </li>
-              ))}
-            </ul>
-          </Section>
-
-          <Section id="solution">
-            {study.solution && (
-              <div className="mb-10">
-                <Paragraphs items={study.solution} />
-              </div>
-            )}
-            <div className="flex flex-col gap-8">
-              {study.gallery.map((item, i) => (
-                <figure key={i} className="reveal">
-                  {item.embed === "edge-cases" ? (
-                    <EdgeCaseSpec />
-                  ) : item.embed ? (
-                    <FleetPrototype />
-                  ) : item.scene ? (
-                    <Scene scene={item.scene} />
-                  ) : item.quote ? (
-                    <Quote lines={item.quote} />
-                  ) : item.pair ? (
-                    <div className="grid gap-2 sm:grid-cols-2">
-                      {item.pair.map((side) =>
-                        typeof side === "string" ? (
-                          <ProjectMedia
-                            key={side}
-                            image={side}
-                            alt={item.caption?.[locale]}
-                            sizes="(min-width: 1024px) 38vw, (min-width: 640px) 50vw, 100vw"
-                            className="aspect-[4/5] rounded-2xl ring-1 ring-black/5"
-                          />
-                        ) : (
-                          <ServicesPhone key={side.scene} />
-                        ),
-                      )}
-                    </div>
-                  ) : (
-                    <ProjectMedia
-                      image={item.image}
-                      alt={item.caption?.[locale]}
-                      sizes={wide}
-                      className="aspect-[16/10] rounded-2xl"
-                    />
-                  )}
-                  {item.caption && (
-                    <figcaption className="mt-3 text-sm text-muted-foreground">{item.caption[locale]}</figcaption>
-                  )}
-                  {/* A clear way out to the full-size version, for anything that works better with room. */}
-                  {item.link && (
-                    <Link
-                      href={item.link.href}
-                      className="mt-4 inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-3 text-background transition-colors hover:bg-accent"
-                    >
-                      {item.link.label[locale]}
-                      <span aria-hidden="true">→</span>
-                    </Link>
-                  )}
-                </figure>
-              ))}
+    <article className="mx-auto max-w-[1036px] pt-8 md:pt-12">
+      <header>
+        <p className="text-sm text-muted-foreground">{project.title[locale]}</p>
+        <h1 className="mt-3 text-4xl leading-[1.05] tracking-tight text-balance md:text-6xl">{study.headline[locale]}</h1>
+        <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-border pt-5 md:grid-cols-4">
+          {facts.map((fact) => (
+            <div key={fact.label} className="min-w-0">
+              <dt className="text-xs uppercase tracking-[0.12em] text-muted-foreground">{fact.label}</dt>
+              <dd className="mt-1.5 text-sm text-pretty">{fact.value}</dd>
             </div>
-          </Section>
+          ))}
+        </dl>
+        {project.motion && !project.cover ? (
+          <ProjectMotion motion={project.motion} variant="cover" className="mt-10 aspect-video rounded-2xl" />
+        ) : (
+          <ProjectMedia
+            image={project.cover ?? project.image}
+            video={project.video}
+            alt={project.imageAlt?.[locale]}
+            priority
+            sizes={wide}
+            className="mt-10 rounded-2xl"
+          />
+        )}
+      </header>
 
-          <Section id="results">
-            <Paragraphs items={study.results} />
-            {study.resultHighlights && (
-              <ul className="mt-8 grid gap-2 sm:grid-cols-2 xl:grid-cols-6">
-                {study.resultHighlights.map((highlight, i, all) => (
-                  <li
-                    key={highlight.en}
-                    className={cn("reveal rounded-2xl bg-muted p-5 leading-relaxed", fillRow(i, all.length))}
-                  >
-                    {highlight[locale]}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </Section>
+      <p className="text-lead mx-auto mt-20 max-w-xl text-center text-pretty md:mt-28">{study.summary[locale]}</p>
 
-          <Section id="learnings">
-            <Paragraphs items={study.learnings} />
-          </Section>
+      {/* Where a case has no outcome figures, the three cells hold the decision, its cost and where it stands. */}
+      <dl className="mt-14 grid overflow-hidden rounded-2xl border border-border md:grid-cols-3">
+        {lead.map((cell) => (
+          <div key={cell.label} className="border-border p-6 not-last:border-b md:not-last:border-r md:not-last:border-b-0">
+            <dt className="text-xs uppercase tracking-[0.12em] text-accent">{cell.label}</dt>
+            <dd className="mt-3 leading-snug text-pretty">{cell.value}</dd>
+          </div>
+        ))}
+      </dl>
 
-          <Link
-            href={`/work/${next.slug}`}
-            className="group flex items-end justify-between gap-6 rounded-2xl bg-muted p-6 transition-colors hover:bg-border/70 md:p-8"
-          >
-            <span>
-              <span className="block text-sm text-muted-foreground">{t.caseStudy.nextProject}</span>
-              <span className="mt-2 block text-3xl tracking-tight md:text-4xl">{next.title[locale]}</span>
-              <span className="mt-1 block text-muted-foreground">{next.summary[locale]}</span>
-            </span>
-            <span aria-hidden="true" className="text-2xl text-accent transition-transform group-hover:translate-x-1">
-              →
-            </span>
-          </Link>
+      <div className="mt-24 flex flex-col gap-24 md:mt-32 md:gap-32">
+        <Chapter id="challenge" eyebrow={t.caseStudy.challenge} title={study.challengeTitle[locale]}>
+          <Text items={study.challenge} />
+        </Chapter>
+
+        <Chapter id="work" eyebrow={t.caseStudy.work} title={study.workTitle[locale]} className="md:ml-[25%]">
+          <div className="flex flex-col gap-4">
+            {study.solution && <Text items={study.solution} />}
+            {study.decisions.map((decision) => (
+              <p key={decision.title.en} className="leading-relaxed text-pretty">
+                <strong className="font-medium">{decision.title[locale]}.</strong> {decision.body[locale]}
+              </p>
+            ))}
+            <Text items={study.results} />
+          </div>
+        </Chapter>
+
+        <div className="flex flex-col gap-6">
+          {study.gallery.map((item, i) => (
+            <figure key={i} className="reveal">
+              <Media item={item} />
+              {item.caption && <figcaption className="mt-3 text-sm text-muted-foreground">{item.caption[locale]}</figcaption>}
+              {/* A clear way out to the full-size version, for anything that works better with room. */}
+              {item.link && (
+                <Link
+                  href={item.link.href}
+                  className="mt-4 inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-3 text-background transition-colors hover:bg-accent"
+                >
+                  {item.link.label[locale]}
+                  <span aria-hidden="true">→</span>
+                </Link>
+              )}
+            </figure>
+          ))}
         </div>
+
+        <Text items={study.learnings} className="text-lead mx-auto max-w-xl text-center" />
+
+        <nav aria-label={t.caseStudy.nextProject} className="flex justify-center">
+          <div className="inline-flex gap-1 rounded-full bg-muted p-1">
+            <Link href={`/work/${previous.slug}`} className={pill} title={previous.title[locale]}>
+              <span aria-hidden="true">← </span>
+              {t.caseStudy.pager.previous}
+            </Link>
+            <Link href="/work" className={pill}>
+              {t.caseStudy.pager.close}
+            </Link>
+            <Link href={`/work/${next.slug}`} className={pill} title={next.title[locale]}>
+              {t.caseStudy.pager.next}
+              <span aria-hidden="true"> →</span>
+            </Link>
+          </div>
+        </nav>
       </div>
     </article>
   )

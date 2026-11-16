@@ -23,6 +23,12 @@ export type GalleryItem = {
 }
 
 export type CaseStudy = {
+  // The page title: what the work did, in a few words. The project name sits in the facts row.
+  headline: Localized
+  // Two or three sentences under the cover: the problem and what was done about it.
+  summary: Localized
+  challengeTitle: Localized
+  workTitle: Localized
   // How every case opens: the decision I made, what it cost, and where the work stands today. When there is no
   // outcome data, the status says so plainly instead of showing counts.
   lead: { decision: Localized; tradeoff: Localized; status: Localized }
@@ -42,6 +48,22 @@ export type CaseStudy = {
 
 export const caseStudies: Record<string, CaseStudy> = {
   innohub: {
+    headline: {
+      en: "Innovation as everyone's job",
+      es: "La innovación como tarea de todos",
+    },
+    summary: {
+      en: "A leading Spanish insurer wanted innovation to belong to every employee, not only to a specialist team. With growth strategy, research and visual design, we shaped the innovation model, the employee experience and the platform around it.",
+      es: "Una aseguradora española líder quería que la innovación fuera de todos los empleados, no solo de un equipo especializado. Con estrategia de crecimiento, research y diseño visual, dimos forma al modelo de innovación, a la experiencia del empleado y a la plataforma que lo sostiene.",
+    },
+    challengeTitle: {
+      en: "Ideas without impact",
+      es: "Ideas sin impacto",
+    },
+    workTitle: {
+      en: "Design participation, not just a platform",
+      es: "Diseñar la participación, no solo una plataforma",
+    },
     lead: {
       decision: {
         en: "I designed participation around three employee archetypes and community maturity levels.",
@@ -191,6 +213,22 @@ export const caseStudies: Record<string, CaseStudy> = {
   },
 
   "fleet-connect": {
+    headline: {
+      en: "Making 100+ indicators readable",
+      es: "Hacer legibles más de 100 indicadores",
+    },
+    summary: {
+      en: "A fleet management company's dashboards had grown into a sea of numbers. In two weeks I kept every indicator, split them into two priority tiers and prototyped the dashboard in Figma Make.",
+      es: "Los dashboards de una empresa de gestión de flotas se habían convertido en un mar de números. En dos semanas mantuve todos los indicadores, los dividí en dos niveles de prioridad y prototipé el dashboard en Figma Make.",
+    },
+    challengeTitle: {
+      en: "A sea of numbers",
+      es: "Un mar de números",
+    },
+    workTitle: {
+      en: "Prioritise, don't remove",
+      es: "Priorizar, no eliminar",
+    },
     lead: {
       decision: {
         en: "I kept all 100+ indicators and split them into two priority tiers.",
@@ -309,6 +347,22 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
   },
   "service-experience-design": {
+    headline: {
+      en: "Designing services from the inside out",
+      es: "Diseñar servicios de dentro hacia fuera",
+    },
+    summary: {
+      en: "A growing organisation's services had evolved on their own, and its website showed it. Working solo with the talent and sales teams, I mapped every service end to end, then redesigned how the website presents them.",
+      es: "Los servicios de una organización en crecimiento habían evolucionado por su cuenta, y su web lo reflejaba. Trabajando en solitario con los equipos de talento y ventas, mapeé cada servicio de principio a fin y después rediseñé cómo los presenta la web.",
+    },
+    challengeTitle: {
+      en: "Services that grew on their own",
+      es: "Servicios que crecieron por su cuenta",
+    },
+    workTitle: {
+      en: "Map first, then design",
+      es: "Primero mapear, después diseñar",
+    },
     lead: {
       decision: {
         en: "Before crafting a single screen of the digital product, I mapped every service end to end.",
@@ -448,6 +502,22 @@ export const caseStudies: Record<string, CaseStudy> = {
   },
 
   "design-ops-strategy": {
+    headline: {
+      en: "Structure for a team under pressure",
+      es: "Estructura para un equipo bajo presión",
+    },
+    summary: {
+      en: "A multidisciplinary team of 25 was receiving work with unclear priorities, timelines and briefs. Working closely with the Director of Operations, I designed how requests are received, scoped and managed.",
+      es: "Un equipo multidisciplinar de 25 personas recibía trabajo con prioridades, plazos y briefings poco claros. Junto a la dirección de operaciones, diseñé cómo se reciben, dimensionan y gestionan las peticiones.",
+    },
+    challengeTitle: {
+      en: "Work that arrived unclear",
+      es: "Trabajo que llegaba sin claridad",
+    },
+    workTitle: {
+      en: "Shape the request before the work",
+      es: "Dar forma a la petición antes que al trabajo",
+    },
     lead: {
       decision: {
         en: "I added a briefing step and shared complexity levels before work reached designers.",

@@ -45,6 +45,9 @@ export const dictionary = {
       },
       facts: { client: "Client", role: "Role", team: "Team", date: "Date" },
       lead: { decision: "Decision", tradeoff: "Trade-off", status: "Status" },
+      challenge: "The challenge",
+      work: "The work",
+      pager: { previous: "Previous", close: "Close", next: "Next" },
       nextProject: "Next project",
     },
     contact: {
@@ -93,6 +96,9 @@ export const dictionary = {
       },
       facts: { client: "Cliente", role: "Rol", team: "Equipo", date: "Fecha" },
       lead: { decision: "Decisión", tradeoff: "Contrapartida", status: "Estado" },
+      challenge: "El reto",
+      work: "El trabajo",
+      pager: { previous: "Anterior", close: "Cerrar", next: "Siguiente" },
       nextProject: "Siguiente proyecto",
     },
     contact: {
