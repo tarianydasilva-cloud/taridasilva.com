@@ -295,17 +295,17 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     gallery: [
       {
-        image: "/projects/fleet-connect/savings-2x.png",
-        caption: {
-          en: "Savings first: one headline number, with the levers behind it a filter away.",
-          es: "Primero el ahorro: una cifra principal y, a un filtro, las palancas que la explican.",
-        },
-      },
-      {
         image: "/projects/fleet-connect/fleet-status-2x.png",
         caption: {
           en: "Fleet status at a glance: connected and disconnected vehicles in a single bar.",
           es: "El estado de la flota de un vistazo: vehículos conectados y desconectados en una sola barra.",
+        },
+      },
+      {
+        image: "/projects/fleet-connect/savings-2x.png",
+        caption: {
+          en: "Savings first: one headline number, with the levers behind it a filter away.",
+          es: "Primero el ahorro: una cifra principal y, a un filtro, las palancas que la explican.",
         },
       },
     ],
