@@ -29,6 +29,8 @@ export type CaseStudy = {
   summary: Localized
   // Show the images at the top, in place of the cover.
   galleryFirst?: boolean
+  // The first gallery image becomes the single image at the top, in place of the cover; the rest stay below.
+  heroFromGallery?: boolean
   challengeTitle: Localized
   workTitle: Localized
   // How every case opens: the decision I made, what it cost, and where the work stands today. When there is no
@@ -215,7 +217,7 @@ export const caseStudies: Record<string, CaseStudy> = {
   },
 
   "fleet-connect": {
-    galleryFirst: true,
+    heroFromGallery: true,
     headline: {
       en: "Making 100+ indicators readable",
       es: "Hacer legibles más de 100 indicadores",

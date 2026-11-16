@@ -103,9 +103,11 @@ export function CaseStudy({ slug }: { slug: string }) {
     label: t.caseStudy.lead[key],
     value: study.lead[key][locale],
   }))
+  const hero = study.heroFromGallery ? study.gallery[0] : undefined
+  const below = study.heroFromGallery ? study.gallery.slice(1) : study.gallery
   const gallery = (
     <div className="flex flex-col gap-6">
-      {study.gallery.map((item, i) => (
+      {below.map((item, i) => (
         <figure key={i} className="reveal">
           <Media item={item} />
           {item.caption && (
@@ -143,9 +145,13 @@ export function CaseStudy({ slug }: { slug: string }) {
           ))}
         </dl>
         {study.galleryFirst ? (
-          <div className="mt-10">{gallery}</div>
+          <div className="mt-16 md:mt-24">{gallery}</div>
+        ) : hero ? (
+          <figure className="mt-16 md:mt-24">
+            <Media item={hero} />
+          </figure>
         ) : project.motion && !project.cover ? (
-          <ProjectMotion motion={project.motion} variant="cover" className="mt-10 aspect-video rounded-2xl" />
+          <ProjectMotion motion={project.motion} variant="cover" className="mt-16 aspect-video rounded-2xl md:mt-24" />
         ) : (
           <ProjectMedia
             image={project.cover ?? project.image}
@@ -153,7 +159,7 @@ export function CaseStudy({ slug }: { slug: string }) {
             alt={project.imageAlt?.[locale]}
             priority
             sizes={wide}
-            className="mt-10 rounded-2xl"
+            className="mt-16 rounded-2xl md:mt-24"
           />
         )}
       </header>
