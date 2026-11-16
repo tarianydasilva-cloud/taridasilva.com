@@ -136,7 +136,35 @@ export function ServicesPhone() {
   )
 }
 
-// Only one scene exists so far; the prop keeps the gallery data explicit about which one it shows.
+// Tari's three phone screens, cut out of her artwork and laid back on its own background so they can move:
+// the middle phone rises in first, the two side phones slide out from behind it, all hold, then fade and loop.
+// Positions are the phones' places in the original 3456 × 2234 image.
+const phones = [
+  { src: "left", left: "7.263%", top: "24.843%", from: "translate(60%, 0)", delay: "phones-side" },
+  { src: "center", left: "37.182%", top: "24.933%", from: "translate(0, 8%)", delay: "phones-center" },
+  { src: "right", left: "67.274%", top: "24.933%", from: "translate(-60%, 0)", delay: "phones-side" },
+]
+
+function ServicePhones() {
+  return (
+    <div aria-hidden="true" className="relative aspect-[3456/2234] overflow-hidden rounded-2xl">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/projects/service-experience-design/phones/bg.jpg" alt="" className="absolute inset-0 size-full" />
+      {phones.map((phone) => (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          key={phone.src}
+          src={`/projects/service-experience-design/phones/${phone.src}.png`}
+          alt=""
+          style={{ left: phone.left, top: phone.top, "--from": phone.from } as CSSProperties}
+          className={`${phone.delay} absolute bottom-0 w-[24.913%] ${phone.src === "center" ? "z-10" : ""}`}
+        />
+      ))}
+    </div>
+  )
+}
+
 export function Scene({ scene }: { scene: NonNullable<GalleryItem["scene"]> }) {
+  if (scene === "service-phones") return <ServicePhones />
   return scene === "principles" ? <Principles /> : null
 }

@@ -193,6 +193,13 @@
   .services-scroll {
     animation: services-scroll 8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
   }
+  /* Service Design phones (components/case-study-scenes.tsx), on a 9-second loop. */
+  .phones-center {
+    animation: phones-center 9s cubic-bezier(0.2, 0.7, 0.2, 1) infinite both;
+  }
+  .phones-side {
+    animation: phones-side 9s cubic-bezier(0.2, 0.7, 0.2, 1) infinite both;
+  }
   .ops-draw {
     stroke-dasharray: 1;
     animation: ops-draw 1.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
@@ -247,6 +254,42 @@
   }
   100% {
     translate: 0 0;
+  }
+}
+
+@keyframes phones-center {
+  0%,
+  8% {
+    opacity: 0;
+    transform: var(--from);
+  }
+  20%,
+  86% {
+    opacity: 1;
+    transform: none;
+  }
+  96%,
+  100% {
+    opacity: 0;
+    transform: none;
+  }
+}
+
+@keyframes phones-side {
+  0%,
+  22% {
+    opacity: 0;
+    transform: var(--from);
+  }
+  36%,
+  86% {
+    opacity: 1;
+    transform: none;
+  }
+  96%,
+  100% {
+    opacity: 0;
+    transform: none;
   }
 }
 

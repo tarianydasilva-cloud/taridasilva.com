@@ -21,7 +21,7 @@ export type GalleryItem = {
   // Width / height of a single image, so it shows whole instead of cropped to 16:10.
   aspect?: string
   quote?: Record<Locale, string[]>
-  scene?: "principles"
+  scene?: "principles" | "service-phones"
 }
 
 export type CaseStudy = {
@@ -449,8 +449,7 @@ export const caseStudies: Record<string, CaseStudy> = {
         },
       },
       {
-        image: "/projects/service-experience-design/service-screens.jpg",
-        aspect: "3456/2234",
+        scene: "service-phones",
         caption: {
           en: "A service in detail, the welcome screen and the list of services.",
           es: "Un servicio en detalle, la pantalla de bienvenida y la lista de servicios.",
