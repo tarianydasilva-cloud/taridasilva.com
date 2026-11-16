@@ -118,7 +118,7 @@ export function CaseStudy({ slug }: { slug: string }) {
         )}
       </header>
 
-      <p className="text-lead mx-auto mt-20 max-w-xl text-center text-pretty md:mt-28">{study.summary[locale]}</p>
+      <p className="text-lead mt-20 max-w-xl text-pretty md:mt-28">{study.summary[locale]}</p>
 
       {/* Where a case has no outcome figures, the three cells hold the decision, its cost and where it stands. */}
       <dl className="mt-14 grid overflow-hidden rounded-2xl border border-border md:grid-cols-3">
@@ -135,7 +135,7 @@ export function CaseStudy({ slug }: { slug: string }) {
           <Text items={study.challenge} />
         </Chapter>
 
-        <Chapter id="work" eyebrow={t.caseStudy.work} title={study.workTitle[locale]} className="md:ml-[25%]">
+        <Chapter id="work" eyebrow={t.caseStudy.work} title={study.workTitle[locale]}>
           <div className="flex flex-col gap-4">
             {study.solution && <Text items={study.solution} />}
             {study.decisions.map((decision) => (
@@ -166,9 +166,9 @@ export function CaseStudy({ slug }: { slug: string }) {
           ))}
         </div>
 
-        <Text items={study.learnings} className="text-lead mx-auto max-w-xl text-center" />
+        <Text items={study.learnings} className="text-lead max-w-xl" />
 
-        <nav aria-label={t.caseStudy.nextProject} className="flex justify-center">
+        <nav aria-label={t.caseStudy.nextProject} className="flex">
           <div className="inline-flex gap-1 rounded-full bg-muted p-1">
             <Link href={`/work/${previous.slug}`} className={pill} title={previous.title[locale]}>
               <span aria-hidden="true">← </span>

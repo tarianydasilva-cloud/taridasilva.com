@@ -293,24 +293,6 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     gallery: [
       {
-        embed: "fleet-prototype",
-        caption: {
-          en: "The original dashboards were made in Figma Make: I prompted each change and adjusted details by hand when the output wasn't right. This rebuild, made in Claude Code with sample data, puts the filter interactions in code, because the states mattered more than the layout.",
-          es: "Los dashboards originales se hicieron en Figma Make: pedía cada cambio por prompt y ajustaba los detalles a mano cuando el resultado no era el correcto. Esta reconstrucción, hecha con Claude Code y datos de ejemplo, lleva las interacciones de los filtros a código, porque los estados importaban más que el layout.",
-        },
-        link: {
-          href: "/work/fleet-connect/prototype",
-          label: { en: "Open the prototype full screen", es: "Abrir el prototipo a pantalla completa" },
-        },
-      },
-      {
-        embed: "edge-cases",
-        caption: {
-          en: "Before designing the screens, I used Figma Make's AI to list every state a card could reach, generated each one by prompt and fixed by hand what it got wrong. For this coded rebuild I repeated the exercise with Claude: 4 states made it in as switchable states (live, loading, empty, error), 5 edge cases are handled, and 4 are queued for the next iteration.",
-          es: "Antes de diseñar las pantallas, usé la IA de Figma Make para listar cada estado al que podía llegar una tarjeta, generé cada uno por prompt y corregí a mano lo que no estaba bien. Para esta reconstrucción en código repetí el ejercicio con Claude: 4 estados entraron como activables (en vivo, cargando, vacío, error), 5 casos límite están resueltos y 4 quedan para la siguiente iteración.",
-        },
-      },
-      {
         image: "/projects/fleet-connect/savings-2x.png",
         caption: {
           en: "Savings first: one headline number, with the levers behind it a filter away.",

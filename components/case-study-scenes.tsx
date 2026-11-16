@@ -50,7 +50,7 @@ export function Quote({ lines }: { lines: Record<Locale, string[]> }) {
   let word = 0
 
   return (
-    <p className="text-lead rounded-2xl bg-[#f4f4f4] px-6 py-16 text-center text-balance md:px-12 md:py-24">
+    <p className="text-lead rounded-2xl bg-[#f4f4f4] px-6 py-16 text-balance md:px-12 md:py-24">
       {lines[locale].map((line, l) => (
         <span key={line} className={l === 0 ? "block" : "mt-1 block text-muted-foreground"}>
           {line.split(" ").map((w) => (
