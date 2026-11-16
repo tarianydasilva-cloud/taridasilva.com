@@ -215,6 +215,7 @@ export const caseStudies: Record<string, CaseStudy> = {
   },
 
   "fleet-connect": {
+    galleryFirst: true,
     headline: {
       en: "Making 100+ indicators readable",
       es: "Hacer legibles más de 100 indicadores",
@@ -295,6 +296,13 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     gallery: [
       {
+        image: "/projects/fleet-connect/savings-2x.png",
+        caption: {
+          en: "Savings first: one headline number, with the levers behind it a filter away.",
+          es: "Primero el ahorro: una cifra principal y, a un filtro, las palancas que la explican.",
+        },
+      },
+      {
         image: "/projects/fleet-connect/fleet-status-2x.png",
         caption: {
           en: "Fleet status at a glance: connected and disconnected vehicles in a single bar.",
@@ -302,10 +310,10 @@ export const caseStudies: Record<string, CaseStudy> = {
         },
       },
       {
-        image: "/projects/fleet-connect/savings-2x.png",
+        image: "/projects/fleet-connect/cover-dashboard-2x.jpg",
         caption: {
-          en: "Savings first: one headline number, with the levers behind it a filter away.",
-          es: "Primero el ahorro: una cifra principal y, a un filtro, las palancas que la explican.",
+          en: "The dashboard prototype, set in its context.",
+          es: "El prototipo del dashboard, en su contexto.",
         },
       },
     ],
