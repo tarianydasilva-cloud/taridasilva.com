@@ -19,6 +19,8 @@ export type Project = {
   // An animated tile built in code (components/project-motion.tsx), shown instead of the picture on the card,
   // and as the case study cover when the project has no `cover`.
   motion?: "service" | "ops"
+  // Which version of the animated tile the Home and Work card shows: the UI loop (default) or the wordmark.
+  cardMotion?: "tile" | "cover"
   imageAlt?: Localized
   video?: string
 }
@@ -57,6 +59,7 @@ export const projects: Project[] = [
       { en: "Strategy", es: "Estrategia" },
     ],
     motion: "service",
+    cardMotion: "cover",
   },
   {
     slug: "innohub",

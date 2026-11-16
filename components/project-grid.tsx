@@ -33,7 +33,7 @@ export function ProjectGrid() {
               </div>
               {/* The picture bleeds to the card edges and takes all the space left below the text. */}
               {project.motion && !project.card ? (
-                <ProjectMotion motion={project.motion} className="min-h-0 flex-1" />
+                <ProjectMotion motion={project.motion} variant={project.cardMotion} className="min-h-0 flex-1" />
               ) : (
                 <ProjectMedia
                   image={project.card ?? project.image}
