@@ -27,6 +27,27 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "innohub",
+    title: { en: "Innohub", es: "Innohub" },
+    summary: {
+      en: "Igniting innovation participation.",
+      es: "Impulsar la participación en la innovación.",
+    },
+    year: "2026",
+    tags: [
+      { en: "Experience Design", es: "Diseño de experiencia" },
+      { en: "Innovation Strategy", es: "Estrategia de innovación" },
+      { en: "Design Research", es: "Design research" },
+    ],
+    image: "/projects/innohub/card-logo.png",
+    motion: "innohub",
+    cover: "/projects/innohub/cover-collage.jpg",
+    imageAlt: {
+      en: "The Innohub platform: cards inviting employees to share ideas with impact, on a blue background",
+      es: "La plataforma Innohub: tarjetas que invitan a los empleados a compartir ideas con impacto, sobre fondo azul",
+    },
+  },
+  {
     slug: "fleet-connect",
     title: { en: "Fleet Connect", es: "Fleet Connect" },
     summary: {
@@ -60,27 +81,6 @@ export const projects: Project[] = [
     ],
     motion: "service",
     cardMotion: "cover",
-  },
-  {
-    slug: "innohub",
-    title: { en: "Innohub", es: "Innohub" },
-    summary: {
-      en: "Igniting innovation participation.",
-      es: "Impulsar la participación en la innovación.",
-    },
-    year: "2026",
-    tags: [
-      { en: "Experience Design", es: "Diseño de experiencia" },
-      { en: "Innovation Strategy", es: "Estrategia de innovación" },
-      { en: "Design Research", es: "Design research" },
-    ],
-    image: "/projects/innohub/card-logo.png",
-    motion: "innohub",
-    cover: "/projects/innohub/cover-collage.jpg",
-    imageAlt: {
-      en: "The Innohub platform: cards inviting employees to share ideas with impact, on a blue background",
-      es: "La plataforma Innohub: tarjetas que invitan a los empleados a compartir ideas con impacto, sobre fondo azul",
-    },
   },
   {
     slug: "design-ops-strategy",
