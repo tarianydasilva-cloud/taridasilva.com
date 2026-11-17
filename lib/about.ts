@@ -136,7 +136,7 @@ export const bio: Localized[] = [
 // From Tari's LinkedIn experience, newest first, written like Jorge Bodas's list: company, then years.
 export const career: { name: string; years: Localized }[] = [
   { name: "frog", years: { en: "Current", es: "Actual" } },
-  { name: "GRAND", years: { en: "2025/2026", es: "2025/2026" } },
+  { name: "GRAND", years: { en: "2025", es: "2025" } },
   { name: "César Astudillo", years: { en: "2023", es: "2023" } },
   { name: "Freelance", years: { en: "Since 2021", es: "Desde 2021" } },
 ]
