@@ -1,6 +1,6 @@
 "use client"
 
-import type { CSSProperties } from "react"
+import { useEffect, useRef, type CSSProperties } from "react"
 import { cn } from "@/lib/utils"
 import type { Project } from "@/lib/projects"
 import { useLanguage } from "./language-provider"
@@ -213,7 +213,63 @@ function OpsLoop() {
   )
 }
 
+// Innohub: a bento of crops from Tari's real screens, built like a product reel. The tiles appear one by one on a
+// soft blue board, two of them swap to another screen, then everything clears and it starts again (9 s). It plays
+// from the start whenever the card comes into view. Positions are percentages of a 100 × 89 board.
+const bento = [
+  { src: ["welcome"], x: 0, y: 0, w: 62, h: 47, i: 0 },
+  { src: ["ideas", "people"], x: 64, y: 0, w: 36, h: 47, i: 1 },
+  { src: ["participa"], x: 0, y: 49, w: 49, h: 40, i: 2 },
+  { src: ["norma", "ranking"], x: 51, y: 49, w: 49, h: 40, i: 3 },
+]
+
+function InnohubBento() {
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        el.removeAttribute("data-play")
+        if (entry.isIntersecting) {
+          void el.offsetWidth
+          el.setAttribute("data-play", "")
+        }
+      },
+      { threshold: 0.25 },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <div ref={ref} className="absolute inset-0 flex items-center justify-center [container-type:size]">
+      <div className="relative aspect-[100/89] w-[min(88cqw,99cqh)]">
+        {bento.map((tile) => (
+          <div
+            key={tile.src[0]}
+            style={{ left: `${tile.x}%`, top: `${(tile.y / 89) * 100}%`, width: `${tile.w}%`, height: `${(tile.h / 89) * 100}%`, "--i": tile.i } as CSSProperties}
+            className="bento-tile absolute overflow-hidden rounded-[2.4cqmin] bg-white shadow-[0_10px_30px_-18px_rgba(20,40,140,0.45)]"
+          >
+            {tile.src.map((src, k) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                key={src}
+                src={`/projects/innohub/bento/${src}.webp`}
+                alt=""
+                className={cn("absolute inset-0 size-full object-cover object-top", k === 1 && "bento-swap")}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 const backgrounds = {
+  innohub: "bg-[radial-gradient(80%_60%_at_30%_0%,#ffffff,transparent_70%),linear-gradient(160deg,#eef1fd,#d9e0fb)]",
   service:
     "bg-[radial-gradient(80%_60%_at_30%_0%,#ffe6da_0%,transparent_60%),radial-gradient(70%_70%_at_100%_100%,#ff3d00,transparent_70%),linear-gradient(160deg,#ffb08a,#ff5a1f_60%,#ff2700)]",
   ops: "bg-[linear-gradient(160deg,#f2f2f0,#e3e3e0)]",
@@ -240,7 +296,9 @@ export function ProjectMotion({
         className,
       )}
     >
-      {motion === "ops" ? (
+      {motion === "innohub" ? (
+        <InnohubBento />
+      ) : motion === "ops" ? (
         variant === "cover" ? <OpsLoop /> : <Ops />
       ) : variant === "cover" ? (
         <Wordmark />
