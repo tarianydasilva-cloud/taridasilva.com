@@ -1,19 +1,17 @@
 "use client"
 
-import { bio, career, principles, story } from "@/lib/about"
+import { bio, career, story } from "@/lib/about"
 import { useLanguage } from "../language-provider"
 import { AboutDesktop } from "./desktop"
 
 const label = "text-xs uppercase tracking-[0.12em] text-muted-foreground"
 
-// About, kept to one screen: the desktop with Tari's video, then who she is next to where she has worked,
-// and the four principles in one row.
+// About, kept to one screen: the desktop with Tari's video, then who she is next to where she has worked.
 export function AboutProfile() {
   const { locale } = useLanguage()
   const t = {
     title: { en: "About", es: "Sobre mí" },
     career: { en: "Career", es: "Trayectoria" },
-    principles: { en: "Principles", es: "Principios" },
   }
 
   return (
@@ -44,17 +42,6 @@ export function AboutProfile() {
         </div>
       </div>
 
-      <div className="rounded-2xl bg-muted p-6 md:p-8">
-        <p className={label}>{t.principles[locale]}</p>
-        <ul className="mt-5 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {principles.map((principle) => (
-            <li key={principle.title.en}>
-              <p className="text-lg">{principle.title[locale]}</p>
-              <p className="mt-1 text-sm leading-relaxed text-muted-foreground text-pretty">{principle.body[locale]}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
     </section>
   )
 }

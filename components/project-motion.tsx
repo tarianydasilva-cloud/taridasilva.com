@@ -215,12 +215,12 @@ function OpsLoop() {
 
 // Innohub: a bento of crops from Tari's real screens, built like a product reel. The tiles appear one by one on a
 // soft blue board, two of them swap to another screen, then everything clears and it starts again (9 s). It plays
-// from the start whenever the card comes into view. Positions are percentages of a 100 × 89 board.
+// from the start whenever the card comes into view. Positions are percentages of a 100 × 104 board; the bottom tiles match the portrait cards' shape.
 const bento = [
   { src: ["welcome"], x: 0, y: 0, w: 62, h: 47, i: 0 },
   { src: ["ideas", "people"], x: 64, y: 0, w: 36, h: 47, i: 1 },
-  { src: ["participa"], x: 0, y: 49, w: 49, h: 40, i: 2 },
-  { src: ["norma", "ranking"], x: 51, y: 49, w: 49, h: 40, i: 3 },
+  { src: ["participa"], x: 0, y: 49, w: 49, h: 55, i: 2 },
+  { src: ["norma", "ranking"], x: 51, y: 49, w: 49, h: 55, i: 3 },
 ]
 
 function InnohubBento() {
@@ -245,11 +245,11 @@ function InnohubBento() {
 
   return (
     <div ref={ref} data-play-on-view className="absolute inset-0 flex items-center justify-center [container-type:size]">
-      <div className="relative aspect-[100/89] w-[min(88cqw,99cqh)]">
+      <div className="relative aspect-[100/104] w-[min(86cqw,86cqh)]">
         {bento.map((tile) => (
           <div
             key={tile.src[0]}
-            style={{ left: `${tile.x}%`, top: `${(tile.y / 89) * 100}%`, width: `${tile.w}%`, height: `${(tile.h / 89) * 100}%`, "--i": tile.i } as CSSProperties}
+            style={{ left: `${tile.x}%`, top: `${(tile.y / 104) * 100}%`, width: `${tile.w}%`, height: `${(tile.h / 104) * 100}%`, "--i": tile.i } as CSSProperties}
             className="bento-tile absolute overflow-hidden rounded-[2.4cqmin] bg-white shadow-[0_10px_30px_-18px_rgba(20,40,140,0.45)]"
           >
             {tile.src.map((src, k) => (
@@ -258,7 +258,7 @@ function InnohubBento() {
                 key={src}
                 src={`/projects/innohub/bento/${src}.webp`}
                 alt=""
-                className={cn("absolute inset-0 size-full object-cover object-top", k === 1 && "bento-swap")}
+                className={cn("absolute inset-0 size-full object-cover object-left-top", k === 1 && "bento-swap")}
               />
             ))}
           </div>
