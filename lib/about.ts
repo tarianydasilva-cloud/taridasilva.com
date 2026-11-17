@@ -133,10 +133,11 @@ export const bio: Localized[] = [
 ]
 
 // Career, newest first. Text in [square brackets] is a placeholder until Tari confirms each role.
+// From Tari's LinkedIn experience, newest first, written like Jorge Bodas's list: company, then years.
 export const career: { name: string; years: Localized }[] = [
-  { name: "[Company]", years: { en: "Current", es: "Actual" } },
-  { name: "[Company]", years: { en: "[2025]", es: "[2025]" } },
-  { name: "[Company]", years: { en: "[2024/2025]", es: "[2024/2025]" } },
-  { name: "[Company]", years: { en: "[2023/2024]", es: "[2023/2024]" } },
+  { name: "frog", years: { en: "Current", es: "Actual" } },
+  { name: "GRAND", years: { en: "2025/2026", es: "2025/2026" } },
+  { name: "César Astudillo", years: { en: "2023", es: "2023" } },
+  { name: "Freelance", years: { en: "Since 2021", es: "Desde 2021" } },
 ]
 
