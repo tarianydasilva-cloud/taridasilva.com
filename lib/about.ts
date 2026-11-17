@@ -8,6 +8,10 @@ type Localized = Record<Locale, string>
 // Encode them mirrored, muted and web-sized, with a first-frame poster next to each as .jpg:
 //   ffmpeg -i in.mov -vf "hflip,scale=1440:-2" -an -c:v libx264 -crf 26 -pix_fmt yuv420p -movflags +faststart out.mp4
 //   ffmpeg -i out.mp4 -frames:v 1 -q:v 4 out.jpg
+// The desktop (menu bar, wallpaper, icons) is kept but hidden on the About page while Tari rethinks it.
+// Set to true to bring it back.
+export const showDesktop = false
+
 // Empty for now: the desktop shows its plain wallpaper. Was ["/about/tari-desktop.mp4"].
 export const heroVideos: string[] = []
 

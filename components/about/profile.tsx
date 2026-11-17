@@ -1,6 +1,6 @@
 "use client"
 
-import { bio, career, story } from "@/lib/about"
+import { bio, career, showDesktop, story } from "@/lib/about"
 import { useLanguage } from "../language-provider"
 import { AboutDesktop } from "./desktop"
 
@@ -17,7 +17,7 @@ export function AboutProfile() {
   return (
     <section className="mx-auto flex max-w-[1036px] flex-col gap-3 pt-8 md:pt-12">
       <h1 className="sr-only">{t.title[locale]}</h1>
-      <AboutDesktop />
+      {showDesktop && <AboutDesktop />}
 
       <div className="grid gap-3 md:grid-cols-12">
         <div className="flex flex-col gap-4 rounded-2xl bg-muted p-6 md:col-span-7 md:p-8">
