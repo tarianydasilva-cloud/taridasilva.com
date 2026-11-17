@@ -215,12 +215,15 @@ function OpsLoop() {
 
 // Innohub: a bento of Tari's own component exports, each shown whole on its own transparency, built like a product reel. The tiles appear one by one on a
 // soft blue board, two of them swap to another screen, then everything clears and it starts again (9 s). It plays
-// from the start whenever the card comes into view. Positions are percentages of a 100 × 104 board; the bottom tiles match the portrait cards' shape.
+// from the start whenever the card comes into view. Positions are percentages of a 100 × BOARD board.
+// Each tile takes its export's own shape, and the tiles in a row share one height, like a bento box:
+// welcome is 1596 × 1278 and the portrait cards 828 × 924, so row widths are height × shape, filling 100 with a 2 gap.
+const BOARD = 102.4
 const bento = [
-  { src: ["welcome"], x: 0, y: 0, w: 62, h: 47, i: 0 },
-  { src: ["ideas", "people"], x: 64, y: 0, w: 36, h: 47, i: 1 },
-  { src: ["participa"], x: 0, y: 49, w: 49, h: 55, i: 2 },
-  { src: ["norma", "ranking"], x: 51, y: 49, w: 49, h: 55, i: 3 },
+  { src: ["welcome"], x: 0, y: 0, w: 57.1, h: 45.7, i: 0 },
+  { src: ["ideas", "people"], x: 59.1, y: 0, w: 40.9, h: 45.7, i: 1 },
+  { src: ["participa"], x: 0, y: 47.7, w: 49, h: 54.7, i: 2 },
+  { src: ["norma", "ranking"], x: 51, y: 47.7, w: 49, h: 54.7, i: 3 },
 ]
 
 function InnohubBento() {
@@ -245,11 +248,11 @@ function InnohubBento() {
 
   return (
     <div ref={ref} data-play-on-view className="absolute inset-0 flex items-center justify-center [container-type:size]">
-      <div className="relative aspect-[100/104] w-[min(86cqw,86cqh)]">
+      <div className="relative aspect-[100/102.4] w-[min(86cqw,86cqh)]">
         {bento.map((tile) => (
           <div
             key={tile.src[0]}
-            style={{ left: `${tile.x}%`, top: `${(tile.y / 104) * 100}%`, width: `${tile.w}%`, height: `${(tile.h / 104) * 100}%`, "--i": tile.i } as CSSProperties}
+            style={{ left: `${tile.x}%`, top: `${(tile.y / BOARD) * 100}%`, width: `${tile.w}%`, height: `${(tile.h / BOARD) * 100}%`, "--i": tile.i } as CSSProperties}
             className="bento-tile absolute"
           >
             {tile.src.map((src, k) => (
