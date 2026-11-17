@@ -76,7 +76,7 @@ export const projects: Project[] = [
     ],
     image: "/projects/innohub/card-logo.png",
     motion: "innohub",
-    cover: "/projects/innohub/cover.png",
+    cover: "/projects/innohub/cover-collage.jpg",
     imageAlt: {
       en: "The Innohub platform: cards inviting employees to share ideas with impact, on a blue background",
       es: "La plataforma Innohub: tarjetas que invitan a los empleados a compartir ideas con impacto, sobre fondo azul",
