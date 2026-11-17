@@ -30,6 +30,7 @@ export function ProjectMedia({ image, alt, video, priority, sizes, fit = "cover"
           alt={alt ?? ""}
           fill
           priority={priority}
+          quality={90}
           sizes={sizes ?? "(min-width: 1280px) 40vw, (min-width: 768px) 50vw, 100vw"}
           className={cn(fit === "contain" ? "object-contain p-[4%]" : "object-cover", "transition-transform duration-700 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100")}
         />

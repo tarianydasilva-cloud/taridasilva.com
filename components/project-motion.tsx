@@ -213,7 +213,7 @@ function OpsLoop() {
   )
 }
 
-// Innohub: a bento of crops from Tari's real screens, built like a product reel. The tiles appear one by one on a
+// Innohub: a bento of Tari's own component exports, each shown whole on its own transparency, built like a product reel. The tiles appear one by one on a
 // soft blue board, two of them swap to another screen, then everything clears and it starts again (9 s). It plays
 // from the start whenever the card comes into view. Positions are percentages of a 100 × 104 board; the bottom tiles match the portrait cards' shape.
 const bento = [
@@ -250,7 +250,7 @@ function InnohubBento() {
           <div
             key={tile.src[0]}
             style={{ left: `${tile.x}%`, top: `${(tile.y / 104) * 100}%`, width: `${tile.w}%`, height: `${(tile.h / 104) * 100}%`, "--i": tile.i } as CSSProperties}
-            className="bento-tile absolute overflow-hidden rounded-[2.4cqmin] bg-white shadow-[0_10px_30px_-18px_rgba(20,40,140,0.45)]"
+            className="bento-tile absolute"
           >
             {tile.src.map((src, k) => (
               // eslint-disable-next-line @next/next/no-img-element
@@ -258,7 +258,7 @@ function InnohubBento() {
                 key={src}
                 src={`/projects/innohub/bento/${src}.webp`}
                 alt=""
-                className={cn("absolute inset-0 size-full object-cover object-left-top", k === 1 && "bento-swap")}
+                className={cn("absolute inset-0 size-full object-contain drop-shadow-[0_10px_18px_rgba(6,15,49,0.18)]", tile.src.length > 1 && (k === 0 ? "bento-swap-out" : "bento-swap"))}
               />
             ))}
           </div>
@@ -269,7 +269,8 @@ function InnohubBento() {
 }
 
 const backgrounds = {
-  innohub: "bg-[radial-gradient(80%_60%_at_30%_0%,#ffffff,transparent_70%),linear-gradient(160deg,#eef1fd,#d9e0fb)]",
+  // Innohub's own neutrals (#F9F9F9, #F0F0F0) with a breath of its mauve (#E1BFED).
+  innohub: "bg-[radial-gradient(70%_60%_at_100%_100%,#e1bfed66,transparent_70%),linear-gradient(160deg,#f9f9f9,#f0f0f0)]",
   service:
     "bg-[radial-gradient(80%_60%_at_30%_0%,#ffe6da_0%,transparent_60%),radial-gradient(70%_70%_at_100%_100%,#ff3d00,transparent_70%),linear-gradient(160deg,#ffb08a,#ff5a1f_60%,#ff2700)]",
   ops: "bg-[linear-gradient(160deg,#f2f2f0,#e3e3e0)]",

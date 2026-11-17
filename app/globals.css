@@ -208,6 +208,11 @@
     animation: bento-swap 9s ease-in-out infinite both;
     animation-delay: calc(var(--i) * 0.18s);
   }
+  /* The screen being replaced fades out first and the new one fades in after, so the two never show through each other. */
+  [data-play] .bento-swap-out {
+    animation: bento-swap-out 9s ease-in-out infinite both;
+    animation-delay: calc(var(--i) * 0.18s);
+  }
   /* Service Design phones (components/case-study-scenes.tsx): a 7-second loop that starts when the scene is in
      view. The phones wait hidden until then; the empty frame between loops lasts under a second. */
   .phones-center,
@@ -296,12 +301,23 @@
 
 @keyframes bento-swap {
   0%,
-  42% {
+  46% {
     opacity: 0;
   }
-  50%,
+  51%,
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes bento-swap-out {
+  0%,
+  41% {
+    opacity: 1;
+  }
+  46%,
+  100% {
+    opacity: 0;
   }
 }
 

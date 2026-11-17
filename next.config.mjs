@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // 90 for the case study pictures and project covers, so text inside the screens stays crisp.
+  images: { qualities: [75, 90] },
   async headers() {
     return [
       {

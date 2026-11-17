@@ -7,7 +7,7 @@ const [out, base = "http://localhost:3000"] = process.argv.slice(2)
 if (!out) throw new Error("Usage: node scripts/build-preview.mjs <out.html> [baseUrl]")
 
 const locales = ["en", "es"]
-const imageWidth = 1200
+const imageWidth = 1920
 
 async function get(path, { locale, accept } = {}) {
   const headers = {}
@@ -72,7 +72,7 @@ for (const locale of locales) {
 }
 
 for (const src of images.keys()) {
-  images.set(src, await dataUri(`/_next/image?url=${encodeURIComponent(src)}&w=${imageWidth}&q=75`, "image/webp"))
+  images.set(src, await dataUri(`/_next/image?url=${encodeURIComponent(src)}&w=${imageWidth}&q=90`, "image/webp"))
 }
 
 for (const path of media.keys()) media.set(path, await dataUri(path))
