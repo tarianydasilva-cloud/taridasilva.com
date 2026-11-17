@@ -152,6 +152,14 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     gallery: [
       {
+        image: "/projects/innohub/bento-cover.jpg",
+        aspect: "2400/1350",
+        caption: {
+          en: "The platform's first impression, with the pieces it is built from.",
+          es: "La primera impresión de la plataforma, con las piezas que la forman.",
+        },
+      },
+      {
         image: "/projects/innohub/workshops.jpg",
         caption: {
           en: "Ideation and validation workshops with the client's team: where ideas were tested, refined and challenged.",
