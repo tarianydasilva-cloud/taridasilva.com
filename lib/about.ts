@@ -115,3 +115,28 @@ export const approach = {
     },
   ],
 }
+
+// The About card's three short paragraphs: where Tari comes from, what she does now, how she works.
+export const bio: Localized[] = [
+  {
+    en: "Born in 2001 in the Peruvian Andes, I grew up between countries and languages, and learned to ask why things work the way they do before changing them.",
+    es: "Nací en 2001 en los Andes peruanos y crecí entre países e idiomas, y aprendí a preguntar por qué las cosas funcionan como funcionan antes de cambiarlas.",
+  },
+  {
+    en: "Now I design products end to end, from research and strategy to interface and working prototypes, for teams whose tools or processes have grown too big to read.",
+    es: "Hoy diseño productos de principio a fin, de la investigación y la estrategia a la interfaz y prototipos que funcionan, para equipos cuyas herramientas o procesos han crecido demasiado para leerse.",
+  },
+  {
+    en: "I test early, write down the trade-offs, and stay close to the details until the complex feels obvious.",
+    es: "Pruebo pronto, dejo por escrito las contrapartidas y cuido los detalles hasta que lo complejo parece obvio.",
+  },
+]
+
+// Career, newest first. Text in [square brackets] is a placeholder until Tari confirms each role.
+export const career: { name: string; years: Localized }[] = [
+  { name: "[Company]", years: { en: "Current", es: "Actual" } },
+  { name: "[Company]", years: { en: "[2025]", es: "[2025]" } },
+  { name: "[Company]", years: { en: "[2024/2025]", es: "[2024/2025]" } },
+  { name: "[Company]", years: { en: "[2023/2024]", es: "[2023/2024]" } },
+]
+
