@@ -169,7 +169,7 @@ function ServicePhones() {
   }, [])
 
   return (
-    <div ref={ref} aria-hidden="true" className="relative aspect-[3456/2234] overflow-hidden rounded-2xl">
+    <div ref={ref} data-play-on-view aria-hidden="true" className="relative aspect-[3456/2234] overflow-hidden rounded-2xl">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src="/projects/service-experience-design/phones/bg.webp" alt="" className="absolute inset-0 size-full" />
       {phones.map((phone) => (

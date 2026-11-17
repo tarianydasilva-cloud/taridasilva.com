@@ -206,6 +206,14 @@ function tickClocks() {
 tickClocks();
 setInterval(tickClocks, 15000);
 
+// Animations that start when they scroll into view (marked data-play-on-view), like on the site.
+const playObserver = new IntersectionObserver((entries) => entries.forEach((entry) => {
+  const el = entry.target;
+  el.removeAttribute("data-play");
+  if (entry.isIntersecting) { void el.offsetWidth; el.setAttribute("data-play", ""); }
+}), { threshold: 0.25 });
+document.querySelectorAll("[data-play-on-view]").forEach((el) => playObserver.observe(el));
+
 // Copy buttons (the contact page's email).
 document.addEventListener("click", (event) => {
   const button = event.target.closest("button[data-copy]");

@@ -244,7 +244,7 @@ function InnohubBento() {
   }, [])
 
   return (
-    <div ref={ref} className="absolute inset-0 flex items-center justify-center [container-type:size]">
+    <div ref={ref} data-play-on-view className="absolute inset-0 flex items-center justify-center [container-type:size]">
       <div className="relative aspect-[100/89] w-[min(88cqw,99cqh)]">
         {bento.map((tile) => (
           <div
