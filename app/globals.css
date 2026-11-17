@@ -193,12 +193,17 @@
   .services-scroll {
     animation: services-scroll 8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
   }
-  /* Service Design phones (components/case-study-scenes.tsx), on a 9-second loop. */
-  .phones-center {
-    animation: phones-center 9s cubic-bezier(0.2, 0.7, 0.2, 1) infinite both;
-  }
+  /* Service Design phones (components/case-study-scenes.tsx): a 7-second loop that starts when the scene is in
+     view. The phones wait hidden until then; the empty frame between loops lasts under a second. */
+  .phones-center,
   .phones-side {
-    animation: phones-side 9s cubic-bezier(0.2, 0.7, 0.2, 1) infinite both;
+    opacity: 0;
+  }
+  [data-play] .phones-center {
+    animation: phones-center 7s cubic-bezier(0.2, 0.7, 0.2, 1) infinite both;
+  }
+  [data-play] .phones-side {
+    animation: phones-side 7s cubic-bezier(0.2, 0.7, 0.2, 1) infinite both;
   }
   .ops-draw {
     stroke-dasharray: 1;
@@ -258,17 +263,16 @@
 }
 
 @keyframes phones-center {
-  0%,
-  8% {
+  0% {
     opacity: 0;
     transform: var(--from);
   }
-  20%,
-  86% {
+  10%,
+  92% {
     opacity: 1;
     transform: none;
   }
-  96%,
+  99%,
   100% {
     opacity: 0;
     transform: none;
@@ -277,16 +281,16 @@
 
 @keyframes phones-side {
   0%,
-  22% {
+  8% {
     opacity: 0;
     transform: var(--from);
   }
-  36%,
-  86% {
+  22%,
+  92% {
     opacity: 1;
     transform: none;
   }
-  96%,
+  99%,
   100% {
     opacity: 0;
     transform: none;

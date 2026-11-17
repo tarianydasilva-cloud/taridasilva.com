@@ -1,6 +1,6 @@
 "use client"
 
-import type { CSSProperties } from "react"
+import { useEffect, useRef, type CSSProperties } from "react"
 import type { GalleryItem } from "@/lib/case-studies"
 import type { Locale } from "@/lib/i18n"
 import { useLanguage } from "./language-provider"
@@ -146,15 +146,37 @@ const phones = [
 ]
 
 function ServicePhones() {
+  const ref = useRef<HTMLDivElement>(null)
+
+  // Start the loop from the beginning each time the section comes into view, so nobody lands on the empty frame.
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.removeAttribute("data-play")
+          void el.offsetWidth
+          el.setAttribute("data-play", "")
+        } else {
+          el.removeAttribute("data-play")
+        }
+      },
+      { threshold: 0.25 },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <div aria-hidden="true" className="relative aspect-[3456/2234] overflow-hidden rounded-2xl">
+    <div ref={ref} aria-hidden="true" className="relative aspect-[3456/2234] overflow-hidden rounded-2xl">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/projects/service-experience-design/phones/bg.jpg" alt="" className="absolute inset-0 size-full" />
+      <img src="/projects/service-experience-design/phones/bg.webp" alt="" className="absolute inset-0 size-full" />
       {phones.map((phone) => (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           key={phone.src}
-          src={`/projects/service-experience-design/phones/${phone.src}.png`}
+          src={`/projects/service-experience-design/phones/${phone.src}.webp`}
           alt=""
           style={{ left: phone.left, top: phone.top, "--from": phone.from } as CSSProperties}
           className={`${phone.delay} absolute bottom-0 w-[24.913%] ${phone.src === "center" ? "z-10" : ""}`}
