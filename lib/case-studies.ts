@@ -159,32 +159,10 @@ export const caseStudies: Record<string, CaseStudy> = {
           es: "La primera impresión de la plataforma, con las piezas que la forman.",
         },
       },
-      {
-        image: "/projects/innohub/workshops.jpg",
-        caption: {
-          en: "Ideation and validation workshops with the client's team: where ideas were tested, refined and challenged.",
-          es: "Workshops de ideación y validación con el equipo del cliente: donde las ideas se probaban, afinaban y cuestionaban.",
-        },
-      },
-      {
-        image: "/projects/innohub/success-story.jpg",
-        caption: {
-          en: "One of the innovation lines explored with employees: ideas for families, across generations.",
-          es: "Una de las líneas de innovación que exploramos con los empleados: ideas para las familias, de todas las generaciones.",
-        },
-      },
-      {
-        quote: {
-          en: [
-            "Innovation must become a shared capability across the business.",
-            "From specialists to everyone, from isolated ideas to insight-led opportunities, from sporadic workshops to everyday practice.",
-          ],
-          es: [
-            "La innovación tiene que ser una capacidad compartida en todo el negocio.",
-            "De los especialistas a todos, de ideas aisladas a oportunidades basadas en insights, de talleres puntuales a la práctica diaria.",
-          ],
-        },
-      },
+      { image: "/projects/innohub/detail/welcome.jpg", aspect: "2400/1100" },
+      { pair: ["/projects/innohub/detail/participa.jpg", "/projects/innohub/detail/nav.jpg"] },
+      { pair: ["/projects/innohub/detail/people.jpg", "/projects/innohub/detail/ranking.jpg"] },
+      { image: "/projects/innohub/detail/message.jpg", aspect: "2400/700" },
     ],
     results: [
       {
