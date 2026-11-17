@@ -8,7 +8,8 @@ type Localized = Record<Locale, string>
 // Encode them mirrored, muted and web-sized, with a first-frame poster next to each as .jpg:
 //   ffmpeg -i in.mov -vf "hflip,scale=1440:-2" -an -c:v libx264 -crf 26 -pix_fmt yuv420p -movflags +faststart out.mp4
 //   ffmpeg -i out.mp4 -frames:v 1 -q:v 4 out.jpg
-export const heroVideos: string[] = ["/about/tari-desktop.mp4"]
+// Empty for now: the desktop shows its plain wallpaper. Was ["/about/tari-desktop.mp4"].
+export const heroVideos: string[] = []
 
 // Icons on the About "desktop". Left ones sit under the widgets; right ones fill columns from the right edge,
 // like Finder, so the face in the video stays clear. File names stay in English in both languages, like real files.

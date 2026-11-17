@@ -159,7 +159,7 @@ function DesktopLink({ item }: { item: DesktopItem }) {
       <span className="block w-[6cqi] rounded-[0.6cqi] p-[0.4cqi] transition-colors group-hover:bg-black/25 group-focus-visible:bg-black/25">
         <Icon item={item} />
       </span>
-      <span className="max-w-full truncate rounded-[0.4cqi] px-[0.5cqi] text-center text-[clamp(8px,1.25cqi,12px)] font-semibold leading-tight text-white [text-shadow:0_1px_3px_rgb(0_0_0/0.7)] group-hover:bg-[#0a64d6] group-hover:[text-shadow:none] group-focus-visible:bg-[#0a64d6]">
+      <span className="max-w-full truncate rounded-[0.4cqi] px-[0.5cqi] text-center text-[clamp(8px,1.25cqi,12px)] font-semibold leading-tight text-foreground group-hover:bg-[#0a64d6] group-hover:text-white group-hover:[text-shadow:none] group-focus-visible:bg-[#0a64d6] group-focus-visible:text-white group-data-[video]/desk:text-white group-data-[video]/desk:[text-shadow:0_1px_3px_rgb(0_0_0/0.7)]">
         {item.label}
       </span>
     </>
@@ -279,8 +279,9 @@ export function AboutDesktop() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) video.current?.pause()
   }, [src])
 
+  // Labels are white with a shadow over the video, and dark on the plain wallpaper.
   return (
-    <div className="@container">
+    <div className="group/desk @container" data-video={src ? "" : undefined}>
       <div className="flex aspect-[16/10] flex-col bg-muted [clip-path:inset(0_round_1rem)]">
         <MenuBar />
 
