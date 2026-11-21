@@ -29,7 +29,7 @@ const routeKey = (path) => path.replace(/^\/|\/$/g, "").replace(/\//g, ".") || "
 
 const workHtml = await (await get("/work")).text()
 const slugs = [...new Set([...workHtml.matchAll(/href="\/work\/([\w-]+)"/g)].map((m) => m[1]))]
-const routes = ["/", "/work", "/about", "/contact", ...slugs.map((slug) => `/work/${slug}`)]
+const routes = ["/", "/work", "/explorations", "/about", "/contact", ...slugs.map((slug) => `/work/${slug}`)]
 
 const stylesheets = new Set()
 const images = new Map()

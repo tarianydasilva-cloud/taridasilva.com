@@ -1,0 +1,19 @@
+import type { Locale } from "./i18n"
+
+type Localized = Record<Locale, string>
+
+// Explorations, after Devin Cooper's "The Overflow": work that doesn't fit a case study, shown as a dense
+// wall of pictures in rounded frames with a file-style tag under each. Put the files in /public/explorations/ and list
+// them here, newest first. `src` can be a picture or an .mp4 (it plays muted on a loop).
+export type Exploration = { src?: string; label: string }
+
+export const intro: Localized = {
+  en: "Not everything fits into a case study. Explorations collects side projects, experiments and pieces of work from along the way.",
+  es: "No todo cabe en un caso de estudio. Exploraciones reúne proyectos paralelos, experimentos y piezas de trabajo que he ido haciendo por el camino.",
+}
+
+// 56 spaces, like the reference wall (8 columns × 7 rows on desktop). A space without `src` shows empty,
+// waiting for its picture; Tari's images replace these one by one, and her own tags replace the labels.
+export const explorations: Exploration[] = Array.from({ length: 56 }, (_, i) => ({
+  label: `IMAGE_${String(i + 1).padStart(2, "0")}.JPG`,
+}))

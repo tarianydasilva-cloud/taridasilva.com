@@ -213,6 +213,14 @@
     animation: bento-swap-out 9s ease-in-out infinite both;
     animation-delay: calc(var(--i) * 0.18s);
   }
+  /* Explorations wall (components/explorations.tsx): the round pictures rise in, a few at a time. */
+  [data-play-on-view]:not([data-play]) .explore-tile {
+    opacity: 0;
+  }
+  [data-play] .explore-tile {
+    animation: explore-rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(var(--i) * 45ms);
+  }
   /* Service Design phones (components/case-study-scenes.tsx): a 7-second loop that starts when the scene is in
      view. The phones wait hidden until then; the empty frame between loops lasts under a second. */
   .phones-center,
@@ -279,6 +287,13 @@
   }
   100% {
     translate: 0 0;
+  }
+}
+
+@keyframes explore-rise {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
   }
 }
 

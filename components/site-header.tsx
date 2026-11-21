@@ -10,15 +10,17 @@ import { useLanguage } from "./language-provider"
 const navItems = [
   { href: "/about", key: "about" },
   { href: "/work", key: "work" },
+  { href: "/explorations", key: "explorations" },
 ] as const
 
 function isActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`)
 }
 
-const pill = "block rounded-full px-3 py-1.5 text-sm transition-colors md:px-4"
+const pill = "block whitespace-nowrap rounded-full px-[7px] py-1.5 text-[13px] transition-colors md:px-4 md:text-sm"
 
-// On phones the bar sits at the bottom of the screen, within thumb reach; from md up it sits at the top.
+// On phones the bar sits at the bottom of the screen, within thumb reach, sized so the name and all four links
+// fit on a 390px screen; from md up it sits at the top.
 // One rule on every page and screen: shown near the top and bottom of the page and on any scroll up,
 // hidden while scrolling down. The visibility is also published on <html data-header-shown>, so a
 // page's own floating bar (the About and case study section bar) can move below the header.
@@ -59,16 +61,16 @@ export function SiteHeader() {
       className="fixed inset-x-0 bottom-[calc(0.75rem+env(safe-area-inset-bottom))] z-40 transition-transform duration-300 ease-out focus-within:translate-y-0 data-[hidden]:translate-y-[150%] motion-reduce:transition-none md:bottom-auto md:top-3 md:data-[hidden]:-translate-y-[150%]"
     >
       <div className={container}>
-        <div className="flex h-14 items-center justify-between gap-2 rounded-2xl bg-background/80 p-1.5 pl-4 shadow-[0_8px_32px_-16px_rgba(0,0,0,0.25)] ring-1 ring-black/[0.07] backdrop-blur-xl md:pl-5">
+        <div className="flex h-14 items-center justify-between gap-2 rounded-2xl bg-background/80 p-1.5 pl-3 shadow-[0_8px_32px_-16px_rgba(0,0,0,0.25)] ring-1 ring-black/[0.07] backdrop-blur-xl md:pl-5">
           <Link
             href="/"
-            className="shrink-0 text-lg font-medium tracking-tight transition-colors hover:text-accent"
+            className="shrink-0 text-[15px] font-medium tracking-tight transition-colors hover:text-accent md:text-lg"
           >
             Tari da Silva
           </Link>
 
           <nav aria-label="Primary">
-            <ul className="flex items-center gap-1 md:gap-1.5">
+            <ul className="flex items-center gap-0.5 md:gap-1.5">
               {navItems.map((item) => {
                 const active = isActive(pathname, item.href)
                 return (
