@@ -17,7 +17,7 @@ export const dictionary = {
   en: {
     skip: "Skip to content",
     role: "Product Designer",
-    nav: { work: "Work", about: "About", contact: "Say hola!" },
+    nav: { work: "Work", about: "About", explorations: "Explorations", contact: "Say hola!" },
     language: "Language",
     home: "Home",
     about: {
@@ -31,6 +31,16 @@ export const dictionary = {
     pages: {
       work: { eyebrow: "Selected work", title: "Work" },
       about: { eyebrow: "Profile", title: "About" },
+    },
+    explorations: {
+      title: "Explorations",
+      intro: "The side roads. Sketches, workshops, experiments and small things picked up between projects.",
+      filter: "Show",
+      all: "Everything",
+      open: "Open",
+      close: "Close",
+      previous: "Previous",
+      next: "Next",
     },
     work: { disciplines: "Disciplines", year: "Year" },
     caseStudy: {
@@ -68,7 +78,7 @@ export const dictionary = {
   es: {
     skip: "Saltar al contenido",
     role: "Product Designer",
-    nav: { work: "Trabajo", about: "Sobre mí", contact: "Di olá!" },
+    nav: { work: "Trabajo", about: "Sobre mí", explorations: "Exploraciones", contact: "Di olá!" },
     language: "Idioma",
     home: "Inicio",
     about: {
@@ -82,6 +92,16 @@ export const dictionary = {
     pages: {
       work: { eyebrow: "Trabajo seleccionado", title: "Trabajo" },
       about: { eyebrow: "Perfil", title: "Sobre mí" },
+    },
+    explorations: {
+      title: "Exploraciones",
+      intro: "Los caminos secundarios. Bocetos, talleres, experimentos y pequeñas cosas recogidas entre proyectos.",
+      filter: "Mostrar",
+      all: "Todo",
+      open: "Abrir",
+      close: "Cerrar",
+      previous: "Anterior",
+      next: "Siguiente",
     },
     work: { disciplines: "Disciplinas", year: "Año" },
     caseStudy: {
