@@ -163,8 +163,18 @@ document.addEventListener("click", (event) => {
 });
 addEventListener("scroll", updateNav, { passive: true });
 
-// Mirrors the site header (components/site-header.tsx): always shown at the top.
+// Mirrors the site header (components/site-header.tsx): hidden while the page scrolls, back once it is still.
 document.documentElement.toggleAttribute("data-header-shown", true);
+let idleTimer;
+const setHeader = (hidden) => {
+  document.querySelectorAll("[data-autohide]").forEach((header) => header.toggleAttribute("data-hidden", hidden));
+  document.documentElement.toggleAttribute("data-header-shown", !hidden);
+};
+addEventListener("scroll", () => {
+  setHeader(true);
+  clearTimeout(idleTimer);
+  idleTimer = setTimeout(() => setHeader(false), 350);
+}, { passive: true });
 addEventListener("resize", updateNav);
 
 function route() {

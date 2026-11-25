@@ -7,6 +7,10 @@ type Localized = Record<Locale, string>
 // them here, newest first. `src` can be a picture or an .mp4 (it plays muted on a loop).
 export type Exploration = { src?: string; label: string }
 
+// Not live yet: the page and its nav link only exist in builds made with NEXT_PUBLIC_SHOW_EXPLORATIONS=1
+// (the preview). The live site, built without it, leaves both out.
+export const showExplorations = process.env.NEXT_PUBLIC_SHOW_EXPLORATIONS === "1"
+
 export const intro: Localized = {
   en: "Not everything fits into a case study. Explorations collects side projects, experiments and pieces of work from along the way.",
   es: "No todo cabe en un caso de estudio. Exploraciones reúne proyectos paralelos, experimentos y piezas de trabajo que he ido haciendo por el camino.",

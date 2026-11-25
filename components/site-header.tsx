@@ -2,7 +2,8 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import { showExplorations } from "@/lib/explorations"
 import { container } from "@/lib/site"
 import { cn } from "@/lib/utils"
 import { useLanguage } from "./language-provider"
@@ -17,12 +18,33 @@ function isActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`)
 }
 
-// The bar stays at the top on every page and screen. <html data-header-shown> stays set, so a page's own
-// floating bar (the About and case study section bar) sits below it.
-function useHeaderShown() {
+// How long the page has to be still before the bar comes back.
+const IDLE_MS = 350
+
+// The bar steps out of the way while the page scrolls and comes back once it stops. The visibility is published on
+// <html data-header-shown>, so a page's own floating bar (the About and case study section bar) can sit below it.
+function useHideWhileScrolling() {
+  const [hidden, setHidden] = useState(false)
+
   useEffect(() => {
-    document.documentElement.setAttribute("data-header-shown", "")
+    let timer: ReturnType<typeof setTimeout> | undefined
+    const onScroll = () => {
+      setHidden(true)
+      clearTimeout(timer)
+      timer = setTimeout(() => setHidden(false), IDLE_MS)
+    }
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => {
+      window.removeEventListener("scroll", onScroll)
+      clearTimeout(timer)
+    }
   }, [])
+
+  useEffect(() => {
+    document.documentElement.toggleAttribute("data-header-shown", !hidden)
+  }, [hidden])
+
+  return hidden
 }
 
 const MENU_ID = "site-menu"
@@ -38,15 +60,19 @@ function closeMenu() {
 export function SiteHeader() {
   const pathname = usePathname()
   const { t } = useLanguage()
-  useHeaderShown()
+  const hidden = useHideWhileScrolling()
   const links = [
-    ...navItems.map((item) => ({ href: item.href, label: t.nav[item.key], primary: false })),
+    ...navItems
+      .filter((item) => item.href !== "/explorations" || showExplorations)
+      .map((item) => ({ href: item.href, label: t.nav[item.key], primary: false })),
     { href: "/contact", label: t.nav.contact, primary: true },
   ]
 
   return (
     <header
-      className="site-header fixed inset-x-0 top-3 z-40"
+      data-autohide
+      data-hidden={hidden || undefined}
+      className="site-header fixed inset-x-0 top-3 z-40 transition-[transform,opacity] duration-300 ease-out focus-within:translate-y-0 focus-within:opacity-100 data-[hidden]:-translate-y-[150%] data-[hidden]:opacity-0 has-[#site-menu:popover-open]:translate-y-0 has-[#site-menu:popover-open]:opacity-100 motion-reduce:transition-none"
     >
       <div className={container}>
         <div className="flex h-14 items-center justify-between gap-2 rounded-2xl bg-background/80 p-1.5 pl-4 shadow-[0_8px_32px_-16px_rgba(0,0,0,0.25)] ring-1 ring-black/[0.07] backdrop-blur-xl md:pl-5">
