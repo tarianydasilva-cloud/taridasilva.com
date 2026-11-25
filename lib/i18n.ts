@@ -17,7 +17,7 @@ export const dictionary = {
   en: {
     skip: "Skip to content",
     role: "Product Designer",
-    nav: { work: "Work", explorations: "Explorations", about: "About", contact: "Say hola!" },
+    nav: { menu: "Menu", work: "Work", explorations: "Explorations", about: "About", contact: "Say hola!" },
     language: "Language",
     home: "Home",
     about: {
@@ -68,7 +68,7 @@ export const dictionary = {
   es: {
     skip: "Saltar al contenido",
     role: "Product Designer",
-    nav: { work: "Trabajo", explorations: "Exploraciones", about: "Sobre mí", contact: "Di olá!" },
+    nav: { menu: "Menú", work: "Trabajo", explorations: "Exploraciones", about: "Sobre mí", contact: "Di olá!" },
     language: "Idioma",
     home: "Inicio",
     about: {

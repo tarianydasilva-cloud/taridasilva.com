@@ -22,6 +22,32 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* The header menu (components/site-header.tsx): a popover dropped under the bar, aligned with its right edge
+   (the bar sits in the 72rem container with 1rem / 2rem gutters). The burger's two lines cross while it is open. */
+.site-menu {
+  position: fixed;
+  inset: auto;
+  margin: 0;
+  top: 4.75rem;
+  right: max(1rem, calc((100vw - 72rem) / 2 + 1rem));
+}
+@media (min-width: 48rem) {
+  .site-menu {
+    right: max(2rem, calc((100vw - 72rem) / 2 + 2rem));
+  }
+}
+.burger-line {
+  transition: transform 0.25s ease, top 0.25s ease, bottom 0.25s ease;
+}
+.site-header:has(#site-menu:popover-open) .burger-line:first-child {
+  top: calc(50% - 0.75px);
+  transform: rotate(45deg);
+}
+.site-header:has(#site-menu:popover-open) .burger-line:last-child {
+  bottom: calc(50% - 0.75px);
+  transform: rotate(-45deg);
+}
+
 @layer base {
   * {
     border-color: var(--color-border);

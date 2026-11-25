@@ -193,6 +193,7 @@ function route() {
     return;
   }
   current = keys.has(hash) ? hash : "home";
+  document.querySelectorAll("[popover]").forEach((p) => { try { p.hidePopover(); } catch {} });
   render(true);
 }
 
