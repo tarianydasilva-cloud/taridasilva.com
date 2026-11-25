@@ -163,13 +163,8 @@ document.addEventListener("click", (event) => {
 });
 addEventListener("scroll", updateNav, { passive: true });
 
-// Mirrors the site header (components/site-header.tsx): hidden while the page scrolls, back once it is still.
-let idleTimer;
-addEventListener("scroll", () => {
-  document.querySelectorAll("[data-autohide]").forEach((header) => header.setAttribute("data-hidden", ""));
-  clearTimeout(idleTimer);
-  idleTimer = setTimeout(() => document.querySelectorAll("[data-autohide]").forEach((header) => header.removeAttribute("data-hidden")), 350);
-}, { passive: true });
+// Mirrors the site header (components/site-header.tsx): always shown at the top.
+document.documentElement.toggleAttribute("data-header-shown", true);
 addEventListener("resize", updateNav);
 
 function route() {
@@ -183,6 +178,7 @@ function route() {
     return;
   }
   current = keys.has(hash) ? hash : "home";
+  document.querySelectorAll("[popover]").forEach((p) => { try { p.hidePopover(); } catch {} });
   render(true);
 }
 
