@@ -213,6 +213,11 @@
     animation: bento-swap-out 9s ease-in-out infinite both;
     animation-delay: calc(var(--i) * 0.18s);
   }
+  /* The header wordmark resolves from an 8px blur on load: from blurred to focused (design system, Motion). */
+  .wordmark-in {
+    display: inline-block;
+    animation: wordmark-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.1s both;
+  }
   /* Explorations wall (components/explorations.tsx): the round pictures rise in, a few at a time. */
   [data-play-on-view]:not([data-play]) .explore-tile {
     opacity: 0;
@@ -287,6 +292,13 @@
   }
   100% {
     translate: 0 0;
+  }
+}
+
+@keyframes wordmark-in {
+  from {
+    filter: blur(8px);
+    opacity: 0;
   }
 }
 

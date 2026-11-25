@@ -14,6 +14,13 @@ export const intro: Localized = {
 
 // 56 spaces, like the reference wall (8 columns × 7 rows on desktop). A space without `src` shows empty,
 // waiting for its picture; Tari's images replace these one by one, and her own tags replace the labels.
-export const explorations: Exploration[] = Array.from({ length: 56 }, (_, i) => ({
-  label: `IMAGE_${String(i + 1).padStart(2, "0")}.JPG`,
-}))
+// Filled spaces, by position (1 = top left, 56 = bottom right on desktop).
+const filled: Record<number, Exploration> = {
+  // Draft: the freim logo as textured 3D pieces, printed on a white tee (to be redone on a blank mockup).
+  56: { src: "/explorations/freim-tee.jpg", label: "FREIM_01.JPG" },
+}
+
+export const explorations: Exploration[] = Array.from(
+  { length: 56 },
+  (_, i) => filled[i + 1] ?? { label: `IMAGE_${String(i + 1).padStart(2, "0")}.JPG` },
+)

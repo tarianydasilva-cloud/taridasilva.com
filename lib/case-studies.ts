@@ -55,8 +55,8 @@ export type CaseStudy = {
 export const caseStudies: Record<string, CaseStudy> = {
   innohub: {
     headline: {
-      en: "Innovation as everyone's job",
-      es: "La innovación como tarea de todos",
+      en: "Innovation as everyone's job.",
+      es: "La innovación como tarea de todos.",
     },
     summary: {
       en: "A leading Spanish insurer wanted innovation to belong to every employee, not only to a specialist team. With growth strategy, research and visual design, we shaped the innovation model, the employee experience and the platform around it.",
@@ -207,8 +207,8 @@ export const caseStudies: Record<string, CaseStudy> = {
   "fleet-connect": {
     heroFromGallery: true,
     headline: {
-      en: "Making 100+ indicators readable",
-      es: "Hacer legibles más de 100 indicadores",
+      en: "Making 100+ indicators readable.",
+      es: "Hacer legibles más de 100 indicadores.",
     },
     summary: {
       en: "A fleet management company's dashboards had grown into a sea of numbers. In two weeks I kept every indicator, split them into two priority tiers and prototyped the dashboard in Figma Make.",
@@ -331,8 +331,8 @@ export const caseStudies: Record<string, CaseStudy> = {
   "service-experience-design": {
     heroFromGallery: true,
     headline: {
-      en: "Designing services from the inside out",
-      es: "Diseñar servicios de dentro hacia fuera",
+      en: "Designing services from the inside out.",
+      es: "Diseñar servicios de dentro hacia fuera.",
     },
     summary: {
       en: "A growing organisation's services had evolved on their own, and its website showed it. Working solo with the talent and sales teams, I mapped every service end to end, then redesigned how the website presents them.",
@@ -488,8 +488,8 @@ export const caseStudies: Record<string, CaseStudy> = {
 
   "design-ops-strategy": {
     headline: {
-      en: "Structure for a team under pressure",
-      es: "Estructura para un equipo bajo presión",
+      en: "Structure for a team under pressure.",
+      es: "Estructura para un equipo bajo presión.",
     },
     summary: {
       en: "A multidisciplinary team of 25 was receiving work with unclear priorities, timelines and briefs. Working closely with the Director of Operations, I designed how requests are received, scoped and managed.",

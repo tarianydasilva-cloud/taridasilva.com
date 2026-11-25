@@ -123,7 +123,7 @@ export function CaseStudy({ slug }: { slug: string }) {
           {item.link && (
             <Link
               href={item.link.href}
-              className="mt-4 inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-3 text-background transition-colors hover:bg-accent"
+              className="mt-4 inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-3 text-background transition-colors hover:bg-accent hover:text-foreground"
             >
               {item.link.label[locale]}
               <span aria-hidden="true">→</span>

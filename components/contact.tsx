@@ -42,7 +42,7 @@ export function Contact() {
               type="button"
               data-copy={email}
               onClick={copyEmail}
-              className="mt-5 rounded-full bg-background px-4 py-2 text-sm text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+              className="mt-5 rounded-full bg-background px-4 py-2 text-sm text-foreground transition-colors hover:bg-accent hover:text-foreground"
             >
               {copied ? t.contact.copied : t.contact.copy}
             </button>

@@ -17,7 +17,7 @@ export function SiteFooter() {
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <a
             href={`mailto:${email}`}
-            className="self-start rounded-full bg-accent px-5 py-3 text-accent-foreground transition-colors hover:bg-foreground md:text-lg"
+            className="self-start rounded-full bg-accent px-5 py-3 text-foreground transition-colors hover:bg-foreground hover:text-background md:text-lg"
           >
             {email}
           </a>

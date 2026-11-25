@@ -34,7 +34,7 @@ export function Explorations() {
 
   return (
     <section className="group/explore pb-16 pt-6 md:pb-24 md:pt-12">
-      <h1 className="text-sm text-muted-foreground">{t.title[locale]}</h1>
+      <h1 className="text-xs uppercase tracking-[0.12em] text-muted-foreground">{t.title[locale]}</h1>
       <p className="text-statement mt-4 max-w-5xl text-balance">{intro[locale]}</p>
 
       <fieldset className="sticky top-3 z-30 mt-12 flex w-fit gap-1 rounded-full bg-muted/85 p-1.5 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.2)] ring-1 ring-black/5 backdrop-blur-xl transition-[top] duration-300 md:mt-16 md:[html[data-header-shown]_&]:top-20">

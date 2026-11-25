@@ -66,7 +66,9 @@ export function SiteHeader() {
             href="/"
             className="shrink-0 text-[15px] font-medium tracking-tight transition-colors hover:text-accent md:text-lg"
           >
-            Tari da Silva
+            <span className="wordmark-in">
+              Tari da Silva<span className="text-accent">.</span>
+            </span>
           </Link>
 
           <nav aria-label="Primary">
@@ -92,7 +94,7 @@ export function SiteHeader() {
                 <Link
                   href="/contact"
                   aria-current={isActive(pathname, "/contact") ? "page" : undefined}
-                  className={cn(pill, "bg-accent text-accent-foreground hover:bg-foreground aria-[current=page]:bg-foreground")}
+                  className={cn(pill, "bg-accent text-foreground hover:bg-foreground hover:text-background aria-[current=page]:bg-foreground aria-[current=page]:text-background")}
                 >
                   {t.nav.contact}
                 </Link>
