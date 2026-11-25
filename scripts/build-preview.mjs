@@ -163,22 +163,12 @@ document.addEventListener("click", (event) => {
 });
 addEventListener("scroll", updateNav, { passive: true });
 
-// Mirrors the site header (components/site-header.tsx): shown near the top and bottom and on scroll up,
-// hidden while scrolling down; <html data-header-shown> lets the section bar move below it.
-let lastScrollY = scrollY;
-document.documentElement.toggleAttribute("data-header-shown", true);
+// Mirrors the site header (components/site-header.tsx): hidden while the page scrolls, back once it is still.
+let idleTimer;
 addEventListener("scroll", () => {
-  const y = scrollY;
-  const nearTop = y <= 80;
-  const nearBottom = innerHeight + y >= document.documentElement.scrollHeight - 80;
-  let hidden;
-  if (nearTop || nearBottom) hidden = false;
-  else if (Math.abs(y - lastScrollY) >= 4) hidden = y > lastScrollY;
-  if (hidden !== undefined) {
-    document.querySelectorAll("[data-autohide]").forEach((header) => header.toggleAttribute("data-hidden", hidden));
-    document.documentElement.toggleAttribute("data-header-shown", !hidden);
-  }
-  lastScrollY = y;
+  document.querySelectorAll("[data-autohide]").forEach((header) => header.setAttribute("data-hidden", ""));
+  clearTimeout(idleTimer);
+  idleTimer = setTimeout(() => document.querySelectorAll("[data-autohide]").forEach((header) => header.removeAttribute("data-hidden")), 350);
 }, { passive: true });
 addEventListener("resize", updateNav);
 
@@ -193,7 +183,6 @@ function route() {
     return;
   }
   current = keys.has(hash) ? hash : "home";
-  document.querySelectorAll("[popover]").forEach((p) => { try { p.hidePopover(); } catch {} });
   render(true);
 }
 
@@ -208,11 +197,15 @@ tickClocks();
 setInterval(tickClocks, 15000);
 
 // Animations that start when they scroll into view (marked data-play-on-view), like on the site.
+// An element counts as in view once a quarter of it, or a quarter of the screen, shows it (tall walls never reach 25%).
+const inView = (entry) => entry.isIntersecting && (entry.intersectionRatio >= 0.25 || entry.intersectionRect.height >= innerHeight * 0.25);
 const playObserver = new IntersectionObserver((entries) => entries.forEach((entry) => {
   const el = entry.target;
+  const play = inView(entry);
+  if (play === el.hasAttribute("data-play")) return;
   el.removeAttribute("data-play");
-  if (entry.isIntersecting) { void el.offsetWidth; el.setAttribute("data-play", ""); }
-}), { threshold: 0.25 });
+  if (play) { void el.offsetWidth; el.setAttribute("data-play", ""); }
+}), { threshold: [0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.5, 0.75, 1] });
 document.querySelectorAll("[data-play-on-view]").forEach((el) => playObserver.observe(el));
 
 // Copy buttons (the contact page's email).

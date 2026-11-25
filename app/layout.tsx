@@ -33,7 +33,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 
   return (
     <html lang={locale} id="top" className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body className="flex min-h-dvh flex-col">
+      <body className="flex min-h-dvh flex-col pb-[calc(5rem+env(safe-area-inset-bottom))]">
         <LanguageProvider initialLocale={locale}>
           <a
             href="#main"
@@ -42,7 +42,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
             {dictionary[locale].skip}
           </a>
           <SiteHeader />
-          <main id="main" className={cn(container, "flex-1 pt-24 md:pt-28")}>
+          <main id="main" className={cn(container, "flex-1 pt-8 md:pt-12")}>
             {children}
           </main>
           <SiteFooter />

@@ -3,7 +3,6 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
-import { container } from "@/lib/site"
 import { cn } from "@/lib/utils"
 import { useLanguage } from "./language-provider"
 
@@ -17,113 +16,95 @@ function isActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`)
 }
 
-// One rule on every page and screen: shown near the top and bottom of the page and on any scroll up,
-// hidden while scrolling down. The visibility is also published on <html data-header-shown>, so a
-// page's own floating bar (the About and case study section bar) can move below the header.
-function useHideOnScroll() {
+// How long the page has to be still before the bar comes back.
+const IDLE_MS = 350
+
+// The bar steps out of the way while the page moves and comes back once it stops.
+function useHideWhileScrolling() {
   const [hidden, setHidden] = useState(false)
 
   useEffect(() => {
-    let lastY = window.scrollY
-    const update = () => {
-      const y = window.scrollY
-      const nearTop = y <= 80
-      const nearBottom = window.innerHeight + y >= document.documentElement.scrollHeight - 80
-      if (nearTop || nearBottom) setHidden(false)
-      else if (Math.abs(y - lastY) >= 4) setHidden(y > lastY)
-      lastY = y
+    let timer: ReturnType<typeof setTimeout> | undefined
+    const onScroll = () => {
+      setHidden(true)
+      clearTimeout(timer)
+      timer = setTimeout(() => setHidden(false), IDLE_MS)
     }
-    update()
-    window.addEventListener("scroll", update, { passive: true })
-    return () => window.removeEventListener("scroll", update)
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => {
+      window.removeEventListener("scroll", onScroll)
+      clearTimeout(timer)
+    }
   }, [])
-
-  useEffect(() => {
-    document.documentElement.toggleAttribute("data-header-shown", !hidden)
-  }, [hidden])
 
   return hidden
 }
 
-const MENU_ID = "site-menu"
-
-// Closes the menu after a link is chosen (client navigation keeps the page, so the popover would stay open).
-function closeMenu() {
-  document.getElementById(MENU_ID)?.hidePopover?.()
+// The brand mark from Tari's design system: the flat sunset-gradient circle (the favicon), standing in for her name.
+function Mark() {
+  return (
+    <svg viewBox="0 0 32 32" aria-hidden="true" className="size-7">
+      <defs>
+        <linearGradient id="mark-sunset" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#ff2700" />
+          <stop offset=".42" stopColor="#f2582d" />
+          <stop offset=".78" stopColor="#c6b8c9" />
+          <stop offset="1" stopColor="#bccfd8" />
+        </linearGradient>
+      </defs>
+      <circle cx="16" cy="16" r="16" fill="url(#mark-sunset)" />
+    </svg>
+  )
 }
 
-// The bar: Tari's name on the left, a burger in the right corner. The burger opens the menu as a native
-// popover (popovertarget), so it opens and closes without any script, light-dismisses on an outside click or
-// Escape, and the burger turns into a cross while it is open (CSS :has, in globals.css).
+const pill = "block whitespace-nowrap rounded-full px-3 py-1.5 text-sm transition-colors md:px-4"
+
+// A floating bar at the bottom of every screen: the mark, then every link. It is there whenever the page is still,
+// slides away while the page scrolls, and stays while it holds keyboard focus.
 export function SiteHeader() {
   const pathname = usePathname()
   const { t } = useLanguage()
-  const hidden = useHideOnScroll()
-  const links = [
-    ...navItems.map((item) => ({ href: item.href, label: t.nav[item.key], primary: false })),
-    { href: "/contact", label: t.nav.contact, primary: true },
-  ]
+  const hidden = useHideWhileScrolling()
 
   return (
     <header
       data-autohide
       data-hidden={hidden || undefined}
-      className="site-header fixed inset-x-0 top-3 z-40 transition-transform duration-300 ease-out focus-within:translate-y-0 data-[hidden]:-translate-y-[150%] has-[#site-menu:popover-open]:translate-y-0 motion-reduce:transition-none"
+      className="pointer-events-none fixed inset-x-0 bottom-[calc(0.75rem+env(safe-area-inset-bottom))] z-40 flex justify-center px-4 transition-[transform,opacity] duration-300 ease-out focus-within:translate-y-0 focus-within:opacity-100 data-[hidden]:translate-y-[150%] data-[hidden]:opacity-0 motion-reduce:transition-none"
     >
-      <div className={container}>
-        <div className="flex h-14 items-center justify-between gap-2 rounded-2xl bg-background/80 p-1.5 pl-4 shadow-[0_8px_32px_-16px_rgba(0,0,0,0.25)] ring-1 ring-black/[0.07] backdrop-blur-xl md:pl-5">
-          <Link
-            href="/"
-            onClick={closeMenu}
-            className="shrink-0 text-lg font-medium tracking-tight transition-colors hover:text-accent"
-          >
-            <span className="wordmark-in">Tari da Silva</span>
-          </Link>
-
-          <button
-            type="button"
-            popoverTarget={MENU_ID}
-            aria-label={t.nav.menu}
-            className="burger grid size-11 place-items-center rounded-full transition-colors hover:bg-muted"
-          >
-            <span aria-hidden="true" className="relative block h-3 w-5">
-              <span className="burger-line absolute inset-x-0 top-0 h-[1.5px] rounded-full bg-foreground" />
-              <span className="burger-line absolute inset-x-0 bottom-0 h-[1.5px] rounded-full bg-foreground" />
-            </span>
-          </button>
-
-          <nav
-            id={MENU_ID}
-            popover="auto"
-            aria-label="Primary"
-            className="site-menu w-56 rounded-2xl bg-background p-2 shadow-[0_8px_32px_-16px_rgba(0,0,0,0.25)] ring-1 ring-black/[0.07]"
-          >
-            <ul className="flex flex-col gap-1">
-              {links.map((link) => {
-                const active = isActive(pathname, link.href)
-                return (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      onClick={closeMenu}
-                      aria-current={active ? "page" : undefined}
-                      className={cn(
-                        "block rounded-full px-4 py-2.5 text-base transition-colors",
-                        link.primary
-                          ? "bg-accent text-foreground hover:bg-foreground hover:text-background"
-                          : "text-foreground/80 hover:bg-muted",
-                        active && "bg-foreground text-background hover:bg-foreground",
-                      )}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                )
-              })}
-            </ul>
-          </nav>
-        </div>
-      </div>
+      <nav
+        aria-label="Primary"
+        className="pointer-events-auto flex items-center gap-0.5 rounded-full bg-background/80 p-1.5 shadow-[0_8px_32px_-16px_rgba(0,0,0,0.25)] ring-1 ring-black/[0.07] backdrop-blur-xl md:gap-1"
+      >
+        <Link href="/" aria-label="Tari da Silva" className="grid size-9 shrink-0 place-items-center rounded-full transition-transform hover:scale-110">
+          <Mark />
+        </Link>
+        <ul className="flex items-center gap-0.5 md:gap-1">
+          {navItems.map((item) => {
+            const active = isActive(pathname, item.href)
+            return (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  aria-current={active ? "page" : undefined}
+                  className={cn(pill, active ? "bg-foreground text-background" : "text-foreground/80 hover:bg-muted")}
+                >
+                  {t.nav[item.key]}
+                </Link>
+              </li>
+            )
+          })}
+          <li>
+            <Link
+              href="/contact"
+              aria-current={isActive(pathname, "/contact") ? "page" : undefined}
+              className={cn(pill, "bg-accent text-foreground hover:bg-foreground hover:text-background aria-[current=page]:bg-foreground aria-[current=page]:text-background")}
+            >
+              {t.nav.contact}
+            </Link>
+          </li>
+        </ul>
+      </nav>
     </header>
   )
 }

@@ -37,7 +37,7 @@ export function Explorations() {
       <h1 className="text-xs uppercase tracking-[0.12em] text-muted-foreground">{t.title[locale]}</h1>
       <p className="text-statement mt-4 max-w-5xl text-balance">{intro[locale]}</p>
 
-      <fieldset className="sticky top-3 z-30 mt-12 flex w-fit gap-1 rounded-full bg-muted/85 p-1.5 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.2)] ring-1 ring-black/5 backdrop-blur-xl transition-[top] duration-300 md:mt-16 [html[data-header-shown]_&]:top-20">
+      <fieldset className="sticky top-3 z-30 mt-12 flex w-fit gap-1 rounded-full bg-muted/85 p-1.5 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.2)] ring-1 ring-black/5 backdrop-blur-xl transition-[top] duration-300 md:mt-16">
         <legend className="sr-only">{t.view[locale]}</legend>
         {(["grid", "large"] as const).map((view) => (
           <label
