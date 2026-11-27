@@ -64,8 +64,8 @@ export function SiteHeader() {
   const links = [
     ...navItems
       .filter((item) => item.href !== "/explorations" || showExplorations)
-      .map((item) => ({ href: item.href, label: t.nav[item.key], primary: false })),
-    { href: "/contact", label: t.nav.contact, primary: true },
+      .map((item) => ({ href: item.href, label: t.nav[item.key] })),
+    { href: "/contact", label: t.nav.contact },
   ]
 
   return (
@@ -91,8 +91,8 @@ export function SiteHeader() {
             className="burger grid size-11 place-items-center rounded-full transition-colors hover:bg-muted"
           >
             <span aria-hidden="true" className="relative block h-3 w-5">
-              <span className="burger-line absolute inset-x-0 top-0 h-[1.5px] rounded-full bg-foreground" />
-              <span className="burger-line absolute inset-x-0 bottom-0 h-[1.5px] rounded-full bg-foreground" />
+              <span className="burger-line absolute inset-x-0 top-0 h-0.5 rounded-full bg-foreground" />
+              <span className="burger-line absolute inset-x-0 bottom-0 h-0.5 rounded-full bg-foreground" />
             </span>
           </button>
 
@@ -113,11 +113,7 @@ export function SiteHeader() {
                       aria-current={active ? "page" : undefined}
                       className={cn(
                         "block rounded-full px-4 py-2.5 text-[19px] leading-snug transition-colors",
-                        link.primary
-                          ? // Always orange. Ink on #ff2700 is 4.79:1: AAA as large text, which is why the label is
-                            // 19px bold (WCAG large = 18.66px bold). Hover underlines; the current page gets an ink ring.
-                            "bg-accent font-bold text-foreground underline-offset-4 hover:underline aria-[current=page]:ring-2 aria-[current=page]:ring-inset aria-[current=page]:ring-foreground"
-                          : cn("text-foreground/80 hover:bg-muted", active && "bg-foreground text-background hover:bg-foreground"),
+                        active ? "bg-foreground text-background" : "text-foreground/80 hover:bg-muted",
                       )}
                     >
                       {link.label}
