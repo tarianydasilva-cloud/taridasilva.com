@@ -21,6 +21,8 @@ export const intro: Localized = {
 // Filled spaces, by position (1 = top left, 56 = bottom right on desktop).
 const filled: Record<number, Exploration> = {
   // Draft: the freim logo as textured 3D pieces, printed on a white tee, on black (to be redone on a blank mockup).
+  // 10 Coffee, Tari's packaging brand: Unbounded, fine print grain, cobalt #5B8CFF (6.6:1) on #000.
+  55: { src: "/explorations/10-coffee.jpg", label: "10COFFEE_01.JPG" },
   56: { src: "/explorations/freim-tee.jpg", label: "FREIM_01.JPG" },
 }
 
