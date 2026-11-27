@@ -67,7 +67,7 @@ export function Explorations() {
                     loop
                     playsInline
                     aria-hidden="true"
-                    className="absolute inset-0 size-full object-cover transition-transform duration-500 ease-out group-hover/tile:scale-105 motion-reduce:transition-none"
+                    className="absolute inset-0 size-full object-cover"
                   />
                 ) : (
                   <Image
@@ -76,7 +76,7 @@ export function Explorations() {
                     fill
                     quality={90}
                     sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-500 ease-out group-hover/tile:scale-105 motion-reduce:transition-none"
+                    className="object-cover"
                   />
                 )}
               </div>
