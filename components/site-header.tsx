@@ -90,9 +90,11 @@ export function SiteHeader() {
             aria-label={t.nav.menu}
             className="burger grid size-11 place-items-center rounded-full transition-colors hover:bg-muted"
           >
-            <span aria-hidden="true" className="relative block h-3 w-5">
-              <span className="burger-line absolute inset-x-0 top-0 h-0.5 rounded-full bg-foreground" />
-              <span className="burger-line absolute inset-x-0 bottom-0 h-0.5 rounded-full bg-foreground" />
+            {/* Lines are borders (snapped to whole device pixels) placed 8px apart, a whole number of device pixels on
+                common screens (1x, 1.5x, 2x, 2.625x, 2.75x, 3x), so both lines always render alike. */}
+            <span aria-hidden="true" className="relative block h-2.5 w-5">
+              <span className="burger-line absolute inset-x-0 top-0 h-0 border-t-2 border-foreground" />
+              <span className="burger-line absolute inset-x-0 top-2 h-0 border-t-2 border-foreground" />
             </span>
           </button>
 

@@ -37,14 +37,14 @@
   }
 }
 .burger-line {
-  transition: transform 0.25s ease, top 0.25s ease, bottom 0.25s ease;
+  transition: transform 0.25s ease, top 0.25s ease;
 }
 .site-header:has(#site-menu:popover-open) .burger-line:first-child {
-  top: calc(50% - 1px);
+  top: 4px;
   transform: rotate(45deg);
 }
 .site-header:has(#site-menu:popover-open) .burger-line:last-child {
-  bottom: calc(50% - 1px);
+  top: 4px;
   transform: rotate(-45deg);
 }
 
