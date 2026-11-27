@@ -20,7 +20,7 @@ export const intro: Localized = {
 // waiting for its picture; Tari's images replace these one by one, and her own tags replace the labels.
 // Filled spaces, by position (1 = top left, 56 = bottom right on desktop).
 const filled: Record<number, Exploration> = {
-  // Draft: the freim logo as textured 3D pieces, printed on a white tee (to be redone on a blank mockup).
+  // Draft: the freim logo as textured 3D pieces, printed on a white tee, on black (to be redone on a blank mockup).
   56: { src: "/explorations/freim-tee.jpg", label: "FREIM_01.JPG" },
 }
 
