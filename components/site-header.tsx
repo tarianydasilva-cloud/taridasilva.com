@@ -54,7 +54,7 @@ function closeMenu() {
   document.getElementById(MENU_ID)?.hidePopover?.()
 }
 
-// The bar: Tari's name on the left, a burger in the right corner. The burger opens the menu as a native
+// The bar: Tari's name on the left; on desktop the links sit on the bar, on phones a burger in the right corner. The burger opens the menu as a native
 // popover (popovertarget), so it opens and closes without any script, light-dismisses on an outside click or
 // Escape, and the burger turns into a cross while it is open (CSS :has, in globals.css).
 export function SiteHeader() {
@@ -64,8 +64,8 @@ export function SiteHeader() {
   const links = [
     ...navItems
       .filter((item) => item.href !== "/explorations" || showExplorations)
-      .map((item) => ({ href: item.href, label: t.nav[item.key] })),
-    { href: "/contact", label: t.nav.contact },
+      .map((item) => ({ href: item.href, label: t.nav[item.key], contact: false })),
+    { href: "/contact", label: t.nav.contact, contact: true },
   ]
 
   return (
@@ -84,11 +84,39 @@ export function SiteHeader() {
             <span className="wordmark-in">Tari da Silva</span>
           </Link>
 
+          {/* Desktop: every link on the bar, "Say hola!" as the one orange pill (ink on #ff2700, 4.79:1). */}
+          <nav aria-label="Primary" className="hidden md:block">
+            <ul className="flex items-center gap-1.5">
+              {links.map((link) => {
+                const active = isActive(pathname, link.href)
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      aria-current={active ? "page" : undefined}
+                      className={cn(
+                        "block whitespace-nowrap rounded-full px-4 py-1.5 text-sm transition-colors",
+                        link.contact
+                          ? "bg-accent text-foreground hover:bg-foreground hover:text-background aria-[current=page]:bg-foreground aria-[current=page]:text-background"
+                          : active
+                            ? "bg-foreground text-background"
+                            : "text-foreground/80 hover:bg-muted",
+                      )}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                )
+              })}
+            </ul>
+          </nav>
+
+          {/* Phones: a burger in the corner opens the same links. */}
           <button
             type="button"
             popoverTarget={MENU_ID}
             aria-label={t.nav.menu}
-            className="burger grid size-11 place-items-center rounded-full transition-colors hover:bg-muted"
+            className="burger grid size-11 place-items-center rounded-full transition-colors hover:bg-muted md:hidden"
           >
             {/* Lines are borders (snapped to whole device pixels) placed 8px apart, a whole number of device pixels on
                 common screens (1x, 1.5x, 2x, 2.625x, 2.75x, 3x), so both lines always render alike. */}
@@ -101,7 +129,7 @@ export function SiteHeader() {
           <nav
             id={MENU_ID}
             popover="auto"
-            aria-label="Primary"
+            aria-label={t.nav.menu}
             className="site-menu w-56 rounded-2xl bg-background p-2 shadow-[0_8px_32px_-16px_rgba(0,0,0,0.25)] ring-1 ring-black/[0.07]"
           >
             <ul className="flex flex-col gap-1">
