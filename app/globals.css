@@ -55,6 +55,8 @@
 
   html {
     scroll-behavior: smooth;
+    /* In-page jumps stop below the fixed top bar. */
+    scroll-padding-top: 6rem;
   }
 
   body {

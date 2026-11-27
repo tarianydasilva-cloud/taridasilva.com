@@ -66,7 +66,9 @@ def cover_crop(img, w, h):
 
 
 nav, people, ideas, welcome = load("nav"), load("people"), load("ideas"), load("welcome")
-participa, norma, ranking, message = load("participa"), load("norma"), load("ranking"), load("message")
+participa, norma, message = load("participa"), load("norma"), load("message")
+# The ranking screen with its three cards evened out (scripts/innohub-ranking-even.py).
+ranking = load("ranking-even")
 mascot, rocket, block = load("mascot"), load("rocket"), load("block")
 workshop = Image.open(f"{SRC}/workshop.jpg").convert("RGBA")
 FONT = SRC + "/OpenSans-SemiBold.ttf"

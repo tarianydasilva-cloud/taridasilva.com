@@ -112,11 +112,12 @@ export function SiteHeader() {
                       onClick={closeMenu}
                       aria-current={active ? "page" : undefined}
                       className={cn(
-                        "block rounded-full px-4 py-2.5 text-base transition-colors",
+                        "block rounded-full px-4 py-2.5 text-[19px] leading-snug transition-colors",
                         link.primary
-                          ? "bg-accent text-foreground hover:bg-foreground hover:text-background"
-                          : "text-foreground/80 hover:bg-muted",
-                        active && "bg-foreground text-background hover:bg-foreground",
+                          ? // Always orange. Ink on #ff2700 is 4.79:1: AAA as large text, which is why the label is
+                            // 19px bold (WCAG large = 18.66px bold). Hover underlines; the current page gets an ink ring.
+                            "bg-accent font-bold text-foreground underline-offset-4 hover:underline aria-[current=page]:ring-2 aria-[current=page]:ring-inset aria-[current=page]:ring-foreground"
+                          : cn("text-foreground/80 hover:bg-muted", active && "bg-foreground text-background hover:bg-foreground"),
                       )}
                     >
                       {link.label}

@@ -15,7 +15,7 @@ export function AboutProfile() {
   }
 
   return (
-    <section className="mx-auto flex max-w-[1036px] flex-col gap-3 pt-8 md:pt-12">
+    <section className="mx-auto flex max-w-[1036px] flex-col gap-3 pt-16 md:pt-12">
       <h1 className="sr-only">{t.title[locale]}</h1>
       {showDesktop && <AboutDesktop />}
 
